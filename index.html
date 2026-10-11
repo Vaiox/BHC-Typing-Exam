@@ -1,0 +1,781 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login | BHC Typing Test</title>
+
+  <meta
+    name="description"
+    content="Sign in to your BHC Typing Test practice portal."
+  >
+
+  <style>
+    /* =========================
+       THEME
+    ========================= */
+
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-2: #090909;
+      --border: #292929;
+      --text: #f0f0f0;
+      --muted: #929292;
+      --accent: #00ffae;
+      --accent-hover: #00dfa0;
+      --danger: #ff7777;
+      --danger-bg: #241818;
+      --danger-border: #593333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    .page {
+      width: 100%;
+      max-width: 410px;
+      margin: auto;
+    }
+
+    /* =========================
+       BRAND
+    ========================= */
+
+    .brand {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .brand-icon {
+      width: 66px;
+      height: 66px;
+
+      margin: 0 auto 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #10271f;
+      border: 1px solid #174432;
+      border-radius: 18px;
+
+      color: var(--accent);
+      font-size: 30px;
+    }
+
+    .brand h1 {
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: -0.7px;
+
+      margin-bottom: 10px;
+    }
+
+    .brand p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       LOGIN CARD
+    ========================= */
+
+    .login-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      padding: 30px;
+
+      box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-heading {
+      margin-bottom: 26px;
+    }
+
+    .card-heading h2 {
+      font-size: 23px;
+      margin-bottom: 9px;
+    }
+
+    .card-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-group {
+      margin-bottom: 21px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 9px;
+
+      font-size: 14px;
+      font-weight: 600;
+      color: #dddddd;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
+      width: 100%;
+      height: 49px;
+
+      padding: 0 14px;
+
+      background: var(--surface-2);
+      border: 1px solid #303030;
+      border-radius: 10px;
+
+      color: var(--text);
+      font-size: 14px;
+
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-wrapper input::placeholder {
+      color: #686868;
+    }
+
+    .input-wrapper input:focus {
+      border-color: var(--accent);
+
+      box-shadow:
+        0 0 0 3px rgba(0, 255, 174, 0.08);
+    }
+
+    .input-wrapper input:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    #password {
+      padding-right: 82px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      right: 11px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      background: transparent;
+      border: none;
+
+      color: #929292;
+      font-size: 12px;
+      font-weight: 600;
+
+      cursor: pointer;
+      padding: 7px;
+    }
+
+    .password-toggle:hover {
+      color: var(--accent);
+    }
+
+    /* =========================
+       ALERT
+    ========================= */
+
+    .alert {
+      display: none;
+
+      padding: 14px;
+      margin-bottom: 21px;
+
+      border-radius: 10px;
+      border: 1px solid var(--danger-border);
+      background: var(--danger-bg);
+
+      color: #ffb0b0;
+
+      font-size: 13px;
+      line-height: 1.65;
+
+      overflow-wrap: anywhere;
+    }
+
+    .alert.visible {
+      display: block;
+    }
+
+    .alert-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-bottom: 5px;
+
+      color: #ff9292;
+      font-weight: 700;
+    }
+
+    .alert-icon {
+      font-size: 17px;
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .login-button {
+      width: 100%;
+      min-height: 49px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: var(--accent);
+      color: #00150e;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s,
+        transform 0.2s,
+        opacity 0.2s;
+    }
+
+    .login-button:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .login-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .button-spinner {
+      display: none;
+
+      width: 15px;
+      height: 15px;
+
+      border: 2px solid rgba(0, 0, 0, 0.25);
+      border-top-color: #00150e;
+      border-radius: 50%;
+
+      animation: spin 0.7s linear infinite;
+
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .login-button.loading .button-spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .security-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+
+      margin-top: 23px;
+
+      color: #777777;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .security-note span {
+      color: var(--accent);
+    }
+
+    .footer {
+      margin-top: 28px;
+
+      color: #626262;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 18px;
+        align-items: center;
+      }
+
+      .brand {
+        margin-bottom: 25px;
+      }
+
+      .brand h1 {
+        font-size: 24px;
+      }
+
+      .login-card {
+        padding: 23px 19px;
+      }
+
+      .card-heading h2 {
+        font-size: 21px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <!-- BRAND -->
+
+    <header class="brand">
+
+      <div class="brand-icon" aria-hidden="true">
+        ⌨
+      </div>
+
+      <h1>BHC Typing Test</h1>
+
+      <p>
+        Practice with precision.<br>
+        Improve with every test.
+      </p>
+
+    </header>
+
+
+    <!-- LOGIN CARD -->
+
+    <section class="login-card">
+
+      <div class="card-heading">
+
+        <h2>Welcome back</h2>
+
+        <p>
+          Sign in to continue your typing practice.
+        </p>
+
+      </div>
+
+
+      <!--
+        Error messages are shown here.
+        Supabase authentication will be connected later.
+      -->
+
+      <div
+        class="alert"
+        id="loginAlert"
+        role="alert"
+        aria-live="assertive"
+      >
+
+        <div class="alert-title">
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <span id="alertTitle">Login failed</span>
+        </div>
+
+        <div id="alertMessage"></div>
+
+      </div>
+
+
+      <!-- LOGIN FORM -->
+
+      <form id="loginForm" novalidate>
+
+        <div class="form-group">
+
+          <label for="email">
+            Email address
+          </label>
+
+          <div class="input-wrapper">
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              autocomplete="username"
+              maxlength="254"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <div class="input-wrapper">
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="password-toggle"
+              id="passwordToggle"
+              aria-label="Show password"
+              aria-pressed="false"
+            >
+              Show
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="login-button"
+          id="loginButton"
+        >
+
+          <span
+            class="button-spinner"
+            aria-hidden="true"
+          ></span>
+
+          <span id="buttonText">
+            Sign In
+          </span>
+
+        </button>
+
+      </form>
+
+
+      <div class="security-note">
+        <span aria-hidden="true">●</span>
+        Authorized accounts only · Secure login
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      BHC Typing Test · Practice Portal
+    </footer>
+
+  </main>
+
+
+  <script>
+    "use strict";
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const emailInput =
+      document.getElementById("email");
+
+    const passwordInput =
+      document.getElementById("password");
+
+    const passwordToggle =
+      document.getElementById("passwordToggle");
+
+    const loginButton =
+      document.getElementById("loginButton");
+
+    const buttonText =
+      document.getElementById("buttonText");
+
+    const loginAlert =
+      document.getElementById("loginAlert");
+
+    const alertTitle =
+      document.getElementById("alertTitle");
+
+    const alertMessage =
+      document.getElementById("alertMessage");
+
+
+    /*
+     * Show or hide password.
+     */
+
+    passwordToggle.addEventListener("click", () => {
+
+      const showing =
+        passwordInput.type === "text";
+
+      passwordInput.type =
+        showing ? "password" : "text";
+
+      passwordToggle.textContent =
+        showing ? "Show" : "Hide";
+
+      passwordToggle.setAttribute(
+        "aria-label",
+        showing ? "Show password" : "Hide password"
+      );
+
+      passwordToggle.setAttribute(
+        "aria-pressed",
+        String(!showing)
+      );
+
+    });
+
+
+    /*
+     * Display an error.
+     *
+     * textContent is used so error messages
+     * are displayed as text rather than HTML.
+     */
+
+    function showError(title, message) {
+
+      alertTitle.textContent = title;
+
+      alertMessage.textContent = message;
+
+      loginAlert.classList.add("visible");
+
+    }
+
+
+    /*
+     * Clear the error when the user edits
+     * the login form.
+     */
+
+    function clearError() {
+
+      loginAlert.classList.remove("visible");
+
+      alertTitle.textContent = "";
+
+      alertMessage.textContent = "";
+
+    }
+
+
+    emailInput.addEventListener("input", clearError);
+
+    passwordInput.addEventListener("input", clearError);
+
+
+    /*
+     * Persistent subscription error.
+     *
+     * This function will be called by the
+     * Supabase integration when the account
+     * has expired.
+     *
+     * The error remains visible until page
+     * refresh or another explicit reset.
+     */
+
+    function showSubscriptionExpired() {
+
+      showError(
+        "Subscription expired",
+        "Your Subscription days are over Please reach admin to get more days."
+      );
+
+    }
+
+
+    /*
+     * Daily limit error.
+     */
+
+    function showDailyLimitReached() {
+
+      showError(
+        "Daily limit reached",
+        "Daily test limit reached. Please come back tomorrow."
+      );
+
+    }
+
+
+    /*
+     * Login loading state.
+     */
+
+    function setLoading(loading) {
+
+      loginButton.disabled = loading;
+
+      emailInput.disabled = loading;
+
+      passwordInput.disabled = loading;
+
+      loginButton.classList.toggle(
+        "loading",
+        loading
+      );
+
+      buttonText.textContent =
+        loading ? "Signing in..." : "Sign In";
+
+    }
+
+
+    /*
+     * FRONTEND DEMO ONLY.
+     *
+     * No authentication happens here.
+     * This deliberately does not redirect
+     * users or pretend a login succeeded.
+     *
+     * Supabase Auth and subscription checks
+     * will replace this handler.
+     */
+
+    loginForm.addEventListener("submit", (event) => {
+
+      event.preventDefault();
+
+      clearError();
+
+      const email =
+        emailInput.value.trim();
+
+      const password =
+        passwordInput.value;
+
+
+      if (!email || !password) {
+
+        showError(
+          "Missing information",
+          "Please enter both your email address and password."
+        );
+
+        return;
+
+      }
+
+
+      if (!emailInput.validity.valid) {
+
+        showError(
+          "Invalid email",
+          "Please enter a valid email address."
+        );
+
+        emailInput.focus();
+
+        return;
+
+      }
+
+
+      /*
+       * Temporary demonstration.
+       * Replace this with Supabase authentication.
+       */
+
+      showError(
+        "Authentication not connected",
+        "The login page is ready, but Supabase authentication has not been configured yet."
+      );
+
+    });
+
+
+    /*
+     * Expose these functions for the upcoming
+     * Supabase integration.
+     */
+
+    window.showSubscriptionExpired =
+      showSubscriptionExpired;
+
+    window.showDailyLimitReached =
+      showDailyLimitReached;
+
+  </script>
+
+</body>
+</html>
