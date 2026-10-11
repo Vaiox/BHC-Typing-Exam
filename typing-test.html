@@ -7,14 +7,6 @@
 
 <style>
 
-.typing-box-hidden{
-  opacity:0 !important;
-}
-
-/* =========================
-   GLOBAL
-========================= */
-
 *{
   margin:0;
   padding:0;
@@ -48,18 +40,14 @@ body{
 
   border:1px solid #1f1f1f;
 
-  padding:12px 16px;
+  padding:16px 20px;
 
-  border-radius:12px;
+  border-radius:16px;
 
-  margin-bottom:10px;
+  margin-bottom:18px;
 
   box-shadow:
-  0 4px 15px rgba(0,0,0,0.4);
-
-  position:sticky;
-  top:0;
-  z-index:100;
+  0 8px 30px rgba(0,0,0,0.4);
 }
 
 .top-left{
@@ -108,7 +96,7 @@ body{
 
 textarea{
   width:100%;
-  height:800px;
+  height:1000px;
 
   background:#0f0f0f;
 
@@ -151,10 +139,6 @@ textarea:focus{
   justify-content:center;
   gap:12px;
   flex-wrap:wrap;
-
-  position:sticky;
-  top:70px;
-  z-index:99;
 }
 
 button{
@@ -166,9 +150,9 @@ button{
 
   background:
   linear-gradient(
-    135deg,
-    #00ffae,
-    #00cfff
+  135deg,
+  #00ffae,
+  #00cfff
   );
 
   color:#000;
@@ -187,13 +171,6 @@ button:hover{
 
   box-shadow:
   0 8px 20px rgba(0,255,174,0.2);
-}
-
-button:disabled{
-  opacity:0.5;
-  cursor:not-allowed;
-  transform:none;
-  box-shadow:none;
 }
 
 /* =========================
@@ -303,114 +280,225 @@ button:disabled{
 }
 
 /* =========================
-   PASSAGE + TYPING AREA
+   WORD-STYLE DOCUMENT WORKSPACE
+   Continuous scrolling; no pagination
 ========================= */
+
+:root{
+  --paper-bg:#ffffff;
+  --paper-text:#202020;
+  --paper-edge:#d1d5db;
+  --ruler-bg:#f1f2f4;
+  --ruler-line:#858b93;
+  --paper-font:Arial,sans-serif;
+  --paper-font-size:16px;
+  --paper-line-height:1.65;
+  --paper-padding-x:64px;
+  --paper-padding-y:54px;
+}
 
 .typing-area{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-bottom:15px;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:22px;
+  align-items:start;
+  margin-bottom:16px;
+}
+
+.paper-column{
+  min-width:0;
+}
+
+.paper-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin:0 0 9px;
+  padding:0 2px;
+  color:#e8e8e8;
+  font-size:14px;
+  font-weight:700;
+}
+
+.paper-heading span{
+  color:#00ffae;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+/* Gray Word-like workspace around the white document */
+.paper-workspace{
+  position:relative;
+  display:grid;
+  grid-template-columns:27px minmax(0,1fr);
+  grid-template-rows:25px minmax(0,1fr);
+  height:800px;
+  min-height:400px;
+  overflow:hidden;
+  background:#dfe1e5;
+  border:1px solid #b9bdc4;
+  border-radius:3px;
+  box-shadow:0 7px 24px rgba(0,0,0,.28);
+}
+
+.ruler-corner{
+  grid-column:1;
+  grid-row:1;
+  background:#e7e8eb;
+  border-right:1px solid #c6c9cf;
+  border-bottom:1px solid #c6c9cf;
+}
+
+.horizontal-ruler{
+  grid-column:2;
+  grid-row:1;
+  position:relative;
+  overflow:hidden;
+  background-color:var(--ruler-bg);
+  border-bottom:1px solid #c6c9cf;
+  background-image:repeating-linear-gradient(to right,transparent 0,transparent 23px,#a3a8af 23px,#a3a8af 24px,transparent 24px,transparent 95px,#858b93 95px,#858b93 96px);
+}
+
+.horizontal-ruler::before{
+  content:"0          1          2          3          4          5          6          7          8";
+  position:absolute;
+  inset:1px 0 auto 5px;
+  white-space:pre;
+  color:#555b63;
+  font:9px/11px Arial,sans-serif;
+  letter-spacing:5px;
+  pointer-events:none;
+}
+
+.vertical-ruler{
+  grid-column:1;
+  grid-row:2;
+  position:relative;
+  overflow:hidden;
+  background-color:var(--ruler-bg);
+  border-right:1px solid #c6c9cf;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 23px,#a3a8af 23px,#a3a8af 24px,transparent 24px,transparent 95px,#858b93 95px,#858b93 96px);
+}
+
+.vertical-ruler::before{
+  content:"1\A\A\A\A2\A\A\A\A3\A\A\A\A4\A\A\A\A5\A\A\A\A6\A\A\A\A7\A\A\A\A8";
+  position:absolute;
+  top:3px;
+  left:5px;
+  white-space:pre;
+  color:#555b63;
+  font:9px/24px Arial,sans-serif;
+  pointer-events:none;
+}
+
+/* Both document surfaces share the same typography and margins. */
+.typing-area .preview,
+.typing-area textarea{
+  grid-column:2;
+  grid-row:2;
+  display:block;
+  width:100%;
+  min-width:0;
+  height:100%;
+  min-height:0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  padding:var(--paper-padding-y) var(--paper-padding-x);
+  background:var(--paper-bg);
+  color:var(--paper-text);
+  font-family:var(--paper-font);
+  font-size:var(--paper-font-size);
+  font-weight:400;
+  line-height:var(--paper-line-height);
+  letter-spacing:normal;
+  text-align:left;
+  white-space:pre-wrap;
+  overflow-wrap:break-word;
+  word-break:normal;
+  tab-size:4;
+  -moz-tab-size:4;
+  box-shadow:none;
+  scrollbar-width:thin;
+  scrollbar-color:#aeb3ba #f3f3f3;
 }
 
 .typing-area .preview{
-  margin-bottom:0;
-
-  min-height:800px;
-  height:800px;
-
-  overflow-y:auto;
+  overflow:auto;
+  color:var(--paper-text);
   overflow-x:hidden;
-
-  font-family:Arial,sans-serif;
-  font-size:16px;
-  font-weight:400;
-  line-height:1.55;
-
-  padding:20px 22px;
-
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  
-  text-align:justify;
-  
-  scrollbar-width:thin;
-  scrollbar-color:#555 #101010;
-}
-
-.typing-area .preview::-webkit-scrollbar{
-  width:8px;
-}
-
-.typing-area .preview::-webkit-scrollbar-track{
-  background:#101010;
-}
-
-.typing-area .preview::-webkit-scrollbar-thumb{
-  background:#555;
-  border-radius:10px;
-}
-
-.typing-area .preview::-webkit-scrollbar-thumb:hover{
-  background:#777;
 }
 
 .typing-area textarea{
-  height:800px;
-
-  padding:20px 22px;
-
-  font-family:Arial,sans-serif;
-  font-size:16px;
-  font-weight:400;
-  line-height:1.55;
-  
-  text-align:justify;
+  resize:none;
+  outline:none;
+  overflow:auto;
+  caret-color:#1677d2;
+  transition:box-shadow .15s ease;
 }
 
-/* =========================
-   COUNTERS
-========================= */
+.typing-area textarea:focus{
+  box-shadow:inset 0 0 0 2px rgba(22,119,210,.22);
+}
+
+.typing-area textarea::placeholder{
+  color:#777;
+  opacity:1;
+}
+
+.typing-area .preview::-webkit-scrollbar,
+.typing-area textarea::-webkit-scrollbar{
+  width:10px;
+}
+
+.typing-area .preview::-webkit-scrollbar-track,
+.typing-area textarea::-webkit-scrollbar-track{
+  background:#f3f3f3;
+}
+
+.typing-area .preview::-webkit-scrollbar-thumb,
+.typing-area textarea::-webkit-scrollbar-thumb{
+  background:#b8bdc4;
+  border:2px solid #f3f3f3;
+  border-radius:8px;
+}
+
+.typing-area .preview::-webkit-scrollbar-thumb:hover,
+.typing-area textarea::-webkit-scrollbar-thumb:hover{
+  background:#9299a2;
+}
+
+/* Preserve the existing hide-box class if used by the test UI. */
+.typing-area textarea.typing-box-hidden{
+  opacity:0 !important;
+}
 
 .wordCount{
   margin-top:12px;
-
   text-align:center;
-
   color:#00ffa6;
-
   font-size:18px;
-
   font-weight:600;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media(max-width:900px){
-
   .typing-area{
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(0,1fr);
+    gap:20px;
   }
 
-  .typing-area .preview{
-    min-height:300px;
-    height:auto;
-    max-height:none;
-
-    overflow:visible;
-
-    font-size:15px;
-    line-height:1.5;
+  .paper-workspace{
+    height:620px;
   }
 
-  .typing-area textarea{
-    height:420px;
-    min-height:420px;
-
-    font-size:16px;
-    padding:18px;
+  :root{
+    --paper-padding-x:34px;
+    --paper-padding-y:36px;
+    --paper-font-size:15px;
+    --paper-line-height:1.6;
   }
 
   .compare{
@@ -422,107 +510,133 @@ button:disabled{
     align-items:flex-start;
     gap:12px;
   }
+}
 
+@media(max-width:480px){
+  .container{
+    padding:12px;
+  }
+
+  .paper-workspace{
+    grid-template-columns:21px minmax(0,1fr);
+    grid-template-rows:22px minmax(0,1fr);
+    height:540px;
+  }
+
+  .horizontal-ruler::before{
+    letter-spacing:2px;
+  }
+
+  :root{
+    --paper-padding-x:22px;
+    --paper-padding-y:28px;
+    --paper-font-size:14px;
+    --paper-line-height:1.6;
+  }
+
+  .paper-heading{
+    font-size:13px;
+  }
 }
 
 
-/* =========================================================
-   PASSAGES
-========================================================= */
+/* =========================
+   STICKY TEST CONTROLS
+========================= */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.buttons{
+  position:sticky;
+  top:70px;
+  z-index:99;
+}
 
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-  <!-- =========================
-       TOPBAR
-  ========================= -->
-
   <div class="topbar">
-  
+
     <div class="top-left">
-  
-      <div class="timer" id="timer">
-        10:00
-      </div>
-  
+      <div class="timer" id="timer">10:00</div>
+
       <div class="info">
         Strict Mode Enabled
       </div>
-  
-      <div class="info counter" id="wordCount">
-        0 / 0 words
-      </div>
-  
-      <div class="info counter" id="keystrokeCount">
-        Keystrokes 0 / 0
-      </div>
-  
     </div>
-  
+
     <div class="info" id="passageInfo">
       Passage #1
     </div>
-  
+
   </div>
-
-
-  <!-- =========================
-       PASSAGE + TYPING
-  ========================= -->
 
   <div class="typing-area">
 
-    <div class="preview" id="preview">
-      Click Start Test to begin.
-    </div>
+    <section class="paper-column">
+      <div class="paper-heading">
+        <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px;">Original Passage</span>
+        <span>READ ONLY</span>
+      </div>
 
-    <textarea
-      id="input"
-      spellcheck="false"
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      placeholder="Start typing here..."
-    ></textarea>
+      <div class="paper-workspace">
+        <div class="ruler-corner" aria-hidden="true"></div>
+        <div class="horizontal-ruler" aria-hidden="true"></div>
+        <div class="vertical-ruler" aria-hidden="true"></div>
+        <div class="preview" id="preview">Click Start Test to begin.</div>
+      </div>
+    </section>
+
+    <section class="paper-column">
+      <div class="paper-heading">
+        <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px;">Your Typing</span>
+        <span>STRICT MODE</span>
+      </div>
+
+      <div class="paper-workspace">
+        <div class="ruler-corner" aria-hidden="true"></div>
+        <div class="horizontal-ruler" aria-hidden="true"></div>
+        <div class="vertical-ruler" aria-hidden="true"></div>
+        <textarea
+          id="input"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          placeholder="Start typing here..."
+        ></textarea>
+      </div>
+    </section>
 
   </div>
 
-
-  <!-- =========================
-       BUTTONS
-  ========================= -->
-
   <div class="buttons">
-
-    <button onclick="prepareTest()">
-      Start Test
-    </button>
+    <button onclick="prepareTest()">Start Test</button>
 
     <button onclick="restartSame()">
       Restart Same Passage
     </button>
 
-    <button onclick="submitTest()">
-      Submit
-    </button>
+    <button onclick="submitTest()">Submit</button>
 
-    <button
-      id="toggleTypingBtn"
-      onclick="toggleTypingBox()"
-    >
+    <button id="toggleTypingBoxButton" onclick="toggleTypingBox()">
       Hide Typing Box
     </button>
-
   </div>
 
+  <div id="wordCount" class="wordCount">
+  0 / 0 words
+  </div>
 
-  <!-- =========================
-       RESULT
-  ========================= -->
+  <div id="keystrokeCount" class="wordCount">
+  Keystrokes 0 / 0
+  </div>
 
   <div class="result" id="result">
 
@@ -544,8 +658,8 @@ button:disabled{
       </div>
 
       <div class="card">
-        <h3>Errors (400 Words)</h3>
-        <p id="errors400">0</p>
+      <h3>Errors (400 Words)</h3>
+      <p id="errors400">0</p>
       </div>
 
       <div class="card">
@@ -560,32 +674,18 @@ button:disabled{
 
     </div>
 
-
-    <!-- =========================
-         COMPARISON
-    ========================= -->
-
     <div class="compare">
 
       <div class="box">
-
         <h3>Original Passage</h3>
-
         <br>
-
         <div id="originalBox"></div>
-
       </div>
 
-
       <div class="box">
-
         <h3>Your Typing</h3>
-
         <br>
-
         <div id="typedBox"></div>
-
       </div>
 
     </div>
@@ -594,23 +694,22 @@ button:disabled{
 
 </div>
 
-
 <script>
 
-/* =========================================================
+/* =========================
    PASSAGES
-========================================================= */
+========================= */
 
 const passages = {
 
-1:`\tThis section incorporates quotations from Narada and Vasishta and produces categories of persons, who, in a Court of Law nowadays would not be held disqualified from inheritance. They are brought under the text of Yajnavalkya who adds the Sanskrit word "Adya" translated by Colebrooke as "as well as others;" its literal meaning being "and the like" or practically, "etc., etc." Under cover of the latitude afforded by this expression placitum 3 brings in such intangible persons as "an enemy to his father" and "one who is addicted to vice" --disqualifications so vague, it is clear, that no Court of Law could now assert their validity.
+1:`\tThis section incorporates quotations from Narada and Vasishta and produces categories of persons, who, in a Court of Law nowadays would not be held disqualified from inheritance. They are brought under the text of Yajnavalkya who adds the Sanskrit word " Adya" translated by Colebrooke as "as well as others; "its literal meaning being " and the like " or practically, " etc., etc." Under cover of the latitude afforded by this expression placitum 3 brings in such intangible persons as " an enemy to his father " and " one who is addicted to vice "--disqualifications so vague, it is clear, that no Court of Law could now assert their validity.
 
-\tI do not think it right to say that these grounds of exclusion are obsolete or that they were originally intended to be moral rather than legal obligations : but rather that they are of so nebulous a character that they could never have been enforcible at any time when the enunciation of the rights of inheritance passed from the hands of family mediators or village panchayatdars to anything which can be dignified by the name of "Court of Law." 22. I do not think that any useful purpose would be served by inquiring into the meaning of such terms as "Mrindriya" or "Pangu."
+\tI do not think it right to say that these grounds of exclusion are obsolete or that they were originally intended to be moral rather than legal obligations : but rather that they are of so nebulous a character that they could never have been enforcible at any time when the enunciation of the rights of inheritance passed from the hands of family mediators or village panchayatdars to anything which can be dignified by the name of " Court of Law." 22. I do not think that any useful purpose would be served by inquiring into the meaning of such terms as " Mrindriya " or " Pangu."
 
-\tThey do not seem to me to assist the present discussion and I think it is probable that legislation will abolish the exclusion from inheritance based on these terms before the Courts are called upon to determine their exact meaning. Similarly I think it unnecessary to discus whether Yajnavalkya meant anything more by using the word "Andha" than what Manu meant by ''Jathyandha". "Jati" comes from the same root as the Greek Gignomai, Genes, etc., and Latin "Genus." It is, I think, clear that both Manu and the Mitakshara explicitly lay down the rule of law that at least a "Jathyandha" is excluded from inheritance and that the only way to escape from this is to do what SADASIVA AYYAR, J., has done and say boldly It is not a subsisting rule of law.
+\tThey do not seem to me to assist the present discussion and I think it is probable that legislation will abolish the exclusion from inheritance based on these terms before the Courts are called upon to determine their exact meaning. Similarly I think it unnecessary to discus whether Yajnavalkya meant anything more by using the word " Andha " than what Manu meant by '' Jathyandha ". " Jati " comes from the same root as the Greek Gignomai, Genes, etc., and Latin " Genus." It is, I think, clear that both Manu and the Mitakshara explicitly lay down the rule of law that at least a " Jathyandha " is excluded from inheritance and that the only way to escape from this is to do what SADASIVA AYYAR, J., has done and say boldly It is not a subsisting rule of law.
 
-\tIt has become obsolete and abrogated. It is apparent that the author treats the mandate which he quotes as a mere moral maxim, opposed to the rule of law which he considers to be established by his text and if the expression "grandfather's estate" means no more than "ancestral estate," the text of Visvarupa need mean no more than that of the Mitakshara, and the right may be a mere right to maintenance or at most a capacity to transmit heritable blood. With regard to the Sarasvati Vilasa, the first observation to be made is that made by the learned Chief Justice in the course of the argument that, if the author wished to say that the text of the Mitakshara on this point was obsolete, he could perfectly well have said so in terms. Further in any levent the true explanation of the passage in the Sarasvati Vilasa is to my mind undoubtedly that given by TURNER, C.J., in Krishna v. Sami (1886) I.L.R,, 9 Mad., 64 (F.B.).`,
-
+\tIt has become obsolete and abrogated. It is apparent that the author treats the mandate which he quotes as a mere moral maxim, opposed to the rule of law which he considers to be established by his text and if the expression " grandfather's estate " means no more than " ancestral estate," the text of Visvarupa need mean no more than that of the Mitakshara, and the right may be a mere right to maintenance or at most a capacity to transmit heritable blood. With regard to the Sarasvati Vilasa, the first observation to be made is that made by the learned Chief Justice in the course of the argument that, if the author wished to say that the text of the Mitakshara on this point was obsolete, he could perfectly well have said so in terms. Further in any levent the true explanation of the passage in the Sarasvati Vilasa is to my mind undoubtedly that given by TURNER, C.J., in Krishna v. Sami (1886) I.L.R,, 9 Mad., 64 (F.B.).`,
+  
 2:`\tMohammedan Law, being the personal law, possesses its own legal principles and regulations which govern family relationships in matters such as marriage, divorce, inheritance, custody and guardianship. Its distinctive feature sets it apart from other personal laws on fundamental issues. It is pertinent to examine the legal principles, if any, governing partition under Mohammedan law. Tahir Mahmood, in his book, 'The Muslim Law of India', 2nd Edition, Chapter 12 (Law of Inheritance) Paragraph II, has provided for various concepts related to succession in Muslim Law which distinguish it from other personal laws: "II. Muslim Law-Concepts known and unknown: 1. The Muslim law of succession is basically different from the parallel indigenous systems of India.
 
 \tThe doctrine of janmswatvavada (right by birth), which constitutes the foundation of the Mitakshara law of succession, is wholly unknown to Muslim law. The law of inheritance in Islam is relatively close to the classical Dayabhaga law, though it differs also form that on several fundamental points. The modern Hindu law of succession (as laid down in the Hindu Succession Act, 1956) is, however, much different from both the aforesaid classical systems; it has a remarkable proximity, in certain respects, to the Muslim law of inheritance. 2. The division of heritage (daya) into sapratibandh ('obstructed') and apratibandh ('unobstructed')- self-acquired and ancestral- is equally foreign to Muslim law. 
@@ -695,7 +794,7 @@ const passages = {
 
 \tDefendant no.10 is the son of defendant no.9. For ease of understanding, the position of parties is demonstrated through a family tree: 2-CIVIL APPEAL NO.4211 OF 2009  5. The case of the plaintiffs is that Sultan Saheb was the owner and possessor of the suit property. On his death, defendant no.1 got his name, as also the names of defendant no. 9 & 11 mutated in the revenue records to the exclusion of the plaintiffs’ mother, Rabiyabi, also a successor-in-interest. As such, plaintiffs are entitled to 1/6th share in different scheduled properties and sought partition by way of O.S. No.140/1988. 6. In their written statements, the defendants contended that Sultan Saheb himself had divided the property, R.S.No.249/1A/1, into three parts, gifting one part each to his sons and retaining the third remaining part. Subsequently, in September 1980, he partitioned the retained third portion among his four children. Reliance is placed on the Mutation Entry No. 8258 dated 21.01.1973, which is disputed by the plaintiffs.
 
-\t“A hiba is a voluntary gift without consideration of property or the substance of thing by one person to another so as to constitute the donee the proprietor of the subject matter of the gift.” While referring to Mohammedan Law, by Syed Ameer Ali18, the Privy Council in Mohd. Abdul Ghani v. Fakhr Jahan Begam19 observed.`,
+t\“A hiba is a voluntary gift without consideration of property or the substance of thing by one person to another so as to constitute the donee the proprietor of the subject matter of the gift.” While referring to Mohammedan Law, by Syed Ameer Ali18, the Privy Council in Mohd. Abdul Ghani v. Fakhr Jahan Begam19 observed.`,
 
 13:`\tThese petitions by the holder of Kavalappara Sthanam, his wife, daughters and soil challenged the constitutional validity of the Madras Marumakkathayam (Removal of Doubts) Act, 1955 passed by the Madras Legislature soon after the Privy Council had declared the properties in possession of the Sthanee to be Sthanam properties in which the members of the tarwad had not interest.
 
@@ -795,7 +894,7 @@ const passages = {
 
 25:`\tThis Criminal Appeal, under Section 374 (2) of Code of Criminal Procedure, 29/05/1973 (in short Cr.P.C.), has been filed by the appellants, Raghuraj Singh, Amar Pal Singh, Mohar Pal Singh, Brij Pal Singh and Ram Pal Singh, against the impugned judgment and order dated 04.12.1982, passed by Sri Sanwal Singh, the then III Additional Sessions Judge, Etah, in Sessions Trial No. 385 of 1982, arising out of Case Crime No. 79 of 1982, Sections 148, 307 Indian Penal Code,1860 (in short IPC) Police Station Sidhpura, District Etah.
 
-\tBy the impugned judgment and order, the Trial Court has convicted the appellants for offence punishable under Section 148 IPC and sentenced them to undergo a rigorous imprisonment of one year and for offence punishable under Section 307 IPC, they were directed to undergo a rigorous imprisonment of seven years. It was also directed that both the sentences shall run concurrently. During the pendency of this appeal, appellants nos.1 to 4, to wit, Raghuraj Singh, Amar Pal Singh, Mohar Pal Singh, Brij Pal Singh, have died and this appeal has abated against them vide order dated 06.01.2026 passed by this Court. Now, this appeal survives on behalf of appellant no.5, Ram Pal Singh, alone.
+\tBy the impugned judgment and order, the Trial Court has convicted the appellants for offence punishable under Section 148 IPC and sentenced them to undergo a rigorous imprisonment of one year and for offence punishable under Section 307 IPC, they were directed to undergo a rigorous imprisonment of seven years. It was also directed that both the sentences shall run concurrently.During the pendency of this appeal, appellants nos.1 to 4, to wit, Raghuraj Singh, Amar Pal Singh, Mohar Pal Singh, Brij Pal Singh, have died and this appeal has abated against them vide order dated 06.01.2026 passed by this Court. Now, this appeal survives on behalf of appellant no.5, Ram Pal Singh, alone.
 
 \tBrief facts of the case are that Kaptan Singh, resident of Moiddipur, Police Station Sidhpura, District Etah, filed a written application (Tehrir) (Ext. Ka-1), before In-Charge, Police Station Sidhpura, stating therein that one day prior to the incident, the first informant and Jhabboo Singh had returned home after obtaining bail in a proceedings under Section 107/116 Cr.P.C. It was further stated that today, i.e. 10.07.1982 at about 05:30 a.m., the first informant and Jhabboo Singh had gone for defecation near a river situated towards the south-west of the village. Atar Singh, Netrapal Singh, Vishwanath and Sher Singh had also come for defecation. Then his co-villagers/ appellants, Raghuraj Singh, Amar Pal Singh and Jai Narain carrying illegal guns and Mohar Pal, Brij Pal and Ram Pal Singh having country made pistols (Tamancha) arrived there and exhorted Jhabboo Singh that he would not escape today and opened fire at him. Jhabboo Singh raised alarm, whereupon the first informant and others ran towards the place of occurrence. Some of the co-villages also reached at the spot, upon which the accused ran towards the west. Jhabboo Singh sustained injuries over his shoulder and other parts of the body, whom they had brought in a vehicle at the Police Station.
 
@@ -889,7 +988,7 @@ const passages = {
 
 \tAggrieved by the judgment, the defendant filed an appeal viz., A.S. No. 167 of 1992. A cross appeal was filed by me plaintiffs. In the cross appeal, the claim for the amount of Rs. 25,000/- paid on April 22, 1979 and Rs. 14,400/- on account of maintenance of the minor son, was reiterated. It was also claimed that the defendant in the suit was liable to pay interest.`,
 
-37:`\tThis is an original petition filed under Article 226 of the Constitution to issue a writ of prohibition against the respondent who is the Inspecting Assistant Commissioner of Agricultural Income Tax and Sales Tax (Special), Kozhikode, prohibiting him from taking further proceedings for assessing the petitioner as the manager of Poomulli Mana in the status of a Hindu Undivided family to agricultural income tax for the assessment year 1961-62 pursuant to Ext. P-3 notice dated 10-3-1965 issued under Section 35 and Ext. P-3 notice issued under Section 17 (4) of the Agricultural Income Tax Act, 1950. The petitioner--Parameshwaran Namboodiripad--is a member of Poomuli Mana consisting of a Narnboodiri family in Kerala State and the members of the Mana were governed by the Madras Nambudiri Act, 1932 (Act 21 of 1933). Now thev are governed by the Kerala Nambudiri Act, 1958 (Act 27 of 1958).
+37:`\tThis is an original petition filed under Article 226 of the Constitution to issue a writ of prohibition against the respondent who is the Inspecting Assistant Commissioner of Agricultural Income Tax and Sales Tax (Special), Kozhikode, prohibiting him from taking further proceedings for assessing the petitioner as the manager of POomulli Mana in the status of a Hindu Undivided family to agricultural income tax for the assessment year 1961-62 pursuant to Ext. P-3 notice dated 10-3-1965 issued under Section 35 and Ext. P-3 notice issued under Section 17 (4) of the Agricultural Income Tax Act, 1950. The petitioner--Parameshwaran Namboodiripad--is a member of Poomuli Mana consisting of a Narnboodiri family in Kerala State and the members of the Mana were governed by the Madras Nambudiri Act, 1932 (Act 21 of 1933). Now thev are governed by the Kerala Nambudiri Act, 1958 (Act 27 of 1958).
 
 \tThe members of the family own considerable items of agricultural lands in the Malabar and in the erstwhile Travancore-Cochin State. The area which originally formed the District of Malabar in the Madras State became part of the State of Kerala as and from 1-11-1956. The Travancore-Cochin Agricultural Income Tax (Amendment) Act, 1957 (Act 8 of 1957) amended the Travancore-Cochin Agricultural Income Tax Act, 1950, and extended the same to the whole of the Kerala State including the Malabar area with effect from 1-4-1957. The Agricultural Income Tax Authorities of the State attempted to assess the petitioner who was then the manager of the Illom in the status of Hindu undivided family to tax for the assessment year 1957-58 by the assessment order dated 12-2-1958.
 
@@ -979,66 +1078,18 @@ const passages = {
 
 48:`\tThe appellants, who were Plaintiffs in O.S. No.5633/2000, aggrieved by the Judgment and decree dated 7.4.2014 passed by the I Addl. City Civil and Sessions Judge, Bangalore City (Trial Court), have preferred RFA No.916/2014 while RFA CROB No.8/2019 has been preferred by Defendant Nos.16 and 17. 2. For the sake of convenience, the parties are referred to by the rank held by them before the trial court. R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 PLEADINGS: 3. The Plaintiffs in the plaint have averred as under: 3.1. One Sri. NallaChikkaKempanna was the propositus. He had six sons viz., D.K.Subbaiah, D.K. Muniswamappa, D.K. Narayanaswamy, Pillappa, D.K. Nagappa and D.K.S. Kempanna, who succeeded to his estate as legal heirs and effected a partition of the properties on 12.01.1945 through a registered deed of Partition. At the time of said Partition, D.K. Pillaiah had also expired and, his branch was represented by and through his wife Smt. Kempamma, three sons viz., Parameshiva, P.Channakeshaviah, P.Siddappa and one daughter viz., Smt. Sharadamma.
 
-\t3.2. At the said Partition, a share in the property came to be allotted in favour of Siddappa, who is none other than the husband of 1st Defendant, father of 2nd to 7th Defendants, father-in-law of 1st Plaintiff and grandfather of 2nd Plaintiff. R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 3.3. In the said Partition, immovable property bearing No.23 situate at Susheela Road, Doddamavalli, Bangalore, which consisted of one Mangalore tiled house with a vacant site, abutting it was allotted to Sri. P. Siddappa, who later on converted the Mangalore tiled house into four tenements, as also took up construction of the main house and nine shop premises in the vacant site. The entire property has been described in Schedule-A to the plaint. 3.4. After severance of the joint family, said P.Siddappa began to conduct business in sale and repairs of musical instruments in the name and style of 'Saraswathi Music Store' at OTC Road, Balepet, which business flourished well.
+\t3.2. At the said Partition, a share in the property came to be allotted in favour of Siddappa, who is none other than the husband of 1st Defendant, father of 2nd to 7th Defendants, father-in-law of 1st Plaintiff and grandfather of 2nd Plaintiff.
+R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 3.3. In the said Partition, immovable property bearing No.23 situate at Susheela Road, Doddamavalli, Bangalore, which consisted of one Mangalore tiled house with a vacant site, abutting it was allotted to Sri. P. Siddappa, who later on converted the Mangalore tiled house into four tenements, as also took up construction of the main house and nine shop premises in the vacant site. The entire property has been described in Schedule-A to the plaint. 3.4. After severance of the joint family, said P.Siddappa began to conduct business in sale and repairs of musical instruments in the name and style of 'Saraswathi Music Store' at OTC Road, Balepet, which business flourished well.
 
 \t3.5. Siddappa after having acquired Schedule 'A' property as his share rented out the same to various tenants on a monthly rental basis and was deriving handsome income. He was also deriving income from the Music Store business. That Sri.P.Siddappa during R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 his lifetime on 19.11.1970 from and out of the income derived from rentals, acquired a vacant site bearing No.18/1, Magadi Main Road, Agrahara Dasarahalli, Bangalore -76, in the name of his wife, 1st Defendant through a registered instrument of sale. The said property is described in Schedule-B to the plaint.
 
-\t3.6. Schedule-B property was acquired purely out of the efforts of late Siddappa, to which 1st Defendant contributed nothing and was only a name lender. 1st Defendant had never been to school, she was not engaged in any business nor had she acquired any movable or immovable properties from her parents and after marriage to said Siddappa, she was strictly a house-wife.`,
-
-49:`\tIn view of the foregoing discussion, we cannot concur with the reasoning and the conclusion arrived at by the High Court in the impugned judgment [Kantilal Ambalal Patel v.State of Gujarat, 2013 SCC OnLine Guj 8799] . The appeals thus succeed and are allowed. "The impugned judgment [Kantilal Ambalal Patel v. State of Gujarat, 2013 SCC OnLine Guj 8799] is set aside." It is also trite law that if there are serious triable allegations in the complaint, it is a matter to be investigated into. Under such circumstances, the Court cannot exercise its extraordinary jurisdiction for quashing the proceedings. In that light, I want to rely upon the decision in the case of Pramod Suryabhan Pawar Vs. State of Maharashtra & Another, reported in (2019) 9 SCC 608, wherein at paragraphs-6 to 8 it has been observed as under:-
-
-\t6. Section 482 is an overriding section which saves the inherent powers of the court to advance the cause of justice. Under Section 482 the inherent jurisdiction of the court can be exercised (i) to give effect to an order under CrPC; (ii) to prevent the abuse of the process of the court; and (iii) to otherwise secure the ends of justice. The powers of the court under Section 482 are wide and the court is vested with a significant amount of discretion to decide whether or not to exercise them. The court should be guarded in the use of its extraordinary jurisdiction to quash an FIR or criminal proceeding as it denies the prosecution the opportunity to establish its case through investigation and evidence. These principles have been consistently followed and reiterated by this Court. In Inder Mohan Goswami v. State of Uttaranchal [Inder Mohan Goswami v. State of Uttaranchal, (2007) 12 SCC 1 : (2008) 1 SCC (Cri) 259] , this Court observed: (SCC p. 10, paras 23-24).
-
-\t"23. This Court in a number of cases has laid down the scope and ambit of courts' powers under Section 482 CrPC." Every High Court has inherent powers to act ex debito justitiae to do real and substantial justice, for the administration of which alone it exists, or to prevent abuse of the process of the court. As this Court noted in Dhruvaram Murlidhar Sonar v. State of Maharashtra [Dhruvaram Murlidhar Sonar v. State of Maharashtra, (2019) 18 SCC 191 : 2018 SCC OnLine SC 3100] , (Dhruvaram Sonar): (SCC para 13) "13. It is clear that for quashing the proceedings, meticulous analysis of factum of taking cognizance of an offence by the Magistrate is not called for. Appreciation of evidence is also not permissible in exercise of inherent powers.
-
-\tI have heard Sri Uday Holla, learned Senior Counsel on behalf of Sri Smaran Shetty for the petitioners-accused No.1 to 5, Sri C.V.Nagesh, learned Senior Counsel on behalf of Smt. Chinmayi Mirji, for respondent No.2-complainant virtually and Sri H.R.Showri, learned HCGP for respondent No.1-State. In order to substantiate the said contention, he relied upon the decision in the case Kamal Shivaji Pokarnekar Vs. State of Maharashtra and Others, reported in (2019)14 SCC 350.`,
-
-50:`\tWe find that the procedure has been prescribed under Section 36B of the Act. In this case, the procedure laid down under Sub-sections 2, 3 & 4 of section 36B, has not been followed, in that circumstances, the data gathered from pen drives relied in toto and some of the invoices, are not admissible evidence. Therefore, on this sole ground, "the show cause notice is not sustainable." Since neither the pen drives were recovered from the possession of the appellant (in that case) nor were tendered by them during the course of investigation or thereafter, the tribunal has found them to be inadmissible in evidence in those proceedings for not having followed the procedure as prescribed by Section 36B of the Central Excise Act, 1944. The facts are clearly distinguishable and the said decision cannot apply to the facts in the present case.
-
-\tCustoms Appeal Nos. 60758-60759 of 2019 7.8 In the case of Copier Force India Ltd [2008 (231) ELT 224 (T- Chennai), following has been held:-  "9.1 As regards the certificate to be given in terms of Sub-section 2(d) of Sec. 36B, it is admitted that Shri Krishnakumar, Manager (Accounts) CFI and his Assistants Ms. Radha, and Ms. Rathi entered the data on a daily basis. This has been admitted by Shri S. Krishnakumar, in his statement dated 29-1-03. This will meet the requirement of certification in terms of Sub-section 2(d) Section 36B of the Act. They cannot later say that no enquiry was made with the person stipulated u/s 36B(2)(d). Revenue has argued that once the printout is taken in presence of responsible persons who dealt with the data entry in the CPU and retrieval, printouts of such data do not need to comply with the safeguards enlisted u/s 36B(2) of the Act. 
-
-\tWhile this is a reasonable stand, we find that the data retrieved are proved by the bank statements and oral evidence of employees of CFI. Thus the computer printouts are not solely relied on as evidence and the non-fulfilment of conditions under 36B(2) alleged does not affect the printouts being used in proceedings. Relevant extracts of Section 36B are reproduced below : SECTION 36D. Admissibility of micro films, facsimile copies of documents and computer print outs as documents and as evidence. -- The Computer printouts are amply corroborated by the bank statements. Therefore the provisions of Section 36B cannot be invoked to make its application in the proceedings impermissible.
-
-\tThe printout is not a standalone evidence; they become evidence only when juxtaposed alongside the bank statements. Section 36B does not bar such use of a printout in proceedings which does not satisfy the requirements of its Sub- section 2(d)." Customs Appeal Nos. 60758-60759 of 2019 7.9 Similarly in case of Shri Ulacanavari Ammali Steels [2008 (231) ELT 434 9T-Chennai)], following has been held,- "16. We find that the printouts relied upon are not from the CPU belonging to the assessee. The precautions sought to be ensured through Section 36B(2) of the Act would appear to apply to printouts of data taken from a CPU."`,
-
-51:`\tAt first glance, the scope of this appeal appears to be limited. Union of India is aggrieved by the grant of bail to the respondent(s)- accused in connection with Crime No. 37 of 2023 registered with the Directorate of Revenue Intelligence1 branch under Sections 8(c), 21(c), 23(c), 27A, 28 and 29 of the Narcotic Drugs and Psychotropic Substances Act, 19852 and as such, is in appeal thereagainst. All that would be required of this Court then would be to adjudicate the correctness of the impugned order3 on the well-settled principles of appeal against grant of bail, as recently encapsulated by this Court in Ashok Dhankad v. State (NCT of Delhi)4. However, we only wish it were so. Instead, what has come to light in these proceedings is deeply unsettling.
-
-\t3. The respondent-accused, namely Chidiebere Kingsley Nawchara, was arrested on 16th March 2023 in connection with a total of 4935 grams of heroin recovered from the possession of one 1 DRI 2 NDPS Act/The Act 3 Criminal Bail Application No. 4139 Of 2024 dated 5 th May 2025 4 2025 SCC OnLine SC 1690 Cr. A No(s).2578/2026@ SLP (Crl) No(s). 14185 of 2025 Page 3 Damodar Surya Rama Prasad Dubey, who was apprehended at the Chhatrapati Shivaji Maharaj International Airport, Mumbai, upon his return from Addis Ababa, Ethiopia. This ‘consignment’, it was revealed, was to be further delivered to the respondent – accused by one Hekatoli Sumi, a resident of Delhi. Her statement led to his arrest. The investigation was carried out and completed, culminating in the filing of the chargesheet in NDPS Spl. Case No. 1449 of 2023 on 6th September 2023.
-
-\t3.1 The relevant extracts of the chargesheet are as below: “x. She voluntarily tendered a red coloured envelope having golden print on it, containing 500 USD, which she was supposed to handover to Mr. Damodara Surya Rama Prasad Dubey after collecting trolley bag from him on 15.03.2023. The said red coloured envelope, containing 500 USD was handed over to her by one lady who identified herself as Ms. Helen. Ms. Helen told her to give the envelope to Mr. Damodara on the instructions of Mr. Chedibere. xi. Mr. Chedibere offered her R.5000/- for collecting the said trolley bag from Mr. Damodara Surya Rama Prasad Dubey and she agreed to the offer made by Mr. Chedibere as she was already in a financial hardship.
-
-\ti. He was in contact with Ms. Hikatoli Sumi since he was released on bail from Tihar Jail, New Delhi around Hune, 2022. He stated that when he came out on bail from Tihar Jail, he had no job prospects available for him nor he had enough money to do business in India, Since his passport was also seized by government agency, he could not travel back to Nigeria also. A such, he indulged himself in Cr. A No(s).2578/2026@ SLP (Crl) No(s). 14185 of 2025 Page 4  smuggling of drugs again. He stated that he used to contact Ms. Hikatoli Sumi motstly through whatsapp only. He knowingly hid this fact in his earlier statement recorded on 15/16.03.2023 in the office of DRI, Delhi Zonal Unit.`,
-
-52:`\t1. These appeals present a pertinent question as to whether a man who is in a live-in relationship can be prosecuted under Section 498A of the Indian Penal Code, 18601. This question arises at the instance of the appellant, Dr. Lokesh B.H., whose petition under Section 482 of the Code of Criminal Procedure, 1973 2 to quash the proceedings initiated by respondent no.2, (Smt. Theertha) being CC No. 28129 of 2023 and CC No. 630 of 2019 was rejected by the High Court of Karnataka at Bengaluru, in terms of common judgment and order dated 18th November, 2025, in Criminal Petition Nos. 8134 of 2024 and 9412 of 2021.
-
-\t2. The allegations are that the accused-appellant and respondent no. 2 were married as per Hindu customs and rituals on 17th October 2010 and since then were residing in Bengaluru. Come 2016, however, the marriage of the parties hit rocky waters leading up to the present appeal. A perusal of the record reveals that the dispute inter partes led to the filing of two complaints by respondent no.2, being Crime No. 383 of 2016 and Crime No. 450 of 2016. The former culminated in a charge-sheet 3 being filed before the III Additional Civil Judge (Junior Division) and JMFC, IPC CrPC Shivamogga District, under Section 498A IPC. The latter resulted in charge-sheet4 under Sections 498A, 504, 506, 307,494 and 149 of the IPC, along with Sections 3 and 4 of the Dowry Prohibition Act, 1961 5 before the XXIV Additional Chief Metropolitan Magistrate, Bengaluru.
-
-\t3. Ms. Nariman, by way of detailed submissions, has supported the application of Section 498A to live-in- relationships that qualify as “relationships in the nature of marriage”. In doing so, she has vehemently argued for (2004) 3 SCC 199 (2011) 7 SCC 616  purposive interpretation of legislation carrying socially reformative objectives. Further, the interpretation of Section 498A of IPC must be in accordance with Articles 14, 15(3) and 21 of the Constitution of India. In Hiral P. Harsora & Ors. vs. Kusum Narotmdas Harsora26 Section 2(Q) of the DV Act, which restricted the meaning of the word “relative” to an adult male, was struck down as the distinction between a male and a female relative did not bear any rational nexus to the objective of the DV Act. Similarly, it is argued that a male “in the nature of the husband” cannot be excluded from the word “husband” within the Section, for doing so shall not be a reasonable classification. 
-
-\t4. K.S. Puttaswamy vs. Union of India 27 recognized ‘privacy’ as an intrinsic facet of Article 21, which includes the ability of an individual to make choices that lie at the core of their personality. This, it is argued, would include the right to marry or not; as also the choice to enter into relationships in the nature of marriage. By adopting a restrictive interpretation of the word “husband”, the effect (2009) 12 SCC 331 (1979) 2 SCC 34 (1988) 3 SCC 609 (2019) 5 SCC 384 (2023) 9 SCC 433 (2016) 10 SCC 165 (2017)10 SCC 1  would be that perpetrators of domestic violence would fall through the cracks.`,
-
-53:`\t1. The convict, who was found a juvenile on the date of commission of the crime, is aggrieved by the decision in Miscellaneous Criminal Case No. 24675 of 2018 rendered by a learned Single Judge of the High Court of Madhya Pradesh at Gwalior; that the High Court in exercise of its jurisdiction under section 482 of the Code of Criminal Procedure, 1973 cannot interfere with or reopen the judgment of conviction Reason: passed against him under section 201 Part II of the Indian Penal Code, 1860 which attained finality up to the Supreme Court.
-
-\t2. A crime under sections 302, 304B and 201 read with section 34 of the Indian Penal Code was registered on 17th September 2004 vide FIR No. 489 of 2004 against Ramji Lal who is the father-in-law, Munni Devi who is the mother-in-law, Pramod who is the husband and Mukesh and Mahavir alias Avnish, who are the brothers-in-law of the victim Bhuri. The allegations against them are that they tortured Bhuri in connection to demand of dowry, committed her murder within 7 years of marriage and caused disappearance of evidence. The incident took place on 13th September 2004, but a First Information Report was lodged on 17th September 2004. The dead bodies of Bhuri and her infant daughter Guddi were found on the railway track near village Sikrauda in the district of Morena (M.P.). It is the case of prosecution that Badri Baghel, who was a Gangman with the Railways, first saw the dead bodies on the railway track. Though a large crowd had gathered there, the accused persons forcibly lifted the dead bodies and performed the cremation rituals. It is alleged that the accused persons did not inform the police or the relatives of Bhuri and caused disappearance of evidence by cremating the dead bodies.
-
-\t3. After the investigation, a chargesheet was filed in the Court and the accused persons were sent up for trial to face the charge under sections 302, 304B and 201 read with section 34 of the Indian Penal Code. During the trial, the prosecution produced 13 witnesses to prove the charge against the accused persons of committing murder, dowry death and causing disappearance of evidence. PW2 Ram Lakhan, PW4 Ram Naresh and PW5 Ram Veer, who are the brothers of Bhuri, did not support the prosecution case and stated in the Court that the accused persons never demanded any dowry nor did Bhuri ever complain about demand of dowry or her harassment at the hands of the accused persons. Even PW3 Mahadevi, who is the mother of Bhuri, did not make any allegation against the accused persons. 
-
-\t4. PW6 Santosh, PW7 Ram Ikhtiyar, PW10 Shiv Dayal and PW11 Ram Het also did not support the prosecution and were declared hostile. PW9 Mahesh and PW10 Shiv Dayal, who are the independent witnesses, deposed from the dock that they had no knowledge about any demand of dowry by the accused persons. These witnesses were cross-examined by the prosecution with permission of the Court but nothing material could be elicited from them to establish complicity of the accused persons in the crime.`,
-
-54:`\t“Those who abjure violence can do so only because others are committing violence on their behalf.” - George Orwell Leave granted. (i). Both the above appeals challenge the proceedings initiated under the Uttar Pradesh Gangsters and Anti-Social VISHAL ANAND Date: 2026.08.20 16:36:57 IST Reason: Activities (Prevention) Act, 19861 and the Uttar Pradesh Gangsters and Anti-Social Activities (Prevention) Rules, 20211. (ii). Though the facts leading to the proceedings are distinct and different, the issue agitated is the very same; the validity of the proceedings under the U.P. Act and hence, we heard the matters together and this common judgment disposes of the matters jointly. Special Leave Petition (Crl) No.16398 of 2025 (iii). The appellant herein is a practicing Advocate who was involved actively in a dispute with respect to the elections to the Bar Association, Fatehgarh, Farrukhabad, a brief narration of which is necessary to understand how it culminated in the proceedings under the Act and the Rules.
-
-\t(iv). On a complaint raised by one individual regarding the conduct of elections to the Bar Association, Fatehgarh, the Bar Council of Uttar Pradesh issued a communication dated 07.09.2018 directing the elections to be conducted in accordance with the rules and the applicable law. On allegations raised regarding the conduct of election, five Advocates were debarred from practicing for a period of 10 years, including the Hereinafter referred to as ‘the U.P. Act’ and ‘the U.P. Rules’ appellant, by proceedings dated 09.02.2019. The Bar Association, Fatehgarh, challenged the communication dated 07.09.2018 issued by the Bar Council of Uttar Pradesh before the High Court. The High Court vide Annexure P-3 judgment dated 11.07.2019, struck it down as being without jurisdiction following an earlier judgment of a Division Bench of that High Court, based on which Complaint No.90 of 2018 was dismissed, observing only that the elections to the Bar Association, Fatehgarh, be conducted as per the Byelaws, evident from Annexure P-4.
-
-\t(v). Again, proceedings were taken by the Disciplinary Committee of the Bar Council of Uttar Pradesh and an order was issued on 16.07.2023 debarring the appellant and one Sri Sanjeev Paria from practicing in the Bar for a period of 15 years, with a further direction to lodge a complaint before the Superintendent of Police, Farrukhabad, with a like request to the District Judge/Chief Judicial Magistrate, Farrukhabad. Insofar as the appellant, who was applicant No.3, there was Case Crime No.61 of 2022 pending against him under Sections 322, 323, 504, 506 and 452 of IPC read with Sections 3(2)(v) of the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989.
-
-\t(vi). Pursuant to the complaint made by the Disciplinary Committee, an FIR was registered in the Police Station of District Farrukhabad as FIR No.377 of 2023 under various provisions of the Indian Penal Code; a copy of which is produced as Annexure P-6. Later to this, the direction issued by the Bar Council of Uttar Pradesh dated 16.07.2023 was stayed by the High Court as per Annexure P-7.`
+\t3.6. Schedule-B property was acquired purely out of the efforts of late Siddappa, to which 1st Defendant contributed nothing and was only a name lender. 1st Defendant had never been to school, she was not engaged in any business nor had she acquired any movable or immovable properties from her parents and after marriage to said Siddappa, she was strictly a house-wife.`
 
 };
 
-
-/* =========================================================
+/* =========================
    VARIABLES
-========================================================= */
+========================= */
 
 let currentPassage = "";
 let currentId = 0;
@@ -1047,202 +1098,124 @@ let timerStarted = false;
 let testSubmitted = false;
 let timeLeft = 600;
 let interval;
-
 let totalWords = 0;
 
 const input = document.getElementById("input");
 const timer = document.getElementById("timer");
 const preview = document.getElementById("preview");
 
-
-
-/* =========================================================
-   START / PREPARE TEST
-========================================================= */
+/* =========================
+   START TEST
+========================= */
 
 function prepareTest(){
 
   clearInterval(interval);
 
   timer.textContent = "10:00";
-
   timeLeft = 600;
-
   timerStarted = false;
-
   testSubmitted = false;
-
   input.disabled = false;
 
-  /*
-   * Always show typing box when starting
-   * a new test.
-   */
-  input.classList.remove("typing-box-hidden");
-
-  document.getElementById("toggleTypingBtn")
-    .textContent = "Hide Typing Box";
-
-
   const submitButton =
-    document.querySelector(
-      'button[onclick="submitTest()"]'
-    );
+  document.querySelector('button[onclick="submitTest()"]');
 
-  if(submitButton){
-    submitButton.disabled = false;
-  }
-
+  if(submitButton) submitButton.disabled = false;
 
   input.value = "";
 
+  let history = JSON.parse(
+    localStorage.getItem("recentPassages")
+  ) || [];
 
-  /* =========================
-     RECENT PASSAGES
-  ========================= */
+  const ids = Object.keys(passages)
+  .filter(id => !history.includes(id));
 
-  let history =
-    JSON.parse(
-      localStorage.getItem("recentPassages")
-    ) || [];
+  const usable = ids.length
+  ? ids
+  : Object.keys(passages);
 
+  currentId = usable[
+    Math.floor(Math.random()*usable.length)
+  ];
 
-  const ids =
-    Object.keys(passages)
-      .filter(id => !history.includes(id));
-
-
-  const usable =
-    ids.length
-      ? ids
-      : Object.keys(passages);
-
-
-  currentId =
-    usable[
-      Math.floor(
-        Math.random() * usable.length
-      )
-    ];
-
-
-  currentPassage =
-    passages[currentId];
-
+  currentPassage = passages[currentId];
 
   history.push(currentId);
-
 
   if(history.length > 25){
     history.shift();
   }
-
 
   localStorage.setItem(
     "recentPassages",
     JSON.stringify(history)
   );
 
-
-  /* =========================
-     SHOW COMPLETE PASSAGE
-  ========================= */
-
+  /* Show the COMPLETE passage — do not truncate it */
   preview.textContent =
-    currentPassage;
-
+  currentPassage;
 
   document.getElementById("passageInfo")
-    .textContent =
-    "Passage #" + currentId;
-
+  .textContent = "Passage #" + currentId;
 
   document.getElementById("result")
-    .style.display = "none";
-
-
-  /*
-   * Count actual whitespace-separated
-   * words.
-   */
-  totalWords =
-    getWordTokens(currentPassage).length;
-
-
-  document.getElementById("wordCount")
-    .textContent =
-    `0 / ${totalWords} words`;
-
-
-  document.getElementById("keystrokeCount")
-    .textContent =
-    `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
-
+  .style.display = "none";
 
   input.focus();
 
+  totalWords =
+  currentPassage
+  .replace(/\t/g,' ')
+  .replace(/\n/g,' ')
+  .trim()
+  .split(/\s+/)
+  .filter(Boolean)
+  .length;
+
+  document.getElementById("wordCount").textContent =
+  `0 / ${totalWords} words`;
+
+  document.getElementById("keystrokeCount").textContent =
+  `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
 }
 
-
-
-/* =========================================================
+/* =========================
    TIMER
-========================================================= */
+========================= */
 
 function startTimer(){
-
-  /*
-   * Prevent multiple timers from being
-   * created.
-   */
-  if(!timerStarted){
-    timerStarted = true;
-  }
-
-  clearInterval(interval);
 
   interval = setInterval(() => {
 
     timeLeft--;
 
-    let min =
-      Math.floor(timeLeft / 60);
-
-    let sec =
-      timeLeft % 60;
-
+    let min = Math.floor(timeLeft/60);
+    let sec = timeLeft%60;
 
     timer.textContent =
-      String(min).padStart(2,'0') +
-      ':' +
-      String(sec).padStart(2,'0');
-
+    String(min).padStart(2,'0') +
+    ':' +
+    String(sec).padStart(2,'0');
 
     if(timeLeft <= 0){
-
       clearInterval(interval);
-
       input.disabled = true;
 
-      submitTest();
-
+        submitTest();
     }
 
   },1000);
 
 }
 
-
-
-/* =========================================================
+/* =========================
    STRICT KEYS
-========================================================= */
+========================= */
 
-input.addEventListener("keydown", e => {
+input.addEventListener("keydown",e=>{
 
-  /*
-   * Backspace disabled.
-   */
   if([
     "Backspace",
     "ArrowLeft",
@@ -1250,123 +1223,72 @@ input.addEventListener("keydown", e => {
     "ArrowUp",
     "ArrowDown"
   ].includes(e.key)){
-
     e.preventDefault();
-
   }
 
-
-  /*
-   * Ctrl / Cmd shortcuts disabled.
-   */
   if(e.ctrlKey || e.metaKey){
-
     e.preventDefault();
-
   }
 
-
-  /*
-   * Tab inserts an actual tab.
-   */
   if(e.key === "Tab"){
 
     e.preventDefault();
 
-
-    const start =
-      input.selectionStart;
-
-    const end =
-      input.selectionEnd;
-
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
 
     input.value =
-      input.value.substring(0,start) +
-      "\t" +
-      input.value.substring(end);
-
+    input.value.substring(0,start) +
+    "\t" +
+    input.value.substring(end);
 
     input.selectionStart =
-      input.selectionEnd =
-      start + 1;
-
-
-    /*
-     * Manually trigger the input
-     * event because we changed value
-     * ourselves.
-     */
-    input.dispatchEvent(
-      new Event("input", {
-        bubbles:true
-      })
-    );
-
+    input.selectionEnd = start + 1;
   }
 
 });
 
-
-
-/* =========================================================
+/* =========================
    DISABLE PASTE
-========================================================= */
+========================= */
 
-input.addEventListener("paste", e => {
-
+input.addEventListener("paste",e=>{
   e.preventDefault();
-
 });
 
+/* =========================
+   START TIMER ON TYPE
+========================= */
 
-
-/* =========================================================
-   START TIMER ON TYPE + LIVE COUNTERS
-========================================================= */
-
-input.addEventListener("input", () => {
+input.addEventListener("input",()=>{
 
   if(!timerStarted){
-
     timerStarted = true;
-
     startTimer();
-
   }
 
-
   const typedWords =
-    getWordTokens(input.value).length;
+  input.value.trim()
+  ? input.value.trim().split(/\s+/).length
+  : 0;
 
-
-  document.getElementById("wordCount")
-    .textContent =
-    `${typedWords} / ${totalWords} words`;
-
+  document.getElementById("wordCount").textContent =
+  `${typedWords} / ${totalWords} words`;
 
   const typedKeystrokes =
     countKeystrokes(input.value);
 
-
   const passageKeystrokes =
     countKeystrokes(currentPassage);
 
-
-  document.getElementById("keystrokeCount")
-    .textContent =
+  document.getElementById("keystrokeCount").textContent =
     `Keystrokes ${typedKeystrokes} / ${passageKeystrokes}`;
 
 });
 
-
-
-/* =========================================================
+/* =========================
    TOKENIZER
-   ---------------------------------------------------------
-   THIS IS USED ONLY FOR VISUAL COMPARISON.
-   DO NOT USE THIS FOR BHC ERROR COUNTING.
-========================================================= */
+========================= */
 
 function tokenize(text){
 
@@ -1376,402 +1298,15 @@ function tokenize(text){
     .replace(/\n{3,}/g,'\n\n')
     .trim();
 
-
   return text.match(
     /\t|\n+|[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*|[.,!?;:%()[\]]/g
   ) || [];
 
 }
 
-
-
-/* =========================================================
-   WORD TOKENIZER FOR BHC ERROR COUNTING
-   ---------------------------------------------------------
-   A word includes punctuation attached to it.
-
-   Examples:
-
-   order?          = ONE word
-   oder.           = ONE word
-
-   intervenor-victim's = ONE word
-
-   intervenor       = ONE word
-   victim's         = ONE word
-
-   Therefore punctuation mistakes inside
-   a word do NOT become separate errors.
-========================================================= */
-
-function getWordTokens(text){
-
-  return text
-    .replace(/\r/g,'')
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
-
-}
-
-
-
-/* =========================================================
-   WORD-LEVEL BHC ERROR ALIGNMENT
-   ---------------------------------------------------------
-   This is ONLY for numerical error counting.
-
-   Rule:
-
-   ONE wrong word = ONE error.
-
-   Multiple character/punctuation errors
-   inside the same word are still ONE error.
-
-   Example:
-
-   order? -> oder.
-   = 1 error
-
-   intervenor-victim's
-   -> intevenor-victm's
-   = 1 error
-
-   intervenor-victim's
-   -> intervenor-victims
-   = 1 error
-
-   intervenor-victim's
-   -> intervenor victim's
-   = 2 errors
-
-   because one original word has become
-   two typed words.
-========================================================= */
-
-function countBhcWordErrors(original, typed){
-
-  const originalWords =
-    getWordTokens(original);
-
-  const typedWords =
-    getWordTokens(typed);
-
-
-  const m = originalWords.length;
-  const n = typedWords.length;
-
-
-  /*
-   * DP table.
-   *
-   * Every wrong word / missing word /
-   * extra word costs exactly 1.
-   */
-  const dp =
-    Array.from(
-      {length:m + 1},
-      () => Array(n + 1).fill(0)
-    );
-
-
-  /*
-   * Backtracking operation table.
-   *
-   * "match"     = same word
-   * "replace"   = wrong word
-   * "delete"    = missing original word
-   * "insert"    = extra typed word
-   */
-  const operation =
-    Array.from(
-      {length:m + 1},
-      () => Array(n + 1).fill(null)
-    );
-
-
-  /*
-   * Base cases.
-   */
-
-  for(let i = 1; i <= m; i++){
-
-    dp[i][0] = i;
-
-    operation[i][0] = "delete";
-
-  }
-
-
-  for(let j = 1; j <= n; j++){
-
-    dp[0][j] = j;
-
-    operation[0][j] = "insert";
-
-  }
-
-
-  /*
-   * Build DP.
-   */
-
-  for(let i = 1; i <= m; i++){
-
-    for(let j = 1; j <= n; j++){
-
-      if(
-        originalWords[i - 1] ===
-        typedWords[j - 1]
-      ){
-
-        dp[i][j] =
-          dp[i - 1][j - 1];
-
-        operation[i][j] =
-          "match";
-
-      }else{
-
-        const replaceCost =
-          dp[i - 1][j - 1] + 1;
-
-        const deleteCost =
-          dp[i - 1][j] + 1;
-
-        const insertCost =
-          dp[i][j - 1] + 1;
-
-
-        const best =
-          Math.min(
-            replaceCost,
-            deleteCost,
-            insertCost
-          );
-
-
-        dp[i][j] = best;
-
-
-        /*
-         * Prefer replacement when costs
-         * are equal.
-         *
-         * This makes:
-         *
-         * order? -> oder.
-         *
-         * one wrong word rather than
-         * treating punctuation separately.
-         */
-        if(best === replaceCost){
-
-          operation[i][j] =
-            "replace";
-
-        }else if(best === deleteCost){
-
-          operation[i][j] =
-            "delete";
-
-        }else{
-
-          operation[i][j] =
-            "insert";
-
-        }
-
-      }
-
-    }
-
-  }
-
-
-  /*
-   * Backtrack so we can calculate
-   * errors400 correctly as well.
-   */
-
-  let i = m;
-  let j = n;
-
-
-  let errors = 0;
-  let errors400 = 0;
-
-
-  while(i > 0 || j > 0){
-
-    const op =
-      operation[i][j];
-
-
-    /*
-     * Same word.
-     */
-    if(op === "match"){
-
-      i--;
-      j--;
-
-      continue;
-
-    }
-
-
-    /*
-     * Wrong word.
-     *
-     * The original word is one error,
-     * regardless of how many characters
-     * or punctuation marks differ.
-     */
-    if(op === "replace"){
-
-      errors++;
-
-
-      /*
-       * i points to the original word
-       * being compared.
-       *
-       * First 400 original words are
-       * the 400-word scoring section.
-       */
-      if(i <= 400){
-
-        errors400++;
-
-      }
-
-
-      i--;
-      j--;
-
-      continue;
-
-    }
-
-
-    /*
-     * Missing original word.
-     */
-    if(op === "delete"){
-
-      errors++;
-
-
-      if(i <= 400){
-
-        errors400++;
-
-      }
-
-
-      i--;
-
-      continue;
-
-    }
-
-
-    /*
-     * Extra typed word.
-     *
-     * Associate an extra word with the
-     * current position in the original
-     * passage.
-     */
-    if(op === "insert"){
-
-      errors++;
-
-
-      /*
-       * If we are before the 400th original
-       * word, this extra word belongs to
-       * the first-400-word scoring area.
-       *
-       * If i === 0, an extra word at the
-       * very beginning is also inside the
-       * first 400-word area.
-       */
-      if(i < 400){
-
-        errors400++;
-
-      }
-
-
-      j--;
-
-      continue;
-
-    }
-
-
-    /*
-     * Safety fallback.
-     */
-    if(i > 0 && j > 0){
-
-      errors++;
-
-
-      if(i <= 400){
-
-        errors400++;
-
-      }
-
-
-      i--;
-      j--;
-
-    }else if(i > 0){
-
-      errors++;
-
-      if(i <= 400){
-        errors400++;
-      }
-
-      i--;
-
-    }else if(j > 0){
-
-      errors++;
-
-      if(i < 400){
-        errors400++;
-      }
-
-      j--;
-
-    }
-
-  }
-
-
-  return {
-    errors,
-    errors400
-  };
-
-}
-
-
-
-/* =========================================================
-   VISUAL ALIGNMENT
-   ---------------------------------------------------------
-   UNCHANGED CONCEPTUALLY.
-   This continues to identify individual
-   character/punctuation differences for
-   the result display.
-========================================================= */
+/* =========================
+   ALIGNMENT
+========================= */
 
 function alignAndCount(original,typed){
 
@@ -1781,27 +1316,18 @@ function alignAndCount(original,typed){
   const m = a.length;
   const n = b.length;
 
-
-  const dp =
-    Array.from(
-      {length:m+1},
-      () => Array(n+1).fill(0)
-    );
-
+  const dp = Array.from(
+    {length:m+1},
+    ()=>Array(n+1).fill(0)
+  );
 
   for(let i=0;i<=m;i++){
-
     dp[i][0] = i;
-
   }
-
 
   for(let j=0;j<=n;j++){
-
     dp[0][j] = j;
-
   }
-
 
   for(let i=1;i<=m;i++){
 
@@ -1809,17 +1335,15 @@ function alignAndCount(original,typed){
 
       if(a[i-1] === b[j-1]){
 
-        dp[i][j] =
-          dp[i-1][j-1];
+        dp[i][j] = dp[i-1][j-1];
 
       }else{
 
-        dp[i][j] =
-          Math.min(
-            dp[i-1][j],
-            dp[i][j-1],
-            dp[i-1][j-1]
-          ) + 1;
+        dp[i][j] = Math.min(
+          dp[i-1][j],
+          dp[i][j-1],
+          dp[i-1][j-1]
+        ) + 1;
 
       }
 
@@ -1827,14 +1351,11 @@ function alignAndCount(original,typed){
 
   }
 
-
   let i = m;
   let j = n;
 
-
   const alignedA = [];
   const alignedB = [];
-
 
   while(i>0 || j>0){
 
@@ -1853,8 +1374,7 @@ function alignAndCount(original,typed){
     }else if(
       i>0 &&
       j>0 &&
-      dp[i][j] ===
-      dp[i-1][j-1] + 1
+      dp[i][j] === dp[i-1][j-1] + 1
     ){
 
       alignedA.unshift(a[i-1]);
@@ -1865,8 +1385,7 @@ function alignAndCount(original,typed){
 
     }else if(
       i>0 &&
-      dp[i][j] ===
-      dp[i-1][j] + 1
+      dp[i][j] === dp[i-1][j] + 1
     ){
 
       alignedA.unshift(a[i-1]);
@@ -1885,7 +1404,6 @@ function alignAndCount(original,typed){
 
   }
 
-
   return {
     alignedA,
     alignedB
@@ -1893,86 +1411,59 @@ function alignAndCount(original,typed){
 
 }
 
-
-
-/* =========================================================
-   SUBMIT TEST
-========================================================= */
-
 function submitTest(){
 
   if(testSubmitted) return;
 
-
   testSubmitted = true;
-
   clearInterval(interval);
-
   input.disabled = true;
 
-
   const submitButton =
-    document.querySelector(
-      'button[onclick="submitTest()"]'
-    );
+  document.querySelector('button[onclick="submitTest()"]');
 
+  if(submitButton) submitButton.disabled = true;
 
-  if(submitButton){
-
-    submitButton.disabled = true;
-
-  }
-
-
-  const typed =
-    input.value;
-
-
-  /* =======================================================
-     VISUAL COMPARISON
-     ======================================================= */
+  const typed = input.value;
 
   const {
     alignedA,
     alignedB
-  } =
-    alignAndCount(
-      currentPassage,
-      typed
-    );
+  } = alignAndCount(
+    currentPassage,
+    typed
+  );
 
+  let correct = 0;
+  let errors400 = 0;
+  let errors = 0;
+  let wordCounter = 0;
 
   let originalHTML = "";
   let typedHTML = "";
 
-
-  /*
-   * Used only for the visual display.
-   *
-   * This is NOT the BHC numerical
-   * error counter.
-   */
   for(let i=0;i<alignedA.length;i++){
 
     const o = alignedA[i];
     const t = alignedB[i];
 
-
     if(o === t){
 
-      originalHTML +=
-        formatToken(o);
+      correct++;
 
-      typedHTML +=
-        formatToken(t);
+      if(
+        o !== "∅" &&
+        /^[A-Za-z0-9]+$/.test(o)
+      ){
+        wordCounter++;
+      }
+
+      originalHTML += formatToken(o);
+      typedHTML += formatToken(t);
 
     }else{
 
-      /*
-       * Ignore paragraph separators and
-       * tabs when they appear as visual-only
-       * alignment differences.
-       */
+      // Ignore paragraph separators and tabs
       if(
         (
           o === "\n" ||
@@ -1980,573 +1471,206 @@ function submitTest(){
         ) &&
         t === "∅"
       ){
-
         continue;
-
       }
 
+      errors++;
+
+      if(wordCounter < 400){
+        errors400++;
+      }
+
+      if(
+        o !== "∅" &&
+        /^[A-Za-z0-9]+$/.test(o)
+      ){
+        wordCounter++;
+      }
 
       if(o === "∅"){
 
         originalHTML +=
-          `<span class="dim">∅</span> `;
+        `<span class="dim">∅</span> `;
 
         typedHTML +=
-          `<span class="extra">${
-            escapeHTML(t)
-          }</span> `;
+        `<span class="extra">${escapeHTML(t)}</span> `;
 
       }else if(t === "∅"){
 
         originalHTML +=
-          `<span class="missing">${
-            escapeHTML(o)
-          }</span> `;
+        `<span class="missing">${escapeHTML(o)}</span> `;
 
         typedHTML +=
-          `<span class="dim">∅</span> `;
+        `<span class="dim">∅</span> `;
 
       }else{
 
         originalHTML +=
-          `<span class="red">${
-            escapeHTML(o)
-          }</span> `;
+        `<span class="red">${escapeHTML(o)}</span> `;
 
         typedHTML +=
-          `<span class="red">${
-            escapeHTML(t)
-          }</span> `;
+        `<span class="red">${escapeHTML(t)}</span> `;
 
       }
 
     }
 
   }
-
-
-
-  /* =======================================================
-     BHC NUMERICAL ERROR COUNT
-     ======================================================= */
-
-  /*
-   * IMPORTANT:
-   *
-   * Do NOT use alignedA.length,
-   * character differences, or punctuation
-   * differences here.
-   *
-   * This is the separate BHC word-level
-   * error calculation.
-   */
-  const bhcErrors =
-    countBhcWordErrors(
-      currentPassage,
-      typed
-    );
-
-
-  const errors =
-    bhcErrors.errors;
-
-
-  const errors400 =
-    bhcErrors.errors400;
-
-
-
-  /* =======================================================
-     ACCURACY
-     ======================================================= */
-
-  /*
-   * Word-level accuracy.
-   *
-   * A word is either correct or wrong.
-   *
-   * This means:
-   *
-   * order? -> oder.
-   *
-   * is one wrong word, therefore it
-   * affects accuracy by one word.
-   */
-
-  const originalWords =
-    getWordTokens(currentPassage);
-
-  const typedWords =
-    getWordTokens(typed);
-
-
-  /*
-   * Number of correct words.
-   *
-   * Use the same word-level alignment
-   * concept to determine how many original
-   * words were correctly reproduced.
-   */
-  const correctWordCount =
-    countCorrectWords(
-      originalWords,
-      typedWords
-    );
-
 
   const accuracy =
-    originalWords.length > 0
-      ? (
-          (correctWordCount /
-            originalWords.length) * 100
-        ).toFixed(2)
-      : "0.00";
-
-
-
-  /* =======================================================
-     TIME
-     ======================================================= */
-
-  const elapsedSeconds =
-    Math.max(
-      1,
-      600 - timeLeft
-    );
-
+  ((correct / alignedA.length) * 100 || 0)
+  .toFixed(2);
 
   const minutes =
-    elapsedSeconds / 60;
-
-
-
-  /* =======================================================
-     GROSS WPM
-     ======================================================= */
+  (600 - timeLeft) / 60 || 1;
 
   const gross =
-    (
-      (typed.length / 5) /
-      minutes
-    ).toFixed(2);
-
-
-
-  /* =======================================================
-     NET WPM
-     ======================================================= */
+  ((typed.length / 5) / minutes)
+  .toFixed(2);
 
   const net =
-    (
-      gross *
-      (accuracy / 100)
-    ).toFixed(2);
-
-
-
-  /* =======================================================
-     SCORES
-     ======================================================= */
+  (gross * (accuracy / 100))
+  .toFixed(2);
 
   const score400 =
-    Math.max(
-      0,
-      20 - (errors400 * 0.25)
-    ).toFixed(2);
-
+  Math.max(
+    0,
+    20 - (errors400 * 0.25)
+  ).toFixed(2);
 
   const score =
-    Math.max(
-      0,
-      20 - (errors * 0.25)
-    ).toFixed(2);
+  Math.max(
+    0,
+    20 - (errors * 0.25)
+  ).toFixed(2);
 
-
-
-  /* =======================================================
-     DISPLAY SCORE
-     ======================================================= */
-
-  document.getElementById("score")
-    .innerHTML =
-      `${score400}
-      <span style="font-size:14px;color:#888;">
-        (400)
-      </span>
-      <br>
-      ${score}
-      <span style="font-size:14px;color:#888;">
-        (Total)
-      </span>`;
-
-
-
-  /* =======================================================
-     DISPLAY RESULTS
-     ======================================================= */
+  document.getElementById("score").innerHTML =
+  `${score400} <span style="font-size:14px;color:#888;">(400)</span><br>
+  ${score} <span style="font-size:14px;color:#888;">(Total)</span>`;
 
   document.getElementById("gross")
-    .textContent =
-    gross;
-
+  .textContent = gross;
 
   document.getElementById("net")
-    .textContent =
-    net;
-
+  .textContent = net;
 
   document.getElementById("accuracy")
-    .textContent =
-    accuracy + "%";
-
+  .textContent = accuracy + "%";
 
   document.getElementById("errors400")
-    .textContent =
-    errors400;
-
+  .textContent = errors400;
 
   document.getElementById("errors")
-    .textContent =
-    errors;
+  .textContent = errors;
 
+  originalHTML = originalHTML
+    .replace(/\s+([.,!?;:%)\]])/g, "$1")
+    .replace(/([(\[])\s+/g, "$1")
+    .replace(/\s+'\s+/g, "'");
 
-
-  /* =======================================================
-     FORMAT COMPARISON
-     ======================================================= */
-
-  originalHTML =
-    originalHTML
-      .replace(
-        /\s+([.,!?;:%)\]])/g,
-        "$1"
-      )
-      .replace(
-        /([(\[])\s+/g,
-        "$1"
-      )
-      .replace(
-        /\s+'\s+/g,
-        "'"
-      );
-
-
-  typedHTML =
-    typedHTML
-      .replace(
-        /\s+([.,!?;:%)\]])/g,
-        "$1"
-      )
-      .replace(
-        /([(\[])\s+/g,
-        "$1"
-      )
-      .replace(
-        /\s+'\s+/g,
-        "'"
-      );
-
-
+  typedHTML = typedHTML
+    .replace(/\s+([.,!?;:%)\]])/g, "$1")
+    .replace(/([(\[])\s+/g, "$1")
+    .replace(/\s+'\s+/g, "'");
 
   document.getElementById("originalBox")
-    .innerHTML =
-    originalHTML;
-
+  .innerHTML = originalHTML;
 
   document.getElementById("typedBox")
-    .innerHTML =
-    typedHTML;
-
+  .innerHTML = typedHTML;
 
   document.getElementById("result")
-    .style.display =
-    "block";
+  .style.display = "block";
 
 }
 
-
-
-/* =========================================================
-   CORRECT WORD COUNTER
-   ---------------------------------------------------------
-   Determines how many ORIGINAL words are exactly
-   correct.
-
-   This is separate from the BHC error counter.
-========================================================= */
-
-function countCorrectWords(originalWords, typedWords){
-
-  const m = originalWords.length;
-  const n = typedWords.length;
-
-
-  /*
-   * DP for maximum number of exactly
-   * matching words in sequence.
-   */
-  const dp =
-    Array.from(
-      {length:m + 1},
-      () => Array(n + 1).fill(0)
-    );
-
-
-  for(let i=1;i<=m;i++){
-
-    for(let j=1;j<=n;j++){
-
-      if(
-        originalWords[i-1] ===
-        typedWords[j-1]
-      ){
-
-        dp[i][j] =
-          dp[i-1][j-1] + 1;
-
-      }else{
-
-        dp[i][j] =
-          Math.max(
-            dp[i-1][j],
-            dp[i][j-1]
-          );
-
-      }
-
-    }
-
-  }
-
-
-  return dp[m][n];
-
-}
-
-
-
-/* =========================================================
+/* =========================
    HELPERS
-========================================================= */
-
+========================= */
+  
 function countKeystrokes(text){
-
   return [...text].length;
-
 }
-
-
 
 function escapeHTML(text){
 
   return text
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;');
+  .replace(/&/g,'&amp;')
+  .replace(/</g,'&lt;')
+  .replace(/>/g,'&gt;');
 
 }
 
-
-
 function formatToken(token){
 
-  if(
-    token === "\n" ||
-    token === "\n\n"
-  ){
-
+  if(token === "\n" || token === "\n\n"){
     return "<br><br>";
-
   }
-
 
   if(token === "\t"){
-
     return "&nbsp;&nbsp;&nbsp;&nbsp;";
-
   }
-
 
   return escapeHTML(token) + " ";
 
 }
 
+/* =========================
+   HIDE / SHOW TYPING BOX
+========================= */
 
+function toggleTypingBox(){
+  const button = document.getElementById("toggleTypingBoxButton");
+  input.classList.toggle("typing-box-hidden");
 
-/* =========================================================
-   RESTART SAME PASSAGE
-========================================================= */
+  const hidden = input.classList.contains("typing-box-hidden");
+  button.textContent = hidden ? "Show Typing Box" : "Hide Typing Box";
+
+  if(hidden){
+    input.focus();
+  }
+}
+
+/* =========================
+   RESTART SAME
+========================= */
 
 function restartSame(){
 
   clearInterval(interval);
 
+  timer.textContent = "10:00";
 
-  timer.textContent =
-    "10:00";
+  timeLeft = 600;
 
-
-  timeLeft =
-    600;
-
-
-  timerStarted =
-    false;
-
-
-  testSubmitted =
-    false;
-
-
-  input.disabled =
-    false;
-
-
-  /*
-   * Show typing box again on restart.
-   */
-  input.classList.remove(
-    "typing-box-hidden"
-  );
-
-
-  document.getElementById(
-    "toggleTypingBtn"
-  ).textContent =
-    "Hide Typing Box";
-
-
-  const submitButton =
-    document.querySelector(
-      'button[onclick="submitTest()"]'
-    );
-
-
-  if(submitButton){
-
-    submitButton.disabled =
-      false;
-
-  }
-
+  timerStarted = false;
 
   input.value = "";
 
+  document.getElementById("wordCount").textContent =
+  `0 / ${totalWords} words`;
 
-  document.getElementById("wordCount")
-    .textContent =
-    `0 / ${totalWords} words`;
-
-
-  document.getElementById("keystrokeCount")
-    .textContent =
-    `Keystrokes 0 / ${
-      countKeystrokes(currentPassage)
-    }`;
-
+  document.getElementById("keystrokeCount").textContent =
+  `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
 
   document.getElementById("result")
-    .style.display =
-    "none";
-
+  .style.display = "none";
 
   input.focus();
 
 }
 
-
-
-/* =========================================================
-   HIDE / SHOW TYPING BOX
-   ---------------------------------------------------------
-   opacity:0 is intentional.
-
-   The textarea remains:
-   - present
-   - focused
-   - editable
-   - in the same position
-   - holding all typed text
-
-   Only its visual appearance disappears.
-========================================================= */
-
-function toggleTypingBox(){
-
-  const typingBox =
-    document.getElementById("input");
-
-
-  const toggleButton =
-    document.getElementById(
-      "toggleTypingBtn"
-    );
-
-
-  if(
-    typingBox.classList.contains(
-      "typing-box-hidden"
-    )
-  ){
-
-    /*
-     * SHOW
-     */
-    typingBox.classList.remove(
-      "typing-box-hidden"
-    );
-
-
-    toggleButton.textContent =
-      "Hide Typing Box";
-
-
-    typingBox.focus();
-
-  }else{
-
-    /*
-     * HIDE
-     */
-    typingBox.classList.add(
-      "typing-box-hidden"
-    );
-
-
-    toggleButton.textContent =
-      "Show Typing Box";
-
-
-    /*
-     * Keep the textarea focused so
-     * typing continues normally.
-     */
-    typingBox.focus();
-
-  }
-
-}
-
-
-
-/* =========================================================
+/* =========================
    DISABLE RIGHT CLICK
-========================================================= */
+========================= */
 
-window.addEventListener(
-  "contextmenu",
-  e => {
+window.addEventListener("contextmenu",e=>{
+  e.preventDefault();
+});
 
-    e.preventDefault();
-
-  }
-);
-
-
-
-/* =========================================================
+/* =========================
    AUTO LOAD
-========================================================= */
+========================= */
 
 prepareTest();
 
