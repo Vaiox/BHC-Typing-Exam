@@ -6,7 +6,10 @@
 <title>BHC Typing Test</title>
 
 <style>
-/* Overall page: charcoal grey instead of pure black */
+/* =========================================================
+   GLOBAL THEME
+========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,6 +28,10 @@ body {
   margin: auto;
   padding: 20px;
 }
+
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .topbar {
   display: flex;
@@ -60,38 +67,105 @@ body {
   font-size: 14px;
 }
 
+/* =========================================================
+   FONT SIZE CONTROL
+========================================================= */
+
+.font-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e0e0e0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.font-control select {
+  background: #303238;
+  color: #fff;
+  border: 1px solid #666a73;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.font-control select:focus {
+  border-color: #00c995;
+}
+
+.font-control select option {
+  background: #303238;
+  color: #fff;
+}
+
+/* =========================================================
+   TYPING AREA
+========================================================= */
+
 .typing-area {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 18px;
   margin-bottom: 15px;
   align-items: stretch;
 }
 
-/* Word-style paper panels, kept side-by-side */
+/* =========================================================
+   PASSAGE AND TYPING BOX
+========================================================= */
+
 .preview,
 textarea {
+  display: block;
   width: 100%;
   height: 800px;
   min-width: 0;
+  min-height: 300px;
+
   background: #fff;
   border: 1px solid #d5d5d5;
   border-radius: 3px;
+
   padding: 48px 52px;
+
   color: #202020;
-  font: 16px/1.65 Arial, sans-serif;
-  text-align: left;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+
+  /* Justify passage and typed text */
+  text-align: justify;
+  text-justify: inter-word;
+
+  /* Keep text within the panel */
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  overflow: auto;
+  word-break: normal;
+
+  /* Independent panel scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+
   scrollbar-width: thin;
   scrollbar-color: #b4b4b4 #f4f4f4;
+
   box-shadow: 0 5px 20px #0002;
+
+  /* Preserve tab indentation */
+  tab-size: 4;
+  -moz-tab-size: 4;
 }
 
 .preview {
   color: #202020;
+  text-align: justify;
+  text-justify: inter-word;
 }
+
+/* Scrollbars */
 
 .preview::-webkit-scrollbar,
 textarea::-webkit-scrollbar {
@@ -103,6 +177,13 @@ textarea::-webkit-scrollbar-thumb {
   background: #b4b4b4;
   border-radius: 10px;
 }
+
+.preview::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+/* Typing box */
 
 textarea {
   background: #fff;
@@ -121,9 +202,15 @@ textarea:disabled {
   opacity: .9;
 }
 
+/* Hide typing text when requested */
+
 .typing-box-hidden {
   opacity: 0 !important;
 }
+
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .buttons {
   margin: 18px 0;
@@ -153,6 +240,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* =========================================================
+   NOTICES
+========================================================= */
+
 .access-notice {
   display: none;
   margin: 14px 0;
@@ -169,6 +260,10 @@ button:disabled {
 .access-notice.visible {
   display: block;
 }
+
+/* =========================================================
+   RESULTS
+========================================================= */
 
 .result {
   display: none;
@@ -207,9 +302,13 @@ button:disabled {
   color: #00d6a0;
 }
 
+/* =========================================================
+   COMPARISON
+========================================================= */
+
 .compare {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 18px;
 }
 
@@ -221,7 +320,7 @@ button:disabled {
   padding: 24px;
   line-height: 1.9;
   white-space: pre-wrap;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   min-width: 0;
   box-shadow: 0 5px 20px #0002;
 }
@@ -256,19 +355,20 @@ button:disabled {
   font-weight: 600;
 }
 
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media (max-width: 900px) {
   .typing-area,
   .compare {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .preview {
-    height: 800px;
-    min-height: 300px;
-  }
-
+  .preview,
   .typing-area textarea {
     height: 800px;
+    min-height: 300px;
   }
 
   .preview,
@@ -281,12 +381,32 @@ button:disabled {
     flex-direction: column;
   }
 
+  .top-left {
+    gap: 14px;
+  }
+
   .container {
     padding: 12px;
   }
 
   .result {
     padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .font-control {
+    width: 100%;
+  }
+
+  .buttons button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .preview,
+  textarea {
+    padding: 22px 18px;
   }
 }
 </style>
@@ -297,18 +417,46 @@ button:disabled {
 
   <div class="topbar">
     <div class="top-left">
+
       <div class="timer" id="timer">10:00</div>
+
       <div class="info">Strict Mode Enabled</div>
+
       <div class="info" id="wordCount">0 / 0 words</div>
-      <div class="info" id="keystrokeCount">Keystrokes 0 / 0</div>
+
+      <div class="info" id="keystrokeCount">
+        Keystrokes 0 / 0
+      </div>
+
+      <label class="font-control" for="fontSizeSelect">
+        <span>Font size</span>
+
+        <select id="fontSizeSelect">
+          <option value="16">16 px</option>
+          <option value="18" selected>18 px</option>
+          <option value="20">20 px</option>
+        </select>
+      </label>
+
     </div>
-    <div class="info" id="passageInfo">Loading passage...</div>
+
+    <div class="info" id="passageInfo">
+      Loading passage...
+    </div>
   </div>
 
-  <div id="accessNotice" class="access-notice" role="alert" aria-live="assertive"></div>
+  <div
+    id="accessNotice"
+    class="access-notice"
+    role="alert"
+    aria-live="assertive"
+  ></div>
 
   <div class="typing-area">
-    <div class="preview" id="preview">Checking your account...</div>
+
+    <div class="preview" id="preview">
+      Checking your account...
+    </div>
 
     <textarea
       id="input"
@@ -319,6 +467,7 @@ button:disabled {
       placeholder="Start typing here..."
       disabled
     ></textarea>
+
   </div>
 
   <div class="buttons">
@@ -329,7 +478,9 @@ button:disabled {
   </div>
 
   <div class="result" id="result">
+
     <div class="stats">
+
       <div class="card">
         <h3>Gross WPM</h3>
         <p id="gross">0</p>
@@ -359,9 +510,11 @@ button:disabled {
         <h3>Score</h3>
         <p id="score">0</p>
       </div>
+
     </div>
 
     <div class="compare">
+
       <div class="box">
         <h3>Original Passage</h3>
         <br>
@@ -373,6 +526,7 @@ button:disabled {
         <br>
         <div id="typedBox"></div>
       </div>
+
     </div>
   </div>
 
@@ -382,6 +536,7 @@ button:disabled {
 import { supabase } from "./js/supabase.js";
 
 const DAILY_LIMIT = 10;
+
 const DAILY_LIMIT_MESSAGE =
   "Daily test limit reached. Please come back tomorrow.";
 
@@ -397,7 +552,12 @@ let passages = {};
 let currentPassageLimit =
   Number(localStorage.getItem("selectedKeystrokeLimit"));
 
-if (!Object.prototype.hasOwnProperty.call(passageFiles, currentPassageLimit)) {
+if (
+  !Object.prototype.hasOwnProperty.call(
+    passageFiles,
+    currentPassageLimit
+  )
+) {
   currentPassageLimit = 2400;
 }
 
@@ -411,6 +571,62 @@ const restartButton = document.getElementById("restartButton");
 const submitButton = document.getElementById("submitButton");
 const toggleTypingBtn = document.getElementById("toggleTypingBtn");
 
+/* =========================================================
+   FONT SIZE CONTROL
+========================================================= */
+
+const fontSizeSelect =
+  document.getElementById("fontSizeSelect");
+
+const ALLOWED_FONT_SIZES = [16, 18, 20];
+
+function applyFontSize(size) {
+  const fontSize = Number(size);
+
+  if (!ALLOWED_FONT_SIZES.includes(fontSize)) {
+    return;
+  }
+
+  preview.style.fontSize = `${fontSize}px`;
+  input.style.fontSize = `${fontSize}px`;
+
+  fontSizeSelect.value = String(fontSize);
+
+  try {
+    localStorage.setItem("typingTestFontSize", String(fontSize));
+  } catch (error) {
+    console.warn("Could not save font size preference:", error);
+  }
+}
+
+function initializeFontSize() {
+  let savedSize = 18;
+
+  try {
+    const storedSize = Number(
+      localStorage.getItem("typingTestFontSize")
+    );
+
+    if (ALLOWED_FONT_SIZES.includes(storedSize)) {
+      savedSize = storedSize;
+    }
+  } catch (error) {
+    console.warn("Could not read font size preference:", error);
+  }
+
+  applyFontSize(savedSize);
+}
+
+fontSizeSelect.addEventListener("change", () => {
+  applyFontSize(fontSizeSelect.value);
+});
+
+initializeFontSize();
+
+/* =========================================================
+   TEST STATE
+========================================================= */
+
 let currentPassage = "";
 let currentId = 0;
 let timerStarted = false;
@@ -421,6 +637,10 @@ let timeLeft = 600;
 let interval = null;
 let totalWords = 0;
 let currentUser = null;
+
+/* =========================================================
+   PASSAGE LOADING
+========================================================= */
 
 async function loadPassages(limit) {
   const file = passageFiles[limit];
@@ -443,6 +663,10 @@ async function loadPassages(limit) {
   currentPassageLimit = limit;
 }
 
+/* =========================================================
+   NOTICES
+========================================================= */
+
 function showNotice(message) {
   accessNotice.textContent = message;
   accessNotice.classList.add("visible");
@@ -453,12 +677,20 @@ function clearNotice() {
   accessNotice.classList.remove("visible");
 }
 
+/* =========================================================
+   COUNTERS
+========================================================= */
+
 function countKeystrokes(text) {
   return [...text].length;
 }
 
 function getWordTokens(text) {
-  return text.replace(/\r/g, "").trim().split(/\s+/).filter(Boolean);
+  return text
+    .replace(/\r/g, "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
 }
 
 function updateCounters() {
@@ -477,6 +709,10 @@ function setTypingControlsEnabled(enabled) {
   submitButton.disabled = !enabled || submissionInProgress;
 }
 
+/* =========================================================
+   TIMER
+========================================================= */
+
 function stopTimer() {
   if (interval !== null) {
     clearInterval(interval);
@@ -492,7 +728,8 @@ function getIndiaDayBounds() {
     day: "2-digit"
   }).formatToParts(new Date());
 
-  const part = type => parts.find(item => item.type === type).value;
+  const part = type =>
+    parts.find(item => item.type === type).value;
 
   const day =
     `${part("year")}-${part("month")}-${part("day")}`;
@@ -501,9 +738,15 @@ function getIndiaDayBounds() {
 
   return {
     start: start.toISOString(),
-    end: new Date(start.getTime() + 86400000).toISOString()
+    end: new Date(
+      start.getTime() + 86400000
+    ).toISOString()
   };
 }
+
+/* =========================================================
+   AUTHENTICATION
+========================================================= */
 
 async function signOutAndRedirect(reason) {
   accessGranted = false;
@@ -525,8 +768,10 @@ async function signOutAndRedirect(reason) {
 
 async function initializeAccess() {
   try {
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    const {
+      data: sessionData,
+      error: sessionError
+    } = await supabase.auth.getSession();
 
     if (sessionError) {
       throw sessionError;
@@ -539,20 +784,26 @@ async function initializeAccess() {
 
     currentUser = sessionData.session.user;
 
-    const { data, error } =
-      await supabase.rpc("ensure_my_subscription");
+    const {
+      data,
+      error
+    } = await supabase.rpc("ensure_my_subscription");
 
     if (error) {
       throw error;
     }
 
-    const subscription = Array.isArray(data) ? data[0] : data;
+    const subscription = Array.isArray(data)
+      ? data[0]
+      : data;
 
     if (!subscription) {
       throw Error("Subscription information is unavailable.");
     }
 
-    const expiry = new Date(subscription.subscription_expires_at);
+    const expiry = new Date(
+      subscription.subscription_expires_at
+    );
 
     if (
       subscription.is_expired ||
@@ -570,7 +821,10 @@ async function initializeAccess() {
       error: countError
     } = await supabase
       .from("test_results")
-      .select("id", { count: "exact", head: true })
+      .select("id", {
+        count: "exact",
+        head: true
+      })
       .eq("user_id", currentUser.id)
       .gte("created_at", bounds.start)
       .lt("created_at", bounds.end);
@@ -591,7 +845,8 @@ async function initializeAccess() {
     } catch (error) {
       console.error("Passage loading failed:", error);
 
-      preview.textContent = "Unable to load the selected passages.";
+      preview.textContent =
+        "Unable to load the selected passages.";
 
       showNotice(
         `Could not load the ${currentPassageLimit}-keystroke passage file. Check that the file exists and refresh.`
@@ -602,6 +857,7 @@ async function initializeAccess() {
     }
 
     accessGranted = true;
+
     setTypingControlsEnabled(true);
     prepareTest();
 
@@ -609,7 +865,9 @@ async function initializeAccess() {
     console.error("Access verification failed:", error);
 
     setTypingControlsEnabled(false);
-    preview.textContent = "Unable to verify your account.";
+
+    preview.textContent =
+      "Unable to verify your account.";
 
     showNotice(
       "Unable to verify your subscription. Check your connection and refresh the page."
@@ -617,8 +875,16 @@ async function initializeAccess() {
   }
 }
 
+/* =========================================================
+   PREPARE TEST
+========================================================= */
+
 function prepareTest() {
-  if (!accessGranted || !currentUser || submissionInProgress) {
+  if (
+    !accessGranted ||
+    !currentUser ||
+    submissionInProgress
+  ) {
     return;
   }
 
@@ -636,7 +902,9 @@ function prepareTest() {
   let history = [];
 
   try {
-    history = JSON.parse(localStorage.getItem(key) || "[]");
+    history = JSON.parse(
+      localStorage.getItem(key) || "[]"
+    );
 
     if (!Array.isArray(history)) {
       history = [];
@@ -647,7 +915,10 @@ function prepareTest() {
 
   const all = Object.keys(passages);
 
-  const unused = all.filter(id => !history.includes(id));
+  const unused = all.filter(
+    id => !history.includes(id)
+  );
+
   const usable = unused.length ? unused : all;
 
   if (!usable.length) {
@@ -655,7 +926,9 @@ function prepareTest() {
     return;
   }
 
-  currentId = usable[Math.floor(Math.random() * usable.length)];
+  currentId =
+    usable[Math.floor(Math.random() * usable.length)];
+
   currentPassage = passages[currentId];
 
   history.push(currentId);
@@ -664,9 +937,15 @@ function prepareTest() {
     history.shift();
   }
 
-  localStorage.setItem(key, JSON.stringify(history));
+  localStorage.setItem(
+    key,
+    JSON.stringify(history)
+  );
 
   preview.textContent = currentPassage;
+
+  /* Reapply font preference after loading passage */
+  applyFontSize(fontSizeSelect.value);
 
   document.getElementById("passageInfo").textContent =
     `Passage #${currentId} · ${currentPassageLimit} keystrokes`;
@@ -684,14 +963,23 @@ function prepareTest() {
   toggleTypingBtn.disabled = false;
 
   input.classList.remove("typing-box-hidden");
+
   toggleTypingBtn.textContent = "Hide Typing Box";
 
   updateCounters();
   input.focus();
 }
 
+/* =========================================================
+   RESTART SAME PASSAGE
+========================================================= */
+
 function restartSame() {
-  if (!accessGranted || submissionInProgress || testSubmitted) {
+  if (
+    !accessGranted ||
+    submissionInProgress ||
+    testSubmitted
+  ) {
     return;
   }
 
@@ -710,8 +998,16 @@ function restartSame() {
   input.focus();
 }
 
+/* =========================================================
+   START TIMER
+========================================================= */
+
 function startTimer() {
-  if (interval !== null || testSubmitted || submissionInProgress) {
+  if (
+    interval !== null ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
     return;
   }
 
@@ -731,15 +1027,28 @@ function startTimer() {
   }, 1000);
 }
 
+/* =========================================================
+   STRICT TYPING RULES
+========================================================= */
+
 input.addEventListener("keydown", event => {
-  if (!accessGranted || testSubmitted || submissionInProgress) {
+  if (
+    !accessGranted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
     event.preventDefault();
     return;
   }
 
   if (
-    ["Backspace", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
-      .includes(event.key)
+    [
+      "Backspace",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown"
+    ].includes(event.key)
   ) {
     event.preventDefault();
   }
@@ -759,9 +1068,12 @@ input.addEventListener("keydown", event => {
       "\t" +
       input.value.substring(end);
 
-    input.selectionStart = input.selectionEnd = start + 1;
+    input.selectionStart =
+      input.selectionEnd = start + 1;
 
-    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(
+      new Event("input", { bubbles: true })
+    );
   }
 });
 
@@ -770,7 +1082,11 @@ input.addEventListener("paste", event => {
 });
 
 input.addEventListener("input", () => {
-  if (!accessGranted || testSubmitted || submissionInProgress) {
+  if (
+    !accessGranted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
     return;
   }
 
@@ -781,6 +1097,10 @@ input.addEventListener("input", () => {
 
   updateCounters();
 });
+
+/* =========================================================
+   COMPARISON AND SCORING
+========================================================= */
 
 function escapeHTML(text) {
   return String(text)
@@ -840,7 +1160,12 @@ function countBhcWordErrors(original, typed) {
         const replace = dp[i - 1][j - 1] + 1;
         const remove = dp[i - 1][j] + 1;
         const insert = dp[i][j - 1] + 1;
-        const best = Math.min(replace, remove, insert);
+
+        const best = Math.min(
+          replace,
+          remove,
+          insert
+        );
 
         dp[i][j] = best;
 
@@ -856,6 +1181,7 @@ function countBhcWordErrors(original, typed) {
 
   let i = m;
   let j = n;
+
   let errors = 0;
   let errors400 = 0;
 
@@ -933,7 +1259,7 @@ function countBhcWordErrors(original, typed) {
   return { errors, errors400 };
 }
 
-/* Token alignment is used to highlight the comparison */
+/* Token alignment for comparison highlighting */
 function alignAndCount(original, typed) {
   const a = tokenize(original);
   const b = tokenize(typed);
@@ -974,7 +1300,11 @@ function alignAndCount(original, typed) {
   const alignedB = [];
 
   while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && a[i - 1] === b[j - 1]) {
+    if (
+      i > 0 &&
+      j > 0 &&
+      a[i - 1] === b[j - 1]
+    ) {
       alignedA.unshift(a[i - 1]);
       alignedB.unshift(b[j - 1]);
 
@@ -1035,7 +1365,10 @@ function countCorrectWords(a, b) {
       dp[i][j] =
         a[i - 1] === b[j - 1]
           ? dp[i - 1][j - 1] + 1
-          : Math.max(dp[i - 1][j], dp[i][j - 1]);
+          : Math.max(
+              dp[i - 1][j],
+              dp[i][j - 1]
+            );
     }
   }
 
@@ -1045,8 +1378,10 @@ function countCorrectWords(a, b) {
 function calculateResult() {
   const typed = input.value;
 
-  const { alignedA, alignedB } =
-    alignAndCount(currentPassage, typed);
+  const {
+    alignedA,
+    alignedB
+  } = alignAndCount(currentPassage, typed);
 
   let originalHTML = "";
   let typedHTML = "";
@@ -1060,20 +1395,27 @@ function calculateResult() {
       typedHTML += formatToken(typedToken);
     } else {
       if (
-        (originalToken === "\n" || originalToken === "\n\n") &&
+        (
+          originalToken === "\n" ||
+          originalToken === "\n\n"
+        ) &&
         typedToken === "∅"
       ) {
         continue;
       }
 
       if (originalToken === "∅") {
-        originalHTML += '<span class="dim">∅</span> ';
+        originalHTML +=
+          '<span class="dim">∅</span> ';
+
         typedHTML +=
           `<span class="extra">${escapeHTML(typedToken)}</span> `;
       } else if (typedToken === "∅") {
         originalHTML +=
           `<span class="missing">${escapeHTML(originalToken)}</span> `;
-        typedHTML += '<span class="dim">∅</span> ';
+
+        typedHTML +=
+          '<span class="dim">∅</span> ';
       } else {
         originalHTML +=
           `<span class="red">${escapeHTML(originalToken)}</span> `;
@@ -1084,22 +1426,31 @@ function calculateResult() {
     }
   }
 
-  const { errors, errors400 } =
-    countBhcWordErrors(currentPassage, typed);
+  const {
+    errors,
+    errors400
+  } = countBhcWordErrors(currentPassage, typed);
 
   const originalWords = getWordTokens(currentPassage);
   const typedWords = getWordTokens(typed);
 
-  const correct = countCorrectWords(originalWords, typedWords);
+  const correct = countCorrectWords(
+    originalWords,
+    typedWords
+  );
 
   const accuracy = originalWords.length
-    ? ((correct / originalWords.length) * 100).toFixed(2)
+    ? (
+        (correct / originalWords.length) * 100
+      ).toFixed(2)
     : "0.00";
 
   const elapsed = Math.max(1, 600 - timeLeft);
   const minutes = elapsed / 60;
 
-  const gross = ((typed.length / 5) / minutes).toFixed(2);
+  const gross = (
+    (typed.length / 5) / minutes
+  ).toFixed(2);
 
   const net = (
     Number(gross) * (Number(accuracy) / 100)
@@ -1143,6 +1494,10 @@ function calculateResult() {
   };
 }
 
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
 async function submitTest() {
   if (
     !accessGranted ||
@@ -1172,8 +1527,10 @@ async function submitTest() {
   showNotice("Submitting your result securely...");
 
   try {
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    const {
+      data: sessionData,
+      error: sessionError
+    } = await supabase.auth.getSession();
 
     if (sessionError) {
       throw sessionError;
@@ -1213,7 +1570,10 @@ async function submitTest() {
 
     const result = calculateResult();
 
-    const { data, error } = await supabase.rpc(
+    const {
+      data,
+      error
+    } = await supabase.rpc(
       "submit_typing_result",
       {
         p_passage_label: `Passage #${currentId}`,
@@ -1231,7 +1591,8 @@ async function submitTest() {
     );
 
     if (error) {
-      const message = String(error.message || "").toUpperCase();
+      const message =
+        String(error.message || "").toUpperCase();
 
       if (message.includes("SUBSCRIPTION_EXPIRED")) {
         await signOutAndRedirect("expired");
@@ -1254,14 +1615,19 @@ async function submitTest() {
         return;
       }
 
-      if (message.includes("SUBSCRIPTION_NOT_INITIALIZED")) {
+      if (
+        message.includes("SUBSCRIPTION_NOT_INITIALIZED")
+      ) {
         showNotice(
           "Your subscription could not be initialized. Please return to the dashboard and try again."
         );
         return;
       }
 
-      console.error("Result submission failed:", error);
+      console.error(
+        "Result submission failed:",
+        error
+      );
 
       showNotice(
         "Your result could not be saved. It has not been accepted. Check your connection and try submitting again."
@@ -1270,7 +1636,10 @@ async function submitTest() {
       return;
     }
 
-    if (data?.accepted !== true || !data.result_id) {
+    if (
+      data?.accepted !== true ||
+      !data.result_id
+    ) {
       showNotice(
         "The database did not confirm acceptance. Your result has not been redirected."
       );
@@ -1292,8 +1661,14 @@ async function submitTest() {
         JSON.stringify(comparison)
       );
     } catch (error) {
-      console.error("Could not save comparison:", error);
-      localStorage.removeItem("latestTypingComparison");
+      console.error(
+        "Could not save comparison:",
+        error
+      );
+
+      localStorage.removeItem(
+        "latestTypingComparison"
+      );
     }
 
     testSubmitted = true;
@@ -1320,14 +1695,25 @@ async function submitTest() {
   }
 }
 
+/* =========================================================
+   HIDE / SHOW TYPING BOX
+========================================================= */
+
 function toggleTypingBox() {
-  const hidden = input.classList.toggle("typing-box-hidden");
+  const hidden =
+    input.classList.toggle("typing-box-hidden");
 
   toggleTypingBtn.textContent =
-    hidden ? "Show Typing Box" : "Hide Typing Box";
+    hidden
+      ? "Show Typing Box"
+      : "Hide Typing Box";
 
   input.focus();
 }
+
+/* =========================================================
+   EVENT LISTENERS
+========================================================= */
 
 window.addEventListener("contextmenu", event => {
   event.preventDefault();
@@ -1344,6 +1730,10 @@ supabase.auth.onAuthStateChange(event => {
     window.location.replace("./index.html");
   }
 });
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 setTypingControlsEnabled(false);
 initializeAccess();
