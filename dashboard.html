@@ -451,7 +451,7 @@
 
   <main class="container">
     <section class="welcome">
-      <h1>Dashboard</h1>
+      <h1><span id="dashboardUsername">User</span>'s Dashboard</h1>
       <p>
         Welcome to your typing practice portal.
         Track your performance and improve with every test.
@@ -810,6 +810,38 @@
         "We couldn't load your dashboard. Check your Supabase connection and database setup, then try refreshing."
       );
     });
+    
+    async function loadDashboardUsername() {
+        const { data: { user }, error: authError } =
+            await supabase.auth.getUser();
+    
+        if (authError || !user) {
+            window.location.href = "./index.html";
+            return;
+        }
+    
+        const { data, error } = await supabase
+            .from("user_subscriptions")
+            .select("username")
+            .eq("user_id", user.id)
+            .maybeSingle();
+    
+        const usernameElement =
+            document.getElementById("dashboardUsername");
+    
+        if (!usernameElement) return;
+    
+        if (error) {
+            console.error("Error loading username:", error.message);
+            usernameElement.textContent = "User";
+            return;
+        }
+    
+        usernameElement.textContent =
+            data?.username || "User";
+    }
+    
+    loadDashboardUsername();
   </script>
 </body>
 </html>
