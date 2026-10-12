@@ -471,261 +471,294 @@
   </main>
 
   <!-- SUPABASE AUTHENTICATION -->
-  <script type="module">
-    import { supabase } from "./js/supabase.js";
 
-    const loginForm = document.getElementById("loginForm");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const passwordToggle = document.getElementById("passwordToggle");
-    const loginButton = document.getElementById("loginButton");
-    const buttonText = document.getElementById("buttonText");
-    const loginAlert = document.getElementById("loginAlert");
-    const alertTitle = document.getElementById("alertTitle");
-    const alertMessage = document.getElementById("alertMessage");
+<script type="module">
+  import { supabase } from "./js/supabase.js";
 
-    let submitting = false;
-    let persistentError = false;
+  const loginForm = document.getElementById("loginForm");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const passwordToggle = document.getElementById("passwordToggle");
+  const loginButton = document.getElementById("loginButton");
+  const buttonText = document.getElementById("buttonText");
+  const loginAlert = document.getElementById("loginAlert");
+  const alertTitle = document.getElementById("alertTitle");
+  const alertMessage = document.getElementById("alertMessage");
 
-    /*
-     * Display an error message.
-     * Persistent errors remain visible when a field is edited.
-     */
-    function showError(title, message, persistent = false) {
-      alertTitle.textContent = title;
-      alertMessage.textContent = message;
+  let submitting = false;
+  let persistentError = false;
+  let checkingSession = false;
 
-      loginAlert.classList.remove("success");
-      loginAlert.classList.add("visible");
+  const EXPIRED_MESSAGE =
+    "Your Subscription days are over Please reach admin to get more days.";
 
-      persistentError = persistent;
+  const DAILY_LIMIT_MESSAGE =
+    "Daily test limit reached. Please come back tomorrow.";
+
+  function showError(title, message, persistent = false) {
+    alertTitle.textContent = title;
+    alertMessage.textContent = message;
+
+    loginAlert.classList.remove("success");
+    loginAlert.classList.add("visible");
+
+    persistentError = persistent;
+  }
+
+  function showSuccess(title, message) {
+    alertTitle.textContent = title;
+    alertMessage.textContent = message;
+
+    loginAlert.classList.add("visible", "success");
+    persistentError = false;
+  }
+
+  function clearError(force = false) {
+    if (persistentError && !force) return;
+
+    loginAlert.classList.remove("visible", "success");
+    alertTitle.textContent = "";
+    alertMessage.textContent = "";
+
+    persistentError = false;
+  }
+
+  function setLoading(loading) {
+    loginButton.disabled = loading;
+    emailInput.disabled = loading;
+    passwordInput.disabled = loading;
+    passwordToggle.disabled = loading;
+
+    loginButton.classList.toggle("loading", loading);
+    loginButton.setAttribute("aria-busy", String(loading));
+
+    buttonText.textContent = loading ? "Signing in..." : "Sign In";
+  }
+
+  function showSubscriptionExpired() {
+    showError("Subscription expired", EXPIRED_MESSAGE, true);
+  }
+
+  function showDailyLimitReached() {
+    showError("Daily limit reached", DAILY_LIMIT_MESSAGE, true);
+  }
+
+  window.showSubscriptionExpired = showSubscriptionExpired;
+  window.showDailyLimitReached = showDailyLimitReached;
+
+  passwordToggle.addEventListener("click", () => {
+    const showing = passwordInput.type === "text";
+
+    passwordInput.type = showing ? "password" : "text";
+    passwordToggle.textContent = showing ? "Show" : "Hide";
+
+    passwordToggle.setAttribute(
+      "aria-label",
+      showing ? "Show password" : "Hide password"
+    );
+
+    passwordToggle.setAttribute("aria-pressed", String(!showing));
+  });
+
+  emailInput.addEventListener("input", () => clearError());
+  passwordInput.addEventListener("input", () => clearError());
+
+  function friendlyError(error) {
+    const message = String(error?.message || "").toLowerCase();
+
+    if (message.includes("invalid login credentials")) {
+      return "The email address or password is incorrect.";
     }
 
-    function showSuccess(title, message) {
-      alertTitle.textContent = title;
-      alertMessage.textContent = message;
-
-      loginAlert.classList.add("visible", "success");
-      persistentError = false;
+    if (message.includes("email not confirmed")) {
+      return "Your account email has not been confirmed. Please contact the administrator.";
     }
 
-    function clearError(force = false) {
-      if (persistentError && !force) {
+    if (message.includes("too many requests")) {
+      return "Too many login attempts. Please wait and try again.";
+    }
+
+    if (
+      message.includes("failed to fetch") ||
+      message.includes("network")
+    ) {
+      return "Could not connect to Supabase. Check your internet connection and project configuration.";
+    }
+
+    return "Sign-in failed. Please check your details and try again.";
+  }
+
+  /*
+   * Initialize the subscription on first successful login.
+   * Existing subscription dates are not reset by this RPC.
+   */
+  async function checkSubscription() {
+    const { data, error } = await supabase.rpc(
+      "ensure_my_subscription"
+    );
+
+    if (error) {
+      throw error;
+    }
+
+    const subscription = Array.isArray(data) ? data[0] : data;
+
+    if (!subscription) {
+      throw new Error("SUBSCRIPTION_STATUS_UNAVAILABLE");
+    }
+
+    if (
+      subscription.is_expired ||
+      new Date(subscription.subscription_expires_at).getTime() <= Date.now()
+    ) {
+      return {
+        active: false,
+        subscription
+      };
+    }
+
+    return {
+      active: true,
+      subscription
+    };
+  }
+
+  /*
+   * Sign out expired users and display the exact required message.
+   */
+  async function handleExpiredSubscription() {
+    try {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.error("Sign-out error:", error);
+      }
+    } catch (error) {
+      console.error("Could not sign out expired user:", error);
+    }
+
+    showSubscriptionExpired();
+  }
+
+  /*
+   * LOGIN
+   */
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (submitting || checkingSession) return;
+
+    clearError(true);
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+      showError(
+        "Missing information",
+        "Please enter both your email address and password."
+      );
+      return;
+    }
+
+    if (!emailInput.validity.valid) {
+      showError("Invalid email", "Please enter a valid email address.");
+      emailInput.focus();
+      return;
+    }
+
+    submitting = true;
+    setLoading(true);
+
+    try {
+      const { data, error } =
+        await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+
+      if (error) {
+        showError("Login failed", friendlyError(error));
         return;
       }
 
-      loginAlert.classList.remove("visible", "success");
-      alertTitle.textContent = "";
-      alertMessage.textContent = "";
-
-      persistentError = false;
-    }
-
-    /*
-     * Subscription/quota message helpers.
-     *
-     * These display messages only. Actual subscription validation
-     * and daily quota enforcement must be implemented separately.
-     */
-    function showSubscriptionExpired() {
-      showError(
-        "Subscription expired",
-        "Your Subscription days are over Please reach admin to get more days.",
-        true
-      );
-    }
-
-    function showDailyLimitReached() {
-      showError(
-        "Daily limit reached",
-        "Daily test limit reached. Please come back tomorrow.",
-        true
-      );
-    }
-
-    window.showSubscriptionExpired = showSubscriptionExpired;
-    window.showDailyLimitReached = showDailyLimitReached;
-
-    /*
-     * BUTTON LOADING STATE
-     */
-    function setLoading(loading) {
-      loginButton.disabled = loading;
-      emailInput.disabled = loading;
-      passwordInput.disabled = loading;
-      passwordToggle.disabled = loading;
-
-      loginButton.classList.toggle("loading", loading);
-      loginButton.setAttribute("aria-busy", String(loading));
-
-      buttonText.textContent = loading
-        ? "Signing in..."
-        : "Sign In";
-    }
-
-    /*
-     * PASSWORD VISIBILITY TOGGLE
-     */
-    passwordToggle.addEventListener("click", () => {
-      const showing = passwordInput.type === "text";
-
-      passwordInput.type = showing ? "password" : "text";
-      passwordToggle.textContent = showing ? "Show" : "Hide";
-
-      passwordToggle.setAttribute(
-        "aria-label",
-        showing ? "Show password" : "Hide password"
-      );
-
-      passwordToggle.setAttribute(
-        "aria-pressed",
-        String(!showing)
-      );
-    });
-
-    emailInput.addEventListener("input", () => clearError());
-    passwordInput.addEventListener("input", () => clearError());
-
-    /*
-     * FRIENDLY SUPABASE ERROR MESSAGES
-     */
-    function friendlyError(error) {
-      const message = String(error?.message || "").toLowerCase();
-
-      if (message.includes("invalid login credentials")) {
-        return "The email address or password is incorrect.";
-      }
-
-      if (message.includes("email not confirmed")) {
-        return "Your account email has not been confirmed. Please contact the administrator.";
-      }
-
-      if (message.includes("too many requests")) {
-        return "Too many login attempts. Please wait and try again.";
-      }
-
-      if (
-        message.includes("failed to fetch") ||
-        message.includes("network")
-      ) {
-        return "Could not connect to Supabase. Check your internet connection and project configuration.";
-      }
-
-      return "Sign-in failed. Please check your details and try again.";
-    }
-
-    /*
-     * LOGIN WITH SUPABASE
-     */
-    loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-
-      if (submitting) {
-        return;
-      }
-
-      clearError(true);
-
-      const email = emailInput.value.trim();
-      const password = passwordInput.value;
-
-      if (!email || !password) {
+      if (!data.user || !data.session) {
         showError(
-          "Missing information",
-          "Please enter both your email address and password."
+          "Login incomplete",
+          "Supabase did not return a valid session. Please try again."
         );
         return;
       }
 
-      if (!emailInput.validity.valid) {
-        showError(
-          "Invalid email",
-          "Please enter a valid email address."
-        );
-
-        emailInput.focus();
-        return;
-      }
-
-      submitting = true;
-      setLoading(true);
+      let status;
 
       try {
-        const { data, error } =
-          await supabase.auth.signInWithPassword({
-            email,
-            password
-          });
-
-        if (error) {
-          showError("Login failed", friendlyError(error));
-          return;
-        }
-
-        if (!data.user || !data.session) {
-          showError(
-            "Login incomplete",
-            "Supabase did not return a valid session. Please try again."
-          );
-          return;
-        }
-
-        showSuccess(
-          "Signed in",
-          "Login successful. Opening your typing test..."
-        );
-
-        /*
-         * NOTE:
-         * This redirects after authentication only.
-         * Subscription validation and typing-page protection
-         * have not yet been implemented.
-         */
-        window.location.replace("./typing-test.html");
-
+        status = await checkSubscription();
       } catch (error) {
-        console.error("Supabase login error:", error);
+        console.error("Subscription check failed:", error);
 
         showError(
-          "Connection problem",
-          "Could not contact Supabase. Verify your project URL, publishable key, and network connection."
+          "Subscription check failed",
+          "We could not verify your subscription. Please try again."
         );
-
-      } finally {
-        submitting = false;
-        setLoading(false);
+        return;
       }
-    });
 
-    /*
-     * RESTORE AN EXISTING SESSION
-     *
-     * This checks whether a session exists. It does not yet check
-     * whether the user's subscription is active.
-     */
-    async function checkExistingSession() {
-      try {
-        const { data, error } = await supabase.auth.getSession();
-
-        if (error) {
-          throw error;
-        }
-
-        if (data.session) {
-          window.location.replace("./typing-test.html");
-        }
-
-      } catch (error) {
-        console.error("Supabase session check failed:", error);
-
-        showError(
-          "Connection problem",
-          "Unable to verify your session. Please try signing in again."
-        );
+      if (!status.active) {
+        await handleExpiredSubscription();
+        return;
       }
+
+      window.location.replace("./dashboard.html");
+
+    } catch (error) {
+      console.error("Login error:", error);
+
+      showError(
+        "Connection problem",
+        "Could not contact Supabase. Verify your project URL, publishable key, and network connection."
+      );
+    } finally {
+      submitting = false;
+      setLoading(false);
     }
+  });
 
-    checkExistingSession();
-  </script>
-</body>
-</html>
+  /*
+   * RESTORE AN EXISTING SESSION
+   */
+  async function checkExistingSession() {
+    if (checkingSession) return;
+
+    checkingSession = true;
+
+    try {
+      const { data, error } = await supabase.auth.getSession();
+
+      if (error) throw error;
+
+      if (!data.session) return;
+
+      const status = await checkSubscription();
+
+      if (!status.active) {
+        await handleExpiredSubscription();
+        return;
+      }
+
+      window.location.replace("./dashboard.html");
+
+    } catch (error) {
+      console.error("Session or subscription check failed:", error);
+
+      showError(
+        "Verification problem",
+        "Unable to verify your session and subscription. Please try again."
+      );
+    } finally {
+      checkingSession = false;
+    }
+  }
+
+  checkExistingSession();
+</script>
