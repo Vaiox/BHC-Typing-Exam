@@ -435,6 +435,8 @@ button:disabled {
           <option value="16">16 px</option>
           <option value="18" selected>18 px</option>
           <option value="20">20 px</option>
+          <option value="20">22 px</option>
+          <option value="20">24 px</option>
         </select>
       </label>
 
@@ -578,7 +580,7 @@ const toggleTypingBtn = document.getElementById("toggleTypingBtn");
 const fontSizeSelect =
   document.getElementById("fontSizeSelect");
 
-const ALLOWED_FONT_SIZES = [16, 18, 20];
+const ALLOWED_FONT_SIZES = [16, 18, 20, 22, 24];
 
 function applyFontSize(size) {
   const fontSize = Number(size);
