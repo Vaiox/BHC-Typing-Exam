@@ -6,582 +6,270 @@
 <title>BHC Typing Test</title>
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  background:#080808;
-  color:#f0f0f0;
-  font-family:Arial,sans-serif;
-  min-height:100vh;
+  background:#080808;color:#f0f0f0;
+  font-family:Arial,sans-serif;min-height:100vh
 }
 
-.container{
-  width:100%;
-  max-width:1500px;
-  margin:auto;
-  padding:20px;
-}
-
-/* =========================
-   TOPBAR
-========================= */
+.container{width:100%;max-width:1500px;margin:auto;padding:20px}
 
 .topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  background:#121212;
-
-  border:1px solid #1f1f1f;
-
-  padding:16px 20px;
-
-  border-radius:16px;
-
-  margin-bottom:18px;
-
-  box-shadow:
-  0 8px 30px rgba(0,0,0,0.4);
+  display:flex;justify-content:space-between;align-items:center;
+  background:#121212;border:1px solid #1f1f1f;padding:16px 20px;
+  border-radius:16px;margin-bottom:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.4);
+  position:sticky;top:0;z-index:100
 }
 
-.top-left{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-
-.timer{
-  font-size:24px;
-  font-weight:700;
-  color:#00ffae;
-}
-
-.info{
-  color:#888;
-  font-size:14px;
-}
-
-/* =========================
-   PREVIEW
-========================= */
+.top-left{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.timer{font-size:24px;font-weight:700;color:#00ffae}
+.info{color:#888;font-size:14px}
 
 .preview{
-  background:#101010;
-
-  border:1px solid #1b1b1b;
-
-  border-radius:14px;
-
-  padding:15px 18px;
-
-  color:#777;
-
-  line-height:1.7;
-
-  margin-bottom:15px;
-
-  min-height:70px;
+  background:#101010;border:1px solid #1b1b1b;border-radius:14px;
+  padding:15px 18px;color:#777;line-height:1.7;margin-bottom:15px;
+  min-height:70px
 }
-
-/* =========================
-   TEXTAREA
-========================= */
 
 textarea{
-  width:100%;
-  height:1000px;
-
-  background:#0f0f0f;
-
-  border:1px solid #1f1f1f;
-
-  border-radius:16px;
-
-  padding:24px;
-
-  color:#f1f1f1;
-
-  font-size:16px;
-
-  line-height:1.9;
-
-  resize:none;
-
-  outline:none;
-
-  transition:0.25s;
-
-  caret-color:#00ffae;
+  width:100%;height:1000px;background:#0f0f0f;
+  border:1px solid #1f1f1f;border-radius:16px;padding:24px;
+  color:#f1f1f1;font-size:16px;line-height:1.9;resize:none;
+  outline:none;transition:.25s;caret-color:#00ffae
 }
 
-textarea:focus{
-  border-color:#00ffae;
-
-  box-shadow:
-  0 0 0 3px rgba(0,255,174,0.08);
-}
-
-/* =========================
-   BUTTONS
-========================= */
+textarea:focus{border-color:#00ffae;box-shadow:0 0 0 3px rgba(0,255,174,.08)}
 
 .buttons{
-  margin-top:18px;
-
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
+  margin-top:18px;display:flex;justify-content:center;
+  gap:12px;flex-wrap:wrap;position:sticky;top:70px;z-index:99
 }
 
 button{
-  border:none;
-
-  padding:12px 22px;
-
-  border-radius:12px;
-
-  background:
-  linear-gradient(
-  135deg,
-  #00ffae,
-  #00cfff
-  );
-
-  color:#000;
-
-  font-weight:700;
-
-  font-size:15px;
-
-  cursor:pointer;
-
-  transition:0.2s;
+  border:none;padding:12px 22px;border-radius:12px;
+  background:linear-gradient(135deg,#00ffae,#00cfff);
+  color:#000;font-weight:700;font-size:15px;cursor:pointer;
+  transition:.2s
 }
 
-button:hover{
+button:hover:not(:disabled){
   transform:translateY(-2px);
-
-  box-shadow:
-  0 8px 20px rgba(0,255,174,0.2);
+  box-shadow:0 8px 20px rgba(0,255,174,.2)
 }
 
-/* =========================
-   RESULT PANEL
-========================= */
+button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
 .result{
-  display:none;
-
-  margin-top:25px;
-
-  background:#111111;
-
-  border:1px solid #1c1c1c;
-
-  border-radius:16px;
-
-  padding:24px;
+  display:none;margin-top:25px;background:#111;
+  border:1px solid #1c1c1c;border-radius:16px;padding:24px
 }
 
 .stats{
-  display:grid;
-
-  grid-template-columns:
-  repeat(auto-fit,minmax(180px,1fr));
-
-  gap:15px;
-
-  margin-bottom:24px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;margin-bottom:24px
 }
 
 .card{
-  background:#171717;
-
-  border:1px solid #232323;
-
-  border-radius:14px;
-
-  padding:18px;
-
-  text-align:center;
+  background:#171717;border:1px solid #232323;
+  border-radius:14px;padding:18px;text-align:center
 }
 
-.card h3{
-  font-size:14px;
-  color:#888;
-  margin-bottom:10px;
-  font-weight:500;
-}
+.card h3{font-size:14px;color:#888;margin-bottom:10px;font-weight:500}
+.card p{font-size:28px;font-weight:700;color:#00ffae}
 
-.card p{
-  font-size:28px;
-  font-weight:700;
-  color:#00ffae;
-}
-
-/* =========================
-   COMPARISON
-========================= */
-
-.compare{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 
 .box{
-  background:#181818;
-
-  border:1px solid #252525;
-
-  border-radius:14px;
-
-  padding:18px;
-
-  line-height:1.9;
-
-  white-space:pre-wrap;
-
-  overflow-wrap:break-word;
+  background:#181818;border:1px solid #252525;border-radius:14px;
+  padding:18px;line-height:1.9;white-space:pre-wrap;
+  overflow-wrap:break-word
 }
 
-/* =========================
-   ERROR COLORS
-========================= */
-
-.red{
-  color:#ff5252;
-}
-
-.missing{
-  background:#ff9800;
-  color:#000;
-  padding:2px 4px;
-  border-radius:4px;
-}
-
-.extra{
-  background:#ffe600;
-  color:#000;
-  padding:2px 4px;
-  border-radius:4px;
-}
-
-.dim{
-  opacity:0.35;
-}
-
-/* =========================
-   WORD-STYLE DOCUMENT WORKSPACE
-   Continuous scrolling; no pagination
-========================= */
+.red{color:#ff5252}
+.missing{background:#ff9800;color:#000;padding:2px 4px;border-radius:4px}
+.extra{background:#ffe600;color:#000;padding:2px 4px;border-radius:4px}
+.dim{opacity:.35}
 
 :root{
-  --paper-bg:#ffffff;
+  --paper-bg:#fff;
   --paper-text:#202020;
-  --paper-edge:#d1d5db;
-  --ruler-bg:#f1f2f4;
-  --ruler-line:#858b93;
   --paper-font:Arial,sans-serif;
   --paper-font-size:16px;
   --paper-line-height:1.65;
   --paper-padding-x:64px;
-  --paper-padding-y:54px;
+  --paper-padding-y:54px
 }
 
 .typing-area{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:22px;
-  align-items:start;
-  margin-bottom:16px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:22px;align-items:start;margin-bottom:16px
 }
 
-.paper-column{
-  min-width:0;
-}
+.paper-column{min-width:0}
 
 .paper-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin:0 0 9px;
-  padding:0 2px;
-  color:#e8e8e8;
-  font-size:14px;
-  font-weight:700;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;margin:0 0 9px;padding:0 2px;
+  color:#e8e8e8;font-size:14px;font-weight:700
 }
 
 .paper-heading span{
-  color:#00ffae;
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:.07em;
-  text-transform:uppercase;
+  color:#00ffae;font-size:11px;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase
 }
 
-/* Gray Word-like workspace around the white document */
 .paper-workspace{
-  position:relative;
-  display:grid;
+  position:relative;display:grid;
   grid-template-columns:27px minmax(0,1fr);
   grid-template-rows:25px minmax(0,1fr);
-  height:800px;
-  min-height:400px;
-  overflow:hidden;
-  background:#dfe1e5;
-  border:1px solid #b9bdc4;
-  border-radius:3px;
-  box-shadow:0 7px 24px rgba(0,0,0,.28);
+  height:800px;min-height:400px;overflow:hidden;
+  background:#dfe1e5;border:1px solid #b9bdc4;
+  border-radius:3px;box-shadow:0 7px 24px rgba(0,0,0,.28)
 }
 
 .ruler-corner{
-  grid-column:1;
-  grid-row:1;
-  background:#e7e8eb;
-  border-right:1px solid #c6c9cf;
-  border-bottom:1px solid #c6c9cf;
+  grid-column:1;grid-row:1;background:#e7e8eb;
+  border-right:1px solid #c6c9cf;border-bottom:1px solid #c6c9cf
 }
 
 .horizontal-ruler{
-  grid-column:2;
-  grid-row:1;
-  position:relative;
-  overflow:hidden;
-  background-color:var(--ruler-bg);
-  border-bottom:1px solid #c6c9cf;
-  background-image:repeating-linear-gradient(to right,transparent 0,transparent 23px,#a3a8af 23px,#a3a8af 24px,transparent 24px,transparent 95px,#858b93 95px,#858b93 96px);
+  grid-column:2;grid-row:1;position:relative;overflow:hidden;
+  background-color:#f1f2f4;border-bottom:1px solid #c6c9cf;
+  background-image:repeating-linear-gradient(
+    to right,transparent 0,transparent 23px,#a3a8af 23px,
+    #a3a8af 24px,transparent 24px,transparent 95px,
+    #858b93 95px,#858b93 96px
+  )
 }
 
 .horizontal-ruler::before{
   content:"0          1          2          3          4          5          6          7          8";
-  position:absolute;
-  inset:1px 0 auto 5px;
-  white-space:pre;
-  color:#555b63;
-  font:9px/11px Arial,sans-serif;
-  letter-spacing:5px;
-  pointer-events:none;
+  position:absolute;inset:1px 0 auto 5px;white-space:pre;
+  color:#555b63;font:9px/11px Arial,sans-serif;
+  letter-spacing:5px;pointer-events:none
 }
 
 .vertical-ruler{
-  grid-column:1;
-  grid-row:2;
-  position:relative;
-  overflow:hidden;
-  background-color:var(--ruler-bg);
-  border-right:1px solid #c6c9cf;
-  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 23px,#a3a8af 23px,#a3a8af 24px,transparent 24px,transparent 95px,#858b93 95px,#858b93 96px);
+  grid-column:1;grid-row:2;position:relative;overflow:hidden;
+  background-color:#f1f2f4;border-right:1px solid #c6c9cf;
+  background-image:repeating-linear-gradient(
+    to bottom,transparent 0,transparent 23px,#a3a8af 23px,
+    #a3a8af 24px,transparent 24px,transparent 95px,
+    #858b93 95px,#858b93 96px
+  )
 }
 
 .vertical-ruler::before{
   content:"1\A\A\A\A2\A\A\A\A3\A\A\A\A4\A\A\A\A5\A\A\A\A6\A\A\A\A7\A\A\A\A8";
-  position:absolute;
-  top:3px;
-  left:5px;
-  white-space:pre;
-  color:#555b63;
-  font:9px/24px Arial,sans-serif;
-  pointer-events:none;
+  position:absolute;top:3px;left:5px;white-space:pre;
+  color:#555b63;font:9px/24px Arial,sans-serif;pointer-events:none
 }
 
-/* Both document surfaces share the same typography and margins. */
 .typing-area .preview,
 .typing-area textarea{
-  grid-column:2;
-  grid-row:2;
-  display:block;
-  width:100%;
-  min-width:0;
-  height:100%;
-  min-height:0;
-  margin:0;
-  border:0;
-  border-radius:0;
+  grid-column:2;grid-row:2;display:block;width:100%;min-width:0;
+  height:100%;min-height:0;margin:0;border:0;border-radius:0;
   padding:var(--paper-padding-y) var(--paper-padding-x);
-  background:var(--paper-bg);
-  color:var(--paper-text);
-  font-family:var(--paper-font);
-  font-size:var(--paper-font-size);
-  font-weight:400;
-  line-height:var(--paper-line-height);
-  letter-spacing:normal;
-  text-align:left;
-  white-space:pre-wrap;
-  overflow-wrap:break-word;
-  word-break:normal;
-  tab-size:4;
-  -moz-tab-size:4;
-  box-shadow:none;
-  scrollbar-width:thin;
-  scrollbar-color:#aeb3ba #f3f3f3;
+  background:var(--paper-bg);color:var(--paper-text);
+  font-family:var(--paper-font);font-size:var(--paper-font-size);
+  font-weight:400;line-height:var(--paper-line-height);
+  letter-spacing:normal;text-align:left;white-space:pre-wrap;
+  overflow-wrap:break-word;word-break:normal;
+  tab-size:4;-moz-tab-size:4;box-shadow:none;
+  scrollbar-width:thin;scrollbar-color:#aeb3ba #f3f3f3
 }
 
-.typing-area .preview{
-  overflow:auto;
-  color:var(--paper-text);
-  overflow-x:hidden;
-}
+.typing-area .preview{overflow:auto;color:var(--paper-text);overflow-x:hidden}
 
 .typing-area textarea{
-  resize:none;
-  outline:none;
-  overflow:auto;
-  caret-color:#1677d2;
-  transition:box-shadow .15s ease;
+  resize:none;outline:none;overflow:auto;caret-color:#1677d2;
+  transition:box-shadow .15s ease
 }
 
-.typing-area textarea:focus{
-  box-shadow:inset 0 0 0 2px rgba(22,119,210,.22);
-}
-
-.typing-area textarea::placeholder{
-  color:#777;
-  opacity:1;
-}
+.typing-area textarea:focus{box-shadow:inset 0 0 0 2px rgba(22,119,210,.22)}
+.typing-area textarea::placeholder{color:#777;opacity:1}
 
 .typing-area .preview::-webkit-scrollbar,
-.typing-area textarea::-webkit-scrollbar{
-  width:10px;
-}
+.typing-area textarea::-webkit-scrollbar{width:10px}
 
 .typing-area .preview::-webkit-scrollbar-track,
-.typing-area textarea::-webkit-scrollbar-track{
-  background:#f3f3f3;
-}
+.typing-area textarea::-webkit-scrollbar-track{background:#f3f3f3}
 
 .typing-area .preview::-webkit-scrollbar-thumb,
 .typing-area textarea::-webkit-scrollbar-thumb{
-  background:#b8bdc4;
-  border:2px solid #f3f3f3;
-  border-radius:8px;
+  background:#b8bdc4;border:2px solid #f3f3f3;border-radius:8px
 }
 
 .typing-area .preview::-webkit-scrollbar-thumb:hover,
-.typing-area textarea::-webkit-scrollbar-thumb:hover{
-  background:#9299a2;
-}
+.typing-area textarea::-webkit-scrollbar-thumb:hover{background:#9299a2}
 
-/* Preserve the existing hide-box class if used by the test UI. */
-.typing-area textarea.typing-box-hidden{
-  opacity:0 !important;
-}
+.typing-area textarea.typing-box-hidden{opacity:0!important}
 
 .wordCount{
-  margin-top:12px;
-  text-align:center;
-  color:#00ffa6;
-  font-size:18px;
-  font-weight:600;
+  margin-top:12px;text-align:center;color:#00ffa6;
+  font-size:18px;font-weight:600
+}
+
+.access-notice{
+  display:none;margin:14px 0;padding:14px 16px;
+  border:1px solid #593333;border-radius:10px;
+  background:#241818;color:#ffb0b0;
+  line-height:1.6;font-size:14px;overflow-wrap:anywhere
+}
+
+.access-notice.visible{display:block}
+
+.access-notice.success{
+  background:#10271f;border-color:#174432;color:#00ffae
 }
 
 @media(max-width:900px){
-  .typing-area{
-    grid-template-columns:minmax(0,1fr);
-    gap:20px;
-  }
-
-  .paper-workspace{
-    height:620px;
-  }
-
+  .typing-area{grid-template-columns:minmax(0,1fr);gap:20px}
+  .paper-workspace{height:620px}
   :root{
-    --paper-padding-x:34px;
-    --paper-padding-y:36px;
-    --paper-font-size:15px;
-    --paper-line-height:1.6;
+    --paper-padding-x:34px;--paper-padding-y:36px;
+    --paper-font-size:15px;--paper-line-height:1.6
   }
-
-  .compare{
-    grid-template-columns:1fr;
-  }
-
-  .topbar{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:12px;
-  }
+  .compare{grid-template-columns:1fr}
+  .topbar{flex-direction:column;align-items:flex-start;gap:12px}
 }
 
 @media(max-width:480px){
-  .container{
-    padding:12px;
-  }
-
+  .container{padding:12px}
   .paper-workspace{
     grid-template-columns:21px minmax(0,1fr);
-    grid-template-rows:22px minmax(0,1fr);
-    height:540px;
+    grid-template-rows:22px minmax(0,1fr);height:540px
   }
-
-  .horizontal-ruler::before{
-    letter-spacing:2px;
-  }
-
+  .horizontal-ruler::before{letter-spacing:2px}
   :root{
-    --paper-padding-x:22px;
-    --paper-padding-y:28px;
-    --paper-font-size:14px;
-    --paper-line-height:1.6;
+    --paper-padding-x:22px;--paper-padding-y:28px;
+    --paper-font-size:14px;--paper-line-height:1.6
   }
-
-  .paper-heading{
-    font-size:13px;
-  }
+  .paper-heading{font-size:13px}
 }
-
-
-/* =========================
-   STICKY TEST CONTROLS
-========================= */
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.buttons{
-  position:sticky;
-  top:70px;
-  z-index:99;
-}
-
 </style>
 </head>
-<body>
 
+<body>
 <div class="container">
 
   <div class="topbar">
-
     <div class="top-left">
       <div class="timer" id="timer">10:00</div>
-
-      <div class="info">
-        Strict Mode Enabled
-      </div>
+      <div class="info">Strict Mode Enabled</div>
     </div>
 
-    <div class="info" id="passageInfo">
-      Passage #1
-    </div>
-
+    <div class="info" id="passageInfo">Passage #1</div>
   </div>
 
-  <div class="typing-area">
+  <div id="accessNotice" class="access-notice" role="alert" aria-live="assertive"></div>
 
+  <div class="typing-area">
     <section class="paper-column">
       <div class="paper-heading">
-        <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px;">Original Passage</span>
+        <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px">Original Passage</span>
         <span>READ ONLY</span>
       </div>
 
@@ -589,13 +277,13 @@ button:hover{
         <div class="ruler-corner" aria-hidden="true"></div>
         <div class="horizontal-ruler" aria-hidden="true"></div>
         <div class="vertical-ruler" aria-hidden="true"></div>
-        <div class="preview" id="preview">Click Start Test to begin.</div>
+        <div class="preview" id="preview">Checking your account...</div>
       </div>
     </section>
 
     <section class="paper-column">
       <div class="paper-heading">
-        <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px;">Your Typing</span>
+        <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px">Your Typing</span>
         <span>STRICT MODE</span>
       </div>
 
@@ -603,98 +291,58 @@ button:hover{
         <div class="ruler-corner" aria-hidden="true"></div>
         <div class="horizontal-ruler" aria-hidden="true"></div>
         <div class="vertical-ruler" aria-hidden="true"></div>
-        <textarea
-          id="input"
-          spellcheck="false"
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          placeholder="Start typing here..."
-        ></textarea>
+        <textarea id="input" spellcheck="false" autocomplete="off"
+          autocorrect="off" autocapitalize="off"
+          placeholder="Start typing here..." disabled></textarea>
       </div>
     </section>
-
   </div>
 
   <div class="buttons">
-    <button onclick="prepareTest()">Start Test</button>
-
-    <button onclick="restartSame()">
-      Restart Same Passage
-    </button>
-
-    <button onclick="submitTest()">Submit</button>
-
-    <button id="toggleTypingBoxButton" onclick="toggleTypingBox()">
-      Hide Typing Box
-    </button>
+    <button id="startButton" type="button" disabled>Start Test</button>
+    <button id="restartButton" type="button" disabled>Restart Same Passage</button>
+    <button id="submitButton" type="button" disabled>Submit</button>
+    <button id="toggleTypingBoxButton" type="button" disabled>Hide Typing Box</button>
   </div>
 
-  <div id="wordCount" class="wordCount">
-  0 / 0 words
-  </div>
-
-  <div id="keystrokeCount" class="wordCount">
-  Keystrokes 0 / 0
-  </div>
+  <div id="wordCount" class="wordCount">0 / 0 words</div>
+  <div id="keystrokeCount" class="wordCount">Keystrokes 0 / 0</div>
 
   <div class="result" id="result">
-
     <div class="stats">
-
-      <div class="card">
-        <h3>Gross WPM</h3>
-        <p id="gross">0</p>
-      </div>
-
-      <div class="card">
-        <h3>Net WPM</h3>
-        <p id="net">0</p>
-      </div>
-
-      <div class="card">
-        <h3>Accuracy</h3>
-        <p id="accuracy">0%</p>
-      </div>
-
-      <div class="card">
-      <h3>Errors (400 Words)</h3>
-      <p id="errors400">0</p>
-      </div>
-
-      <div class="card">
-        <h3>Errors</h3>
-        <p id="errors">0</p>
-      </div>
-
-      <div class="card">
-        <h3>Score</h3>
-        <p id="score">0</p>
-      </div>
-
+      <div class="card"><h3>Gross WPM</h3><p id="gross">0</p></div>
+      <div class="card"><h3>Net WPM</h3><p id="net">0</p></div>
+      <div class="card"><h3>Accuracy</h3><p id="accuracy">0%</p></div>
+      <div class="card"><h3>Errors (400 Words)</h3><p id="errors400">0</p></div>
+      <div class="card"><h3>Errors</h3><p id="errors">0</p></div>
+      <div class="card"><h3>Score</h3><p id="score">0</p></div>
     </div>
 
     <div class="compare">
-
       <div class="box">
-        <h3>Original Passage</h3>
-        <br>
+        <h3>Original Passage</h3><br>
         <div id="originalBox"></div>
       </div>
-
       <div class="box">
-        <h3>Your Typing</h3>
-        <br>
+        <h3>Your Typing</h3><br>
         <div id="typedBox"></div>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
-<script>
+<script type="module">
+import { supabase } from "./js/supabase.js";
+
+/* ========================================================
+   CONFIGURATION AND STATE
+======================================================== */
+
+const DAILY_LIMIT = 10;
+const SUBSCRIPTION_MESSAGE =
+  "Your Subscription days are over Please reach admin to get more days.";
+const DAILY_LIMIT_MESSAGE =
+  "Daily test limit reached. Please come back tomorrow.";
 
 /* =========================
    PASSAGES
@@ -1078,8 +726,7 @@ t\“A hiba is a voluntary gift without consideration of property or the substan
 
 48:`\tThe appellants, who were Plaintiffs in O.S. No.5633/2000, aggrieved by the Judgment and decree dated 7.4.2014 passed by the I Addl. City Civil and Sessions Judge, Bangalore City (Trial Court), have preferred RFA No.916/2014 while RFA CROB No.8/2019 has been preferred by Defendant Nos.16 and 17. 2. For the sake of convenience, the parties are referred to by the rank held by them before the trial court. R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 PLEADINGS: 3. The Plaintiffs in the plaint have averred as under: 3.1. One Sri. NallaChikkaKempanna was the propositus. He had six sons viz., D.K.Subbaiah, D.K. Muniswamappa, D.K. Narayanaswamy, Pillappa, D.K. Nagappa and D.K.S. Kempanna, who succeeded to his estate as legal heirs and effected a partition of the properties on 12.01.1945 through a registered deed of Partition. At the time of said Partition, D.K. Pillaiah had also expired and, his branch was represented by and through his wife Smt. Kempamma, three sons viz., Parameshiva, P.Channakeshaviah, P.Siddappa and one daughter viz., Smt. Sharadamma.
 
-\t3.2. At the said Partition, a share in the property came to be allotted in favour of Siddappa, who is none other than the husband of 1st Defendant, father of 2nd to 7th Defendants, father-in-law of 1st Plaintiff and grandfather of 2nd Plaintiff.
-R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 3.3. In the said Partition, immovable property bearing No.23 situate at Susheela Road, Doddamavalli, Bangalore, which consisted of one Mangalore tiled house with a vacant site, abutting it was allotted to Sri. P. Siddappa, who later on converted the Mangalore tiled house into four tenements, as also took up construction of the main house and nine shop premises in the vacant site. The entire property has been described in Schedule-A to the plaint. 3.4. After severance of the joint family, said P.Siddappa began to conduct business in sale and repairs of musical instruments in the name and style of 'Saraswathi Music Store' at OTC Road, Balepet, which business flourished well.
+\t3.2. At the said Partition, a share in the property came to be allotted in favour of Siddappa, who is none other than the husband of 1st Defendant, father of 2nd to 7th Defendants, father-in-law of 1st Plaintiff and grandfather of 2nd Plaintiff. R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 3.3. In the said Partition, immovable property bearing No.23 situate at Susheela Road, Doddamavalli, Bangalore, which consisted of one Mangalore tiled house with a vacant site, abutting it was allotted to Sri. P. Siddappa, who later on converted the Mangalore tiled house into four tenements, as also took up construction of the main house and nine shop premises in the vacant site. The entire property has been described in Schedule-A to the plaint. 3.4. After severance of the joint family, said P.Siddappa began to conduct business in sale and repairs of musical instruments in the name and style of 'Saraswathi Music Store' at OTC Road, Balepet, which business flourished well.
 
 \t3.5. Siddappa after having acquired Schedule 'A' property as his share rented out the same to various tenants on a monthly rental basis and was deriving handsome income. He was also deriving income from the Music Store business. That Sri.P.Siddappa during R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 his lifetime on 19.11.1970 from and out of the income derived from rentals, acquired a vacant site bearing No.18/1, Magadi Main Road, Agrahara Dasarahalli, Bangalore -76, in the name of his wife, 1st Defendant through a registered instrument of sale. The said property is described in Schedule-B to the plaint.
 
@@ -1087,352 +734,423 @@ R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 3.3. In the said Partition, im
 
 };
 
-/* =========================
-   VARIABLES
-========================= */
-
-let currentPassage = "";
-let currentId = 0;
-
-let timerStarted = false;
-let testSubmitted = false;
-let timeLeft = 600;
-let interval;
-let totalWords = 0;
-
 const input = document.getElementById("input");
 const timer = document.getElementById("timer");
 const preview = document.getElementById("preview");
+const accessNotice = document.getElementById("accessNotice");
+const startButton = document.getElementById("startButton");
+const restartButton = document.getElementById("restartButton");
+const submitButton = document.getElementById("submitButton");
+const toggleTypingBoxButton = document.getElementById("toggleTypingBoxButton");
 
-/* =========================
-   START TEST
-========================= */
+let currentPassage = "";
+let currentId = 0;
+let timerStarted = false;
+let testSubmitted = false;
+let submissionInProgress = false;
+let accessGranted = false;
+let subscriptionExpiry = null;
+let timeLeft = 600;
+let interval = null;
+let totalWords = 0;
+let currentUser = null;
 
-function prepareTest(){
+/* ========================================================
+   UI HELPERS
+======================================================== */
 
-  clearInterval(interval);
+function showNotice(message, success = false) {
+  accessNotice.textContent = message;
+  accessNotice.classList.toggle("success", success);
+  accessNotice.classList.add("visible");
+}
+
+function clearNotice() {
+  accessNotice.textContent = "";
+  accessNotice.classList.remove("visible", "success");
+}
+
+function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function countKeystrokes(text) {
+  return [...text].length;
+}
+
+function countWords(text) {
+  const cleaned = text.replace(/\t/g, " ").replace(/\n/g, " ").trim();
+  return cleaned ? cleaned.split(/\s+/).filter(Boolean).length : 0;
+}
+
+function updateCounters() {
+  document.getElementById("wordCount").textContent =
+    `${countWords(input.value)} / ${totalWords} words`;
+
+  document.getElementById("keystrokeCount").textContent =
+    `Keystrokes ${countKeystrokes(input.value)} / ${countKeystrokes(currentPassage)}`;
+}
+
+function setTypingControlsEnabled(enabled) {
+  input.disabled = !enabled;
+  startButton.disabled = !enabled;
+  restartButton.disabled = !enabled;
+  toggleTypingBoxButton.disabled = !enabled;
+  submitButton.disabled = !enabled || submissionInProgress;
+}
+
+function stopTimer() {
+  if (interval !== null) {
+    clearInterval(interval);
+    interval = null;
+  }
+}
+
+/* ========================================================
+   AUTHENTICATION AND SUBSCRIPTION GUARD
+======================================================== */
+
+async function signOutAndRedirect(message) {
+  accessGranted = false;
+  setTypingControlsEnabled(false);
+  stopTimer();
+
+  try {
+    await supabase.auth.signOut();
+  } catch (error) {
+    console.error("Sign-out failed:", error);
+  }
+
+  const destination = message === "expired"
+    ? "./index.html?status=subscription_expired"
+    : "./index.html";
+
+  window.location.replace(destination);
+}
+
+async function initializeAccess() {
+  try {
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    if (!sessionData.session) {
+      window.location.replace("./index.html");
+      return;
+    }
+
+    currentUser = sessionData.session.user;
+
+    const { data, error } = await supabase.rpc("ensure_my_subscription");
+
+    if (error) throw error;
+
+    const subscription = Array.isArray(data) ? data[0] : data;
+
+    if (!subscription) {
+      throw new Error("Subscription information is unavailable.");
+    }
+
+    subscriptionExpiry = new Date(subscription.subscription_expires_at);
+
+    if (
+      subscription.is_expired ||
+      subscriptionExpiry.getTime() <= Date.now()
+    ) {
+      await signOutAndRedirect("expired");
+      return;
+    }
+
+    // Count today's accepted submissions in India Standard Time.
+    // This is for the interface only; the database function enforces the limit.
+    const bounds = getIndiaDayBounds();
+
+    const { count, error: countError } = await supabase
+      .from("test_results")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", currentUser.id)
+      .gte("created_at", bounds.start)
+      .lt("created_at", bounds.end);
+
+    if (countError) throw countError;
+
+    if ((count || 0) >= DAILY_LIMIT) {
+      showNotice(DAILY_LIMIT_MESSAGE);
+      preview.textContent = DAILY_LIMIT_MESSAGE;
+      return;
+    }
+
+    accessGranted = true;
+    setTypingControlsEnabled(true);
+    prepareTest();
+  } catch (error) {
+    console.error("Access verification failed:", error);
+    setTypingControlsEnabled(false);
+    preview.textContent = "Unable to verify your account.";
+    showNotice(
+      "Unable to verify your subscription. Check your connection and refresh the page."
+    );
+  }
+}
+
+function getIndiaDayBounds() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+
+  const part = type => parts.find(item => item.type === type).value;
+  const day = `${part("year")}-${part("month")}-${part("day")}`;
+  const start = new Date(`${day}T00:00:00+05:30`);
+  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+
+  return {
+    start: start.toISOString(),
+    end: end.toISOString()
+  };
+}
+
+/* ========================================================
+   PREPARE TEST
+======================================================== */
+
+function prepareTest() {
+  if (!accessGranted || !currentUser || testSubmitted && submissionInProgress) {
+    return;
+  }
+
+  stopTimer();
 
   timer.textContent = "10:00";
   timeLeft = 600;
   timerStarted = false;
   testSubmitted = false;
+  submissionInProgress = false;
   input.disabled = false;
+  submitButton.disabled = false;
 
-  const submitButton =
-  document.querySelector('button[onclick="submitTest()"]');
+  clearNotice();
 
-  if(submitButton) submitButton.disabled = false;
+  const history = JSON.parse(localStorage.getItem("recentPassages") || "[]");
+  const ids = Object.keys(passages).filter(id => !history.includes(id));
+  const usable = ids.length ? ids : Object.keys(passages);
 
-  input.value = "";
-
-  let history = JSON.parse(
-    localStorage.getItem("recentPassages")
-  ) || [];
-
-  const ids = Object.keys(passages)
-  .filter(id => !history.includes(id));
-
-  const usable = ids.length
-  ? ids
-  : Object.keys(passages);
-
-  currentId = usable[
-    Math.floor(Math.random()*usable.length)
-  ];
-
+  currentId = usable[Math.floor(Math.random() * usable.length)];
   currentPassage = passages[currentId];
 
   history.push(currentId);
+  if (history.length > 25) history.shift();
 
-  if(history.length > 25){
-    history.shift();
-  }
+  localStorage.setItem("recentPassages", JSON.stringify(history));
 
-  localStorage.setItem(
-    "recentPassages",
-    JSON.stringify(history)
-  );
+  preview.textContent = currentPassage;
+  document.getElementById("passageInfo").textContent = "Passage #" + currentId;
+  document.getElementById("result").style.display = "none";
 
-  /* Show the COMPLETE passage — do not truncate it */
-  preview.textContent =
-  currentPassage;
-
-  document.getElementById("passageInfo")
-  .textContent = "Passage #" + currentId;
-
-  document.getElementById("result")
-  .style.display = "none";
-
+  totalWords = countWords(currentPassage);
+  input.value = "";
+  updateCounters();
   input.focus();
+}
 
-  totalWords =
-  currentPassage
-  .replace(/\t/g,' ')
-  .replace(/\n/g,' ')
-  .trim()
-  .split(/\s+/)
-  .filter(Boolean)
-  .length;
+function restartSame() {
+  if (!accessGranted || submissionInProgress) return;
+
+  stopTimer();
+  timer.textContent = "10:00";
+  timeLeft = 600;
+  timerStarted = false;
+  testSubmitted = false;
+  input.disabled = false;
+  submitButton.disabled = false;
+  input.value = "";
+
+  clearNotice();
 
   document.getElementById("wordCount").textContent =
-  `0 / ${totalWords} words`;
+    `0 / ${totalWords} words`;
 
   document.getElementById("keystrokeCount").textContent =
-  `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
+    `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
+
+  document.getElementById("result").style.display = "none";
+  input.focus();
 }
 
-/* =========================
+/* ========================================================
    TIMER
-========================= */
+======================================================== */
 
-function startTimer(){
+function startTimer() {
+  if (interval !== null || testSubmitted) return;
 
   interval = setInterval(() => {
-
     timeLeft--;
 
-    let min = Math.floor(timeLeft/60);
-    let sec = timeLeft%60;
+    const min = Math.floor(timeLeft / 60);
+    const sec = timeLeft % 60;
 
     timer.textContent =
-    String(min).padStart(2,'0') +
-    ':' +
-    String(sec).padStart(2,'0');
+      String(min).padStart(2, "0") + ":" +
+      String(sec).padStart(2, "0");
 
-    if(timeLeft <= 0){
-      clearInterval(interval);
+    if (timeLeft <= 0) {
+      stopTimer();
       input.disabled = true;
-
-        submitTest();
+      submitTest();
     }
-
-  },1000);
-
+  }, 1000);
 }
 
-/* =========================
+/* ========================================================
    STRICT KEYS
-========================= */
+======================================================== */
 
-input.addEventListener("keydown",e=>{
+input.addEventListener("keydown", event => {
+  if (!accessGranted || testSubmitted || submissionInProgress) {
+    event.preventDefault();
+    return;
+  }
 
-  if([
+  if ([
     "Backspace",
     "ArrowLeft",
     "ArrowRight",
     "ArrowUp",
     "ArrowDown"
-  ].includes(e.key)){
-    e.preventDefault();
+  ].includes(event.key)) {
+    event.preventDefault();
   }
 
-  if(e.ctrlKey || e.metaKey){
-    e.preventDefault();
+  if (event.ctrlKey || event.metaKey) {
+    event.preventDefault();
   }
 
-  if(e.key === "Tab"){
-
-    e.preventDefault();
+  if (event.key === "Tab") {
+    event.preventDefault();
 
     const start = input.selectionStart;
     const end = input.selectionEnd;
 
     input.value =
-    input.value.substring(0,start) +
-    "\t" +
-    input.value.substring(end);
+      input.value.substring(0, start) +
+      "\t" +
+      input.value.substring(end);
 
-    input.selectionStart =
-    input.selectionEnd = start + 1;
+    input.selectionStart = input.selectionEnd = start + 1;
+    input.dispatchEvent(new Event("input", { bubbles: true }));
   }
-
 });
 
-/* =========================
-   DISABLE PASTE
-========================= */
+input.addEventListener("paste", event => event.preventDefault());
 
-input.addEventListener("paste",e=>{
-  e.preventDefault();
-});
+input.addEventListener("input", () => {
+  if (!accessGranted || testSubmitted || submissionInProgress) return;
 
-/* =========================
-   START TIMER ON TYPE
-========================= */
-
-input.addEventListener("input",()=>{
-
-  if(!timerStarted){
+  if (!timerStarted && input.value.length > 0) {
     timerStarted = true;
     startTimer();
   }
 
-  const typedWords =
-  input.value.trim()
-  ? input.value.trim().split(/\s+/).length
-  : 0;
-
-  document.getElementById("wordCount").textContent =
-  `${typedWords} / ${totalWords} words`;
-
-  const typedKeystrokes =
-    countKeystrokes(input.value);
-
-  const passageKeystrokes =
-    countKeystrokes(currentPassage);
-
-  document.getElementById("keystrokeCount").textContent =
-    `Keystrokes ${typedKeystrokes} / ${passageKeystrokes}`;
-
+  updateCounters();
 });
 
-/* =========================
-   TOKENIZER
-========================= */
+/* ========================================================
+   TOKENIZER AND ALIGNMENT
+======================================================== */
 
-function tokenize(text){
-
+function tokenize(text) {
   text = text
-    .replace(/\r/g,'')
-    .replace(/[ ]+\n/g,'\n')
-    .replace(/\n{3,}/g,'\n\n')
+    .replace(/\r/g, "")
+    .replace(/[ ]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
     .trim();
 
   return text.match(
     /\t|\n+|[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*|[.,!?;:%()[\]]/g
   ) || [];
-
 }
 
-/* =========================
-   ALIGNMENT
-========================= */
-
-function alignAndCount(original,typed){
-
+function alignAndCount(original, typed) {
   const a = tokenize(original);
   const b = tokenize(typed);
-
   const m = a.length;
   const n = b.length;
 
-  const dp = Array.from(
-    {length:m+1},
-    ()=>Array(n+1).fill(0)
-  );
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
 
-  for(let i=0;i<=m;i++){
-    dp[i][0] = i;
-  }
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
 
-  for(let j=0;j<=n;j++){
-    dp[0][j] = j;
-  }
-
-  for(let i=1;i<=m;i++){
-
-    for(let j=1;j<=n;j++){
-
-      if(a[i-1] === b[j-1]){
-
-        dp[i][j] = dp[i-1][j-1];
-
-      }else{
-
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (a[i - 1] === b[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
         dp[i][j] = Math.min(
-          dp[i-1][j],
-          dp[i][j-1],
-          dp[i-1][j-1]
+          dp[i - 1][j],
+          dp[i][j - 1],
+          dp[i - 1][j - 1]
         ) + 1;
-
       }
-
     }
-
   }
 
   let i = m;
   let j = n;
-
   const alignedA = [];
   const alignedB = [];
 
-  while(i>0 || j>0){
-
-    if(
-      i>0 &&
-      j>0 &&
-      a[i-1] === b[j-1]
-    ){
-
-      alignedA.unshift(a[i-1]);
-      alignedB.unshift(b[j-1]);
-
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && a[i - 1] === b[j - 1]) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
       i--;
       j--;
-
-    }else if(
-      i>0 &&
-      j>0 &&
-      dp[i][j] === dp[i-1][j-1] + 1
-    ){
-
-      alignedA.unshift(a[i-1]);
-      alignedB.unshift(b[j-1]);
-
+    } else if (i > 0 && j > 0 &&
+               dp[i][j] === dp[i - 1][j - 1] + 1) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
       i--;
       j--;
-
-    }else if(
-      i>0 &&
-      dp[i][j] === dp[i-1][j] + 1
-    ){
-
-      alignedA.unshift(a[i-1]);
+    } else if (i > 0 && dp[i][j] === dp[i - 1][j] + 1) {
+      alignedA.unshift(a[i - 1]);
       alignedB.unshift("∅");
-
       i--;
-
-    }else{
-
+    } else {
       alignedA.unshift("∅");
-      alignedB.unshift(b[j-1]);
-
+      alignedB.unshift(b[j - 1]);
       j--;
-
     }
-
   }
 
-  return {
-    alignedA,
-    alignedB
-  };
-
+  return { alignedA, alignedB };
 }
 
-function submitTest(){
+function formatToken(token) {
+  if (token === "\n" || token === "\n\n") return "<br><br>";
+  if (token === "\t") return "&nbsp;&nbsp;&nbsp;&nbsp;";
+  return escapeHTML(token) + " ";
+}
 
-  if(testSubmitted) return;
+/* ========================================================
+   CALCULATE RESULT
+   Keep existing score formulas.
+======================================================== */
 
-  testSubmitted = true;
-  clearInterval(interval);
-  input.disabled = true;
-
-  const submitButton =
-  document.querySelector('button[onclick="submitTest()"]');
-
-  if(submitButton) submitButton.disabled = true;
-
+function calculateResult() {
   const typed = input.value;
 
-  const {
-    alignedA,
-    alignedB
-  } = alignAndCount(
-    currentPassage,
-    typed
-  );
+  const { alignedA, alignedB } =
+    alignAndCount(currentPassage, typed);
 
   let correct = 0;
   let errors400 = 0;
@@ -1442,126 +1160,56 @@ function submitTest(){
   let originalHTML = "";
   let typedHTML = "";
 
-  for(let i=0;i<alignedA.length;i++){
-
+  for (let i = 0; i < alignedA.length; i++) {
     const o = alignedA[i];
     const t = alignedB[i];
 
-    if(o === t){
-
+    if (o === t) {
       correct++;
 
-      if(
-        o !== "∅" &&
-        /^[A-Za-z0-9]+$/.test(o)
-      ){
+      if (o !== "∅" && /^[A-Za-z0-9]+$/.test(o)) {
         wordCounter++;
       }
 
       originalHTML += formatToken(o);
       typedHTML += formatToken(t);
-
-    }else{
-
-      // Ignore paragraph separators and tabs
-      if(
-        (
-          o === "\n" ||
-          o === "\n\n"
-        ) &&
-        t === "∅"
-      ){
+    } else {
+      if ((o === "\n" || o === "\n\n") && t === "∅") {
         continue;
       }
 
       errors++;
 
-      if(wordCounter < 400){
-        errors400++;
-      }
+      if (wordCounter < 400) errors400++;
 
-      if(
-        o !== "∅" &&
-        /^[A-Za-z0-9]+$/.test(o)
-      ){
+      if (o !== "∅" && /^[A-Za-z0-9]+$/.test(o)) {
         wordCounter++;
       }
 
-      if(o === "∅"){
-
-        originalHTML +=
-        `<span class="dim">∅</span> `;
-
-        typedHTML +=
-        `<span class="extra">${escapeHTML(t)}</span> `;
-
-      }else if(t === "∅"){
-
-        originalHTML +=
-        `<span class="missing">${escapeHTML(o)}</span> `;
-
-        typedHTML +=
-        `<span class="dim">∅</span> `;
-
-      }else{
-
-        originalHTML +=
-        `<span class="red">${escapeHTML(o)}</span> `;
-
-        typedHTML +=
-        `<span class="red">${escapeHTML(t)}</span> `;
-
+      if (o === "∅") {
+        originalHTML += `<span class="dim">∅</span> `;
+        typedHTML += `<span class="extra">${escapeHTML(t)}</span> `;
+      } else if (t === "∅") {
+        originalHTML += `<span class="missing">${escapeHTML(o)}</span> `;
+        typedHTML += `<span class="dim">∅</span> `;
+      } else {
+        originalHTML += `<span class="red">${escapeHTML(o)}</span> `;
+        typedHTML += `<span class="red">${escapeHTML(t)}</span> `;
       }
-
     }
-
   }
 
   const accuracy =
-  ((correct / alignedA.length) * 100 || 0)
-  .toFixed(2);
+    ((correct / alignedA.length) * 100 || 0).toFixed(2);
 
-  const minutes =
-  (600 - timeLeft) / 60 || 1;
+  const elapsedSeconds = Math.max(0, 600 - timeLeft);
+  const minutes = elapsedSeconds / 60 || 1;
 
-  const gross =
-  ((typed.length / 5) / minutes)
-  .toFixed(2);
+  const gross = ((typed.length / 5) / minutes).toFixed(2);
+  const net = (gross * (accuracy / 100)).toFixed(2);
 
-  const net =
-  (gross * (accuracy / 100))
-  .toFixed(2);
-
-  const score400 =
-  Math.max(
-    0,
-    20 - (errors400 * 0.25)
-  ).toFixed(2);
-
-  const score =
-  Math.max(
-    0,
-    20 - (errors * 0.25)
-  ).toFixed(2);
-
-  document.getElementById("score").innerHTML =
-  `${score400} <span style="font-size:14px;color:#888;">(400)</span><br>
-  ${score} <span style="font-size:14px;color:#888;">(Total)</span>`;
-
-  document.getElementById("gross")
-  .textContent = gross;
-
-  document.getElementById("net")
-  .textContent = net;
-
-  document.getElementById("accuracy")
-  .textContent = accuracy + "%";
-
-  document.getElementById("errors400")
-  .textContent = errors400;
-
-  document.getElementById("errors")
-  .textContent = errors;
+  const score400 = Math.max(0, 20 - errors400 * 0.25).toFixed(2);
+  const score = Math.max(0, 20 - errors * 0.25).toFixed(2);
 
   originalHTML = originalHTML
     .replace(/\s+([.,!?;:%)\]])/g, "$1")
@@ -1573,107 +1221,235 @@ function submitTest(){
     .replace(/([(\[])\s+/g, "$1")
     .replace(/\s+'\s+/g, "'");
 
-  document.getElementById("originalBox")
-  .innerHTML = originalHTML;
-
-  document.getElementById("typedBox")
-  .innerHTML = typedHTML;
-
-  document.getElementById("result")
-  .style.display = "block";
-
+  return {
+    gross: Number(gross),
+    net: Number(net),
+    accuracy: Number(accuracy),
+    errors400,
+    errors,
+    score400: Number(score400),
+    score: Number(score),
+    durationSeconds: elapsedSeconds,
+    wordsTyped: countWords(typed),
+    keystrokes: countKeystrokes(typed),
+    originalHTML,
+    typedHTML
+  };
 }
 
-/* =========================
-   HELPERS
-========================= */
-  
-function countKeystrokes(text){
-  return [...text].length;
-}
+/* ========================================================
+   SUBMIT TO DATABASE
+   Results remain hidden until Supabase accepts the result.
+======================================================== */
 
-function escapeHTML(text){
-
-  return text
-  .replace(/&/g,'&amp;')
-  .replace(/</g,'&lt;')
-  .replace(/>/g,'&gt;');
-
-}
-
-function formatToken(token){
-
-  if(token === "\n" || token === "\n\n"){
-    return "<br><br>";
+async function submitTest() {
+  if (!accessGranted || !currentUser || testSubmitted || submissionInProgress) {
+    return;
   }
 
-  if(token === "\t"){
-    return "&nbsp;&nbsp;&nbsp;&nbsp;";
+  if (!currentPassage) {
+    showNotice("Please start a test first.");
+    return;
   }
 
-  return escapeHTML(token) + " ";
+  submissionInProgress = true;
+  stopTimer();
+  input.disabled = true;
+  startButton.disabled = true;
+  restartButton.disabled = true;
+  submitButton.disabled = true;
+  toggleTypingBoxButton.disabled = true;
 
+  document.getElementById("result").style.display = "none";
+  clearNotice();
+  showNotice("Submitting your result securely...");
+
+  try {
+    // Recheck the session immediately before submission.
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    if (!sessionData.session) {
+      await signOutAndRedirect("login");
+      return;
+    }
+
+    // Recheck subscription. The database submission function also enforces it.
+    const { data: subscriptionData, error: subscriptionError } =
+      await supabase.rpc("ensure_my_subscription");
+
+    if (subscriptionError) throw subscriptionError;
+
+    const subscription = Array.isArray(subscriptionData)
+      ? subscriptionData[0]
+      : subscriptionData;
+
+    if (
+      !subscription ||
+      subscription.is_expired ||
+      new Date(subscription.subscription_expires_at).getTime() <= Date.now()
+    ) {
+      await signOutAndRedirect("expired");
+      return;
+    }
+
+    // Calculate locally using the existing scoring formulas.
+    const result = calculateResult();
+
+    // Atomic database enforcement: subscription, quota, save and retention.
+    const { data, error } = await supabase.rpc("submit_typing_result", {
+      p_passage_label: `Passage #${currentId}`,
+      p_gross_wpm: result.gross,
+      p_net_wpm: result.net,
+      p_accuracy: result.accuracy,
+      p_errors_400: result.errors400,
+      p_errors_total: result.errors,
+      p_score_400: result.score400,
+      p_score_total: result.score,
+      p_duration_seconds: result.durationSeconds,
+      p_words_typed: result.wordsTyped,
+      p_keystrokes: result.keystrokes
+    });
+
+    if (error) {
+      const message = String(error.message || "").toUpperCase();
+
+      if (message.includes("SUBSCRIPTION_EXPIRED")) {
+        await signOutAndRedirect("expired");
+        return;
+      }
+
+      if (message.includes("DAILY_LIMIT_REACHED")) {
+        showNotice(DAILY_LIMIT_MESSAGE);
+        startButton.disabled = true;
+        return;
+      }
+
+      if (
+        message.includes("AUTHENTICATION_REQUIRED") ||
+        message.includes("JWT") ||
+        message.includes("NOT AUTHENTICATED")
+      ) {
+        await signOutAndRedirect("login");
+        return;
+      }
+
+      if (message.includes("SUBSCRIPTION_NOT_INITIALIZED")) {
+        showNotice(
+          "Your subscription could not be initialized. Please return to the dashboard and try again."
+        );
+        return;
+      }
+
+      console.error("Result submission failed:", error);
+
+      showNotice(
+        "Your result could not be saved. It has not been accepted. Check your connection and try submitting again."
+      );
+      return;
+    }
+
+    const accepted = data?.accepted === true;
+
+    if (!accepted) {
+      showNotice("The database did not confirm acceptance. Your results remain hidden.");
+      return;
+    }
+
+    // Only reveal the result after database acceptance.
+    document.getElementById("gross").textContent = result.gross.toFixed(2);
+    document.getElementById("net").textContent = result.net.toFixed(2);
+    document.getElementById("accuracy").textContent =
+      result.accuracy.toFixed(2) + "%";
+    document.getElementById("errors400").textContent = result.errors400;
+    document.getElementById("errors").textContent = result.errors;
+
+    document.getElementById("score").innerHTML =
+      `${result.score400.toFixed(2)} <span style="font-size:14px;color:#888;">(400)</span><br>
+       ${result.score.toFixed(2)} <span style="font-size:14px;color:#888;">(Total)</span>`;
+
+    document.getElementById("originalBox").innerHTML = result.originalHTML;
+    document.getElementById("typedBox").innerHTML = result.typedHTML;
+    document.getElementById("result").style.display = "block";
+
+    testSubmitted = true;
+    showNotice(
+      `Result saved successfully. ${data.tests_used_today} of ${DAILY_LIMIT} tests used today.`,
+      true
+    );
+
+    if (Number(data.tests_used_today) >= DAILY_LIMIT) {
+      startButton.disabled = true;
+      restartButton.disabled = true;
+      showNotice(
+        `${DAILY_LIMIT_MESSAGE} Your last accepted result has been saved.`,
+        true
+      );
+    } else {
+      startButton.disabled = false;
+      restartButton.disabled = false;
+    }
+
+    // Refresh the dashboard's statistics on the next visit.
+  } catch (error) {
+    console.error("Submission error:", error);
+    showNotice(
+      "An unexpected error occurred. Your result has not been confirmed as saved."
+    );
+  } finally {
+    submissionInProgress = false;
+    submitButton.disabled = !accessGranted || testSubmitted;
+    toggleTypingBoxButton.disabled = !accessGranted;
+  }
 }
 
-/* =========================
+/* ========================================================
    HIDE / SHOW TYPING BOX
-========================= */
+======================================================== */
 
-function toggleTypingBox(){
-  const button = document.getElementById("toggleTypingBoxButton");
-  input.classList.toggle("typing-box-hidden");
+function toggleTypingBox() {
+  const hidden = input.classList.toggle("typing-box-hidden");
 
-  const hidden = input.classList.contains("typing-box-hidden");
-  button.textContent = hidden ? "Show Typing Box" : "Hide Typing Box";
+  toggleTypingBoxButton.textContent =
+    hidden ? "Show Typing Box" : "Hide Typing Box";
 
-  if(hidden){
-    input.focus();
-  }
+  if (hidden) input.focus();
 }
 
-/* =========================
-   RESTART SAME
-========================= */
-
-function restartSame(){
-
-  clearInterval(interval);
-
-  timer.textContent = "10:00";
-
-  timeLeft = 600;
-
-  timerStarted = false;
-
-  input.value = "";
-
-  document.getElementById("wordCount").textContent =
-  `0 / ${totalWords} words`;
-
-  document.getElementById("keystrokeCount").textContent =
-  `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
-
-  document.getElementById("result")
-  .style.display = "none";
-
-  input.focus();
-
-}
-
-/* =========================
+/* ========================================================
    DISABLE RIGHT CLICK
-========================= */
+======================================================== */
 
-window.addEventListener("contextmenu",e=>{
-  e.preventDefault();
+window.addEventListener("contextmenu", event => event.preventDefault());
+
+/* ========================================================
+   BUTTON HANDLERS
+======================================================== */
+
+startButton.addEventListener("click", prepareTest);
+restartButton.addEventListener("click", restartSame);
+submitButton.addEventListener("click", submitTest);
+toggleTypingBoxButton.addEventListener("click", toggleTypingBox);
+
+/* ========================================================
+   AUTH STATE
+======================================================== */
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT" && accessGranted) {
+    accessGranted = false;
+    window.location.replace("./index.html");
+  }
 });
 
-/* =========================
-   AUTO LOAD
-========================= */
+/* ========================================================
+   INITIALIZE
+======================================================== */
 
-prepareTest();
-
+setTypingControlsEnabled(false);
+initializeAccess();
 </script>
 
 </body>
