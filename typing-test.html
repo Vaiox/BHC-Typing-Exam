@@ -4,52 +4,297 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BHC Typing Test</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#080808;color:#f0f0f0;font-family:Arial,sans-serif;min-height:100vh}
-.container{max-width:1500px;margin:auto;padding:20px}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;background:#121212;border:1px solid #1f1f1f;padding:12px 16px;border-radius:12px;margin-bottom:10px;position:sticky;top:0;z-index:10}
-.top-left{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
-.timer{font-size:24px;font-weight:700;color:#00ffae}
-.info{color:#888;font-size:14px}
-.typing-area{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:15px}
-.preview,textarea{width:100%;height:800px;min-width:0;background:#101010;border:1px solid #1b1b1b;border-radius:14px;padding:20px 22px;color:#ddd;font:16px/1.55 Arial,sans-serif;text-align:justify;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;scrollbar-width:thin;scrollbar-color:#555 #101010}
-.preview{color:#aaa}
-.preview::-webkit-scrollbar,textarea::-webkit-scrollbar{width:8px}
-.preview::-webkit-scrollbar-thumb,textarea::-webkit-scrollbar-thumb{background:#555;border-radius:10px}
-textarea{background:#0f0f0f;color:#f1f1f1;resize:none;outline:none;caret-color:#00ffae}
-textarea:focus{border-color:#00ffae;box-shadow:0 0 0 3px #00ffae14}
-textarea:disabled{opacity:.75}
-.typing-box-hidden{opacity:0!important}
-.buttons{margin:18px 0;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:sticky;top:70px;z-index:9}
-button{border:0;padding:12px 22px;border-radius:12px;background:linear-gradient(135deg,#00ffae,#00cfff);color:#000;font-weight:700;font-size:15px;cursor:pointer}
-button:disabled{opacity:.5;cursor:not-allowed}
-.access-notice{display:none;margin:14px 0;padding:14px 16px;border:1px solid #593333;border-radius:10px;background:#241818;color:#ffb0b0;line-height:1.6;font-size:14px;overflow-wrap:anywhere}
-.access-notice.visible{display:block}
-.result{display:none;margin-top:25px;background:#111;border:1px solid #1c1c1c;border-radius:16px;padding:24px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-bottom:24px}
-.card{background:#171717;border:1px solid #232323;border-radius:14px;padding:18px;text-align:center}
-.card h3{font-size:14px;color:#888;margin-bottom:10px;font-weight:500}
-.card p{font-size:28px;font-weight:700;color:#00ffae}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.box{background:#181818;border:1px solid #252525;border-radius:14px;padding:18px;line-height:1.9;white-space:pre-wrap;overflow-wrap:break-word;min-width:0}
-.red{color:#ff5252}
-.missing{background:#ff9800;color:#000;padding:2px 4px;border-radius:4px}
-.extra{background:#ffe600;color:#000;padding:2px 4px;border-radius:4px}
-.dim{opacity:.35}
-.wordCount{margin-top:12px;text-align:center;color:#00ffa6;font-size:18px;font-weight:600}
-@media(max-width:900px){
-  .typing-area,.compare{grid-template-columns:1fr}
-  .preview{height:auto;min-height:300px}
-  .typing-area textarea{height:420px}
-  .topbar{align-items:flex-start;flex-direction:column}
-  .container{padding:12px}
-  .result{padding:14px}
+/* Overall page: charcoal grey instead of pure black */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #303238;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: #41434a;
+  border: 1px solid #555861;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 3px 12px #0002;
+}
+
+.top-left {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00a878;
+}
+
+.info {
+  color: #d0d1d5;
+  font-size: 14px;
+}
+
+.typing-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 15px;
+  align-items: stretch;
+}
+
+/* Word-style paper panels, kept side-by-side */
+.preview,
+textarea {
+  width: 100%;
+  height: 800px;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  padding: 48px 52px;
+  color: #202020;
+  font: 16px/1.65 Arial, sans-serif;
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f4f4f4;
+  box-shadow: 0 5px 20px #0002;
+}
+
+.preview {
+  color: #202020;
+}
+
+.preview::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background: #b4b4b4;
+  border-radius: 10px;
+}
+
+textarea {
+  background: #fff;
+  color: #202020;
+  resize: none;
+  outline: none;
+  caret-color: #008f70;
+}
+
+textarea:focus {
+  border-color: #008f70;
+  box-shadow: 0 0 0 2px #008f7026, 0 5px 20px #0002;
+}
+
+textarea:disabled {
+  opacity: .9;
+}
+
+.typing-box-hidden {
+  opacity: 0 !important;
+}
+
+.buttons {
+  margin: 18px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 70px;
+  z-index: 9;
+}
+
+button {
+  border: 0;
+  padding: 12px 22px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #00c995, #00b6d8);
+  color: #071713;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.access-notice {
+  display: none;
+  margin: 14px 0;
+  padding: 14px 16px;
+  border: 1px solid #a85a5a;
+  border-radius: 9px;
+  background: #4a2929;
+  color: #ffd0d0;
+  line-height: 1.6;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.access-notice.visible {
+  display: block;
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  background: #41434a;
+  border: 1px solid #555861;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #4a4c53;
+  border: 1px solid #5b5d64;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #d0d1d5;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: 700;
+  color: #00d6a0;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.box {
+  background: #fff;
+  color: #202020;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  padding: 24px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  min-width: 0;
+  box-shadow: 0 5px 20px #0002;
+}
+
+.red {
+  color: #d82020;
+}
+
+.missing {
+  background: #ffbd55;
+  color: #202020;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.extra {
+  background: #fff08a;
+  color: #202020;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.dim {
+  opacity: .45;
+}
+
+.wordCount {
+  margin-top: 12px;
+  text-align: center;
+  color: #00d6a0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .typing-area,
+  .compare {
+    grid-template-columns: 1fr;
+  }
+
+  .preview {
+    height: 800px;
+    min-height: 300px;
+  }
+
+  .typing-area textarea {
+    height: 800px;
+  }
+
+  .preview,
+  textarea {
+    padding: 30px 28px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .result {
+    padding: 14px;
+  }
 }
 </style>
 </head>
+
 <body>
 <div class="container">
+
   <div class="topbar">
     <div class="top-left">
       <div class="timer" id="timer">10:00</div>
@@ -64,9 +309,16 @@ button:disabled{opacity:.5;cursor:not-allowed}
 
   <div class="typing-area">
     <div class="preview" id="preview">Checking your account...</div>
-    <textarea id="input" spellcheck="false" autocomplete="off"
-      autocorrect="off" autocapitalize="off"
-      placeholder="Start typing here..." disabled></textarea>
+
+    <textarea
+      id="input"
+      spellcheck="false"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      placeholder="Start typing here..."
+      disabled
+    ></textarea>
   </div>
 
   <div class="buttons">
@@ -78,25 +330,52 @@ button:disabled{opacity:.5;cursor:not-allowed}
 
   <div class="result" id="result">
     <div class="stats">
-      <div class="card"><h3>Gross WPM</h3><p id="gross">0</p></div>
-      <div class="card"><h3>Net WPM</h3><p id="net">0</p></div>
-      <div class="card"><h3>Accuracy</h3><p id="accuracy">0%</p></div>
-      <div class="card"><h3>Errors (400 Words)</h3><p id="errors400">0</p></div>
-      <div class="card"><h3>Total Errors</h3><p id="errors">0</p></div>
-      <div class="card"><h3>Score</h3><p id="score">0</p></div>
+      <div class="card">
+        <h3>Gross WPM</h3>
+        <p id="gross">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Net WPM</h3>
+        <p id="net">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Accuracy</h3>
+        <p id="accuracy">0%</p>
+      </div>
+
+      <div class="card">
+        <h3>Errors (400 Words)</h3>
+        <p id="errors400">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Errors</h3>
+        <p id="errors">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Score</h3>
+        <p id="score">0</p>
+      </div>
     </div>
 
     <div class="compare">
       <div class="box">
-        <h3>Original Passage</h3><br>
+        <h3>Original Passage</h3>
+        <br>
         <div id="originalBox"></div>
       </div>
+
       <div class="box">
-        <h3>Your Typing</h3><br>
+        <h3>Your Typing</h3>
+        <br>
         <div id="typedBox"></div>
       </div>
     </div>
   </div>
+
 </div>
 
 <script type="module">
@@ -118,10 +397,7 @@ let passages = {};
 let currentPassageLimit =
   Number(localStorage.getItem("selectedKeystrokeLimit"));
 
-if (!Object.prototype.hasOwnProperty.call(
-  passageFiles,
-  currentPassageLimit
-)) {
+if (!Object.prototype.hasOwnProperty.call(passageFiles, currentPassageLimit)) {
   currentPassageLimit = 2400;
 }
 
@@ -146,34 +422,26 @@ let interval = null;
 let totalWords = 0;
 let currentUser = null;
 
-/* =========================================================
-   LOAD SELECTED PASSAGE COLLECTION
-========================================================= */
-
 async function loadPassages(limit) {
   const file = passageFiles[limit];
 
   if (!file) {
-    throw new Error("Invalid passage length selected.");
+    throw Error("Invalid passage length selected.");
   }
 
-  const passageModule = await import(file);
+  const mod = await import(file);
 
   if (
-    !passageModule.passages ||
-    typeof passageModule.passages !== "object" ||
-    !Object.keys(passageModule.passages).length
+    !mod.passages ||
+    typeof mod.passages !== "object" ||
+    !Object.keys(mod.passages).length
   ) {
-    throw new Error(`No passages found in ${file}`);
+    throw Error(`No passages found in ${file}`);
   }
 
-  passages = passageModule.passages;
+  passages = mod.passages;
   currentPassageLimit = limit;
 }
-
-/* =========================================================
-   NOTICES AND HELPERS
-========================================================= */
 
 function showNotice(message) {
   accessNotice.textContent = message;
@@ -190,11 +458,7 @@ function countKeystrokes(text) {
 }
 
 function getWordTokens(text) {
-  return text
-    .replace(/\r/g, "")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean);
+  return text.replace(/\r/g, "").trim().split(/\s+/).filter(Boolean);
 }
 
 function updateCounters() {
@@ -220,10 +484,6 @@ function stopTimer() {
   }
 }
 
-/* =========================================================
-   INDIA DAY BOUNDS
-========================================================= */
-
 function getIndiaDayBounds() {
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "Asia/Kolkata",
@@ -232,24 +492,18 @@ function getIndiaDayBounds() {
     day: "2-digit"
   }).formatToParts(new Date());
 
-  const part = type =>
-    parts.find(item => item.type === type).value;
+  const part = type => parts.find(item => item.type === type).value;
 
   const day =
     `${part("year")}-${part("month")}-${part("day")}`;
 
   const start = new Date(`${day}T00:00:00+05:30`);
-  const end = new Date(start.getTime() + 86400000);
 
   return {
     start: start.toISOString(),
-    end: end.toISOString()
+    end: new Date(start.getTime() + 86400000).toISOString()
   };
 }
-
-/* =========================================================
-   AUTHENTICATION AND SUBSCRIPTION
-========================================================= */
 
 async function signOutAndRedirect(reason) {
   accessGranted = false;
@@ -271,12 +525,12 @@ async function signOutAndRedirect(reason) {
 
 async function initializeAccess() {
   try {
-    const {
-      data: sessionData,
-      error: sessionError
-    } = await supabase.auth.getSession();
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
 
-    if (sessionError) throw sessionError;
+    if (sessionError) {
+      throw sessionError;
+    }
 
     if (!sessionData.session) {
       window.location.replace("./index.html");
@@ -285,23 +539,23 @@ async function initializeAccess() {
 
     currentUser = sessionData.session.user;
 
-    const {
-      data,
-      error
-    } = await supabase.rpc("ensure_my_subscription");
+    const { data, error } =
+      await supabase.rpc("ensure_my_subscription");
 
-    if (error) throw error;
-
-    const sub = Array.isArray(data) ? data[0] : data;
-
-    if (!sub) {
-      throw new Error("Subscription information is unavailable.");
+    if (error) {
+      throw error;
     }
 
-    const expiry = new Date(sub.subscription_expires_at);
+    const subscription = Array.isArray(data) ? data[0] : data;
+
+    if (!subscription) {
+      throw Error("Subscription information is unavailable.");
+    }
+
+    const expiry = new Date(subscription.subscription_expires_at);
 
     if (
-      sub.is_expired ||
+      subscription.is_expired ||
       !Number.isFinite(expiry.getTime()) ||
       expiry.getTime() <= Date.now()
     ) {
@@ -321,7 +575,9 @@ async function initializeAccess() {
       .gte("created_at", bounds.start)
       .lt("created_at", bounds.end);
 
-    if (countError) throw countError;
+    if (countError) {
+      throw countError;
+    }
 
     if ((count || 0) >= DAILY_LIMIT) {
       preview.textContent = DAILY_LIMIT_MESSAGE;
@@ -335,8 +591,7 @@ async function initializeAccess() {
     } catch (error) {
       console.error("Passage loading failed:", error);
 
-      preview.textContent =
-        "Unable to load the selected passages.";
+      preview.textContent = "Unable to load the selected passages.";
 
       showNotice(
         `Could not load the ${currentPassageLimit}-keystroke passage file. Check that the file exists and refresh.`
@@ -362,10 +617,6 @@ async function initializeAccess() {
   }
 }
 
-/* =========================================================
-   PREPARE TEST
-========================================================= */
-
 function prepareTest() {
   if (!accessGranted || !currentUser || submissionInProgress) {
     return;
@@ -380,36 +631,31 @@ function prepareTest() {
 
   clearNotice();
 
-  const historyKey = `recentPassages_${currentPassageLimit}`;
+  const key = `recentPassages_${currentPassageLimit}`;
 
   let history = [];
 
   try {
-    history = JSON.parse(
-      localStorage.getItem(historyKey) || "[]"
-    );
+    history = JSON.parse(localStorage.getItem(key) || "[]");
 
-    if (!Array.isArray(history)) history = [];
+    if (!Array.isArray(history)) {
+      history = [];
+    }
   } catch {
     history = [];
   }
 
-  const allIds = Object.keys(passages);
+  const all = Object.keys(passages);
 
-  const unusedIds = allIds.filter(
-    id => !history.includes(id)
-  );
+  const unused = all.filter(id => !history.includes(id));
+  const usable = unused.length ? unused : all;
 
-  const usableIds = unusedIds.length ? unusedIds : allIds;
-
-  if (!usableIds.length) {
+  if (!usable.length) {
     showNotice("No passages are available in this collection.");
     return;
   }
 
-  currentId =
-    usableIds[Math.floor(Math.random() * usableIds.length)];
-
+  currentId = usable[Math.floor(Math.random() * usable.length)];
   currentPassage = passages[currentId];
 
   history.push(currentId);
@@ -418,7 +664,7 @@ function prepareTest() {
     history.shift();
   }
 
-  localStorage.setItem(historyKey, JSON.stringify(history));
+  localStorage.setItem(key, JSON.stringify(history));
 
   preview.textContent = currentPassage;
 
@@ -431,6 +677,7 @@ function prepareTest() {
 
   input.value = "";
   input.disabled = false;
+
   startButton.disabled = false;
   restartButton.disabled = false;
   submitButton.disabled = false;
@@ -463,16 +710,8 @@ function restartSame() {
   input.focus();
 }
 
-/* =========================================================
-   TIMER
-========================================================= */
-
 function startTimer() {
-  if (
-    interval !== null ||
-    testSubmitted ||
-    submissionInProgress
-  ) {
+  if (interval !== null || testSubmitted || submissionInProgress) {
     return;
   }
 
@@ -492,28 +731,15 @@ function startTimer() {
   }, 1000);
 }
 
-/* =========================================================
-   STRICT TYPING RULES
-========================================================= */
-
 input.addEventListener("keydown", event => {
-  if (
-    !accessGranted ||
-    testSubmitted ||
-    submissionInProgress
-  ) {
+  if (!accessGranted || testSubmitted || submissionInProgress) {
     event.preventDefault();
     return;
   }
 
   if (
-    [
-      "Backspace",
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowUp",
-      "ArrowDown"
-    ].includes(event.key)
+    ["Backspace", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"]
+      .includes(event.key)
   ) {
     event.preventDefault();
   }
@@ -535,9 +761,7 @@ input.addEventListener("keydown", event => {
 
     input.selectionStart = input.selectionEnd = start + 1;
 
-    input.dispatchEvent(
-      new Event("input", { bubbles: true })
-    );
+    input.dispatchEvent(new Event("input", { bubbles: true }));
   }
 });
 
@@ -546,11 +770,7 @@ input.addEventListener("paste", event => {
 });
 
 input.addEventListener("input", () => {
-  if (
-    !accessGranted ||
-    testSubmitted ||
-    submissionInProgress
-  ) {
+  if (!accessGranted || testSubmitted || submissionInProgress) {
     return;
   }
 
@@ -562,10 +782,6 @@ input.addEventListener("input", () => {
   updateCounters();
 });
 
-/* =========================================================
-   VISUAL COMPARISON HELPERS
-========================================================= */
-
 function escapeHTML(text) {
   return String(text)
     .replace(/&/g, "&amp;")
@@ -575,7 +791,6 @@ function escapeHTML(text) {
     .replace(/'/g, "&#39;");
 }
 
-/* Used only for visual comparison, not numerical errors. */
 function tokenize(text) {
   text = text
     .replace(/\r/g, "")
@@ -588,85 +803,72 @@ function tokenize(text) {
   ) || [];
 }
 
-/* =========================================================
-   BHC WORD-LEVEL ERROR COUNTING
-   One wrong, missing, or extra whitespace-separated word
-   counts as one error.
-========================================================= */
-
+/* Word-level error counting */
 function countBhcWordErrors(original, typed) {
-  const originalWords = getWordTokens(original);
-  const typedWords = getWordTokens(typed);
+  const a = getWordTokens(original);
+  const b = getWordTokens(typed);
 
-  const m = originalWords.length;
-  const n = typedWords.length;
+  const m = a.length;
+  const n = b.length;
 
   const dp = Array.from(
     { length: m + 1 },
     () => Array(n + 1).fill(0)
   );
 
-  const operation = Array.from(
+  const op = Array.from(
     { length: m + 1 },
     () => Array(n + 1).fill(null)
   );
 
   for (let i = 1; i <= m; i++) {
     dp[i][0] = i;
-    operation[i][0] = "delete";
+    op[i][0] = "delete";
   }
 
   for (let j = 1; j <= n; j++) {
     dp[0][j] = j;
-    operation[0][j] = "insert";
+    op[0][j] = "insert";
   }
 
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
-      if (originalWords[i - 1] === typedWords[j - 1]) {
+      if (a[i - 1] === b[j - 1]) {
         dp[i][j] = dp[i - 1][j - 1];
-        operation[i][j] = "match";
+        op[i][j] = "match";
       } else {
-        const replaceCost = dp[i - 1][j - 1] + 1;
-        const deleteCost = dp[i - 1][j] + 1;
-        const insertCost = dp[i][j - 1] + 1;
-
-        const best = Math.min(
-          replaceCost,
-          deleteCost,
-          insertCost
-        );
+        const replace = dp[i - 1][j - 1] + 1;
+        const remove = dp[i - 1][j] + 1;
+        const insert = dp[i][j - 1] + 1;
+        const best = Math.min(replace, remove, insert);
 
         dp[i][j] = best;
 
-        /* Prefer replacement on equal costs. */
-        if (best === replaceCost) {
-          operation[i][j] = "replace";
-        } else if (best === deleteCost) {
-          operation[i][j] = "delete";
-        } else {
-          operation[i][j] = "insert";
-        }
+        op[i][j] =
+          best === replace
+            ? "replace"
+            : best === remove
+              ? "delete"
+              : "insert";
       }
     }
   }
 
   let i = m;
   let j = n;
-
   let errors = 0;
   let errors400 = 0;
 
   while (i > 0 || j > 0) {
-    const op = operation[i][j];
+    const action = op[i][j];
 
-    if (op === "match") {
+    if (action === "match") {
       i--;
       j--;
       continue;
     }
 
-    if (op === "replace") {
+    if (action === "replace") {
       errors++;
 
       if (i <= 400) {
@@ -678,7 +880,7 @@ function countBhcWordErrors(original, typed) {
       continue;
     }
 
-    if (op === "delete") {
+    if (action === "delete") {
       errors++;
 
       if (i <= 400) {
@@ -689,7 +891,7 @@ function countBhcWordErrors(original, typed) {
       continue;
     }
 
-    if (op === "insert") {
+    if (action === "insert") {
       errors++;
 
       if (i < 400) {
@@ -700,7 +902,6 @@ function countBhcWordErrors(original, typed) {
       continue;
     }
 
-    /* Defensive fallback. */
     if (i > 0 && j > 0) {
       errors++;
 
@@ -732,11 +933,7 @@ function countBhcWordErrors(original, typed) {
   return { errors, errors400 };
 }
 
-/* =========================================================
-   VISUAL TOKEN ALIGNMENT
-   Used only to color the original/typed comparison.
-========================================================= */
-
+/* Token alignment is used to highlight the comparison */
 function alignAndCount(original, typed) {
   const a = tokenize(original);
   const b = tokenize(typed);
@@ -759,15 +956,14 @@ function alignAndCount(original, typed) {
 
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
-      if (a[i - 1] === b[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
-      } else {
-        dp[i][j] = Math.min(
-          dp[i - 1][j],
-          dp[i][j - 1],
-          dp[i - 1][j - 1]
-        ) + 1;
-      }
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1]
+          : Math.min(
+              dp[i - 1][j],
+              dp[i][j - 1],
+              dp[i - 1][j - 1]
+            ) + 1;
     }
   }
 
@@ -778,13 +974,10 @@ function alignAndCount(original, typed) {
   const alignedB = [];
 
   while (i > 0 || j > 0) {
-    if (
-      i > 0 &&
-      j > 0 &&
-      a[i - 1] === b[j - 1]
-    ) {
+    if (i > 0 && j > 0 && a[i - 1] === b[j - 1]) {
       alignedA.unshift(a[i - 1]);
       alignedB.unshift(b[j - 1]);
+
       i--;
       j--;
     } else if (
@@ -794,6 +987,7 @@ function alignAndCount(original, typed) {
     ) {
       alignedA.unshift(a[i - 1]);
       alignedB.unshift(b[j - 1]);
+
       i--;
       j--;
     } else if (
@@ -802,10 +996,12 @@ function alignAndCount(original, typed) {
     ) {
       alignedA.unshift(a[i - 1]);
       alignedB.unshift("∅");
+
       i--;
     } else {
       alignedA.unshift("∅");
       alignedB.unshift(b[j - 1]);
+
       j--;
     }
   }
@@ -825,13 +1021,9 @@ function formatToken(token) {
   return escapeHTML(token) + " ";
 }
 
-/* =========================================================
-   WORD-LEVEL ACCURACY
-========================================================= */
-
-function countCorrectWords(originalWords, typedWords) {
-  const m = originalWords.length;
-  const n = typedWords.length;
+function countCorrectWords(a, b) {
+  const m = a.length;
+  const n = b.length;
 
   const dp = Array.from(
     { length: m + 1 },
@@ -840,23 +1032,15 @@ function countCorrectWords(originalWords, typedWords) {
 
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
-      if (originalWords[i - 1] === typedWords[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1] + 1;
-      } else {
-        dp[i][j] = Math.max(
-          dp[i - 1][j],
-          dp[i][j - 1]
-        );
-      }
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1] + 1
+          : Math.max(dp[i - 1][j], dp[i][j - 1]);
     }
   }
 
   return dp[m][n];
 }
-
-/* =========================================================
-   CALCULATE RESULT
-========================================================= */
 
 function calculateResult() {
   const typed = input.value;
@@ -867,60 +1051,55 @@ function calculateResult() {
   let originalHTML = "";
   let typedHTML = "";
 
-  for (let i = 0; i < alignedA.length; i++) {
-    const o = alignedA[i];
-    const t = alignedB[i];
+  for (let k = 0; k < alignedA.length; k++) {
+    const originalToken = alignedA[k];
+    const typedToken = alignedB[k];
 
-    if (o === t) {
-      originalHTML += formatToken(o);
-      typedHTML += formatToken(t);
+    if (originalToken === typedToken) {
+      originalHTML += formatToken(originalToken);
+      typedHTML += formatToken(typedToken);
     } else {
       if (
-        (o === "\n" || o === "\n\n") &&
-        t === "∅"
+        (originalToken === "\n" || originalToken === "\n\n") &&
+        typedToken === "∅"
       ) {
         continue;
       }
 
-      if (o === "∅") {
+      if (originalToken === "∅") {
         originalHTML += '<span class="dim">∅</span> ';
         typedHTML +=
-          `<span class="extra">${escapeHTML(t)}</span> `;
-      } else if (t === "∅") {
+          `<span class="extra">${escapeHTML(typedToken)}</span> `;
+      } else if (typedToken === "∅") {
         originalHTML +=
-          `<span class="missing">${escapeHTML(o)}</span> `;
+          `<span class="missing">${escapeHTML(originalToken)}</span> `;
         typedHTML += '<span class="dim">∅</span> ';
       } else {
         originalHTML +=
-          `<span class="red">${escapeHTML(o)}</span> `;
+          `<span class="red">${escapeHTML(originalToken)}</span> `;
+
         typedHTML +=
-          `<span class="red">${escapeHTML(t)}</span> `;
+          `<span class="red">${escapeHTML(typedToken)}</span> `;
       }
     }
   }
 
-  /* Numerical BHC errors come from word-level alignment. */
   const { errors, errors400 } =
     countBhcWordErrors(currentPassage, typed);
 
   const originalWords = getWordTokens(currentPassage);
   const typedWords = getWordTokens(typed);
 
-  const correctWordCount =
-    countCorrectWords(originalWords, typedWords);
+  const correct = countCorrectWords(originalWords, typedWords);
 
-  const accuracy = originalWords.length > 0
-    ? (
-        (correctWordCount / originalWords.length) * 100
-      ).toFixed(2)
+  const accuracy = originalWords.length
+    ? ((correct / originalWords.length) * 100).toFixed(2)
     : "0.00";
 
-  const elapsedSeconds = Math.max(1, 600 - timeLeft);
-  const minutes = elapsedSeconds / 60;
+  const elapsed = Math.max(1, 600 - timeLeft);
+  const minutes = elapsed / 60;
 
-  const gross = (
-    (typed.length / 5) / minutes
-  ).toFixed(2);
+  const gross = ((typed.length / 5) / minutes).toFixed(2);
 
   const net = (
     Number(gross) * (Number(accuracy) / 100)
@@ -954,7 +1133,7 @@ function calculateResult() {
     errors,
     score400: Number(score400),
     score: Number(score),
-    durationSeconds: elapsedSeconds,
+    durationSeconds: elapsed,
     wordsTyped: typedWords.length,
     keystrokes: countKeystrokes(typed),
     originalHTML,
@@ -963,10 +1142,6 @@ function calculateResult() {
     typedPassage: typed
   };
 }
-
-/* =========================================================
-   SECURE RESULT SUBMISSION
-========================================================= */
 
 async function submitTest() {
   if (
@@ -997,12 +1172,12 @@ async function submitTest() {
   showNotice("Submitting your result securely...");
 
   try {
-    const {
-      data: sessionData,
-      error: sessionError
-    } = await supabase.auth.getSession();
+    const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
 
-    if (sessionError) throw sessionError;
+    if (sessionError) {
+      throw sessionError;
+    }
 
     if (!sessionData.session) {
       await signOutAndRedirect("login");
@@ -1010,21 +1185,25 @@ async function submitTest() {
     }
 
     const {
-      data: subData,
-      error: subError
+      data: subscriptionData,
+      error: subscriptionError
     } = await supabase.rpc("ensure_my_subscription");
 
-    if (subError) throw subError;
+    if (subscriptionError) {
+      throw subscriptionError;
+    }
 
-    const sub = Array.isArray(subData) ? subData[0] : subData;
+    const subscription = Array.isArray(subscriptionData)
+      ? subscriptionData[0]
+      : subscriptionData;
 
-    const expiry = sub
-      ? new Date(sub.subscription_expires_at)
+    const expiry = subscription
+      ? new Date(subscription.subscription_expires_at)
       : new Date(NaN);
 
     if (
-      !sub ||
-      sub.is_expired ||
+      !subscription ||
+      subscription.is_expired ||
       !Number.isFinite(expiry.getTime()) ||
       expiry.getTime() <= Date.now()
     ) {
@@ -1034,26 +1213,25 @@ async function submitTest() {
 
     const result = calculateResult();
 
-    const {
-      data,
-      error
-    } = await supabase.rpc("submit_typing_result", {
-      p_passage_label: `Passage #${currentId}`,
-      p_gross_wpm: result.gross,
-      p_net_wpm: result.net,
-      p_accuracy: result.accuracy,
-      p_errors_400: result.errors400,
-      p_errors_total: result.errors,
-      p_score_400: result.score400,
-      p_score_total: result.score,
-      p_duration_seconds: result.durationSeconds,
-      p_words_typed: result.wordsTyped,
-      p_keystrokes: result.keystrokes
-    });
+    const { data, error } = await supabase.rpc(
+      "submit_typing_result",
+      {
+        p_passage_label: `Passage #${currentId}`,
+        p_gross_wpm: result.gross,
+        p_net_wpm: result.net,
+        p_accuracy: result.accuracy,
+        p_errors_400: result.errors400,
+        p_errors_total: result.errors,
+        p_score_400: result.score400,
+        p_score_total: result.score,
+        p_duration_seconds: result.durationSeconds,
+        p_words_typed: result.wordsTyped,
+        p_keystrokes: result.keystrokes
+      }
+    );
 
     if (error) {
-      const message =
-        String(error.message || "").toUpperCase();
+      const message = String(error.message || "").toUpperCase();
 
       if (message.includes("SUBSCRIPTION_EXPIRED")) {
         await signOutAndRedirect("expired");
@@ -1113,8 +1291,8 @@ async function submitTest() {
         "latestTypingComparison",
         JSON.stringify(comparison)
       );
-    } catch (storageError) {
-      console.error("Could not save comparison:", storageError);
+    } catch (error) {
+      console.error("Could not save comparison:", error);
       localStorage.removeItem("latestTypingComparison");
     }
 
@@ -1142,23 +1320,14 @@ async function submitTest() {
   }
 }
 
-/* =========================================================
-   HIDE / SHOW TYPING BOX
-========================================================= */
-
 function toggleTypingBox() {
-  const hidden =
-    input.classList.toggle("typing-box-hidden");
+  const hidden = input.classList.toggle("typing-box-hidden");
 
   toggleTypingBtn.textContent =
     hidden ? "Show Typing Box" : "Hide Typing Box";
 
   input.focus();
 }
-
-/* =========================================================
-   EVENTS AND INITIALIZATION
-========================================================= */
 
 window.addEventListener("contextmenu", event => {
   event.preventDefault();
