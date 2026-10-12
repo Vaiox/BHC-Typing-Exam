@@ -431,6 +431,36 @@
         gap: 15px;
       }
     }
+
+    .passage-selector {
+        margin-bottom: 18px;
+        text-align: center;
+    }
+    
+    .passage-selector label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    
+    .passage-selector select {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px 14px;
+        background: #111111;
+        color: #ffffff;
+        border: 1px solid #333333;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    
+    .passage-selector select:focus {
+        outline: none;
+        border-color: #00bcd4;
+    }
   </style>
 </head>
 
@@ -501,7 +531,18 @@
           Start a BHC-style typing test. Your result will be
           saved after the database accepts your submission.
         </p>
-
+        
+        <div class="passage-selector">
+            <label for="keystrokeLimit">Choose Passage Length</label>
+        
+            <select id="keystrokeLimit">
+                <option value="2400">2,400 keystrokes</option>
+                <option value="2600">2,600 keystrokes</option>
+                <option value="2800">2,800 keystrokes</option>
+                <option value="3000">3,000 keystrokes</option>
+            </select>
+        </div>
+        
         <button class="primary-button" id="startExamButton" type="button" disabled>
           Start Exam <span aria-hidden="true">→</span>
         </button>
