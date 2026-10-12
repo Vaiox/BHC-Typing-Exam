@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,246 +8,56 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  background:#080808;color:#f0f0f0;
-  font-family:Arial,sans-serif;min-height:100vh
-}
-
+body{background:#080808;color:#f0f0f0;font-family:Arial,sans-serif;min-height:100vh}
 .container{width:100%;max-width:1500px;margin:auto;padding:20px}
-
-.topbar{
-  display:flex;justify-content:space-between;align-items:center;
-  background:#121212;border:1px solid #1f1f1f;padding:16px 20px;
-  border-radius:16px;margin-bottom:18px;
-  box-shadow:0 8px 30px rgba(0,0,0,.4);
-  position:sticky;top:0;z-index:100
-}
-
+.topbar{display:flex;justify-content:space-between;align-items:center;background:#121212;border:1px solid #1f1f1f;padding:16px 20px;border-radius:16px;margin-bottom:18px;box-shadow:0 8px 30px rgba(0,0,0,.4);position:sticky;top:0;z-index:100}
 .top-left{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
 .timer{font-size:24px;font-weight:700;color:#00ffae}
 .info{color:#888;font-size:14px}
-
-.preview{
-  background:#101010;border:1px solid #1b1b1b;border-radius:14px;
-  padding:15px 18px;color:#777;line-height:1.7;margin-bottom:15px;
-  min-height:70px
-}
-
-textarea{
-  width:100%;height:1000px;background:#0f0f0f;
-  border:1px solid #1f1f1f;border-radius:16px;padding:24px;
-  color:#f1f1f1;font-size:16px;line-height:1.9;resize:none;
-  outline:none;transition:.25s;caret-color:#00ffae
-}
-
-textarea:focus{border-color:#00ffae;box-shadow:0 0 0 3px rgba(0,255,174,.08)}
-
-.buttons{
-  margin-top:18px;display:flex;justify-content:center;
-  gap:12px;flex-wrap:wrap;position:sticky;top:70px;z-index:99
-}
-
-button{
-  border:none;padding:12px 22px;border-radius:12px;
-  background:linear-gradient(135deg,#00ffae,#00cfff);
-  color:#000;font-weight:700;font-size:15px;cursor:pointer;
-  transition:.2s
-}
-
-button:hover:not(:disabled){
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,255,174,.2)
-}
-
+.buttons{margin-top:18px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:sticky;top:70px;z-index:99}
+button{border:none;padding:12px 22px;border-radius:12px;background:linear-gradient(135deg,#00ffae,#00cfff);color:#000;font-weight:700;font-size:15px;cursor:pointer;transition:.2s}
+button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,255,174,.2)}
 button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
-.result{
-  display:none;margin-top:25px;background:#111;
-  border:1px solid #1c1c1c;border-radius:16px;padding:24px
-}
-
-.stats{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:15px;margin-bottom:24px
-}
-
-.card{
-  background:#171717;border:1px solid #232323;
-  border-radius:14px;padding:18px;text-align:center
-}
-
-.card h3{font-size:14px;color:#888;margin-bottom:10px;font-weight:500}
-.card p{font-size:28px;font-weight:700;color:#00ffae}
-
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-
-.box{
-  background:#181818;border:1px solid #252525;border-radius:14px;
-  padding:18px;line-height:1.9;white-space:pre-wrap;
-  overflow-wrap:break-word
-}
-
-.red{color:#ff5252}
-.missing{background:#ff9800;color:#000;padding:2px 4px;border-radius:4px}
-.extra{background:#ffe600;color:#000;padding:2px 4px;border-radius:4px}
-.dim{opacity:.35}
-
 :root{
-  --paper-bg:#fff;
-  --paper-text:#202020;
-  --paper-font:Arial,sans-serif;
-  --paper-font-size:16px;
-  --paper-line-height:1.65;
-  --paper-padding-x:64px;
-  --paper-padding-y:54px
+  --paper-bg:#fff;--paper-text:#202020;--paper-font:Arial,sans-serif;
+  --paper-font-size:16px;--paper-line-height:1.65;
+  --paper-padding-x:64px;--paper-padding-y:54px
 }
-
-.typing-area{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:22px;align-items:start;margin-bottom:16px
-}
-
+.typing-area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start;margin-bottom:16px}
 .paper-column{min-width:0}
-
-.paper-heading{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:10px;margin:0 0 9px;padding:0 2px;
-  color:#e8e8e8;font-size:14px;font-weight:700
-}
-
-.paper-heading span{
-  color:#00ffae;font-size:11px;font-weight:600;
-  letter-spacing:.07em;text-transform:uppercase
-}
-
-.paper-workspace{
-  position:relative;display:grid;
-  grid-template-columns:27px minmax(0,1fr);
-  grid-template-rows:25px minmax(0,1fr);
-  height:800px;min-height:400px;overflow:hidden;
-  background:#dfe1e5;border:1px solid #b9bdc4;
-  border-radius:3px;box-shadow:0 7px 24px rgba(0,0,0,.28)
-}
-
-.ruler-corner{
-  grid-column:1;grid-row:1;background:#e7e8eb;
-  border-right:1px solid #c6c9cf;border-bottom:1px solid #c6c9cf
-}
-
-.horizontal-ruler{
-  grid-column:2;grid-row:1;position:relative;overflow:hidden;
-  background-color:#f1f2f4;border-bottom:1px solid #c6c9cf;
-  background-image:repeating-linear-gradient(
-    to right,transparent 0,transparent 23px,#a3a8af 23px,
-    #a3a8af 24px,transparent 24px,transparent 95px,
-    #858b93 95px,#858b93 96px
-  )
-}
-
-.horizontal-ruler::before{
-  content:"0          1          2          3          4          5          6          7          8";
-  position:absolute;inset:1px 0 auto 5px;white-space:pre;
-  color:#555b63;font:9px/11px Arial,sans-serif;
-  letter-spacing:5px;pointer-events:none
-}
-
-.vertical-ruler{
-  grid-column:1;grid-row:2;position:relative;overflow:hidden;
-  background-color:#f1f2f4;border-right:1px solid #c6c9cf;
-  background-image:repeating-linear-gradient(
-    to bottom,transparent 0,transparent 23px,#a3a8af 23px,
-    #a3a8af 24px,transparent 24px,transparent 95px,
-    #858b93 95px,#858b93 96px
-  )
-}
-
-.vertical-ruler::before{
-  content:"1\A\A\A\A2\A\A\A\A3\A\A\A\A4\A\A\A\A5\A\A\A\A6\A\A\A\A7\A\A\A\A8";
-  position:absolute;top:3px;left:5px;white-space:pre;
-  color:#555b63;font:9px/24px Arial,sans-serif;pointer-events:none
-}
-
-.typing-area .preview,
-.typing-area textarea{
-  grid-column:2;grid-row:2;display:block;width:100%;min-width:0;
-  height:100%;min-height:0;margin:0;border:0;border-radius:0;
-  padding:var(--paper-padding-y) var(--paper-padding-x);
-  background:var(--paper-bg);color:var(--paper-text);
-  font-family:var(--paper-font);font-size:var(--paper-font-size);
-  font-weight:400;line-height:var(--paper-line-height);
-  letter-spacing:normal;text-align:left;white-space:pre-wrap;
-  overflow-wrap:break-word;word-break:normal;
-  tab-size:4;-moz-tab-size:4;box-shadow:none;
-  scrollbar-width:thin;scrollbar-color:#aeb3ba #f3f3f3
-}
-
+.paper-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 9px;padding:0 2px;color:#e8e8e8;font-size:14px;font-weight:700}
+.paper-heading span{color:#00ffae;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.paper-workspace{position:relative;display:grid;grid-template-columns:27px minmax(0,1fr);grid-template-rows:25px minmax(0,1fr);height:800px;min-height:400px;overflow:hidden;background:#dfe1e5;border:1px solid #b9bdc4;border-radius:3px;box-shadow:0 7px 24px rgba(0,0,0,.28)}
+.ruler-corner{grid-column:1;grid-row:1;background:#e7e8eb;border-right:1px solid #c6c9cf;border-bottom:1px solid #c6c9cf}
+.horizontal-ruler{grid-column:2;grid-row:1;position:relative;overflow:hidden;background-color:#f1f2f4;border-bottom:1px solid #c6c9cf;background-image:repeating-linear-gradient(to right,transparent 0,transparent 23px,#a3a8af 23px,#a3a8af 24px,transparent 24px,transparent 95px,#858b93 95px,#858b93 96px)}
+.horizontal-ruler::before{content:"0          1          2          3          4          5          6          7          8";position:absolute;inset:1px 0 auto 5px;white-space:pre;color:#555b63;font:9px/11px Arial,sans-serif;letter-spacing:5px;pointer-events:none}
+.vertical-ruler{grid-column:1;grid-row:2;position:relative;overflow:hidden;background-color:#f1f2f4;border-right:1px solid #c6c9cf;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 23px,#a3a8af 23px,#a3a8af 24px,transparent 24px,transparent 95px,#858b93 95px,#858b93 96px)}
+.vertical-ruler::before{content:"1\A\A\A\A2\A\A\A\A3\A\A\A\A4\A\A\A\A5\A\A\A\A6\A\A\A\A7\A\A\A\A8";position:absolute;top:3px;left:5px;white-space:pre;color:#555b63;font:9px/24px Arial,sans-serif;pointer-events:none}
+.typing-area .preview,.typing-area textarea{grid-column:2;grid-row:2;display:block;width:100%;min-width:0;height:100%;min-height:0;margin:0;border:0;border-radius:0;padding:var(--paper-padding-y) var(--paper-padding-x);background:var(--paper-bg);color:var(--paper-text);font-family:var(--paper-font);font-size:var(--paper-font-size);font-weight:400;line-height:var(--paper-line-height);letter-spacing:normal;text-align:left;white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;tab-size:4;-moz-tab-size:4;box-shadow:none;scrollbar-width:thin;scrollbar-color:#aeb3ba #f3f3f3}
 .typing-area .preview{overflow:auto;color:var(--paper-text);overflow-x:hidden}
-
-.typing-area textarea{
-  resize:none;outline:none;overflow:auto;caret-color:#1677d2;
-  transition:box-shadow .15s ease
-}
-
+.typing-area textarea{resize:none;outline:none;overflow:auto;caret-color:#1677d2;transition:box-shadow .15s ease}
 .typing-area textarea:focus{box-shadow:inset 0 0 0 2px rgba(22,119,210,.22)}
 .typing-area textarea::placeholder{color:#777;opacity:1}
-
-.typing-area .preview::-webkit-scrollbar,
-.typing-area textarea::-webkit-scrollbar{width:10px}
-
-.typing-area .preview::-webkit-scrollbar-track,
-.typing-area textarea::-webkit-scrollbar-track{background:#f3f3f3}
-
-.typing-area .preview::-webkit-scrollbar-thumb,
-.typing-area textarea::-webkit-scrollbar-thumb{
-  background:#b8bdc4;border:2px solid #f3f3f3;border-radius:8px
-}
-
-.typing-area .preview::-webkit-scrollbar-thumb:hover,
-.typing-area textarea::-webkit-scrollbar-thumb:hover{background:#9299a2}
-
+.typing-area .preview::-webkit-scrollbar,.typing-area textarea::-webkit-scrollbar{width:10px}
+.typing-area .preview::-webkit-scrollbar-track,.typing-area textarea::-webkit-scrollbar-track{background:#f3f3f3}
+.typing-area .preview::-webkit-scrollbar-thumb,.typing-area textarea::-webkit-scrollbar-thumb{background:#b8bdc4;border:2px solid #f3f3f3;border-radius:8px}
+.typing-area .preview::-webkit-scrollbar-thumb:hover,.typing-area textarea::-webkit-scrollbar-thumb:hover{background:#9299a2}
 .typing-area textarea.typing-box-hidden{opacity:0!important}
-
-.wordCount{
-  margin-top:12px;text-align:center;color:#00ffa6;
-  font-size:18px;font-weight:600
-}
-
-.access-notice{
-  display:none;margin:14px 0;padding:14px 16px;
-  border:1px solid #593333;border-radius:10px;
-  background:#241818;color:#ffb0b0;
-  line-height:1.6;font-size:14px;overflow-wrap:anywhere
-}
-
+.wordCount{margin-top:12px;text-align:center;color:#00ffa6;font-size:18px;font-weight:600}
+.access-notice{display:none;margin:14px 0;padding:14px 16px;border:1px solid #593333;border-radius:10px;background:#241818;color:#ffb0b0;line-height:1.6;font-size:14px;overflow-wrap:anywhere}
 .access-notice.visible{display:block}
-
-.access-notice.success{
-  background:#10271f;border-color:#174432;color:#00ffae
-}
-
 @media(max-width:900px){
   .typing-area{grid-template-columns:minmax(0,1fr);gap:20px}
   .paper-workspace{height:620px}
-  :root{
-    --paper-padding-x:34px;--paper-padding-y:36px;
-    --paper-font-size:15px;--paper-line-height:1.6
-  }
-  .compare{grid-template-columns:1fr}
+  :root{--paper-padding-x:34px;--paper-padding-y:36px;--paper-font-size:15px;--paper-line-height:1.6}
   .topbar{flex-direction:column;align-items:flex-start;gap:12px}
 }
-
 @media(max-width:480px){
   .container{padding:12px}
-  .paper-workspace{
-    grid-template-columns:21px minmax(0,1fr);
-    grid-template-rows:22px minmax(0,1fr);height:540px
-  }
+  .paper-workspace{grid-template-columns:21px minmax(0,1fr);grid-template-rows:22px minmax(0,1fr);height:540px}
   .horizontal-ruler::before{letter-spacing:2px}
-  :root{
-    --paper-padding-x:22px;--paper-padding-y:28px;
-    --paper-font-size:14px;--paper-line-height:1.6
-  }
+  :root{--paper-padding-x:22px;--paper-padding-y:28px;--paper-font-size:14px;--paper-line-height:1.6}
   .paper-heading{font-size:13px}
 }
 </style>
@@ -254,13 +65,11 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
 <body>
 <div class="container">
-
   <div class="topbar">
     <div class="top-left">
       <div class="timer" id="timer">10:00</div>
       <div class="info">Strict Mode Enabled</div>
     </div>
-
     <div class="info" id="passageInfo">Passage #1</div>
   </div>
 
@@ -272,7 +81,6 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
         <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px">Original Passage</span>
         <span>READ ONLY</span>
       </div>
-
       <div class="paper-workspace">
         <div class="ruler-corner" aria-hidden="true"></div>
         <div class="horizontal-ruler" aria-hidden="true"></div>
@@ -286,7 +94,6 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
         <span style="color:inherit;letter-spacing:normal;text-transform:none;font-size:14px">Your Typing</span>
         <span>STRICT MODE</span>
       </div>
-
       <div class="paper-workspace">
         <div class="ruler-corner" aria-hidden="true"></div>
         <div class="horizontal-ruler" aria-hidden="true"></div>
@@ -307,431 +114,17 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
   <div id="wordCount" class="wordCount">0 / 0 words</div>
   <div id="keystrokeCount" class="wordCount">Keystrokes 0 / 0</div>
-
-  <div class="result" id="result">
-    <div class="stats">
-      <div class="card"><h3>Gross WPM</h3><p id="gross">0</p></div>
-      <div class="card"><h3>Net WPM</h3><p id="net">0</p></div>
-      <div class="card"><h3>Accuracy</h3><p id="accuracy">0%</p></div>
-      <div class="card"><h3>Errors (400 Words)</h3><p id="errors400">0</p></div>
-      <div class="card"><h3>Errors</h3><p id="errors">0</p></div>
-      <div class="card"><h3>Score</h3><p id="score">0</p></div>
-    </div>
-
-    <div class="compare">
-      <div class="box">
-        <h3>Original Passage</h3><br>
-        <div id="originalBox"></div>
-      </div>
-      <div class="box">
-        <h3>Your Typing</h3><br>
-        <div id="typedBox"></div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script type="module">
 import { supabase } from "./js/supabase.js";
 
-/* ========================================================
-   CONFIGURATION AND STATE
-======================================================== */
-
 const DAILY_LIMIT = 10;
-const SUBSCRIPTION_MESSAGE =
-  "Your Subscription days are over Please reach admin to get more days.";
-const DAILY_LIMIT_MESSAGE =
-  "Daily test limit reached. Please come back tomorrow.";
+const DAILY_LIMIT_MESSAGE = "Daily test limit reached. Please come back tomorrow.";
 
-/* =========================
-   PASSAGES
-========================= */
-
+/* Restore your remaining passages here. */
 const passages = {
-
-1:`\tThis section incorporates quotations from Narada and Vasishta and produces categories of persons, who, in a Court of Law nowadays would not be held disqualified from inheritance. They are brought under the text of Yajnavalkya who adds the Sanskrit word " Adya" translated by Colebrooke as "as well as others; "its literal meaning being " and the like " or practically, " etc., etc." Under cover of the latitude afforded by this expression placitum 3 brings in such intangible persons as " an enemy to his father " and " one who is addicted to vice "--disqualifications so vague, it is clear, that no Court of Law could now assert their validity.
-
-\tI do not think it right to say that these grounds of exclusion are obsolete or that they were originally intended to be moral rather than legal obligations : but rather that they are of so nebulous a character that they could never have been enforcible at any time when the enunciation of the rights of inheritance passed from the hands of family mediators or village panchayatdars to anything which can be dignified by the name of " Court of Law." 22. I do not think that any useful purpose would be served by inquiring into the meaning of such terms as " Mrindriya " or " Pangu."
-
-\tThey do not seem to me to assist the present discussion and I think it is probable that legislation will abolish the exclusion from inheritance based on these terms before the Courts are called upon to determine their exact meaning. Similarly I think it unnecessary to discus whether Yajnavalkya meant anything more by using the word " Andha " than what Manu meant by '' Jathyandha ". " Jati " comes from the same root as the Greek Gignomai, Genes, etc., and Latin " Genus." It is, I think, clear that both Manu and the Mitakshara explicitly lay down the rule of law that at least a " Jathyandha " is excluded from inheritance and that the only way to escape from this is to do what SADASIVA AYYAR, J., has done and say boldly It is not a subsisting rule of law.
-
-\tIt has become obsolete and abrogated. It is apparent that the author treats the mandate which he quotes as a mere moral maxim, opposed to the rule of law which he considers to be established by his text and if the expression " grandfather's estate " means no more than " ancestral estate," the text of Visvarupa need mean no more than that of the Mitakshara, and the right may be a mere right to maintenance or at most a capacity to transmit heritable blood. With regard to the Sarasvati Vilasa, the first observation to be made is that made by the learned Chief Justice in the course of the argument that, if the author wished to say that the text of the Mitakshara on this point was obsolete, he could perfectly well have said so in terms. Further in any levent the true explanation of the passage in the Sarasvati Vilasa is to my mind undoubtedly that given by TURNER, C.J., in Krishna v. Sami (1886) I.L.R,, 9 Mad., 64 (F.B.).`,
-  
-2:`\tMohammedan Law, being the personal law, possesses its own legal principles and regulations which govern family relationships in matters such as marriage, divorce, inheritance, custody and guardianship. Its distinctive feature sets it apart from other personal laws on fundamental issues. It is pertinent to examine the legal principles, if any, governing partition under Mohammedan law. Tahir Mahmood, in his book, 'The Muslim Law of India', 2nd Edition, Chapter 12 (Law of Inheritance) Paragraph II, has provided for various concepts related to succession in Muslim Law which distinguish it from other personal laws: "II. Muslim Law-Concepts known and unknown: 1. The Muslim law of succession is basically different from the parallel indigenous systems of India.
-
-\tThe doctrine of janmswatvavada (right by birth), which constitutes the foundation of the Mitakshara law of succession, is wholly unknown to Muslim law. The law of inheritance in Islam is relatively close to the classical Dayabhaga law, though it differs also form that on several fundamental points. The modern Hindu law of succession (as laid down in the Hindu Succession Act, 1956) is, however, much different from both the aforesaid classical systems; it has a remarkable proximity, in certain respects, to the Muslim law of inheritance. 2. The division of heritage (daya) into sapratibandh ('obstructed') and apratibandh ('unobstructed')- self-acquired and ancestral- is equally foreign to Muslim law. 
-
-\tWhatever property one inherits (whether from his ancestors or from others) is, at Muslim law, one's absolute property- whether that person is a man or a woman. 3. In Muslim law, so long as a person is alive he or she is the absolute owner of his or her property; nobody else (including a son) has any right, whatsoever, in it. It is only when the owner dies- and never before- that the legal rights of the heirs accrue. There is, therefore, no question of a would be- heir dealing in any way with his future right to inherit.4. The Indian legal concepts of 'joint' or 'undivided' family, 'coparcenary', karta, 'survivorship', and 'partition', etc., have no place in the law of Islam. A father and his son living together do not constitute a 'joint family'; the father is the master of his property; the son (even if a minor) of his, if he has any. 
-
-\tThe same is the position of brothers or others living together. 5. Unlike the classical Indian law, female sex is no bar to inherit property. No woman is excluded from inheritance only on the basis of sex. Women have, like men, right to inherit property independently, not merely to receive maintenance or hold property 'in lieu of maintenance'.Moreover, every woman who inherits some property is, like a man, its absolute owner; there is no concept of either stridhan or a woman's 'limited estate' reverting to others upon her death. 6. The same scheme of succession applies whether the deceased was male or a female. This is one of those salient features of Muslim law of succession which distinguish it from modern Hindu law of inheritance."`,
-
-3:`\tA Division Bench of this Court in Prakash v. Phulavati (supra) held that section 6 is not retrospective in operation, and it applies when both coparceners and his daughter were alive on the date of commencement of Amendment Act, 9.9.2005. This Court further opined that the provision contained in the Explanation to section 6(5) provides for the requirement of partition for substituted section 6 is to be a registered one or by a decree of a court, can have no application to a statutory notional partition on the opening of succession as provided in the unamended Section 6. The notional statutory partition is deemed to have taken place to ascertain the share of the deceased coparcener which is not covered either under the proviso to section 6(1) or section 6(5), including its Explanation. The registration requirement is inapplicable to partition of property by operation of law, which has to be given full effect. The provisions of section 6 have been held to be prospective.
-
-\tIn Danamma (supra), this Court held that the amended provisions of section 6 confer full rights upon the daughter coparcener. Any coparcener, including a daughter, can claim a partition in the coparcenary property. Gurunalingappa died in the year 2001, leaving behind two daughters, two sons, and a widow. Coparcener's father was not alive when the substituted provision of section 6 came into force. The daughters, sons and the widow were given 1/5th share apiece. Arguments: Shri Tushar Mehta, learned Solicitor General of India, appearing on behalf of Union of India, raised the following arguments: (i) The daughters have been given the right of a coparcener, to bring equality with sons, and the exclusion of daughter from coparcenary was discriminatory and led to oppression and negation of fundamental rights. 
-
-\tThe Amendment Act, 2005, is not retrospective but retroactive in operation since it enables the daughters to exercise their coparcenary rights on the commencement of the Amendment Act. Even though the right of a coparcener accrued to the daughter by birth, coparcenary is a birthright. (ii) The conferment of coparcenary status on daughters would not affect any partition that may have occurred before 20.12.2004 when the Bill was tabled before Rajya Sabha as contained in the proviso to section 6(1). Hence, the conferment of right on the daughter did not disturb the rights which got crystallised by partition before 20.12.2004.
-
-\t(iii) Unamended Section 6 provided that if a male coparcener had left behind on death a female relative specified in Class I of the Schedule or male relative claiming through such female relative, the daughter was entitled to limited share in the coparcenary interest of her father not share as a coparcener in her rights. (v) The Explanation contained under Section 6(1) concerning conferral of rights as coparcener, daughter as coparcener, shall not affect or invalidate any disposition or alienation including any partition or testamentary disposition of the property which had taken place before 20.12.2004.`,
-  
-4:`\tPhulavati (supra) and Danamma v. Suman (supra). In both the decisions, the provisions of section 6 have been held to be of prospective application. The amendment is a prospective one. The declaration by the law that the daughter of a coparcener has certain entitlements and be subject to certain liabilities is prospective. The daughter is treated as a coparcener under the amendment Act and not because of the daughter's birth prior to the amendment.
-
-\t(b) Unlike the joint tenancy principle in English law, a joint Hindu family stands on a different footing. Every son by birth became a coparcener, and because of birth, the son became entitled to be a coparcener in the joint Hindu family property entitled to claim partition with or without reference to the death of the Karta of a joint Hindu family. Like a son born into the family, an adopted son is also entitled to succeed to the joint family property. He becomes a coparcener with adoptive father, but his relationship with the natural family is severed, including his status as a coparcener in the family of birth as laid down in Nagindas Bhagwandas v. Bachoo Hurkissondas, AIR 1915 PC 41 and Nanak Chand & Ors. v. Chander Kishore & Ors., AIR 1982 Del. 520.
-
-\t(c) A Hindu joint family consists of male members descended lineally from a common male ancestor, together with their mothers, wives or widows, and unmarried daughters bound together by the fundamental principle of a Sapindaship of family relationship is the essence and distinguishing feature of the institution of the coparcenary. A joint family may consist of a single male member and widows of deceased male members. This body is purely a creature of law and cannot be created by an act of parties, as observed in G. Narasimulu & Ors. v. P. Basava Sankaram & Ors., AIR 1925 Mad. 249; and State Bank of India v. Ghamandi Ram (dead) through Gurbax Rai, (1969) 2 SCC 33. An undivided family which is the normal condition of Hindu society is ordinarily joint not only in the estate but in food and worship, and, therefore, not only the concerns of the joint family but whatever relates to their commensality and their religious duties are regulated by the member or by the manager to whom they have expressly or by implication delegated the task of regulation as held in Raghunadha v. Brozo Kishore, 3 IA 154 (PC). 
-
-\tThe coparcener status being the result of birth; possession of the joint property is only an adjunct of the joint family and is not necessary for its constitution, as discussed in Haridas Narayandas Bhatia v. Devkuvarbai Mulji, AIR 1926 Bom. 408. (d) A Hindu coparcenary is said to have seven essential characteristics, which include that the interest of a deceased member survives on his death and merges in the coparcenary property as observed in Controller of Estate Duty, Madras v. Alladi Kuppuswamy, (1977) 3 SCC 385. As a result, if father or any other coparcener has died before the Amendment Act, 2005, the interest of father or another coparcener would have already merged in the surviving coparcenary.`,
-
-5:`\tConferment of coparcenary status shall take effect on and from the commencement "of the Amendment Act." The use of the words "on and from" in section 6(1) indicates that the daughter becomes coparcener from the commencement of the Act. The daughter of a coparcener shall by birth become a coparcener, have the same rights and be subject to the same liabilities. The word "shall" indicates the due status of the daughter as coparcener is created only for the future and would not affect the existing rights of a male coparcener. The use of the words "become," "have," and "be" are all present tenses, and they reiterate to support the above ­suggested interpretation.
-
-\tIn the Bill recommended by the Law Commission and the Bill introduced, the Explanation to section 6(5) was not mentioned. It was introduced only on the recommendations of the Parliamentary Committee. Thus, the concept of partition by registered deed and decree of the Court were introduced. It follows that on a daughter becoming coparcener from a particular date, she cannot prospectively affect the share of a coparcener, which was already fixed as held in Prakash v. Phulavati. The essential condition for conferring the status of coparcener on the daughter is that there should be a coparcenary on the date of coming into force of the Act in 2005. If the coparcenary was disrupted by the act of the parties or by the death of parties, in partition or sale, the daughter could not get the status of a coparcener in coparcenary.
-
-\tPartition could be in the form of a memorandum of partition, or it could also be made orally. In most of the families, there used to be an oral partition. Once parties settle their rights, the partition effected orally cannot be ignored to give shares to the daughters. Such legal transactions cannot be unsettled; the Explanation safeguards all genuine transactions of the past, including oral partition effected by the parties. The Explanation should not be understood as invalidating all other documents recording partition or oral partition in respect of coparcenary property before 20.12.2004.
-
-\tDaughters conferred with the status of coparcener under the Amendment Act cannot challenge past transactions that took place before 20.12.2004, and the daughter should be alive as on the date of amendment. There should be 'living coparcener' to whom the daughter can inherit to become a coparcener. “Separation of share” is a species of “partition”. When all co- owners get separated, it is a partition. Separation of share(s) refers to a division where only one or only a few among several co-owners/coparceners get separated, and others continue to be joint or continue to hold the remaining property jointly without division by metes and bounds.  For example, where four brothers owning a property divide it among themselves by metes and bounds, it is a partition. But if only one brother wants to get his share separated and other three brothers continue to remain joint, there is only a separation of the share of one brother.`,
-
-6:`\tThe parties to the litigation leading to this appeal are governed by the Aliyasantana law prevalent in the district of South Kanara. They were members of a Kutumba descended from a common ancestress by name Manjekke. One Parameshwari and her son and daughter instituted original suit No. 91 of 1950 before the Court of the Subordinate Judge South Kanara for partition of properties in accordance with the provisions of Madras Aliyasantana Act, 1949. The suit was dismissed, but on appeal the High Court reversed it. The High Court passed a preliminary decree on 28-6-1961 and remanded the suit for further proceedings. In the trial a joint memo was filed by the parties on 25th September 1963 accepting the shares as per the memo.
-
-\tDefendants 22,23,24 were all male members of the 'Kutumba' and were 'Nissanthathi kavaru'. Onthe death of the 23rd and 24th defendants their legal Representatives who were brought on record filed R.I.A. No. 2266/66 and R.I.A. 2259/66 respectively claiming that out of the share allotted to the Kavarus ofdefendants 22 to 24, one-third representing the share or interest of the 23rd and24th defendants be allotted to them. The petition was opposed on the ground that each one of the defendants 22, 23, and 24 was a separate 'Nissanthathi Kavaru' and on the death of each of the defendants 24 and 23, his share or interest devolved upon the 'Santhathi Kavaru' nearest to him to which defendants 11,12 and16 belonged.
-
-\tThe plea of the 22nd defendant was that all the three defendants 22, 23 and 24 constituted one single Nissanthathi Kavaru to which, under the preliminary decree one single or joint share was allotted and, therefore, the said share survived to the last surviving member thereof (22nd defendant) and that no devolution on a 'Santhathi Kavaru' under sub-section (5) of Section 36 is possible until the last member of 'Nissanthathi Kavaru' viz. the 22nd defendant dies.  The trial court found that in the High Court decree dated 20-6-1961 defendants 22to 24 were allotted shares jointly. It further held that defendants 22, 23 and 24 formed three 'Nissanthathi Kavarus' as their mother was dead at the time of the filling of the suit and partition was effected and there was no undivided interest in the property when they died so as to attract the provisions of section 7(2) of the Hindu Succession Act.
-
-\tThe explanation to Section 7(2) of the Act provides that the interest in the property of the Kutumba or Kavaru of a Hindu shall be deemed to be the share in the property of the Kutumba or Kavaru, asthe case may be, that would have fallen to him or her if a partition of that property per capita had been made immediately before his or her death among all the members of the Kutumba or Kavaru, as the case may be, then living whether he or she was entitled to claim such partitionor not under the Aliyasantana law and such share shall be deemed to have been allotted to him or her absolutely.`,
-
-7:`\tThis section incorporates quotations from Narada and Vasishta and produces categories of persons, who, in a Court of Law nowadays would not be held disqualified from inheritance. They are brought under the text of Yajnavalkya who adds the Sanskrit word "Adya" translated by Colebrooke as "as well as others;" its literal meaning being  and the like" or practically, "etc., etc." Under cover of the latitude afforded by this expression placitum 3 brings in such intangible persons as "an enemy to his father" and " one who is addicted to vice" --disqualifications so vague, it is clear, that no Court of Law could now assert their validity. I do not think it right to say that these grounds of exclusion are obsolete or that they were originally intended to be moral rather than legal obligations: but rather that they are of so nebulous a character that they could never have been enforcible at any time when the enunciation of the rights of inheritance passed from the hands of family mediators or village panchayatdars to anything which can be dignified by the name of "Court of Law."
-
-\tI do not think that any useful purpose would be served by inquiring into the meaning of such terms as "Mrindriya" or "Pangu." They do not seem to me to assist the present discussion and I think it is probable that legislation will abolish the exclusion from inheritance based on these terms before the Courts are called upon to determine their exact meaning. Similarly I think it unnecessary to discus whether Yajnavalkya meant anything more by using the word "Andha" than what Manu meant by ''Jathyandha". "Jati" comes from the same root as the Greek Gignomai, Genes, etc., and Latin "Genus." It is, I think, clear that both Manu and the Mitakshara explicitly lay down the rule of law that at least a "Jathyandha" is excluded from inheritance and that the only way to escape from this is to do what SADASIVA AYYAR, J., has done and say boldly It is not a subsisting rule of law. It has become obsolete and abrogated.
-
-\tIn any system of law other than the Hindu Law, it would be almost a contradiction in terms to predicate of any proposition of law that it is obsolete. In the Hindu Law it is a possible state of things and it has been admitted to exist with regard to many maxims which cannot be treated as of merely moral or religious obligation. I need only instance the kinds of marriages and the classes of sons enumerated in the ancient writings and also the various rules for marriages between persons of different castes.
-
-\tThere is a consensus of opinion that there are only two forms of marriages and only two classes of sons now existing and intermarriages between persons of different castes have in practice long ceased to exist. It is not now possible to trace the steps by which this state of things came about, but it may be said generally, that, in the days when the Sudder Court had recourse to the opinions of the Pandits, the latter felt themselves quite free to say with regard to any rule of law that, in practice, it was regarded as obsolete and the Courts felt themselves equally free to act on such opinions.`,
-
-8:`\tThe position with regard to the present question is that there is no express ruling of a Court of Law which says, in terms, that a congenitally blind man is excluded from inheritance. There are cases which definitely decide that blindness which is not congenital but is traumatic or supervenes on disease does not exclude. There are many cases which assume, without expressly deciding, that congenital blindness does exclude. That position is now challenged and it devolves upon us to say how the law on the subject stands in India at this day.
-
-\tThat which we call the Hindu Law, is composed of many incongruous elements--I am speaking, now, of its substance, and not of the sources in which it is to be sought. It primarily lays down rules of law, which must be treated as of practical applicability to the India of to-day. Such rules there are in abundance, but they are interspersed with mandatory precepts which have been treated by commentators and Judges as being merely of religious or moral force but which cannot govern the rights and duties of a member of a Hindu family with the force of a positive rule of law. I may refer in this connexion to the words of the Judicial Committee in Balwant Singh v. Rani Kishori (1886) I.L.R,, 9 Mad., 64 (F.B.).).
-
-\tAll these old text boots and commentaries are apt to mingle religious and moral considerations, not being positive laws, with rules intended for positive laws. In his preface to his valuable work on Hindu Law, Sir W. Macnaghten says : 'It by no means follows that because an act has been prohibited it should therefore be considered as illegal. The distinction between the Vinculam juris and the Vinculam pudcns is not always discernible.' (Hindu Law, Principles and Precedents, page 6 of the preliminary remarks.) He illustrates this position by the example of the very subject, of the present discussion. It is, as their Lordships think, the most remarkable inference that the passage in Section 1 belongs to the former class of precepts, and those of Sections 4 and 5 to the latter.
-
-\tIt was argued in this case that the rule which excludes a blind man from inheritance was something other than a rule of positive law. It seems to me that that position is wholly untenable and that such a principle of exclusion can only belong to the domain of positive law, and not to that of either religion or morality. If it is riot a rule of law. it must be meaningless. The only colour to the argument is derived from the fact that both Manu and Mitakshara, to which for the moment I shall confine myself, include within the ambit of their prohibition, persons with disqualifications which are obviously based on moral grounds and on grounds which it would be impossible for a Court of Law to pronounce upon. It must not be forgotten that the Hindu Law is the result of many ingredients. In the first place, we have the Smritis or records of the pronouncements of Rishis, (Saints) among whom stands paramount Manu.`,
-
-9:`\tIn Vaidyanatha Ayyar v. Chinnasami Naik (1894) I.L.R., 17 Mad., 108, it was held that a succession certificate was necessary where a suit was filed on a promissory note executed in favour of two Hindus carrying on business in partnership, by the surviving partner and the heirs of the deceased partner. In Rajah of Kalahasti v. Achigadu (1907) I.L.R., 30 Mad., 464, it was held that a succession certificate was necessary when the successor to an impartible estate sued on a bond executed in favour of the deceased zamindar, as he derived his title to such debt only on the death of his predecessor as part of his effects. 
-
-\tIt is, however, now settled that it is not necessary that the fact that the debt was a debt due to the joint family should appear on the face of the bond but that this can be proved aliunde: Subramanian Chetti v. Rakku servai (1897) I.L.R., 20 Mad., 232, Ramanatham Chatty v. Subramaniyan Chetty (1915) 28 M.L.J., 372, and Jagmohandas Kilabhai v. Allu Maria Duskal (1895) I.L.R., 19 Bom., 338, In Raghivendra Madhav v. Bhima (1892) I.L.R., 16 Bom., 349, it was held that a succession certificate was necessary, if a decree obtained by one of two undivided brothers was the separate property of the deceased decree-holder, as the surviving brother can only execute as his heir. It is clear from the authorities that the fact that the plaintiff was a member of a joint and undivided family with the deceased, and owned joint properties which passed to him by survivorship, would not prevent the necessity for the production of a succession certificate in regard to the separate property of the deceased, inasmuch as the debt would still be the effects of the deceased person.
-
-\tSo far as the text of the Mitakshara dealing with the rights of sons in their father's self-acquisitions is concerned it has been decided by their Lordships of the Privy Council in Balwant Singh v. Rani Kishori (1898) I.L.R., 20 All., 267 (P.C.), that the text: though immovables or bipeds have been acquired by a man himself, a gift, or sale of them should not be made without convening all the sons. They who are born and they who are yet unbegotten and they who are still in the womb, require the means of support. No gift or sale should therefore be made, is only a moral precept and not a rule of law capable of being enforced. As pointed out in Muddun Gopal Thakoor v. Ram Buksh Pandey (1863) W.R. (Civil Rulings), 71 and Jugmohandas Mangaldas v. Sir Mangal das Nathubhoy (1886) I.L.R., 10 Bom., 528, the son acquires no legal rights over his father's self-acquisitions by reason of the text of the Mitakshara (Ch. I, Section I, 27), but his right is an imperfect one incapable of being enforced at law.
-
-\tAssuming that the imperfect right of the son in his father's self-acquisition may have sufficient efficacy to entitle him to succeed to it to the exclusion of a divided son, it does not follow that the self-acquired property does not form part of his father's "effects" within the meaning of Section 4 of the Succession Certificate Act.`,
-
-10:`\tThis letter shows that the assessee had received funds amounting to more than Rs. 80,000 for construction of the houses and marriage expenses of his daughter from time to time. This is further clear from the letter dated 14th December, 1957 written by the appellant's father from New Delhi enclosing a cheque for Rs. 2,000 as desired by the appellant. This letter further shows that the construction of the house bearing Door No. 26 was completed by December 1957. We further find that the appellant had written a letter to the Income-tax Officer on 8-10-1965 in the course of his wealth-tax assessment proceedings for 1965-66 wherein he had stated that he had purchased a plot of land for Rs. 10,000 in 1954, out of which nearly five to six thousand rupees would have come from his father. 
-
-\tIn his letter dated 15-1-1983 addressed to the Appellate Asstt. Commissioner, the appellant has mentioned these facts in para 2 of his letter and further referred to the remittance of Rs. 35,000 received from his father on 11-12-1961 for the purpose of constructing a property on an unfinished construction in 71/9, Mowbrays Road, which he had purchased for Rs. 20,000 from one Mrs. S.G. Navnitammal on 9-9-1961 and on which property he had spent a further sum of Rs. 40,000. While explaining the source for this investment, the appellant had stated that he had borrowed Rs. 22,000 on 4-9-1961 and another sum of Rs. 11,000 on 19-9-1961 from one Shri S. Thyagarajaiyer, Advocate and that his father had remitted to him a sum of Rs. 35,000 on 11-12-1961. 
-
-\tHe further stated in this letter that he sold away this property as his father did not like the location and thereafter he purchased another property bearing No. 19A & B, Sitamma Colony, which also he sold away as there was a serious theft in the said house and his family members did not want to stay in the said house also thereafter. It is after selling away this property which he had purchased in Sitamma Colony that he ultimately constructed the new block No. 26-B with the sale proceeds. The appellant therefore explained that the amount of Rs. 35,000 received by him from his father was always available in one form or another for the acquisition and the construction of the various properties. Thus, it is clear from the materials placed before us that the appellant had received in all a sum of Rs. 40,000 to Rs. 43,000 for the construction of the house properties from 1954 to 1961, apart from other funds received from his father on the occasion of the marriage of his daughter.
-
-\tAs a matter of fact, the conflict of decisions among the various High Courts, on the issue under the Gift-tax Act, was finally resolved by the Supreme Court in Goli Eswariah v. CGT [1970] 76 ITR 675. At pages 678 and 679 of the Reports, the Supreme Court held as follows. It is obvious that the principles of succession are different as amongst these three groups. In the first, it is by survivorship (even in respect of the father's self-acquired property, according to the scheme of the Mitakshara).`,
-
-11:`\tMohammedan Law, being the personal law, possesses its own legal principles and regulations which govern family relationships in matters such as marriage, divorce, inheritance, custody and guardianship. Its distinctive feature sets it apart from other personal laws on fundamental issues. It is pertinent to examine the legal principles, if any, governing partition under Mohammedan law. Tahir Mahmood, in his book ‘The Muslim Law of India’, 2nd Edition, Chapter 12 (Law of Inheritance) Para II, has provided for various concepts related to succession in Muslim Law which distinguish it from other personal laws: “1. The Muslim law of succession is basically different from the parallel indigenous systems of India.
-
-\tThe doctrine of janmswatvavada (right by birth), which constitutes the foundation of the Mitakshara law of succession, is wholly unknown to Muslim law. The law of inheritance in Islam is relatively close to the classical Dayabhaga law, though it differs also form that on several fundamental points. The modern Hindu law of succession (as laid down in the Hindu Succession Act, 1956) is, however, much different from both the aforesaid classical systems; it has a remarkable proximity, in certain respects, to the Muslim law of inheritance. 2. The division of heritage (daya) into sapratibandh (‘obstructed’) and apratibandh (‘unobstructed’)-self-acquired and ancestral- is equally foreign to Muslim law. Whatever property one inherits (whether from his ancestors or from others) is, at Muslim law, one's absolute property- whether that person is a man or a woman. 3. In Muslim law, so long as a person is alive he or she is the absolute owner of his or her property; nobody else (including a son) has any right, whatsoever, in it. It is only when the owner dies- and never before- that the legal rights of the heirs accrue.
-
-\tThere is, therefore, no question of a would be heir dealing in any way with his future right to inherit. 4. The Indian legal concepts of ‘joint' or 'undivided' family, 'coparcenary', karta, 'survivorship', and 'partition', etc., have no place in the law of Islam. A father and his son living together do not constitute a ‘joint family'; the father is the master of his property; the son (even if a minor) of his, if he has any. The same is the position of brothers or others living together. 5. Unlike the classical Indian law, female sex is no bar to inherit property. No woman is excluded from inheritance only on the basis of sex. Women have, like men, right to inherit property independently, not merely to receive maintenance or hold property ‘in lieu of maintenance'. Moreover, every woman who inherits some property is, like a man, its absolute owner; there is no concept of either stridhan or a woman's ‘limited estate' reverting to others upon her death. 6. The same scheme of succession applies whether the deceased was male or a female. This is one of those salient features of Muslim law of succession which distinguish it from modern Hindu law of inheritance.”`,
-
-12:`\tThe instant appeals, preferred by the original defendants, arise out of the judgment and order dated 13.01.2006 passed by the High Court of Karnataka whereby it dismissed the appeals filed by the original-defendants, confirming the decree passed by the Court of the Principal Civil Judge (Sr. Dn.)1, Bijapur in O.S. No.140 of 1988 in favour of the original plaintiffs (Respondents herein). Hereinafter referred to as ‘Trial Court’ 1-CIVIL APPEAL NO.4211 OF 2009  2. Admittedly, the parties are governed by Mohammedan law. 
-
-\tThe following questions arise for our consideration:- (a) Whether an owner of property can, in his lifetime, transfer said property to his heirs by way of partition? (b) Whether, in the facts of this case, the requisites of a valid gift were met and also whether nomenclature employed in Mutation Entry can be said to be indicative of intentions? FACTUAL MATRIX 3. The brief facts are stated by referring to the parties as per their status in the Trial Court. 4. One Sultan Saheb, the owner of the suit land described in Schedule B and C being agricultural land and house property respectively, of the plaint, died on 09.01.1978. Through his first marriage, he had one daughter namely, Ajamunisa (defendant no.11). With his first wife passing away, he remarried and, from this second marriage, had three children- two sons, namely Mansoorsaheb (defendant no.1), Sikandar (defendant no.9) and daughter namely, Rabiyabi. Plaintiff nos.1 to 9 are the children of Rabiyabi, who had died on 08.06.1985. Defendant no.2 is Mansoorsaheb’s wife, defendant nos. 3 to 7 are his children, defendant no.8 is defendant no.1’s daughter-in-law. 
-
-\tDefendant no.10 is the son of defendant no.9. For ease of understanding, the position of parties is demonstrated through a family tree: 2-CIVIL APPEAL NO.4211 OF 2009  5. The case of the plaintiffs is that Sultan Saheb was the owner and possessor of the suit property. On his death, defendant no.1 got his name, as also the names of defendant no. 9 & 11 mutated in the revenue records to the exclusion of the plaintiffs’ mother, Rabiyabi, also a successor-in-interest. As such, plaintiffs are entitled to 1/6th share in different scheduled properties and sought partition by way of O.S. No.140/1988. 6. In their written statements, the defendants contended that Sultan Saheb himself had divided the property, R.S.No.249/1A/1, into three parts, gifting one part each to his sons and retaining the third remaining part. Subsequently, in September 1980, he partitioned the retained third portion among his four children. Reliance is placed on the Mutation Entry No. 8258 dated 21.01.1973, which is disputed by the plaintiffs.
-
-t\“A hiba is a voluntary gift without consideration of property or the substance of thing by one person to another so as to constitute the donee the proprietor of the subject matter of the gift.” While referring to Mohammedan Law, by Syed Ameer Ali18, the Privy Council in Mohd. Abdul Ghani v. Fakhr Jahan Begam19 observed.`,
-
-13:`\tThese petitions by the holder of Kavalappara Sthanam, his wife, daughters and soil challenged the constitutional validity of the Madras Marumakkathayam (Removal of Doubts) Act, 1955 passed by the Madras Legislature soon after the Privy Council had declared the properties in possession of the Sthanee to be Sthanam properties in which the members of the tarwad had not interest.
-
-\tSection 2 Of the Act, which contained the substantive provision, was as follows:--  "2. Notwithstanding any decision of Court, any sthanam in respect of which:- (a) there is or had been at any time an intermingling of the properties of the sthanam and the properties of the tarwad, or  (b) the members of the tarwad have been receiving maintenance from the properties purporting to be sthanam properties as of right, or in pursuance of a custom or otherwise, or (c)there had at any time been a vacancy caused by there being, no male member of the tarwad eligible to succeed to the Sthanam, 888 shall be deemed to be and shall be deemed always to have been a Marumakkathayam tarwad and the properties appertaining to such a sthanam shall be deemed to be and shall be deemed always to have been properties belonging to the tarwad to which -. he provisions of the Madras Marumakkathayam Act, 1932 (Mad. XXII of 1933), shall apply." The question for decision was whether the impugned Act infringed the fundamental rights of the petitioners guaranteed by Arts. 4, 19(1)(f) and 31 of the Constitution.
-
-\tHeld (per Sinha, C. J., Subba Rao and Shah, JJ.) that the three tests laid down by the Act were contrary to the well- settled principles of Marumakkathayam Law with regard to which there could be no scope for doubt and as such not only not germane but extraneous to the object it sought to achieve. They were a device to deprive the sthanam of its properties and vest them in the tarwad and as such directly hit by Art. 19(1)(f) and could not be saved by Art. 19(5). Assuming that the Sthanam properties were held in janmam right and as such were estates within the meaning of Art. 31A, the impugned Act was immune from challenge. That Article, properly construed, envisages agrarian reform and provides for the acquisition, extinguishment or modification of proprietary and various other kinds of subordinate rights in a tenure called the estate solely for that purpose and must be limited to it. 
-
-\tAlthough it may not be permissible to refer to the statement of objects and reasons of its amendment for purposes of construction, it can be referred to for the limited purpose of ascertaining the conditions prevailing at the time and purpose underlying the amendment. Aswini Kumar Ghose v. Arabinda Bose, [19531 S.C.R. 1,considered.Learned counsel for the respondents while countering the arguments advanced by the learned Attorney-General raised two further points, viz., (1) the petitioner's sthanam is an "estate" within the meaning of Art. 31A of the Constitution and therefore the Act extinguishing or modifying the rights pertaining to the said sthanam cannot be questioned on the ground that it infringes Arts.`,
-
-14:`\tIn his deposition on 18.07.2013, PW-3, one Mr. N.V. Satyanarayan, Defence Estate Officer, Delhi Circle, has admitted that the mutation of Bungalow No. 4, University Road, Delhi had been done in the name of Shri R.N. Gupta (Karta); that it is borne out from the summoned record, i.e., a copy of the letter dated 01.06.85, addressed to Mrs. Shanta K. Mohan, w/o Late Sh. Kishan Mohan, 18, Anand Lok, New Delhi regarding mutation in the name of successor of Late Sh. Kishan Mohan, Karta (JHUF) in respect of 4, University Road, Delhi and letter dated 5.8.2003 from his office addressed to Sh. R.N. Gupta (Karta) & others, 4, University Road, Delhi on the subject "Mutation of Bungalow No.4, University Road, Delhi in the name of Legal Heirs." In this letter, it was contended that Mr. R.N. Gupta was the sole surviving son of Mr. D.R. Gupta and that he was thus the Karta of the said JHUF.
-
-\tIt is not in dispute between the parties that the plaintiff is the eldest surviving member of the HUF. Accordingly, she seeks a decree in terms of the relief sought in the suit. The learned counsel for the plaintiff relies upon the case of Raghunath Rai Bareja and Another vs. Punjab National Bank and Others (2207) 2 SCC 230 which held that, under the Dayabhaga School of Law, an unborn son cannot have a right in the property because the said son cannot perform Shradha whereas, under the Mitakshara School of Law, an unborn son in the womb of his mother gets a share in the ancestral property. The rights of an unborn son in the mother‟s womb under the Dayabhaga School of Law are premised on the ability of the child to offer a rice ball or to conduct such necessary rituals for the benefit of the departed souls of his ancestors. 
-
-\tUnder the Mitakshara School of Law, emphasis is on the right of inheritance of the child and therefore, it rests upon consanguinity rather on upon the inheritance efficacy. It is contended that Section 6 of the Hindu Succession Act extends this element of consanguinity to female coparceners of a HUF under the Mitakshara School of Law to all aspects of inheritance, which would include the right to manage a ritual or property as its Karta, being the eldest of the co- parceners. She submits that by virtue of the family settlement dated 01.04.1999 (Ex. PW1/5), the rights of the parties, then existing, were settled. 
-
-\tIt was agreed that: "2. The parties hereto confirm and declare that the oral family settlement dated 18.01.1999 was arrived at on the following terms: 2.1 The parties acknowledge and confirmed that the parties hereto are the members of the Hindu Undivided family D.R. Gupta and Sons (HUF) and each having share in the movable and immovable properties presently owned by the Hindu Undivided Family as under: (a)Shri Krishan Mohan Gupta (The eldest son of late Shri D.R. Gupta who died on 17th Feb., 1984) and is survived by his wife Smt. Shanta K. Mohan And Mrs. Sujata Sharma & Mrs. Radhika Seth, daughter, heirs to the party of the "First part" - 1/5th share.`,
-
-15:`\t"It may be mentioned in this connection that the first and foremost principle of interpretation of a statute in every system of interpretation is the literal rule of interpretation. The other rules of interpretation e.g. the mischief rule, purposive interpretation etc. can only be resorted to when the plain words of a statute are ambiguous or lead to no intelligible results or if read literally would nullify the very object of the statute. Where the words of a statute are absolutely clear and unambiguous, recourse cannot be had to the principles of interpretation other than the literal rule, vide Swedish Match AB vs. Securities and Exchange Board, India, AIR2004 SC 4219. As held in Prakash Nath Khanna vs. C.I.T. 2004 (9) SCC 686, the language employed in a statute is the determinative factor of the legislative intent. The legislature is presumed to have made no mistake.
-
-\tThe presumption is that it intended to say what it has said. Assuming there is a defect or an omission in the words used by the legislature, the Court cannot correct or make up the deficiency, especially when a literal reading thereof produces an intelligible result, vide Delhi Financial Corporation vs. Rajiv Anand 2004 (11) SCC 625. Where the legislative intent is clear from the language, the Court should give effect to it, vide Government of Andhra Pradesh vs. Road Rollers Owners Welfare Association 2004(6) SCC 210, and the Court should not seek to amend the law in the grab of interpretation."
-
-\tThe learned counsel further relies upon Ganduri Koteshwar Ramma & Anr. v. Chakiri Yanadi & Anr., (2011) 9 SCC 788 which, in the context of Section 6 of the Hindu Succession Act, held that rights in the co- parcenary property among male and female members of a joint Hindu family are equal on and from 9.9.2005. He submits that the legislature has now conferred a substantive right in favour of the daughters; that by Section 6, the daughter of the co-parcenar shall have same rights and liabilities in the co-parcenary property as she would if she had been a son; thus, on and from 9.9.2005, the daughter is entitled to a share in the HUF property and is a co-parcenar as if she had been a son. The Supreme Court relied upon its own judgment in S.Sai Reddy v. S. Narayana Reddy and Ors. (1991) 3 SCC 647 which held that the Hindu Succession Act was a beneficial legislation and had been placed on the statute book with the objective of benefitting a woman's vulnerable position in society.
-
-\tHence, the statute was to be given a literal effect. It is, however, required to be noted that the Court was then considering Section 29(a) of the Act and not Section 6. Explanation.-For the purposes of Clause (a), the expression "son", "grandson" or "great-grandson" shall be deemed to refer to the son, grandson or great-grandson, as the case may be, who was born or adopted prior to the commencement of the Hindu Succession (Amendment) Act, 2005 (16 of 1908) or partition effected by a decree of a court.`,
-
-16:`\tOrder of succession among heirs in the Schedule. -Among the heirs specified in the Schedule, those in class I shall take simultaneously and to the exclusion of all other heirs; those in the first entry in class II shall be preferred to those in the second entry; those in the second entry shall be preferred to those in the third entry; and so on in succession. Ms. Mala Goel, the learned counsel for plaintiff refers to the same locus classicus by Mulla on principles of Hindu laws which states as under "The right to become a manager depends upon the fundamental fact that the person on whom the right devolved was a coparcener of the joint family... Further, the right is confined to the male members of the family as the female members were not treated as coparceners though they may be members of the joint family."
-
-\t"By virtue of the new provision, a daughter of a coparcener in a joint Hindu family governed by the Mitakshara law now becomes a coparcener in her own right and thus enjoys rights equal to those hitherto enjoyed by a son of a coparcener. The implications of this fundamental change are wide. Since a daughter now stands on an equal footing with a son of a coparcener, she is now invested with all the rights, including the right to seek partition of the coparcenary property. Where under the old law, since a female could not act as karta of the joint family, as a result of the new provision, she could also become karta of the joint Hindu family. Issue 1 This issue was decided in favour of defendant Nos. 1 to 4 by this Court, which was subsequently set aside in Appeal No.293/2010 on 17.01.2013, therefore, this issue stands settled in favour of the plaintiff."
-
-\tThe learned counsel for the plaintiff further relies upon the 174th Report of the Law Commission of India, which has argued that when women are equal in all respects of modern day life, there is no reason why they should be deprived of the right and privilege of managing HUF as their Karta. She argues that it is in this context, that Section 6 was so formulated that it covers all aspects of succession to a coparcener which are available to a male member to be equally available to a female member also. Viswanatha Sastri J. said : "The managership of a joint Hindu family is a creature of law and in certain circumstances, could be created by an agreement among the coparceners of the joint family. Coparcenership is a necessary qualification for managership of a joint Hindu family."
-
-\tInsofar as the plaintiff father had passed away prior to the aforesaid amendment and there being no testamentary succession in her favour she would not have any rights into the co-parcenary. Upon the query put to counsel he submits that if the survivor of Mr. Krishan Mohan Gupta had been male then he would have rights in the co-parcenary. Explanation.-For the purposes of Clause (a), the expression "son", "grandson" or "great-grandson" shall be deemed to refer to the son, grandson or great-grandson, as the case may be, who was born or adopted prior to the commencement of the Hindu Succession (Amendment) Act, 2005.`,
-
-17:`\tThe argument of the petitioners' counsel under Article 14 was, that whereas the terms "individual" and "Hindu undivided family" are units of assessment under Section 3, non-Hindu undivided families, such as Moplah Marumakkathayam tarwads in North Malabar and elsewhere and Christian joint families following the Hindu 'Law in Mysore and Coorg and elsewhere, are not such units, not being comprehended by the terms "individual" and "Hindu undivided family", with the result that with respect to them, Hindu undivided families have been discriminated against and alternatively, that if non-Hindu undivided families as aforesaid are looked upon as groups of individuals and therefore comprehended by the term "individual", 'these families have been discriminated against by reason of the schedule of the Act, Part I, Paragraph A, which has prescribed a lower limit of exemption for "individual" as against a higher limit for "Hindu undivided family" and that, if for that reason, non-Hindu undivided families are excluded as discriminated against, such exclusion in itself would spell discrimination against Hindu undivided families.
-
-\tLearned counsel for the Revenue answered, that the term "Hindu undivided family" includes not only Hindu Mitakshara and Dayabhaga joint families, but also all undivided families of Hindus, such as, Namboodiri Makkathayam families, Hindu Warumakkathayam tarwads, such as Nair and 'Ezhava tarwads, that they are being assessed under the Act as "Hindu undivided family", that non-Hindu undivided families are comprehended by the term "individual" and are being assessed as such, and that in any event Moplah Marumakkathayam tarwads are so insignificant in number compared to the large number of Hindu undivided families in the Indian Union, that their exclusion either through inadvertence or otherwise is not discriminatory and would not attract Article 14. 
-
-\tMahaviraprasad Badridas v. Yagnik, 1959-37 ITR 191: (AIR 1960 Bom 191), a case referred to by that court was decided under Entry 86 and in Commissioner of Income-tax v. Sen Sodra Devi, 1957-32 ITR 615: ( (S) AIR 1957 SC 832) also relied on, the Supreme Court. Though the counters filed by the 'Revenue are not quite clear on the point, it seemed common ground at the hearing of the petitions, that the term "Hindu undivided 'family" in Section 3 is comprehensive to include all joint or undivided families composed of those who follow the Hindu religion, whatever be their personal law, whether Makkathayam or Marumakkathayam or Aliyasanthana or Mitakshara or Dayabhaga law, but not Moplah Marumakkathayam tarwads, or other non-Hindu undivided families.
-
-\tSome of the cases concerned a body of trustees or other association of individuals, as in Hotz Trust of Simla v. Commissioner of Income-tax, AIR 1930 Lah 929 or a partnership formed by two firms and a Hindu undivided family, as in Mian Channu Factories Union v. Commissioner of Income-tax Punjab, 1936-4 ITR 203; (AIR 1936 Lah 548) or a co-operative society being a corporate body created by statute, as in Commissioner of Income-tax v. Salem District Urban Hank Ltd., 1940-8 ITR 269: (AIR 1940 Mad 612 (SB) ).`,
-
-18:`\tThere is a presumption, that Moplahs of North Malabar, to which category the petitioner in O. P. 674 of 24.03.1958 belongs, generally follow Marumakkalhayam law. This has been ruled by this Court in Koyyotan Sooppi v. Kalliani, 09.11.1957 Ker LJ 862. In Kunhi Pat minima v. Sundara Ayyar, AIR 14/08/1946 Mad 32 a division bench of the Madras High Court held, that a Moplah family of North Malabar "is governed by the Marumakkathayam law in all matters relating to property unless there happens to be private property undisposed of by will. 
-
-\tTherefore, in most matters the Marumak-kathayam law must be regarded as governing the family". In Chakkra Kanna v. Kunbi Pokker, ILR 39 Mad 3)7: (AIR 1916 Mad 391 (KB) ) Srinivasa Ayyangar, J. observed thus at page 336 (of ILR Mad): (at p. 400 of AIR): "But the more common and familiar instances of such groups in Southern India are the joint Hindu family governed by the Mitak-shara law, the Nambudiri Illom governed by the Makkattayam law, the Nayar tarwad governed by the Marumakkathyam law, and the Aliyasantan family of South Canara.The Mappillas of North Malabar generally follow the Marumakkattayam system and the parties to this suit are governed by that law. The incidents of such group holding are now welt settled.
-
-\tIn the case of Malabar tarwads such incidents include the impartibility of the property, the right by birth of persons born in the tarwad, and the management of the properties by the senior male member of the tarwad who is styled the karnavan." Raja of Arakal v. Churia Kunhi Kannan, 29 Mad LJ 632: (AIR 1916 Mad 976) related to the family of Arakal Raja, a Moplah tarwad, and it was held that the junior members have a right to take steps necessary for the protection of the interests of the tarwad. In Arayal-prath Kunhi Pocker v. Kanlhilath Ahmad Kuts Haji, ILR 29 Mad 62 it was held, that the members of a Moplah tarwad can divide property by mutual consent, though no suit for compelling a partition will lie.These were all cases decided before the passing of the Mappilla Marumakkathayam Act, 1938. The several statutes affecting Moplahs of the former Malabar District may be briefly surveyed. 
-
-\tThe Malabar Wills Act, 1898, was enacted to make provision for the execution of Wills by Marumakkathayees or persons governed by the Maraumakkathayam or Aliyasan-thana Law of inheritance. The Mappilla Succession Act, 1918, was, to extend the rules of Muhammadan law of intestate succession and the Mappilla Wills Act, 1928, was to extend the rules of Muhammadan law of testamentary dispositions, to Mappillas governed by the Marumakkathayam or the Aliyasanthana Law of inheritance, but these had nothing to do with a Moplah tarwad or its properties. In my view, a comparative study of the Madras Marumakkathayam Act, 1932, and the Mappilla Marumakkathayam Act, 1938, reveals a striking similarity between the tar-wads dealt with by them. The basic concepts, like karnavan, anandiravan, tarwad, and tavazhi are practically the same.`,
-
-19:`\tWhile the Madras Marumakkathayam Act gave a right for tavazhi partition, the other Act conferred a right of individual partition as well. Under both, division has to be on a per capita basis. There is a saving in both, of the rules of Marumakkathayam law, custom, and usage, except to the extent specifically provided for. The rules of intestate succession are however different, the Mappilla Marumakkatham Act providing for succession according to the Islamic Law of Inheritance. In A. Section 452 of 1945 (Mad) decided by Rajamannar, C. J. and Raghava Rao, J., the Madras High Court applied the rule of severance of status laid down in decisions rendered under the Madras Marumakkathayam Act, 1932, to Moplah tarwads and observed:
-
-\t"We have carefully considered the material sections of both the Acts, namely, Section 38, 39 and 40 of the Marumakkathayam Act of 1933 and Section 13, 14 and 17 of the Moplah Marumakkathayam Act, 1939 and we see no such difference in language as would justify us in not applying the principles laid down in the decisions above referred to to the case of a Moplah tarwad." In Lakshmanan v. Kamal, AIR 1959 Kerala 67 (FR), this Court held that "the Shariat Act did not abolish or purport to abolish the rights and incidents of a Mappila Mavumakkathayam tarwad." The right of individual partition, was conferred by the Madras Marumakkathayam (Amendment) Act, 1958. Quite recently, in Muthia Chettiar v. Wealth Tax Officer, 1964-2 Mad LJ 273 while holding that Marumakkathayam tarwads and joint families governed by the Hindu law are not similarly situated, the Madras High Court made the following observations at pages 282 and 283 of the report:
-
-\t"We have already pointed out that these Mappilla tarwads occupied the same position as the Nair tarwad in the Malabar area. We have to take it that, prior to the enactment of the Madras Marumakkattayam Act, 1932, and the Mappilla Marumakkattayam Act, 1939, the Mapilla tarwad and the Nair tarwad stood more or less in the same position except as regards marriage, divorce, succession to separate property etc. We find that on important matters like the right of division and the quantum of share, the tarwad, Hindu or Muslim in Malabar, differs substantially from the Hindu undivided family."
-
-\tI consider that on both these grounds, the assessment order in 0. P. 684 of 1959 could not be supported; it is quashed accordingly. O. P. 684 of 1959 is allowed. O. P. 674 of 1958 also is allowed, on the ground that the Moplah Marumakkalhayam tarwad of the petitioner is outside the purview of Section 3 of the Act. The demand nolice is quashed. The parties in both these petitions shall bear their costs. In the decision reported in Mammad Keyi v. Wealth Tax Officer, Calicut, 1961 Ker LJ 1046; (AIR 1962 Kerala 110) legislative competence was upheld by a Division Bench of this Court. On the provisions of the Act as they stand at present Shri. M. K. Nambiar, counsel for the petitioner, raised the following contentions.`,
-
-20:`\tThe point as to discrimination is, that by the exclusion of Moplah tarwads from the imposition under the Act, Hindu undivided families have been singled out. On the last occasion, the division bench decided the point against the Revenue on two grounds, first, that on the materials before it, it could not be held as contended, that Maplah tarwads constituted only an insignificant minority and second, that the classification of joint families into Hindu undivided families and Moplah tarwads had no reasonable relation to the object of the Act. On appeal, the Supreme Court remanded the cases observing that "it is for the party who comes forward with the allegation, that equality before the law or the equal protection of the laws is being dented to him to adduce facts to prove such denial".
-
-\tAccordingly, the burden of establishing the plea has been cast on the petitioners and has been rightly undertaken by them. Fresh affidavits have been filed in O. P. fi84 of 1959 and O. P. 674 of 1958. In the affidavit of the petitioner in 0. P. 684 of 1959 dated the 26th June, 1954, it was averred, that there are 22 karnavans of Moplah tarwads, "who are even now being assessed to wealth tax as individuals", in respect of the net wealth of the tarwads. Though this was not controverted in the counter, it was stated in paragraph 2, that the "non-Hindu undivided families which are in the ordinary course liable to assessments to wealth lax from 1957-68 onwards in respect of the whole of India are only 18 in number", the number in this State being 1.
-
-\tThe petitioner denied this in his reply and explained, that apparently this has reference to "those non-Hindu families, who have been assessed to wealth-tax as such and not the very large number of undivided families which are being taxed only as individuals". This is not clear, for non-Hindu families are not assessed as families but only as individuals. In the affidavit dated the 6th November, 1964, the number of Hindu undivided families assessed to wealth tax in the year 1961-62 was stated to be 34 and in the year 1962-63 to be 23, At the hearing, learned counsel for the respondent stated, that the list of 22 karnavans of Moplah tarwads furnished in paragraph 3(vi) of the affidavit of the petitioner may be taken as correct.
-
-\tThus, the number of Moplah tarwads in North Malabar who are now assessed to wealth lax as individuals may be taken to be 22. A comparative estimate is not possible, without even a rough idea as to the number of wealthy Hindu undivided families, of all categories in the whole of India. This was necessary as a part of the petitioner's plea of discrimination. The respondent has stated in the counter, that considering the population of India, the number of non-Hindu undivided families is insignificant and negligible. On the strength of the above authorities, I am inclined to take the view that the expression 'individuals' in Section 3 of the Act includes non-Hindu families such as a Mappila Marumakka-thayam Tarwad.`,
-
-21:`\t1.The learned District Munsif of Cannanore has referred the following question for decision by this Court: Whether the Madras Shariat (Amendment) Act (Act XVIII of 26/05/1949) is ultra vires of Article 19. Clause (1)(f) of the Constitution Act. The question was raised in a suit pending before the learned District Munsif brought by the widow of one deceased Abdulla Kalpha for partition and separate possession of certain properties, described in schedule A to the plaint. Abdulla Kalpha was a member of a Marumakkathayam tarwad. On 30th October, 1918, the members of the tarwad executed a karar in and by which the main tarwad was divided into three tavazhis. Abdulla Kalpha was a member of the third tavazhi and was one of the executants of the document.
-
-\tThe said karar provided inter alia that in case one tavazhi became extinct, the properties allotted to the said tavazhi would lapse to the other tavazhis. Abdulla Kalpha was the sole surviving member of the third tavazhi. He died on 10th January, 1952. The main question in the case is whether on his death, the properties of the third tavazhi, which Abdulla Kalpha died possessed of, lapsed to the second tavazhi, the first tavazhi having become extinct, as per the terms of the karar, or whether the widow and other heirs of Abdulla Kalpha, according to the Muslim Shariat, i.e., personal law, became entitled to the said properties. The plaintiff claimed that she and the other personal heirs, defendants 1 to 8, became entitled to the properties, because of the provisions of the Madras Shariat (Amendment) Act of 26.05.1949.
-
-\tDefendants 9 and 10, who are the karnavan and the senior most anandiravan of the second tavazhi, contended that the said Act was void because it was repugnant to the provisions of Article 19, Clause (1)(f) of the Constitution.3. Madras Act XVIII of 1949, the impugned Act, amended the Muslim Personal Law (Shariat) Application Act (XXVI of 23.01.1937) passed by the Central Legislature. The only material section of the Act for the purpose of this reference is Section 2. That section originally stood as follows:
-
-\tNotwithstanding any custom or usage to the contrary, in all questions (save questions relating to agricultural land) regarding intestate succession special property of females, including personal properly inherited or obtained under contract or gift or any other provision of personal law, marriage, dissolution of marriage, including talak, ila, zihar, lian, khula and mubarat, maintenance, dower, guardianship, gifts, trusts and trust properties, and wakfs (other than charities and charitable institutions and charitable and religious endowments), the rule of decision in cases where the parties are Muslims shall be the Muslim personal Law (Shariat). In the above view, no question of the constitutional validity of Madras Act XVIII of 26/05/1949 can arise. Our answer to the reference is that the said Act is not repugnant to Article 19(1)(f) of the Constitution.`,
-
-22:`\tThis regular first appeal has been heard afresh pursuant to the directions issued by the Hon'ble Supreme Court in Civil Appeal No.67/2016, dated 04/01/2016. This appeal is filed by the defendants, in O.S.No.456/1988, being aggrieved by the judgment and decree passed by the III Additional Civil Judge, Bijapur, dated 29/06/1996. That suit was filed by the respondents/plaintiffs seeking the relief of partition, separate possession and declaration. For the sake of convenience, the parties herein shall be referred to, in terms of their status before the trial Court. The respondents/plaintiffs filed the suit in respect of two landed properties bearing RS.Nos.116 and 246, measuring 28 acres 30 guntas and 28 acres 11 guntas, respectively situated at Bidarkundi Village and suit houses bearing MPC Nos.75 and 76, (hereinafter referred to as "the suit schedule properties"). 
-
-\tAccording to the plaintiffs, one Imamsa was the original propositus, he had two sons namely, Chandsa and Lalsa. Lalsa, the second son of the original propositus-Imamsa, died long ago without having any legal heirs. Chandsa had two wives namely, Anasarama and Rajama. Through Ansarama, Chandsa, begot a son, Nabisa, who is the husband of defendant No.1 and father of defendant Nos.2 to 5. Through his second wife, Rajama, Chandsa had six children namely, two sons who are plaintiff Nos.1 and 2 and four daughters i.e., plaintiff Nos.3 to 5 and one Sahebi, the deceased mother of plaintiff Nos.6 and 7. Chandsa being the elder son of Imamsa, died leaving behind eight legal heirs namely, widow Rajama, three sons and four daughters. Ansarama, his first wife, predeceased Chandsa. Nabisa died on 17/01/1976, leaving behind his legal heirs namely, his widow and sons, defendants in the suit. His widow, Chandama died on 19/09/1988.
-
-\tAccording to the plaintiffs, the suit lands were formerly walikaraki lands. The family of plaintiffs and defendants was a walikaraki family. In the erstwhile Bombay State, walikaraki lands were continued only with the officiating walikar who usually happened to be the eldest member and they were not partible. Later Bombay High Court held that the suit lands were watan lands and as such they were heritable and partible. Even then the Government of the erstwhile Bombay State did not permit walikaraki lands to be partitioned by metes and bounds and it continued only with the officiating walikar.
-
-\tThis state of affairs continued till the reorganization of states and formation of new Mysore State, on 01/11/1956, by which, four districts of north Karnataka i.e., Bijapur, Belgaum, Dharwad and Karwar, were added to Mysore State. After reorganization of State of Mysore, it was renamed Karnataka State on 01/11/1973. In support of their case, second plaintiff examined himself as PW.1. Another witness was examined as PW.2. Plaintiffs produced twenty documents, which were marked as Exs.P-1 to P-20. Defendant No.3 was examined as DW.1. They produced fifteen documents, which were marked as Exs.D-1 to D-15.`,
-
-23:`\tSection 23 of the Urban Land (Ceiling and Regulation) Act is valid and does not suffer from any constitutional infirmity. Sub-section (4) of section 23 is the prepondering provisio governing the disposal of excess vacant land acquired under the Act. Though it is "subject to the provisions of sub-section (1) (2), and (3)", the provisions of sub-section (1) are enabling and not compulsive and those of sub-sections (2) and (3) are incidental to the provisions of sub-section (1).
-
-\tThe disposal of excess vacant lands must therefore be made strictly in accordance with the mandate of sub-section (4) of section 23, subject to this, that in a given case such land may be allotted to any person, for any purpose relating to, original connection with any "industry" or the other purposes mentioned in sub-section (1), provided that by such allotment, a common good will be subserved. The governing test of disposal of excess land being "social good", any disposal in any particular case or cases which does not subserve that purpose will be liable, to be struck down as being contrary to the scheme and intendment of the Act. "Common Good", being the writing on the wall, any disposal which does not serve that purpose will be outside the scope of the Act and, therefore, lacking in competence in diverse senses.
-
-\tPrivate property cannot under the Constitution be acquired or allotted for private purposes though an enabling power like that contained in sub-section (I) of section 23 may be exercised in cases where the common good dictates the distribution of excess vacant land to an industry, as defined in clause (b)of the Explanation to Section 23. Sub-section (I) of section 27 of the Act is invalid insofar as it imposes a restriction on transfer of any urbanisable land with a building or a portion only of such building, which is within the ceiling area. Such property will therefore be transferable without the constraints mentioned in sub-section (I) of Section 27 of the Act. Nothing usefully can be added to the Judgment delivered by Krishna Iyer, J and the reasons given therein are fully agreed to. Article 39(b) and(c) of the Constitution are directly attracted and the fullest exploitation of the material resources of the community undoubtedly requires distribution of urban land geared to the common good.
-
-\tSub-sections (2) and(3) of Section 23 and the opening words subject to the provisions of sub-sections (1), (2) and (3) "in section 23(4) of the Urban Land (Ceiling and Regulation) Act, 1976 are ultra vires of the Parliament and these provisions are not protected under Article 31-B and 31-C of the Constitution. Sub-section (1) of section 27 of the Act is invalid in so for as it imposes a restriction of transfer of urban property for a period of ten years from the commencement of the Act, in relation to vacant land or building thereon, within the ceiling limits. Sub-sections (1), (2) and (3) of section 23 and the opening words "subject to the provisions of sub-sections (1), (2) and (3) in sub-section (4) of section 23 are ultra vires of the Parliament.`,
-
-24:`\tBriefly stated, the prosecution case is that on 08.03.1979, at about 6.30 p.m., the informant Laxmikant Bajpayee was returning to his house from village Pauli Bazar and, on reaching near his chak within the limits of village Ajai, P.S. Khaga, District Fatehpur, the accused Phool Singh and Ajaipal Singh emerged from the bushes of moonj standing in the field. Phool Singh is alleged to have "belaboured" the informant with a lathi, and at his instigation, the appellant Ajaipal Singh fired a pistol shot at the informant with intent to kill him, causing him firearm injury on the left side of the abdomen. On hearing his cries, PW-2 Krishna Pal Singh and one Suresh Singh, who were returning from "Pauli Bazar", reached the spot and attempted to apprehend the accused, but on being threatened by the appellant, they could not do so, whereupon the accused fled the scene. The injured was thereafter taken to the police station in a bullockcart by his elder brother Kamlesh Babu and grand-uncle Ram Babu, where the F.I.R. (Ext. Ka.2) came to be lodged at about 8.00-8.30 p.m. He was medically examined by Dr. D.C. Rai (PW-1), who found, inter alia, a fire-arm injury on the left side of the upper abdomen and other simple injuries attributable to a blunt weapon.
-
-\tOn completion of investigation, charge-sheet was submitted against both accused, and they were committed to the Court of Sessions to stand trial under Section 307/34 IPC. Charges were framed on 03.03.1983, to which the accused pleaded not guilty. In their statements under Section 313 Cr.P.C., recorded when the appellant Ajaipal Singh was about 24 years of age, both accused took the plea of false implication on account of pre-existing "enmity" and "litigation" between their family and that of the informant's grand-father, Ram Babu.
-
-\tThe prosecution examined five witnesses, including Dr. D.C. Rai (PW-1), the injured informant Laxmikant (PW-2), and the eye-witness Krishna Pal (PW-3), besides formal witnesses. Upon appraisal of the ocular, medical and documentary evidence, the learned trial court found the prosecution case fully established and convicted both accused under Section 307/34 IPC, sentencing each to seven years' rigorous imprisonment vide judgment dated 3.6.1983, which is under challenge in the present appeal.
-
-\tMr. Roy Chacko referred to the decision of the Division Bench of this court in Chacko Daniels case (supra). The Bench had taken the view that "the personal law relating to Christians in Travancore-Cochin does not make a father legally liable to maintain his children whether they be legitimate or illegitimate." For this conclusion, the Bench had placed reliance on Stephen's Commentaries on the Laws of England (19th Edition). Mr. Joseph submitted that the decision is per incuriam. The matter is partly governed by the Travancore Special Marriage and Succession Act, 1119 (1944 of the Christian era). He appears to be right. Still more, the counsel referred to the provisions of the Kerala Children Act, 1972.`,
-
-25:`\tThis Criminal Appeal, under Section 374 (2) of Code of Criminal Procedure, 29/05/1973 (in short Cr.P.C.), has been filed by the appellants, Raghuraj Singh, Amar Pal Singh, Mohar Pal Singh, Brij Pal Singh and Ram Pal Singh, against the impugned judgment and order dated 04.12.1982, passed by Sri Sanwal Singh, the then III Additional Sessions Judge, Etah, in Sessions Trial No. 385 of 1982, arising out of Case Crime No. 79 of 1982, Sections 148, 307 Indian Penal Code,1860 (in short IPC) Police Station Sidhpura, District Etah.
-
-\tBy the impugned judgment and order, the Trial Court has convicted the appellants for offence punishable under Section 148 IPC and sentenced them to undergo a rigorous imprisonment of one year and for offence punishable under Section 307 IPC, they were directed to undergo a rigorous imprisonment of seven years. It was also directed that both the sentences shall run concurrently.During the pendency of this appeal, appellants nos.1 to 4, to wit, Raghuraj Singh, Amar Pal Singh, Mohar Pal Singh, Brij Pal Singh, have died and this appeal has abated against them vide order dated 06.01.2026 passed by this Court. Now, this appeal survives on behalf of appellant no.5, Ram Pal Singh, alone.
-
-\tBrief facts of the case are that Kaptan Singh, resident of Moiddipur, Police Station Sidhpura, District Etah, filed a written application (Tehrir) (Ext. Ka-1), before In-Charge, Police Station Sidhpura, stating therein that one day prior to the incident, the first informant and Jhabboo Singh had returned home after obtaining bail in a proceedings under Section 107/116 Cr.P.C. It was further stated that today, i.e. 10.07.1982 at about 05:30 a.m., the first informant and Jhabboo Singh had gone for defecation near a river situated towards the south-west of the village. Atar Singh, Netrapal Singh, Vishwanath and Sher Singh had also come for defecation. Then his co-villagers/ appellants, Raghuraj Singh, Amar Pal Singh and Jai Narain carrying illegal guns and Mohar Pal, Brij Pal and Ram Pal Singh having country made pistols (Tamancha) arrived there and exhorted Jhabboo Singh that he would not escape today and opened fire at him. Jhabboo Singh raised alarm, whereupon the first informant and others ran towards the place of occurrence. Some of the co-villages also reached at the spot, upon which the accused ran towards the west. Jhabboo Singh sustained injuries over his shoulder and other parts of the body, whom they had brought in a vehicle at the Police Station.
-
-\tThe Mappila Succession Act (Madras Act 1 of 1918), applied the rules of Mohammedan Law to intestate succession among Mapplias. Dut the explanation to Section 2 of the said Act excluded tarwad property from its operation unless the person dying intestate was exclusively entitled to it. The Mappila Wills Act of 1928 (Madras Act 7 of 1928) applied the Mohammedan Law to the testamentary dispositions of Mappilas governed by the Marumakkathayam Law, in respect of property covered by the Mappila Succession Act of 1918.`,
-
-26:`\tLet this writ petition be de-tagged from Criminal Misc. Writ Petition No. 20611 of 2025, as we find that there are no common questions of facts and law involved, and both related to completely different history-sheets. This writ petition is directed against the order dated 27.02.2020 passed by the Senior Superintendent of Police, Prayagraj, approving the opening of a B-Class history sheet against the petitioner as well as the history sheet opened on the basis of the said order, annexed as Annexure No.1 to the writ petition. The petitioner prays that the order of the Senior Superintendent of Police, granting approval to the opening of a B-Class history sheet against him as well as the history sheet, be quashed.
-
-\tThe petitioner says that the Station House Officer, Police Station Meja, District Prayagraj, on 19/02/2020 submitted a report to the Circle Officer, Meja, District Prayagraj, proposing the opening of a history sheet against him. The Circle Officer, Meja, District Prayagraj, on the same date, recommended the matter to the Superintendent of Police, Yamunapar, District Prayagraj. The Superintendent of Police, Yamunapar, Prayagraj also recommended the opening of a history sheet against the petitioner on 19.02.2020 to the Senior Superintendent of Police, Prayagraj. The Senior Superintendent of Police, Prayagraj approved the opening of a history sheet by means of his order dated 27/02/2020.
-
-\tThe petitioner has detailed his history of eight crimes registered against him, which is as follows. The petitioner says that on the basis of the impugned order passed by the Senior Superintendent of Police, Prayagraj dated 27.02.2020, a history sheet for the petitioner has been opened in Class-B, bearing no. B-26, relating to Police Station Meja, District Prayagraj. It is the petitioner's case that he had no knowledge of the aforesaid history sheet opened by the respondents and came to know of the fact for the first time on 10.07.2025, when a Constable from Police Station Meja informed him about the opening of the impugned history sheet. The petitioner contacted the Station House Officer and requested him to provide papers relating to opening of the history sheet. It is in this manner that he was provided a photostat copy of the history sheet together with the endorsements of approval etc. carried thereon. It is next asserted by the petitioner that a perusal of the history sheet shows that the conduct of the petitioner has been under surveillance from 2020 to 2024.
-
-\tThe petitioner, Parameswaran Nambudiripad, is a member of Poomuli Mana consisting of a Nambudiri family in Kerala State and the members of the Mana were governed by the Madras Nambudiri Act, 1932 (Act 21 of 1933). Now they are governed by the Kerala Nambudiri Act, 1958 (Act 27 of 1958). The members of the family own considerable items of agricultural lands in Malabar and in the erstwhile Travancore-Cochin State.`,
-
-27:`\tHeard Sri Vimlendu Tripathi, assisted by Sri Shiker Trivedi, learned counsel appearing for applicant, Sri Hemendra Pratap Singh along with Sri Akshansh, learned counsel for opposite party no. 2 and learned AGA for State. Present application has been preferred with prayer to quash charge sheet dated 30.9.2025, summoning order dated 3.11.2025 and entire proceeding of Case no. 2796 of 2025 (State Vs. Pramod Kumar and others) arising out of Case Crime no. 287 of 2025 under sections 126(2), 109 and 61(2) BNS, Police StationLanka, District Varanasi pending before learned Additional Chief Judicial Magistrate-IIIrd, Varanasi. As per prosecution version, informant/opposite party no. 2 lodged a FIR dated 29.7.2025 against two unknown persons who attacked him, causing fracture in both hands.
-
-\tDuring investigation, by perusal of CCTV footage, the bike used in the alleged incident was found registered in the name of co-accused Suraj Dubey who had planned the incident with co-accused Mohd. Kasim and co-accused B. Bhasker, whom he met in Hotel Banaras Villa on 27.7.2025 and also co-accused Suraj Dubey was staying with some friends in Hotel Sadhguru. On the information of police informant, one co-accused, Vedant Mishra, was arrested, who took the name of co-accused Ganesh Pasi and Kasim, who asked Suraj Dubey to assault the informant. These co-accused met with co-accused Vishal Yadav along with Kasim and Ganesh and planned an attack on the informant over the suggestion of Kasim and further in the evening Suraj gave a bike to Vishal Yadav and Pradyum Yadav, who attacked the informant.
-
-\tDuring investigation, police arrested co-accused B.Bhaskar from Telangana State and his confessional statement was recorded on 13.8.2025 wherein he stated that he was student of applicant and in the month of May, he met with the applicant and Assistant Professor Kashim Babu and they both told him that due to complaint of informant, applicant was removed from the post of Head of Department and Kashim Babu wants to become professor and asked co-accused B. Bhaskar to remove him from his way and Kashim Babu regularly used to call him for the attack. During investigation, the statement of informant has been recorded wherein he stated that applicant was HOD of the department before him and in the year 2023, Kashim Babu applied for the post of Assistant Professor and he was allotted marks by the applicant at third stage of recruitment process which was later deducted by the informant, resulting into.
-
-\tThe area which originally formed the District of Malabar in the Madras State became part of the State of Kerala as and from November 1, 1956. The Travancore-Cochin Agricultural Income-tax (Amendment) Act, 1957 (Act 8 of 1957), amended the Travancore-Cochin Agricultural Income-tax Act, 1950, and extended the same to the whole of the Kerala State including the Malabar area with effect from April 1, 1957. The above provision was amended on April 10, 1964, by Act 12 of 1964. Section 29 of the Agricultural Income-tax Act, 1950, as amended by Act 12 of 1964.`,
-
-28:`\tHeard Shri Rajesh Kumar Dwivedi, learned Amicus Curiae appearing for the appellant, learned AGA for the State and perused the trial court record. The instant criminal appeal has been filed by the appellant against the judgment and order dated 05.04.2002 passed by Additional Sessions Judge, Fast Track Court, Court No.5, Hardoi in Sessions Trial No. 544 of 2001 (State vs. Pooran), arising out of Case Crime No. 113 of 2001, under Section 376 IPC, Police Station Baghauli, District Hardoi, whereby appellant- Pooran has been convicted for the offence under Section 376 IPC and awarded the sentence of life imprisonment.
-
-\tShorn of unnecessary details, the prosecution story as stated in the FIR is that one Shree Ram, son of Chhotta, permanent resident of Village Ummar Pur Majra Behta Murtaja Bakhsh, Police Station Baghauli, District Hardoi, stated that on 11.05.2001 at 11:00 AM, his daughter X (victim) was playing at his door-step, when Pooran, resident of the same village, reached there and on the pretext of plucking the mangoes, had taken her in the mango grove of one Niranjan and finding it to be a desolate place, where Pooran committed the offence of rape upon his daughter. On alarm raised by his daughter, he alongwith one Chhotey Lal, who were present in the vicinity, reached the mango grove, seeing them, Pooran, who was committing the offence of rape upon his daughter, ran away. His daughter, soaked in blood, was lying there. On the basis of the aforesaid allegations, a written report was drawn by one Jai Ram and thereafter, alongwith the written report, Shree Ram reached at the Police Station Baghauli and gave the written report (Tehreer) to the Head Moharrir to lodge his report.
-
-\tOn the basis of the written report, marked as Exhibit Ka-1, the FIR has been lodged (marked as Exhibit Ka-2) vide Case Crime No. 113 of 2001, under Section 376 IPC, Police Station Baghauli, District Hardoi, carbon copy whereof has been drawn vide G.D. Report No. 21 at 19:20 hours dated 11.05.2001, which has been proved and marked as Exhibit Ka-3. After registration of the aforesaid FIR, the Head Moharrir had taken in his possession the undergarment of the victim, which was sealed by Constable Clerk Bachchu Singh and its recovery memo was prepared in presence of the first informant Shree Ram, Nand Lal and Shiv Ram. The said recovery memo has been proved and marked as Exhibit Ka-4.
-
-\tNevertheless, the agricultural income-tax authorities issued notices to the petitioner under Sections 17(2) and 39 of the Agricultural Income-tax Act, proposing to assess him as the manager of the family in the status of Hindu undivided family for the assessment years 1957-58 and 1958-59. The petitioner challenged the validity of the notices in O.P. No. 340 of 1959 which was allowed by a Division Bench of this court consisting of M. S. Menon and T. K. Joseph JJ. on January 18, 1960, observing thus: "The learned Government Pleader submits quite categorically that the assessment proposed is of the petitioner as an 'individual' and not in any other capacity.`,
-
-29:`\tThe present criminal appeal has been filed against the judgment and order dated 24.7.1985, passed in Session Trial No. 301 of 1984 by learned Special Judge (DAA), Kanpur Dehat convicting and sentencing the appellants under Sections 392 IPC to undergo RI for five years and fine of Rs. 1000/. Learned counsel for the appellants has submitted that the appellants were not named in the FIR. They have been arrested on the statement of the informer. There is only recovery of one Kambal and one Mosquito net from appellant Chhotey and Ram Balak, respectively. They are easily available in the market. There is no iota of evidence against the appellants/accused. Neither any weapon nor any "incriminating material", arms has been recovered from the appellants/accused persons. There was no source of light at the time of commission of offence.
-
-\tThe finding recorded by the learned trial court is perverse and the impugned judgment and order is liable to be set aside. The appellants are entitled to be acquitted and the appeal is liable to be allowed. On the other hand, learned AGA has opposed the appeal and he submitted that the prosecution witnesses has fully supported the prosecution story. Even the victim had recognized their belongings which were looted. There was proper identification parade done and the accused/appellants was duly identified. The appellants have committed a serious and heinous offence.
-
-\tThe criminal appeal is liable to be dismissed. Learned counsel for the appellant has relied on the law laid down by the Supreme Court in Iqbal and another Vs. State of U.P.; 2015 LawSuit(SC) 445. He has submitted that the evidence of identification of the miscreants in the test identification parade is not a 'substantive' evidence. Conviction cannot be based solely on the identity of dacoits by the witnesses in the test identification parade. The prosecution has to adduce substantive evidence by establishing "incriminating evidence" connecting the accused with the crime, like recovery of articles which are subject matter of dacoity and the alleged weapon used in the commission of the offence. He has further relied on the law laid down by the 'Supreme Court' in (Satrughana alias) Sastrughan Parida Vs. State of Orissa; 1992 Law Suit (SC) 829. He has relied that identification parade was held on 10.12.1982 i.e. more than 15 days after the arrest of Rabin Kandy and almost a month after the arrest of the other two accused.
-
-\tThe prosecution has not advanced any reason for not holding the identification parade promptly. Again the department issued a notice dated February 9, 1960, under Section 35 of the Agricultural Income-tax Act, 1950, proposing to assess the petitioner in the status of Hindu undivided family for the assessment year 1959-60. The notice was quashed in O.P. No. 750 of 1960 by Vaidialingam J. by the judgment dated January 3, 1961, on the ground that it is against the undertaking given by the Government Pleader in O.P. No. 340 of 1959. The decision in O.P. No. 750 of 1960 was confirmed in Writ Appeal No. 76 of 1961.`,
-
-30:`\tHeard learned counsel for appellant and learned Additional Government Advocate for respondent No.1/State. As per CJM report dated 14.07.2026, respondent No.2 (complainant) has been duly served, but has not put in appearance. Counter affidavit on behalf of State, rejoinder affidavit thereto and supplementary affidavit on behalf of appellant filed today are taken on record. This Criminal Appeal has been filed by the appellant under Section 14-A(2) of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989 [here-inafter referred to as 'SC/ST Act'] with a prayer to set aside order dated 15.05.2026 passed by Special Judge (SC/ST Act), Ayodhya/Faizabad on Computer Registration No.561/2026 arising out of Case Crime No.162 of 2026, under Sections 191(2), 115(2), 352, 351(3), 310(2), 316(2), 111(2)(b), 61(2)(a) BNS & Sections 3(2)V of the SC/ST Act, Police Station Purakalandar, District Ayodhya/Faizabad rejecting bail to appellant.
-
-\tFurther, a prayer has been made to enlarge the appellant on bail in the said case. As per contents of First Information Report, the informant was acquainted with one Aditya Yadav, who informed him about co-accused Maan Singh @ Raja Maan Singh as being a broker for purposes of sale and purchase of immovable property. He thereafter allegedly introduced the informant to Maan Singh @ Raja Maan Singh and after a particular property being shown to him, a deal was struck for Rs.32,00,000/- [Rupees Thirty Two Lakhs only]. It is stated that on the same day itself, an advance of Rs.5,00,000/- [Rupees Five Lakhs only] was given to Maan Singh @ Raja Maan Singh and subsequently, on 24.12.2024, the informant went to Maan Singh @ Raja Maan Singh alongwith Rs.27,00,000/- [Rupees Twenty Seven Lakhs only] in cash with the request for execution of sale deed.
-
-\tAllegedly, Maan Singh @ Raja Maan Singh snatched away the aforesaid of Rs.27,00,000/- [Rupees Twenty Seven Lakhs only] and instead of executing a sale deed, he is said to have assaulted the informant and chased him away while making caste based epithets. Learned counsel for appellant submits that he has been falsely implicated in allegations levelled against him only on account of political rivalry between the informant and Maan Singh @ Raja Maan Singh who has been introduced as the main accused and since he is Member of Zila Panchayat belonging to a particular political party. It is submitted that only general allegations have been levelled against the appellant in the FIR with main gist of allegations having been indicated against coaccused.
-
-\tBe it mentioned herein that W.D. Whitney has transalated these Holy Spellss word by word which has made said transalation obscure. For example he has transalated word "Aashtachakra" as "eight wheeled" while "Aashtachakra" has been translated as "Ashtapadakara" by Sri Valmiki in Ramayana English translation whereof published by Sri Gita Press Gorakhpur is " like Dice Board" i.e. octagonal. W.D. Whitney has translated the word "Ayoodhya" as "impregnable stronghold".`,
-
-31:`\tApplication has been filed seeking recall of judgment and order dated 09.04.2024. Heard learned counsel for applicant and Mr.Raj Kumar Singh, learned Counsel for Union of India. It has been submitted by learned counsel for applicant that the claim petition, which was filed on behalf of Workman Radhey by the Association, raised challenge to the action of administration of North Eastern Railway, Lucknow in not granting him temporary status on 31/07/1977 and not granting full length of service under the existing Rules.
-
-\tIt is submitted that by means of judgment and order dated 09.04.2024, the entire Award has been upheld, although the discussion is only with regard to validity of scheme under the Liberalized Active Retirement Scheme for Guaranteed Employment for Safety Staff (LARSGESS) and therefore it is submitted that allowing the writ petition in toto would affect the service benefits which have been granted by the Tribunal. Learned Counsel for Union of India has submitted that the Award of Tribunal pertained to the claims as made in the claim petition, which also included service benefits being sought by the said Radhey and included a prayer for appointment of his son under the said Scheme. It is submitted that the Award impugned in the writ petition has granted all reliefs as prayed for in the claim petition. After hearing learned counsel for parties, the application for recall is hereby being treated as an application for modification of the judgment and order dated 09.04.2004 since learned counsel for applicant submits that he is not raising any plea with regard to judgment on merits.
-
-\tFrom the record, it appears that the claim petition had been filed by the Association on behalf of Workman Radhey. A copy of the claim petition has been brought on record as Annexure - 32 to the writ petition and the prayer clause clearly indicates that apart from seeking appointment for his son, the Workman Radhey also challenged the action of administration of North Eastern Railway, Lucknow in not affording him temporary status on 31.07.1977 and not granting full length of service under the existing Rules. A perusal of the judgment and order dated 09/04/2024 further reveals that writ petition had been allowed solely on the aspect of entitlement of the claim petitioner for appointment of his son under the said Scheme.
-
-\tThere is no discussion with regard to service benefits being sought by the workman but the writ petition has been allowed in toto. Be it mentioned herein that W.D. Whitney has transalated these Holy Spellss word by word which has made said transalation obscure. For example he has transalated word "Aashtachakra" as "eight wheeled" while "Aashtachakra" has been translated as "Ashtapadakara" by Sri Valmiki in Ramayana English translation whereof published by Sri Gita Press Gorakhpur is " like Dice Board" i.e. octagonal. The rationale of image worship is thus given in a verse which is quoted by Raghunandan.`,
-
-32:`\tAs per contents of first information report, which has been lodged against unidentified person, incident is said to have taken place on 29.12.2022 at about 09.30 A.M, 70 years old mother of the informant went to the fields to relief herself and did not return. It is alleged that subsequently her body was found on 30/12/2022. Learned counsel for applicant submits that he has been falsely implicated in allegations levelled against him which could be evident from the fact that there is no eye witness or even last seen evidence against the applicant and has been taken into custody only on the basis of alleged confessional statement. It is submitted that previous criminal history of five cases duly explained and applicant is under incarceration since 09.02.2023 with four prosecution witnesses of fact having already been examined.
-
-\tLearned Additional Government Advocate appearing on behalf of State has opposed the bail application but does not dispute the fact that applicant has been taken into custody on the basis of confessional statement. Hon'ble the Supreme Court in Sanjay Chandra v. Central Bureau of Investigation, reported in (2012) 1 SCC 40 has specifically held that bail is to be a norm and an under-trial is not required to be in jail for ever pending trial. Relevant paragraphs of the judgment are as under :- In bail applications, generally, it has been laid down from the earliest times that the object of bail is to secure the appearance of the accused person at his trial by reasonable amount of bail. The object of bail is neither punitive nor preventative.
-
-\tDeprivation of liberty must be considered a punishment, unless it is required to ensure that an accused person will stand his trial when called upon. The courts owe more than verbal respect to the principle that punishment begins after conviction, and that every man is deemed to be innocent until duly tried and duly found guilty." This Court, time and again, has stated that bail is the rule and committal to jail an exception. It has also observed that refusal of bail is a restriction on the personal liberty of the individual guaranteed under Article 21 of the Constitution." Considering the submissions advanced by learned counsel for the parties and upon perusal of material on record, prima facie, and subject to further evidence being led in trial, it appears that except for the confessional statement in custody of the applicant. This case was argued at length on 30.8.2005.
-
-\tCounsel appearing for the appellant had relied upon a judgment of this Court in N.V. Srinivasa Murthy v. Mariyamma (2005) 5 SCC 548 : (AIR 2005 SC 2897) for the proposition that a plaint could be rejected if the suit is ex facie barred by limitation.  As against this, counsel for the respondents relied upon a later judgment of this Court in Popat and Kotecha Property v. SBI Staff Assn.(2005) 7 SCC 510. in respect of the proposition that Order 7, Rule 11(d) was not applicable in a case where a question has to be decided on the basis of fact that the suit was barred by limitation.`,
-
-33:`\tThis Criminal Appeal has been filed by the appellant under Section 14-A(2) of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989 [here-inafter referred to as 'SC/ST Act'] with a prayer to set aside order dated 30.04.2026 passed by Special Judge (SC/ST Act)/Additional Sessions Judge, Lakhimpur Kheri on Bail Application No.159/2026 arising out of Case Crime No.107 of 2026, under Section 115(2), 105, 352, 351(3) BNS & Sections 3(1)(D), 3(1)(DH), 3(2)5 of SC/ST Act, Police Station Neemgaon, District Lakhimpur Kheri rejecting bail to appellant.
-
-\tFurther, a prayer has been made to enlarge them on bail in the said case crime. As per contents of First Information Report, Kuldeep, son of informant was employed as a daily labourer by the appellant and co-accused/Sajid Khan in their kolhu. The incident is alleged to have taken place on 11.03.2026 at 04.30 p.m. when the said Kuldeep demanded remuneration for his labour which was refused by the appellant and co-accused leading to an altercation in which the appellant alongwith co-accused allegedly pushed him in burning furnace leading to grievous injuries including burn injuries upon the said Kuldeep who was thereafter taken to a hospital by the appellant and subsequently referred to elsewhere where he subsequently passed away.
-
-\tLearned counsel for appellant submits that they have been falsely implicated in allegations levelled against them and has admitted to the fact that FIR has been lodged after 12 days of incident clearly indicating deliberation. It is submitted that postmortem report indicates cause of death being 'septicemia' due to ante-mortem burn injuries. It is submitted that the incident occurred only due to negligence of the deceased himself leading to an accident whereby he fell into furnace and there is no deliberate effort or any altercation between the parties which could have led to such an incident. Learned counsel for appellant has also drawn attention to the statements of various persons indicated in the case diary to submit that none of them are eyewitnesses although they have been introduced as eyewitnesses. It is submitted that it was in fact the appellant and co-accused who took the injured to various hospitals and bore expenses for his treatment.
-
-\tLearned counsel has also drawn attention to the statement of one Anoop Kumar who has introduced himself as an eyewitness and indicates that allegedly, an altercation had broken out between the deceased and accused. It is submitted that appellant without previous criminal history are under incarceration since 26.03.2026 with trial only at inception. "Whether the words "barred by law" under Order 7, Rule 11(d) would also include the ground that it is barred by the law of limitation. In Balasaria Construction (P) Ltd. v. Hanuman Seva Trust,(2006) 5 SCC 662, keeping in view the importance of question and the conflict of opinion, the Supreme Court referred the matter to a larger Bench." "It is dangerous to be too good."`,
-
-34:`\tHeard learned counsel for appellant and learned Additional Government Advocate for respondent No.1/State. As per office report 03.07.2026, notice has been served personally on respondent No.2, who has not put in appearance. Supplementary affidavit filed today is taken on record. This Criminal Appeal has been filed by the appellant under Section 14-A(2) of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989 [here-inafter referred to as 'SC/ST Act'] with a prayer to set aside order dated 17.12.2025 passed by Special Judge (SC/ST Act), Hardoi on Bail Application No.3762/2025 arising out of Case Crime No.179 of 2025, under Sections 103(1) read with Section 3(5) BNS and Section 3(2)(v) of the SC/ST Act, Police Station Lonar, District Hardoi rejecting bail to appellant. Further, a prayer has been made to enlarge the appellant on bail in the said case.
-
-\tAs per contents of First Information Report, the incident is said to have taken place on 07.08.2025 at about 08.30 a.m. when Ram Sache, son of informant was returning to his house and was waylaid by the appellant and co-accused due to earlier dispute over a drain. It is alleged that the appellant and co-accused insulted the son of informant with caste based epithets and assaulted him with rod and sticks due to which he passed away on the spot. Learned counsel for appellant submits that although charge-sheet has been filed under Section 103(1) BNS read with Section 3(5) BNS alongwith SC/ST Act but submits that ingredients of the aforesaid Sections are not satisfied in the present case. He has adverted to the FIR as well as statements of alleged eyewitnesses who indicate assault having been made by the appellant and co-accused Vikas conjointly.
-
-\tIt is submitted that no specific role has been assigned to the appellant of causing single fatal blow by a stick on the head of deceased. He further submits that the aspect of applicability of Section 3(5) BNS [old section 34 IPC] would also require examination at the stage of trial. He submits that one previous criminal history with regard Case Crime No. 109 of 2024 has been explained and appellant is under incarceration since 08.08.2025 when only charges having yet been framed. Learned Additional Government Advocate has opposed the appeal with submission that statements of witnesses clearly indicate complicity of the appellant in assault and subsequent death of son of informant.
-
-\tSince the petitioner claimed derivative title from him but for his wilful abstention from making enquiry or his omission to file the second sale deed dated 6-9-1980, an irresistible inference was rightly drawn by the courts below that the petitioner had full knowledge of the fact right from the beginning; in other words right from the date when title deed was filed in Title Suit No. 220 of 1969 and preliminary decree was passed on 2-1-1973 and final decree was passed on 5-2-1974.`,
-
-35:`\tIs a Christian father under an obligation to maintain his minor child? More than three decades back, a Full Bench of this Court had considered this question in 'The Commissioner of Income Tax, Kerala v. P.M. Paily Pillai', 1972 KLT 24. Following an earlier decision of a Division Bench in Chacko Daniel v. Daniel Joshua, 1952 KLT 595, it was held that the duty of the father was an imperfect obligation. It was not an actionable wrong. Thus, it was concluded that "there is no legal obligation on the part of the Christian father to maintain his minor child". Accordingly, the question was answered in the negative. The correctness of this view was questioned in these two cases.
-
-\tIt was pointed out that discordant notes had been struck after the decision in Paily Pillai's case. The issue was referred to a Full Bench. Initially, the matter was listed before a Bench of three Judges. However, in view of the fact that a Full Bench had already considered the matter, the case was placed before this Bench. The facts may be briefly noticed. On April 29, 1979, Ms. Rosamma and Mr. Mathew Varghese were married. After having stayed together for a few days, the wife had left for her place of work in Germany. The husband had visited Germany. On October 13, 1980, a son Mathew alias Tishan was prematurely delivered. In course of time, the relationship between the husband and wife had got strained. Even the paternity of the child appears to have become the cause of conflict between the parties.
-
-\tIn the year 1987, Mrs. Rosamma alongwith her minor son and father (who was described as the next friend of the minor) filed a suit against her husband, Mr. Mathew Varghese. She alleged that at the time of the settlement of marriage, an amount of Rs. 25,000/- had been paid to the defendant by way of Streedhan. Thereafter, at the marriage, ornaments worth Rs. 25,000/- were also given. Subsequently, she had sent cheques for a total of Rs. 35,757.81 ps. to him for being kept in fixed deposit. The defendant had admitted vide his letter dated April 23, 1981 that he had kept Rs. 29399.81 ps. in the bank and that it would be refunded on dissolution of the marriage. She further claimed that the defendant was bound to support and look after the needs of the minor son. Thus, she made a claim for a total sum of Rs. 86,639.00. This included a sum of Rs: 14,400/- on account of maintenance of the minor child for a period of 36 months preceding the filing of the suit.
-
-\tThe defendant contested the suit. It was inter-alia alleged that the first plaintiff had illicit relations with many persons. She had not conceived the child from him. Thus, he was under no obligation, legal or moral, to maintain him. He prayed that the suit be dismissed. The matter was placed before a learned Single Judge of this Court. On behalf of the plaintiff-respondents, reliance was placed on the decision in Joy v. Usha, AIR 1996 Kerala 191, wherein the claim of a Christian wife against her husband was sustained.`,
-
-36:`\tDoes not the morality of the Bible embody the safety of the society? It lays down the way a Christian should lead his life. It is the 'Alpha and Omega, the beginning and the ending' of a good and humane existence. "Let the little children to come unto me, and forbid them not; for of such is the kingdom of God," is the Christian canon. Service to the creature is the best way to serve the Creator. This is the Christian faith. Can a Christian still ignore his child? History records that - "Christ forgot himself and provided for his mother amid the agonies of crucifixion". It has been said, "The only way to realize that we are God's children is to let Christ lead us to our Father". Still further, "The Christian faith reposes in a person Ulan a creed. Christ is the personal living center of theology. Christ is the personal source of the individual Christian life; the personal head of the whole Christian Church; the personal sovereign of the kingdom of grace".
-
-\tMr. Radhakrishnan B. Thottathil pointed out, and we think rightly, that Section 9 of the Code of Civil Procedure provides a remedy for the enforcement of the civil rights by way of a civil suit. Order 32A specifically contemplates a suit for maintenance. The remedy is available to everyone, an infant or adult, irrespective of the race or religion, Still further, even when the parents are fighting, Sections 41 to 44 of the Indian Divorce Act, 1869, clearly regulate the exercise of jurisdiction by the Court regarding the custody and care of the children. In case of a minor, the law provides for the appointment of the 'next friend'. The obvious purpose is to ensure that the interest of the minor is duly protected. The fate of the children 'caught in the maelstrom of marital conflict' is a matter of concern. It has not to be "subordinated to the outcome of the marital legal battle". The law contained in Sections 41 to 44 of the 1869 Act, takes care of it. In view of these provisions, it cannot be said that the law does not impose a legally enforceable duty.
-
-\tAnd then, let us assume that there is a custom that a father is not obliged to maintain a child. Such a custom shall be law, within the meaning of Article 13 of the Constitution. Would it not be violative of the right to life guaranteed under Article 21? The answer has to be in the affirmative. In fact, such a custom shall be contrary to the constitutional scheme as embodied in Articles 21, 23 to 27 and 39. Still further, the Constitution makes India a Secular State. We talk of a uniform civil code. Still, the litigants seek to distinguish the rights and duties on the basis of only religion. It is not permissible.
-
-\tAggrieved by the judgment, the defendant filed an appeal viz., A.S. No. 167 of 1992. A cross appeal was filed by me plaintiffs. In the cross appeal, the claim for the amount of Rs. 25,000/- paid on April 22, 1979 and Rs. 14,400/- on account of maintenance of the minor son, was reiterated. It was also claimed that the defendant in the suit was liable to pay interest.`,
-
-37:`\tThis is an original petition filed under Article 226 of the Constitution to issue a writ of prohibition against the respondent who is the Inspecting Assistant Commissioner of Agricultural Income Tax and Sales Tax (Special), Kozhikode, prohibiting him from taking further proceedings for assessing the petitioner as the manager of POomulli Mana in the status of a Hindu Undivided family to agricultural income tax for the assessment year 1961-62 pursuant to Ext. P-3 notice dated 10-3-1965 issued under Section 35 and Ext. P-3 notice issued under Section 17 (4) of the Agricultural Income Tax Act, 1950. The petitioner--Parameshwaran Namboodiripad--is a member of Poomuli Mana consisting of a Narnboodiri family in Kerala State and the members of the Mana were governed by the Madras Nambudiri Act, 1932 (Act 21 of 1933). Now thev are governed by the Kerala Nambudiri Act, 1958 (Act 27 of 1958).
-
-\tThe members of the family own considerable items of agricultural lands in the Malabar and in the erstwhile Travancore-Cochin State. The area which originally formed the District of Malabar in the Madras State became part of the State of Kerala as and from 1-11-1956. The Travancore-Cochin Agricultural Income Tax (Amendment) Act, 1957 (Act 8 of 1957) amended the Travancore-Cochin Agricultural Income Tax Act, 1950, and extended the same to the whole of the Kerala State including the Malabar area with effect from 1-4-1957. The Agricultural Income Tax Authorities of the State attempted to assess the petitioner who was then the manager of the Illom in the status of Hindu undivided family to tax for the assessment year 1957-58 by the assessment order dated 12-2-1958.
-
-\tThe assessment order was quash-td on 25-11-1958 in O. P. 178 of 1958 on the file of this court. On 30-3-1958 all the members of the Poomulli Mana including the petitioner entered into a registered partition deed under which they became divided and most of the properties belonging to the Mana were also divided by metes and bounds among them The petitioner ceased to be the manager of the family from 1-4-1958. Nevertheless, the Agricultural Income Tax Authorities issued notices to the petitioner under Sections 17 (2) and 39 of the Agricultural Income Tax Act, proposing to assess him as the manager of the family in the status of Hindu undivided Family for the assessment years 1957-58 and 1958-59.
-
-\tThe petitioner challenged the validity of the notices in O. P. 340 of 1959 which was allowed by a division bench of this Court consisting of M.S. Menon and T.K. Joseph JJ. on 18-1-1960 observing thus: "The learned Government Pleader submits, quite categorically that the assessment proposed is of the petitioner as an 'individual,' and not in anv other capacity. In view of the submission we do not consider it necessary to proceed further in this petition. We record the fact that the Department does not propose to assess the petitioner except as an individual and leave him to seek his remedies under the Act or the Constitution in case he feels himself aggrieved by anv subsequent action of the Department".`,
-
-38:`\tThis Criminal Appeal has been filed by the appellant under Section 14-A(2) of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989 with a prayer to set aside order dated 23.06.2026 passed by "Special Judge" (SC/ST Act), Lucknow in Bail Application No.3430 of 2026 arising out of Case Crime No.260 of 2026, under Sections 69, 115(2), 318(4), 351(3), 352 BNS & Section 3(2)V of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989, Police Station Chinhat, District Lucknow rejecting bail to appellant.
-
-\tAs per contents of First Information Report, it is alleged that the appellant 'physically exploited' the informant on a false promise of marriage and subsequently the informant became aware that the appellant was in fact a Muslim person whereafter she stopped any interaction with him. It is stated that thereafter the appellant started to "threaten" and 'intimidate' the informant on the basis of obscene photos and videos, which he taken of the informant on his mobile phone and on that basis also extracted Rs.25,000/- from her whereafter he insult and chased her away. Allegation of assault upon family members of informant has also been made.
-
-\tLearned counsel for appellant submits that he has been falsely implicated in allegations levelled against him which could be evident from the statement of cousin sister of the informant herself under Section 161 Cr.P.C. clearly indicating that the informant and her family members were perfectly aware about religion of the appellant and there is considerable difference between promise to marry which is false from the very inception and subsequent breach of promise. It is submitted that appellant without previous criminal history is under incarceration since 19.05.2026. Learned Additional Government Advocate has opposed the appeal with the submission that the aspects of false promise to marry from the very inception are clear not only from the contents of FIR but also from the statement of informant recorded under sections 180 and 183 BNSS. It is however admitted that nothing incriminating could be recovered from the mobile phone of the appellant and that he does not have any previous criminal history.
-
-\tUpon consideration of submissions advanced by learned counsel for parties and perusal of material available on record, at this stage, without entering into the merits of case and subject to evidence in trial, it appears that although allegation has been levelled in the F.I.R. and the statements of informant of having deceived. The proposition I go by is supported by a crowd of decisions. To mention but a few, here are they: (1) Ram Ratan Sahu v. Mohant Sahu, (1907) 6 Cal LJ 74, (2) Ramyad Sahu v. Bin-deshwari Kumar Upadhay, (1907) 6 Cal LJ 102, (3) Rai Charan Mondal v. Biswanath Mondal. 20 Cal LJ 107 = (AIR 1915 Cal 103). (4) Annapurna Dasi v Sarat Chandra Bhatta-charjee , (5) Raja Kamala Ranjan Roy v. Baijnath Bajoria, (1949) 53 Cal WN 329, (6) Surinder Kumar v. Gian Chand 1958 SCA 412=(AIR) 1957 SC 875).`,
-
-39: `\tHeard learned counsel for applicant, learned Additional Government Advocate for opposite party-State and Mr. Prabhu Sharan, learned counsel for complainant. First bail application has been filed by the applicant under Section 483 BNSS with regard to FIR No. 284/2025 under Sections 103(1), 238 BNS, Police Station Sandi, District Hardoi. As per contents of First Information Report, which only discloses a particular mobile, allegation levelled is that on 06.06.2025 at about 06.00 a.m., Sachin Kumar, younger son of informant went missing leaving behind his mobile and subsequently, a call was received on the said mobile by a particular mobile number demanding a sum of Rs.2,00,000/- [Rupees Two Lakhs only].
-
-\tLearned counsel for applicant submits that applicant has been falsely implicated in allegations levelled against him which would be evident from the fact that the applicant is not named in the FIR and except for confessional statements, there is no concrete evidence against him. Learned counsel has drawn attention to the alleged recovery which also took place at the instance of a police informer. The same also indicates IMEI number of the mobile allegedly recovered from the applicant without the mobile number being indicated. It is submitted that the applicant is under custody since 09.06.2025 without any previous criminal history. Learned counsel for respondents have opposed bail with submission that the applicant has been taken into custody on the basis of CDR of the mobile which was recovered as well his confessional statement and the confessional statement of wife of deceased to the effect that they were having illicit affair due to which the son of informant was done to death.
-
-\tLearned Additional Government Advocate however admits that the applicant does not have any previous criminal history. Upon consideration of submissions advanced by learned counsel for parties and perusal of material on record, at this stage, without entering into the merits of case and subject to evidence in trial, it appears that FIR has been lodged without naming anybody and only indicating the mobile number from which an alleged call was received on the mobile of the deceased demanding a sum of Rs.2,00,000/- [Rupees Two Lakhs only]. At this stage, it appears that the applicant is under custody only on the basis of alleged confessional statements, the evidentiary value which would require to be judged by trial court with evidence.
-
-\tThe alleged recovery of offending mobile phone does not indicate any mobile number except IMEI number. "Recently the question came before the Allahabad High Court in Ram Singh v. State, AIR 1963 All 355 , before the Calcutta High Court in Mahabir Agarwalla v. Gita Roy [1962] 2 Cr. L.J.528 and before the Patna High Court in Nalini Ranjan v. Kiran Rani, AIR 1965 Pat 442. The three High Courts have, in our view, correctly come to the conclusion that Section 4(b) of the Maintenance Act does not repeal or affect in any manner the provisions contained in Section 488, Cr.P.C."`,
-
-40:`\tApplication has been filed seeking recall of judgment and order dated 09.04.2024. Heard learned counsel for applicant and Mr.Raj Kumar Singh, learned Counsel for Union of India. It has been submitted by learned counsel for applicant that the claim petition, which was filed on behalf of Workman Radhey by the Association, raised challenge to the action of administration of North Eastern Railway, Lucknow in not granting him temporary status on 31.07.1977 and not granting full length of service under the existing Rules. It is submitted that by means of judgment and order dated 09.04.2024, the entire Award has been upheld, although the discussion is only with regard to validity of scheme under the Liberalized Active Retirement Scheme for Guaranteed Employment for Safety Staff (LARSGESS) and therefore it is submitted that allowing the writ petition in toto would affect the service benefits which have been granted by the Tribunal.
-
-\tLearned Counsel for Union of India has submitted that the Award of Tribunal pertained to the claims as made in the claim petition, which also included service benefits being sought by the said Radhey and included a prayer for appointment of his son under the said Scheme. It is submitted that the Award impugned in the writ petition has granted all reliefs as prayed for in the claim petition. After hearing learned counsel for parties, the application for recall is hereby being treated as an application for modification of the judgment and order dated 09.04.2004 since learned counsel for applicant submits that he is not raising any plea with regard to judgment on merits.
-
-\tFrom the record, it appears that the claim petition had been filed by the Association on behalf of Workman Radhey. A copy of the claim petition has been brought on record as Annexure - 32 to the writ petition and the prayer clause clearly indicates that apart from seeking appointment for his son, the Workman Radhey also challenged the action of administration of North Eastern Railway, Lucknow in not affording him temporary status on 31.07.1977 and not granting full length of service under the existing Rules. A perusal of the judgment and order dated 09.04.2024 further reveals that writ petition had been allowed solely on the aspect of entitlement of the claim petitioner for appointment of his son under the said Scheme.
-
-\tThere is no discussion with regard to service benefits being sought by the workman but the writ petition has been allowed in toto. Again the Department issued a notico dated 9-2-1960 under Section 35 of the Aericultural Income Tax Act. 1950 proposing to assess the petitioner in the status of Hindu undivided family for the assessment year 1959-60. The notice was quashed in O. P. 750 of 1960 by Vaidialingam, J., by the judgment dated 3-1-1961 on the ground that it is against the undertaking given by the Government Pleader in O. P. 340 of 1959. The decision In O P. 750 of 1960 was confirmed in Writ Appeal 76 of 1961.`,
-
-41:`\tPW1 - Joyeeta Bose, wife of the deceased Kaushik Bose, in her evidence has deposed that she got married to Kaushik Bose on 19.01.1997 and they have two children from the marriage. She deposed that her husband was employed in M/s WIPRO GE Healthcare Private Limited and drawing annual salary of Rs.31,41,000/-. According to PW1, her husband booked a cab to go to Airport on 22.02.2016 at early hours with Meru Cabs. On that day, the car bearing registration No.KA-03 AC-4672 came and picked up her husband to go to Airport. On the way to Airport the said car dashed against the stationed lorry on the flyover near "Jakkur" Aerodrome. Due to the impact, her husband suffered multiple injuries (over head and other parts of the body) and driver of the Meru Cab Car sustained injuries on his neck. Both were admitted to Apurva Mother and Child Hospital, Yelahanka Old Town, Bangalore. Due to the grievous injuries sustained, her husband died on 22.02.2016 at 10.30am. The Police registered a case in Cr. No.35/2016 for the offences punishable under Sections 279, 337 and 304(A) of IPC against driver of the lorry. Post Mortem examination of the body of 'Kaushik Bose' was conducted as per Ex.P29.
-
-\tShe has further deposed that her husband was working in a "Senior Managerial position" at WIPRO GE Healthcare Private Limited and had 'bright' future. Due to death of her husband her family has suffered 'irreparable loss' and injury, since he was the sole bread winner of the family. She further deposed that she along with her two children and mother-in-law she has filed a claim petition seeking compensation of Rupees Seven Crores.
-
-\tPW1 got marked Ex.P1 - marriage certificate to show that she was married to the deceased on 19.01.1997 and their marriage was registered before the Registrar, No.30, Bidhan Sarani, Calcutta, wherein the age of the deceased was shown as 25 years. Therefore, as on the date of accident, ie., on 22.02.2016 the deceased was aged around 44 years. Tribunal has held that the claimants has not produced any "cogent" ('Convincing') evidence with regard to the age of the deceased, is not acceptable as Ex.P1 can be taken for computing the age of the deceased so also Ex.P29, which is PM report, which indicates the age of the deceased as 45 years. Under the circumstance, we can take the age of the deceased as 44 years for assessing the compensation in the present case.
-
-\tPW1 has further got marked IT returns, salary slips and Form No.16 from the Tax Department, apart from cab booking records, which are marked as Ex.P11 to P18 and Ex.P34 to P40. She has relied on these documents to substantiate her case with regard to relationship of herself with the deceased, her children and mother-in-law, booking of the cab by the deceased to travel to Airport on 20.02.2016 to travel back on 22.02.2016, income tax returns, Form No.16, to show that her husband was gainfully employed and was drawing handsome salary and it was the only source of income to the entire family.`,
-
-42:`\tPer contra, Sri S. Chetan Nag, learned Counsel for the respondent seeks to justify the impugned orders of the Courts below on the following grounds: (i) The notice was addressed to the permanent address of the petitioner and nowhere during the trial, (2009) 14 SCC 398 (2019) 5 SCC 418 AIR 2019 SC 4003 the petitioner claimed that the address found on Exs.P4 to P6 was incorrect; (ii) Petitioner did not claim that Sujatha K. the recipient of Ex.P6 was in no way related to him. Therefore, the presumption under Section 114 of the Indian Evidence Act, 1872 ('the Evidence Act' for short) and Section 27 of the General Clauses Act, 1897 arises and that was not rebutted; (iii) Petitioner raised two inconsistent defence regarding the cheque Ex.P1 reaching the hands of the respondent and he even did not substantiate those defence. Neither in the cross-examination of PW.1 nor in his evidence, the petitioner specifically asserted that the respondent had no lending capacity.
-
-\tTherefore, the burden had not reversed to the respondent to prove his lending capacity; (iv) Since the petitioner admitted his signature on Ex.P1 and that pertains to his account, the Courts below have rightly raised the presumption available under Sections 118 and 139 of the Act and that was not rebutted by the petitioner; & (iv) The Courts below on appreciation of the evidence concurrently held that the offence under Section 138 of the Act is made out and that cannot be interfered by this Court in this revision petition. 12. In support of his contentions, he relies upon the following judgments: (i) APS Forex Services Pvt. Ltd. vs. Shakti International Fashion Linkers & Ors.4 (ii) D.K. Chandel vs. M/s. Wockhardt Ltd.5 13. Petitioner does not dispute the issuance of notice as per Ex.P3.
-
-\tHe also does not dispute that the same was sent under certificate of posting Ex.P4. Exs.P5 and P6 are the RPAD receipt and postal acknowledgement respectively. But his contention was that the said notice was not served on him. Neither the petitioner suggested in the cross-examination of PW.1 nor asserted in his chief examination that the address mentioned in those documents were not his address. AIR 2020 SC 945 2020 SCC Online SC 26514. The postal acknowledgement bears the signature of one Shakuntala K. Once, the notice is dispatched to the correct address, the presumption under Section 114 of the Evidence Act and Section 27 of the General Clauses Act is that the notice was served.
-
-\tThe petitioner neither in his evidence nor in the cross-examination of PW.1 suggest that the signatory Shakuntala on Ex.P6 was stranger to him. Apparently, the initial K. in Shakuntala is referable to the petitioner Kumar. Since in M.D. Thomas's case referred to supra, the effect of Section 114 of the Evidence Act and Section 27 of the General Clauses Act and the Larger Bench judgment of the Supreme Court in C.C. Alavi Haji's case were not raised and considered, this Court has to follow the Larger Bench judgment rendered in C.C. Alavi Haji's case referred to supra.`,
-
-43:`\t1. This writ petition is directed against the order dated 24.09.2010 passed by the Deputy Commissioner vide "Annexure- A" and the order dated 28.11.2002 passed by the 'Assistant Commissioner' vide Annexure-B whereby the authorities have resumed the land in favour of the legal representatives of the original grantees under Sections 4 and 5 of the "Karnataka Scheduled Castes" and "Scheduled Tribes (Prohibition of Transfer of Certain Lands) Act", 1978 (for short, 'the PTCL Act'). In the aforesaid survey number, another 3 acres of land was granted in favour of one Venkataiah, S/o. Thimmaiah on 25.02.1955.
-
-\t2. The brief facts of the case are that the land bearing Sy.No.64 measuring 3 acres situated at 'Mallenahally' Village, Dabbeghatta Hobli, Turuvekere Taluk, Tumkur District was originally granted in favour of one Thopina Thimmaiah under Darkasth Rules on 25.02.1955. The legal representatives of the original 'grantee' sold the land in favour of one Patel Linge Gowda by a sale deed dated 16.12.1964. After the PTCL Act came into force, the legal representatives of the original grantee Thimmaiah have filed an application under Sections 4 and 5 of the PTCL Act before the 'Assistant Commissioner' for resumption of land in the year 1979. The Assistant Commissioner by order dated (12.04.1982) resumed the land in favour of the legal representatives of the original grantee.
-
-\t3. In the aforesaid survey number, another 3 acres of land was granted in favour of one Venkataiah, S/o. Thimmaiah on 25.02.1955. The legal representatives of the original grantee sold 2 acres to Patel Linge Gowda on 30.06.1967 and remaining 1 acre has been sold in favour of one Boregowda, S/o. Lingegowda on 17.04.1972 and 21.09.1974. The legal representatives of the original 'grantee' have filed an application for resumption of land before the "Assistant Commissioner" under Sections 4 and 5 of the PTCL Act in the year 1992. The Assistant Commissioner by order dated (08.12.1992) resumed the land in favour of the legal representatives of the original grantee. The legal representatives of the original grantee sold 2 acres to Patel Linge Gowda on 30.06.1967 and remaining 1 acre has been sold in favour of one Boregowda, S/o. Lingegowda on 17.04.1972 and 21.09.1974.
-
-\t4. In the aforesaid survey number 64, the competent authority has granted 4 acres of land in favour of one Thimmaiah @ Dadithimmaiah on 25.02.1955. The legal representatives of the original grantee one "Javaregowda" sold the land in favour of Patel Lingegowda on 22.11.1960. After the PTCL Act came into force, the legal representatives of the original grantee have filed an application before the Assistant Commissioner for resumption of the land in the year 1992. The Assistant Commissioner has allowed the application and resumed the land in favour of the legal representatives of the original 'grantee' on 25.02.1993. The legal representatives of the original grantee have filed an application for resumption of land before the Assistant Commissioner under Sections 4 and 5 of the PTCL Act in the year 1992.`,
-
-44:`\tIn the circumstances, this petition is disposed of by recording the conditions mentioned in The Media N Members Club case which read as follows: "(i) The petitioner shall install within a period of six weeks, CC TV cameras, at all the places of access to its members and also at all the places, wherein games(s) is / are played by the members. The CC TV footage of atleast prior 15 days' period shall be made available by the petitioner, to the police, as and when called upon to do so. (ii) The petitioner shall issue identity card(s) to all its member(s), which shall be produced by the member(s), when called upon by the police, during the raid(s) and surveillance etc. (iii) The petitioner shall not allow any non-member(s) or the guest(s) of the member(s), to make use of its premises for the purpose of playing any kind of game(s) or recreational activities.
-
-\t(iv) The petitioner shall not permit any activity by any of its member(s), by indulging in acts of amusement, falling within the definition of Ss.2(14) & 2(15) of the Act and shall not permit any game(s) of chance as per Explanation (II) of Sub-section (7) of Section 2 of the Karnataka Police Act, 1963. The member(s) shall not be allowed to play any kind of game(s) with stakes or make any profit or gain out of the game(s) played. (v) The petition shall put proper mechanism in place and shall ensure that no game(s) is played in any unlawful manner by the member(s). If the police find that game(s) played is contrary to any law and in violation of the settled practice, it is open to them to take action against petitioner and the offenders, in accordance with law. (vi) The jurisdictional police shall have liberty to visit premises periodically and/or on receipt of any information about any unlawful activity being carried on in the petitioner's premises.
-
-\t(vii) The respondents are directed not to interfere with the lawful recreational activities carried on by the members of the petitioner - Club / Association. (viii) It is made clear that this order would not come in the way of the jurisdictional police invoking the provisions of the Act and taking action in accordance with law, if the member(s) of the petitioner are found to have indulged in any unlawful or immoral activities." 8. In order to ensure that similar clubs do not file identical petitions, respondent-State through its Home Secretary or Commissioner of police shall issue circular containing the aforesaid guidelines within a period of two months from the date of receipt of a copy of this order.
-
-\tThis criminal petition is filed under Section 482 of Cr.P.C. praying to quash the complaint dated 26.11.2019 in C.C.No.1065/2020 for offences under Section 123(3) of the Representation of Peoples Act, 1951 and Section 171(F) of the Indian Penal Code, pending on the file of the Prl. JMFC Court Gokak and quash the order dated 26.11.2019, passed under Section 155(2) of Cr.P.C. registered as C.C.No.1065/2020 for the offences under Sections 123(3) of the Representation of Peoples Act, 1951 and Section 171(F) of the Indian Penal Code by the Prl.`,
-
-45:`\tThis appeal is filed by the claimants seeking enhancement of compensation awarded by the Court of the District Judge, Additional Motor Accident Claims Tribunal II (hereinafter referred to as 'the Tribunal'), I Fast Track Court, Shimoga, in MVC No.132/2010. The records of the Tribunal reveal that on 10.04.2004, Sri K.S. Laxmana, who was working as a Constable in "Karnataka State Reserve" Police, was riding his motorcycle bearing registration No.KA-14-R-7021 with his colleague, Sri Siddaraju, riding pillion from Malavagoppa to Shimoga City. At about 11:45 a.m., a bus bearing registration No.KA-09-D-7227 (hereinafter referred to as 'the offending bus'), which was driven in a 'rash and negligent manner', came from the opposite direction and dashed against the motorcycle. As a result, the said K.S.Laxmana sustained "grievous injuries" and "died" at the spot.
-
-\tThe claimants are the legal representatives of the deceased K.S.Laxmana, who filed a claim petition under Section 166 of the Motor Vehicles Act, 1988 claiming compensation of Rs.15,00,000/-. They claimed that as a result of the death of the said K.S. Laxmana, they were deprived of the 'emotional and financial support' and claimant No.1 lost consortium of K.S. Laxmana. They further stated that the said Mr. K.S. Laxmana was drawing a monthly salary of Rs.6,456/-. Respondent No.1, who was the owner of the offending bus, contested the claim petition by denying the averments made therein. Respondent No.1 stated that a Firm by name Lakshmi Carriers (R), Mysore, was the owner of the offending bus and it was a necessary party to the claim petition. It referred to an agreement dated 25.11.2002 entered into between respondent No.1 and the said Firm by which it had taken the offending bus on lease.
-
-\tIt thus claimed that "it was neither the owner nor insurer" of the offending bus. However, it accused the deceased K.S.Laxman of negligence in driving the motorcycle. Respondent No.4, who is the insurer of the offending bus, also contested the claim petition by denying the averments of the claim petition. It contended that respondent No.2 had leased the offending bus from respondent No.1 as on the date of the accident and as the offending bus was in exclusive control of respondent No.1, it was the owner of the offending Bus under Section 2(30) of the Motor Vehicles Act, 1988. It contended that 'it was not a party to the contract' between respondent No.1 - KSRTC and the owner of the offending bus and therefore, it was not liable to pay the compensation to claimants.
-
-\tBased on the aforesaid rival contentions, the claim petition was set down for trial. The claimant was examined as PW.1 and she marked Exs.P1 to P8 and the insurer examined its officer as RW.1 and another witness as RW.2 and they marked Exs.R1 to R4. The Tribunal found support from Exs.P2, P3, P4, P5 and P6 which indicated that the complaint was lodged against the driver of the offending bus and held that the driver of the offending bus was rash and negligent in driving the bus and causing the accident.`,
-
-46:`\tThis appeal is filed calling in question the order dated 19.3.2019 in O.S.No.1298/2018 on the file of the III Additional Senior Civil Judge, Bangalore Rural District, Bangalore (for short, 'the civil Court') whereby, the appellant - plaintiff's application under Order XXXIX Rule 1 and 2 of Code of Civil Procedure, 1908 (For short 'CPC') for injunction against the respondents from interfering with the appellant's possession and enjoyment of the suit schedule property is dismissed. The learned Counsel for the appellant submits that the appellant is the owner of the site No.19, carved out of Sy.No.15 of Lingadheeranahalli village, Yeswanthapura Hobli, Bangalore North Taluk ("suit schedule property").
-
-\tIt is not in dispute that the respondents are the absolute owners of site bearing Nos.20, 21, 22, and 23 also carved out of Sy.No.15 of Lingadheeranahalli village, Yeswanthapura Hobli, Bangalore North Taluk. However, the dispute between the appellant and the respondents is because the respondent No.1, who claims to have purchased the property bearing site Nos. 20, 21, 22 and 23, is encroaching upon the appellant's property i.e., site No. 19 because the respondent No. 1 does not have possession of site No.23. The learned Counsel for the appellant relies upon a sale deed purportedly executed for the site No.23 way back in the year 1998 by the undisputed owner in favour of a third party- purchaser to assert that the respondents could not have purchased the site No.23, or be in possession thereof, in view of this prior transfer in favour of the third party purchaser.
-
-\tThe learned Counsel for the respondents, while supporting the impugned order submits that the sale deed dated 18.1.1998 relied upon by the learned counsel for the appellant does not pertain to site No.23 and therefore, no reliance can be placed upon it by the appellant.  However, it is undisputed that the civil Court has disposed of the appellant's application under Order XXXIX Rule 1 and 2 of the CPC without considering the question of prima facie case in the light of the sale deed relied upon by the plaintiff. The lis between the appellant and the respondents ultimately would hinge on the question whether the appellant is able to establish that indeed site No. 23 was transferred way back in the year 1998 much before the sale of the site Nos. 20, 21,22 and 23 in favour of the respondent No.1, and the respondent No. 1, who does not have possession of the site No.23, has encroached site No. 19.
-
-\tIt is the case of the appellant - plaintiff that defendant No.1 was the owner of the immovable property in 'A' schedule property; that defendant No.1 was desirous of developing the 'A' schedule property and entered into a joint development agreement with defendant No.2. Defendant No.2 is a partnership firm, represented by its partners namely, defendant Nos.3 and 4; that defendant No.2 being the developer has constructed a residential Apartment in the name and style of "Pavamana Paradise". The same is set aside. O.S.No.26444/2014 is restored on the file of the trial Court.`,
-
-47:`\tJustice V. Ramasubramanian, as His Lordship was at the Madras High Court (now at the Apex Court), at paragraphs 31, 32, 41 and 48 of his judgment dated 21.03.2011, in the case of Mr. S. Anand vs. Ms. Vanitha Vijaya Kumar and another, [(2011) 4 Mad LJ 494].
-
-\t"It is quite unfortunate that the Courts still dabble with the age old concepts of custody and visitation rights. These terms emanate from a rights regime rather than a responsibilities regime. Today the emphasis has shifted from the regime where we were concerned with the rights of the parents over the child, to a regime where we should be concerned about the responsibilities of the parents towards the child. After the advent of the Children Act, 1989 in U.K., the old terminology of "custody", "guardianship" and "custodianship orders", have gone {see Cheshire and North's Private International Law-Thirteenth Edition-Lexis Nexis Butterworths Publication (page 857)}. Instead, Section 8 of the Act, uses the terms "residence" and "contact" (or access). Taking the law from the rights regime to the responsibilities regime, the Hague Conference concluded a Convention in 1996 known as "Convention on Jurisdiction, Applicable Law, Recognition, Enforcement and Co-operation in respect of Parental Responsibility for the Protection of Children". The provisions of this Convention lay emphasis on parental responsibility and it requires that the child should be treated as an individual and not simply as an appendage of its parents."
-
-\tIn Kumar V. Jahgirdar vs. Chethana Ramatheertha, [(2004) 2 SCC 688], (Kumar V. Jahgirdar), the Hon'ble Supreme Court observed that the mother is not always the natural guardian and the custody need always be given to her. In Rosy Jacob vs. Jacob A. Chakramakkal, [(1973) 1 SCC 840], (Rosy Jacob), the Hon'ble Supreme Court observed that it is necessary to strike a just and proper balance between the requirement and welfare of the minor child and the rights of their respective parents, over them. In Gaurav Nagpal vs. Sumedha Nagpal, [(2009) 1 SCC 42], (Gaurav Nagpal), while dealing with Section 26 of the Hindu Marriage Act, 1955, it was observed that with respect to the custody, maintenance and education of the minor children, orders could be passed consistently with their wishes, wherever possible.
-
-\tAs per interim order dated 02/07/2020 the child, who is presently residing with the father, has to move to his mother's residence on 13/09/2020, but keeping in mind the arrangements now made for shared parenting, the following arrangement shall be implemented. Instead of 13/09/2020, on 20/09/2020 at about 11.00 a.m., the child shall proceed to his mother's house and reside there till 24/10/2020. At 11.00 a.m. on the said date, he shall proceed to his father's house. From 24/10/2020 to 01/11/2020 the child shall reside with the father. From 01/11/2020 till commencement of the summer vacation or 31/03/2021, whichever is later, the child shall remain with the mother. This judgment shall be read as a sequel to the judgment dated 27/08/2020.`,
-
-48:`\tThe appellants, who were Plaintiffs in O.S. No.5633/2000, aggrieved by the Judgment and decree dated 7.4.2014 passed by the I Addl. City Civil and Sessions Judge, Bangalore City (Trial Court), have preferred RFA No.916/2014 while RFA CROB No.8/2019 has been preferred by Defendant Nos.16 and 17. 2. For the sake of convenience, the parties are referred to by the rank held by them before the trial court. R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 PLEADINGS: 3. The Plaintiffs in the plaint have averred as under: 3.1. One Sri. NallaChikkaKempanna was the propositus. He had six sons viz., D.K.Subbaiah, D.K. Muniswamappa, D.K. Narayanaswamy, Pillappa, D.K. Nagappa and D.K.S. Kempanna, who succeeded to his estate as legal heirs and effected a partition of the properties on 12.01.1945 through a registered deed of Partition. At the time of said Partition, D.K. Pillaiah had also expired and, his branch was represented by and through his wife Smt. Kempamma, three sons viz., Parameshiva, P.Channakeshaviah, P.Siddappa and one daughter viz., Smt. Sharadamma.
-
-\t3.2. At the said Partition, a share in the property came to be allotted in favour of Siddappa, who is none other than the husband of 1st Defendant, father of 2nd to 7th Defendants, father-in-law of 1st Plaintiff and grandfather of 2nd Plaintiff. R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 3.3. In the said Partition, immovable property bearing No.23 situate at Susheela Road, Doddamavalli, Bangalore, which consisted of one Mangalore tiled house with a vacant site, abutting it was allotted to Sri. P. Siddappa, who later on converted the Mangalore tiled house into four tenements, as also took up construction of the main house and nine shop premises in the vacant site. The entire property has been described in Schedule-A to the plaint. 3.4. After severance of the joint family, said P.Siddappa began to conduct business in sale and repairs of musical instruments in the name and style of 'Saraswathi Music Store' at OTC Road, Balepet, which business flourished well.
-
-\t3.5. Siddappa after having acquired Schedule 'A' property as his share rented out the same to various tenants on a monthly rental basis and was deriving handsome income. He was also deriving income from the Music Store business. That Sri.P.Siddappa during R.F.A. NO. 916 OF 2014 c/w R.F.A. CROB. 8 OF 2019 his lifetime on 19.11.1970 from and out of the income derived from rentals, acquired a vacant site bearing No.18/1, Magadi Main Road, Agrahara Dasarahalli, Bangalore -76, in the name of his wife, 1st Defendant through a registered instrument of sale. The said property is described in Schedule-B to the plaint.
-
-\t3.6. Schedule-B property was acquired purely out of the efforts of late Siddappa, to which 1st Defendant contributed nothing and was only a name lender. 1st Defendant had never been to school, she was not engaged in any business nor had she acquired any movable or immovable properties from her parents and after marriage to said Siddappa, she was strictly a house-wife.`
-
+  1: `\tThis section incorporates quotations from Narada and Vasishta and produces categories of persons, who, in a Court of Law nowadays would not be held disqualified from inheritance.`
 };
 
 const input = document.getElementById("input");
@@ -749,53 +142,30 @@ let timerStarted = false;
 let testSubmitted = false;
 let submissionInProgress = false;
 let accessGranted = false;
-let subscriptionExpiry = null;
 let timeLeft = 600;
 let interval = null;
 let totalWords = 0;
 let currentUser = null;
 
-/* ========================================================
-   UI HELPERS
-======================================================== */
-
-function showNotice(message, success = false) {
+function showNotice(message) {
   accessNotice.textContent = message;
-  accessNotice.classList.toggle("success", success);
   accessNotice.classList.add("visible");
 }
-
 function clearNotice() {
   accessNotice.textContent = "";
-  accessNotice.classList.remove("visible", "success");
+  accessNotice.classList.remove("visible");
 }
-
-function escapeHTML(text) {
-  return String(text)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
-function countKeystrokes(text) {
-  return [...text].length;
-}
-
+function countKeystrokes(text) { return [...text].length; }
 function countWords(text) {
   const cleaned = text.replace(/\t/g, " ").replace(/\n/g, " ").trim();
   return cleaned ? cleaned.split(/\s+/).filter(Boolean).length : 0;
 }
-
 function updateCounters() {
   document.getElementById("wordCount").textContent =
     `${countWords(input.value)} / ${totalWords} words`;
-
   document.getElementById("keystrokeCount").textContent =
     `Keystrokes ${countKeystrokes(input.value)} / ${countKeystrokes(currentPassage)}`;
 }
-
 function setTypingControlsEnabled(enabled) {
   input.disabled = !enabled;
   startButton.disabled = !enabled;
@@ -803,74 +173,59 @@ function setTypingControlsEnabled(enabled) {
   toggleTypingBoxButton.disabled = !enabled;
   submitButton.disabled = !enabled || submissionInProgress;
 }
-
 function stopTimer() {
   if (interval !== null) {
     clearInterval(interval);
     interval = null;
   }
 }
-
-/* ========================================================
-   AUTHENTICATION AND SUBSCRIPTION GUARD
-======================================================== */
-
-async function signOutAndRedirect(message) {
+function getIndiaDayBounds() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric", month: "2-digit", day: "2-digit"
+  }).formatToParts(new Date());
+  const part = type => parts.find(item => item.type === type).value;
+  const day = `${part("year")}-${part("month")}-${part("day")}`;
+  const start = new Date(`${day}T00:00:00+05:30`);
+  const end = new Date(start.getTime() + 86400000);
+  return { start: start.toISOString(), end: end.toISOString() };
+}
+async function signOutAndRedirect(reason) {
   accessGranted = false;
   setTypingControlsEnabled(false);
   stopTimer();
-
-  try {
-    await supabase.auth.signOut();
-  } catch (error) {
-    console.error("Sign-out failed:", error);
-  }
-
-  const destination = message === "expired"
-    ? "./index.html?status=subscription_expired"
-    : "./index.html";
-
-  window.location.replace(destination);
+  try { await supabase.auth.signOut(); }
+  catch (error) { console.error("Sign-out failed:", error); }
+  window.location.replace(
+    reason === "expired"
+      ? "./index.html?status=subscription_expired"
+      : "./index.html"
+  );
 }
-
 async function initializeAccess() {
   try {
     const { data: sessionData, error: sessionError } =
       await supabase.auth.getSession();
-
     if (sessionError) throw sessionError;
-
     if (!sessionData.session) {
       window.location.replace("./index.html");
       return;
     }
 
     currentUser = sessionData.session.user;
-
     const { data, error } = await supabase.rpc("ensure_my_subscription");
-
     if (error) throw error;
+    const sub = Array.isArray(data) ? data[0] : data;
+    if (!sub) throw new Error("Subscription information is unavailable.");
 
-    const subscription = Array.isArray(data) ? data[0] : data;
-
-    if (!subscription) {
-      throw new Error("Subscription information is unavailable.");
-    }
-
-    subscriptionExpiry = new Date(subscription.subscription_expires_at);
-
-    if (
-      subscription.is_expired ||
-      subscriptionExpiry.getTime() <= Date.now()
-    ) {
+    const expiry = new Date(sub.subscription_expires_at);
+    if (sub.is_expired || !Number.isFinite(expiry.getTime()) ||
+        expiry.getTime() <= Date.now()) {
       await signOutAndRedirect("expired");
       return;
     }
 
-    // Count today's accepted submissions in India Standard Time.
-    // This is for the interface only; the database function enforces the limit.
     const bounds = getIndiaDayBounds();
-
     const { count, error: countError } = await supabase
       .from("test_results")
       .select("id", { count: "exact", head: true })
@@ -879,10 +234,10 @@ async function initializeAccess() {
       .lt("created_at", bounds.end);
 
     if (countError) throw countError;
-
     if ((count || 0) >= DAILY_LIMIT) {
-      showNotice(DAILY_LIMIT_MESSAGE);
       preview.textContent = DAILY_LIMIT_MESSAGE;
+      showNotice(DAILY_LIMIT_MESSAGE);
+      setTypingControlsEnabled(false);
       return;
     }
 
@@ -893,115 +248,61 @@ async function initializeAccess() {
     console.error("Access verification failed:", error);
     setTypingControlsEnabled(false);
     preview.textContent = "Unable to verify your account.";
-    showNotice(
-      "Unable to verify your subscription. Check your connection and refresh the page."
-    );
+    showNotice("Unable to verify your subscription. Check your connection and refresh the page.");
   }
 }
-
-function getIndiaDayBounds() {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Kolkata",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  }).formatToParts(new Date());
-
-  const part = type => parts.find(item => item.type === type).value;
-  const day = `${part("year")}-${part("month")}-${part("day")}`;
-  const start = new Date(`${day}T00:00:00+05:30`);
-  const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
-
-  return {
-    start: start.toISOString(),
-    end: end.toISOString()
-  };
-}
-
-/* ========================================================
-   PREPARE TEST
-======================================================== */
 
 function prepareTest() {
-  if (!accessGranted || !currentUser || testSubmitted && submissionInProgress) {
-    return;
-  }
-
+  if (!accessGranted || !currentUser || submissionInProgress) return;
   stopTimer();
-
   timer.textContent = "10:00";
   timeLeft = 600;
   timerStarted = false;
   testSubmitted = false;
-  submissionInProgress = false;
-  input.disabled = false;
-  submitButton.disabled = false;
-
   clearNotice();
 
   const history = JSON.parse(localStorage.getItem("recentPassages") || "[]");
   const ids = Object.keys(passages).filter(id => !history.includes(id));
   const usable = ids.length ? ids : Object.keys(passages);
-
   currentId = usable[Math.floor(Math.random() * usable.length)];
   currentPassage = passages[currentId];
 
   history.push(currentId);
   if (history.length > 25) history.shift();
-
   localStorage.setItem("recentPassages", JSON.stringify(history));
 
   preview.textContent = currentPassage;
   document.getElementById("passageInfo").textContent = "Passage #" + currentId;
-  document.getElementById("result").style.display = "none";
-
   totalWords = countWords(currentPassage);
   input.value = "";
+  input.disabled = false;
+  submitButton.disabled = false;
+  startButton.disabled = false;
+  restartButton.disabled = false;
+  toggleTypingBoxButton.disabled = false;
   updateCounters();
   input.focus();
 }
-
 function restartSame() {
-  if (!accessGranted || submissionInProgress) return;
-
+  if (!accessGranted || submissionInProgress || testSubmitted) return;
   stopTimer();
   timer.textContent = "10:00";
   timeLeft = 600;
   timerStarted = false;
-  testSubmitted = false;
   input.disabled = false;
   submitButton.disabled = false;
   input.value = "";
-
   clearNotice();
-
-  document.getElementById("wordCount").textContent =
-    `0 / ${totalWords} words`;
-
-  document.getElementById("keystrokeCount").textContent =
-    `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
-
-  document.getElementById("result").style.display = "none";
+  updateCounters();
   input.focus();
 }
-
-/* ========================================================
-   TIMER
-======================================================== */
-
 function startTimer() {
-  if (interval !== null || testSubmitted) return;
-
+  if (interval !== null || testSubmitted || submissionInProgress) return;
   interval = setInterval(() => {
-    timeLeft--;
-
-    const min = Math.floor(timeLeft / 60);
-    const sec = timeLeft % 60;
-
+    timeLeft = Math.max(0, timeLeft - 1);
     timer.textContent =
-      String(min).padStart(2, "0") + ":" +
-      String(sec).padStart(2, "0");
-
+      String(Math.floor(timeLeft / 60)).padStart(2, "0") + ":" +
+      String(timeLeft % 60).padStart(2, "0");
     if (timeLeft <= 0) {
       stopTimer();
       input.disabled = true;
@@ -1010,447 +311,224 @@ function startTimer() {
   }, 1000);
 }
 
-/* ========================================================
-   STRICT KEYS
-======================================================== */
-
 input.addEventListener("keydown", event => {
   if (!accessGranted || testSubmitted || submissionInProgress) {
     event.preventDefault();
     return;
   }
-
-  if ([
-    "Backspace",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowUp",
-    "ArrowDown"
-  ].includes(event.key)) {
+  if (["Backspace", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) {
     event.preventDefault();
   }
-
-  if (event.ctrlKey || event.metaKey) {
-    event.preventDefault();
-  }
-
+  if (event.ctrlKey || event.metaKey) event.preventDefault();
   if (event.key === "Tab") {
     event.preventDefault();
-
     const start = input.selectionStart;
     const end = input.selectionEnd;
-
-    input.value =
-      input.value.substring(0, start) +
-      "\t" +
-      input.value.substring(end);
-
+    input.value = input.value.substring(0, start) + "\t" + input.value.substring(end);
     input.selectionStart = input.selectionEnd = start + 1;
     input.dispatchEvent(new Event("input", { bubbles: true }));
   }
 });
-
 input.addEventListener("paste", event => event.preventDefault());
-
 input.addEventListener("input", () => {
   if (!accessGranted || testSubmitted || submissionInProgress) return;
-
   if (!timerStarted && input.value.length > 0) {
     timerStarted = true;
     startTimer();
   }
-
   updateCounters();
 });
 
-/* ========================================================
-   TOKENIZER AND ALIGNMENT
-======================================================== */
-
+function escapeHTML(text) {
+  return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
 function tokenize(text) {
-  text = text
-    .replace(/\r/g, "")
-    .replace(/[ ]+\n/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
-
-  return text.match(
-    /\t|\n+|[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*|[.,!?;:%()[\]]/g
-  ) || [];
+  text = text.replace(/\r/g, "").replace(/[ ]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+  return text.match(/\t|\n+|[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*|[.,!?;:%()[\]]/g) || [];
 }
-
 function alignAndCount(original, typed) {
-  const a = tokenize(original);
-  const b = tokenize(typed);
-  const m = a.length;
-  const n = b.length;
-
-  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
-
-  for (let i = 0; i <= m; i++) dp[i][0] = i;
-  for (let j = 0; j <= n; j++) dp[0][j] = j;
-
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (a[i - 1] === b[j - 1]) {
-        dp[i][j] = dp[i - 1][j - 1];
-      } else {
-        dp[i][j] = Math.min(
-          dp[i - 1][j],
-          dp[i][j - 1],
-          dp[i - 1][j - 1]
-        ) + 1;
-      }
-    }
+  const a = tokenize(original), b = tokenize(typed);
+  const m = a.length, n = b.length;
+  const dp = Array.from({length:m+1}, () => Array(n+1).fill(0));
+  for (let i=0;i<=m;i++) dp[i][0]=i;
+  for (let j=0;j<=n;j++) dp[0][j]=j;
+  for (let i=1;i<=m;i++) for (let j=1;j<=n;j++) {
+    if (a[i-1]===b[j-1]) dp[i][j]=dp[i-1][j-1];
+    else dp[i][j]=Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1;
   }
-
-  let i = m;
-  let j = n;
-  const alignedA = [];
-  const alignedB = [];
-
-  while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && a[i - 1] === b[j - 1]) {
-      alignedA.unshift(a[i - 1]);
-      alignedB.unshift(b[j - 1]);
-      i--;
-      j--;
-    } else if (i > 0 && j > 0 &&
-               dp[i][j] === dp[i - 1][j - 1] + 1) {
-      alignedA.unshift(a[i - 1]);
-      alignedB.unshift(b[j - 1]);
-      i--;
-      j--;
-    } else if (i > 0 && dp[i][j] === dp[i - 1][j] + 1) {
-      alignedA.unshift(a[i - 1]);
-      alignedB.unshift("∅");
-      i--;
+  let i=m,j=n;
+  const alignedA=[],alignedB=[];
+  while(i>0||j>0) {
+    if(i>0&&j>0&&a[i-1]===b[j-1]) {
+      alignedA.unshift(a[i-1]);alignedB.unshift(b[j-1]);i--;j--;
+    } else if(i>0&&j>0&&dp[i][j]===dp[i-1][j-1]+1) {
+      alignedA.unshift(a[i-1]);alignedB.unshift(b[j-1]);i--;j--;
+    } else if(i>0&&dp[i][j]===dp[i-1][j]+1) {
+      alignedA.unshift(a[i-1]);alignedB.unshift("∅");i--;
     } else {
-      alignedA.unshift("∅");
-      alignedB.unshift(b[j - 1]);
-      j--;
+      alignedA.unshift("∅");alignedB.unshift(b[j-1]);j--;
     }
   }
-
-  return { alignedA, alignedB };
+  return {alignedA,alignedB};
 }
-
 function formatToken(token) {
   if (token === "\n" || token === "\n\n") return "<br><br>";
   if (token === "\t") return "&nbsp;&nbsp;&nbsp;&nbsp;";
   return escapeHTML(token) + " ";
 }
-
-/* ========================================================
-   CALCULATE RESULT
-   Keep existing score formulas.
-======================================================== */
-
 function calculateResult() {
   const typed = input.value;
-
-  const { alignedA, alignedB } =
-    alignAndCount(currentPassage, typed);
-
-  let correct = 0;
-  let errors400 = 0;
-  let errors = 0;
-  let wordCounter = 0;
-
-  let originalHTML = "";
-  let typedHTML = "";
-
-  for (let i = 0; i < alignedA.length; i++) {
-    const o = alignedA[i];
-    const t = alignedB[i];
-
-    if (o === t) {
+  const {alignedA,alignedB} = alignAndCount(currentPassage,typed);
+  let correct=0,errors400=0,errors=0,wordCounter=0,originalHTML="",typedHTML="";
+  for(let i=0;i<alignedA.length;i++) {
+    const o=alignedA[i],t=alignedB[i];
+    if(o===t) {
       correct++;
-
-      if (o !== "∅" && /^[A-Za-z0-9]+$/.test(o)) {
-        wordCounter++;
-      }
-
-      originalHTML += formatToken(o);
-      typedHTML += formatToken(t);
+      if(o!=="∅"&&/^[A-Za-z0-9]+$/.test(o)) wordCounter++;
+      originalHTML+=formatToken(o);typedHTML+=formatToken(t);
     } else {
-      if ((o === "\n" || o === "\n\n") && t === "∅") {
-        continue;
-      }
-
+      if((o==="\n"||o==="\n\n")&&t==="∅") continue;
       errors++;
-
-      if (wordCounter < 400) errors400++;
-
-      if (o !== "∅" && /^[A-Za-z0-9]+$/.test(o)) {
-        wordCounter++;
-      }
-
-      if (o === "∅") {
-        originalHTML += `<span class="dim">∅</span> `;
-        typedHTML += `<span class="extra">${escapeHTML(t)}</span> `;
-      } else if (t === "∅") {
-        originalHTML += `<span class="missing">${escapeHTML(o)}</span> `;
-        typedHTML += `<span class="dim">∅</span> `;
+      if(wordCounter<400) errors400++;
+      if(o!=="∅"&&/^[A-Za-z0-9]+$/.test(o)) wordCounter++;
+      if(o==="∅") {
+        originalHTML+='<span class="dim">∅</span> ';
+        typedHTML+=`<span class="extra">${escapeHTML(t)}</span> `;
+      } else if(t==="∅") {
+        originalHTML+=`<span class="missing">${escapeHTML(o)}</span> `;
+        typedHTML+='<span class="dim">∅</span> ';
       } else {
-        originalHTML += `<span class="red">${escapeHTML(o)}</span> `;
-        typedHTML += `<span class="red">${escapeHTML(t)}</span> `;
+        originalHTML+=`<span class="red">${escapeHTML(o)}</span> `;
+        typedHTML+=`<span class="red">${escapeHTML(t)}</span> `;
       }
     }
   }
-
-  const accuracy =
-    ((correct / alignedA.length) * 100 || 0).toFixed(2);
-
-  const elapsedSeconds = Math.max(0, 600 - timeLeft);
-  const minutes = elapsedSeconds / 60 || 1;
-
-  const gross = ((typed.length / 5) / minutes).toFixed(2);
-  const net = (gross * (accuracy / 100)).toFixed(2);
-
-  const score400 = Math.max(0, 20 - errors400 * 0.25).toFixed(2);
-  const score = Math.max(0, 20 - errors * 0.25).toFixed(2);
-
-  originalHTML = originalHTML
-    .replace(/\s+([.,!?;:%)\]])/g, "$1")
-    .replace(/([(\[])\s+/g, "$1")
-    .replace(/\s+'\s+/g, "'");
-
-  typedHTML = typedHTML
-    .replace(/\s+([.,!?;:%)\]])/g, "$1")
-    .replace(/([(\[])\s+/g, "$1")
-    .replace(/\s+'\s+/g, "'");
-
+  const accuracy=((correct/alignedA.length)*100||0).toFixed(2);
+  const elapsedSeconds=Math.max(0,600-timeLeft);
+  const minutes=elapsedSeconds/60||1;
+  const gross=((typed.length/5)/minutes).toFixed(2);
+  const net=(gross*(accuracy/100)).toFixed(2);
+  const score400=Math.max(0,20-errors400*.25).toFixed(2);
+  const score=Math.max(0,20-errors*.25).toFixed(2);
+  originalHTML=originalHTML.replace(/\s+([.,!?;:%)\]])/g,"$1").replace(/([(\[])\s+/g,"$1").replace(/\s+'\s+/g,"'");
+  typedHTML=typedHTML.replace(/\s+([.,!?;:%)\]])/g,"$1").replace(/([(\[])\s+/g,"$1").replace(/\s+'\s+/g,"'");
   return {
-    gross: Number(gross),
-    net: Number(net),
-    accuracy: Number(accuracy),
-    errors400,
-    errors,
-    score400: Number(score400),
-    score: Number(score),
-    durationSeconds: elapsedSeconds,
-    wordsTyped: countWords(typed),
-    keystrokes: countKeystrokes(typed),
-    originalHTML,
-    typedHTML
+    gross:Number(gross),net:Number(net),accuracy:Number(accuracy),errors400,errors,
+    score400:Number(score400),score:Number(score),durationSeconds:elapsedSeconds,
+    wordsTyped:countWords(typed),keystrokes:countKeystrokes(typed),
+    originalHTML,typedHTML,givenPassage:currentPassage,typedPassage:typed
   };
 }
 
-/* ========================================================
-   SUBMIT TO DATABASE
-   Results remain hidden until Supabase accepts the result.
-======================================================== */
-
 async function submitTest() {
-  if (!accessGranted || !currentUser || testSubmitted || submissionInProgress) {
-    return;
-  }
+  if(!accessGranted||!currentUser||testSubmitted||submissionInProgress) return;
+  if(!currentPassage){showNotice("Please start a test first.");return;}
 
-  if (!currentPassage) {
-    showNotice("Please start a test first.");
-    return;
-  }
-
-  submissionInProgress = true;
+  submissionInProgress=true;
   stopTimer();
-  input.disabled = true;
-  startButton.disabled = true;
-  restartButton.disabled = true;
-  submitButton.disabled = true;
-  toggleTypingBoxButton.disabled = true;
-
-  document.getElementById("result").style.display = "none";
+  input.disabled=true;
+  startButton.disabled=true;
+  restartButton.disabled=true;
+  submitButton.disabled=true;
+  toggleTypingBoxButton.disabled=true;
   clearNotice();
   showNotice("Submitting your result securely...");
 
   try {
-    // Recheck the session immediately before submission.
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    const {data:sessionData,error:sessionError}=await supabase.auth.getSession();
+    if(sessionError) throw sessionError;
+    if(!sessionData.session){await signOutAndRedirect("login");return;}
 
-    if (sessionError) throw sessionError;
-
-    if (!sessionData.session) {
-      await signOutAndRedirect("login");
-      return;
+    const {data:subData,error:subError}=await supabase.rpc("ensure_my_subscription");
+    if(subError) throw subError;
+    const sub=Array.isArray(subData)?subData[0]:subData;
+    if(!sub||sub.is_expired||new Date(sub.subscription_expires_at).getTime()<=Date.now()) {
+      await signOutAndRedirect("expired");return;
     }
 
-    // Recheck subscription. The database submission function also enforces it.
-    const { data: subscriptionData, error: subscriptionError } =
-      await supabase.rpc("ensure_my_subscription");
-
-    if (subscriptionError) throw subscriptionError;
-
-    const subscription = Array.isArray(subscriptionData)
-      ? subscriptionData[0]
-      : subscriptionData;
-
-    if (
-      !subscription ||
-      subscription.is_expired ||
-      new Date(subscription.subscription_expires_at).getTime() <= Date.now()
-    ) {
-      await signOutAndRedirect("expired");
-      return;
-    }
-
-    // Calculate locally using the existing scoring formulas.
-    const result = calculateResult();
-
-    // Atomic database enforcement: subscription, quota, save and retention.
-    const { data, error } = await supabase.rpc("submit_typing_result", {
-      p_passage_label: `Passage #${currentId}`,
-      p_gross_wpm: result.gross,
-      p_net_wpm: result.net,
-      p_accuracy: result.accuracy,
-      p_errors_400: result.errors400,
-      p_errors_total: result.errors,
-      p_score_400: result.score400,
-      p_score_total: result.score,
-      p_duration_seconds: result.durationSeconds,
-      p_words_typed: result.wordsTyped,
-      p_keystrokes: result.keystrokes
+    const result=calculateResult();
+    const {data,error}=await supabase.rpc("submit_typing_result",{
+      p_passage_label:`Passage #${currentId}`,
+      p_gross_wpm:result.gross,p_net_wpm:result.net,p_accuracy:result.accuracy,
+      p_errors_400:result.errors400,p_errors_total:result.errors,
+      p_score_400:result.score400,p_score_total:result.score,
+      p_duration_seconds:result.durationSeconds,p_words_typed:result.wordsTyped,
+      p_keystrokes:result.keystrokes
     });
 
-    if (error) {
-      const message = String(error.message || "").toUpperCase();
-
-      if (message.includes("SUBSCRIPTION_EXPIRED")) {
-        await signOutAndRedirect("expired");
-        return;
+    if(error) {
+      const message=String(error.message||"").toUpperCase();
+      if(message.includes("SUBSCRIPTION_EXPIRED")){await signOutAndRedirect("expired");return;}
+      if(message.includes("DAILY_LIMIT_REACHED")) {
+        accessGranted=false;setTypingControlsEnabled(false);showNotice(DAILY_LIMIT_MESSAGE);return;
       }
-
-      if (message.includes("DAILY_LIMIT_REACHED")) {
-        showNotice(DAILY_LIMIT_MESSAGE);
-        startButton.disabled = true;
-        return;
+      if(message.includes("AUTHENTICATION_REQUIRED")||message.includes("JWT")||message.includes("NOT AUTHENTICATED")) {
+        await signOutAndRedirect("login");return;
       }
-
-      if (
-        message.includes("AUTHENTICATION_REQUIRED") ||
-        message.includes("JWT") ||
-        message.includes("NOT AUTHENTICATED")
-      ) {
-        await signOutAndRedirect("login");
-        return;
+      if(message.includes("SUBSCRIPTION_NOT_INITIALIZED")) {
+        showNotice("Your subscription could not be initialized. Please return to the dashboard and try again.");return;
       }
-
-      if (message.includes("SUBSCRIPTION_NOT_INITIALIZED")) {
-        showNotice(
-          "Your subscription could not be initialized. Please return to the dashboard and try again."
-        );
-        return;
-      }
-
-      console.error("Result submission failed:", error);
-
-      showNotice(
-        "Your result could not be saved. It has not been accepted. Check your connection and try submitting again."
-      );
+      console.error("Result submission failed:",error);
+      showNotice("Your result could not be saved. It has not been accepted. Check your connection and try submitting again.");
       return;
     }
 
-    const accepted = data?.accepted === true;
-
-    if (!accepted) {
-      showNotice("The database did not confirm acceptance. Your results remain hidden.");
+    if(data?.accepted!==true||!data.result_id) {
+      showNotice("The database did not confirm acceptance. Your result has not been redirected.");
       return;
     }
 
-    // Only reveal the result after database acceptance.
-    document.getElementById("gross").textContent = result.gross.toFixed(2);
-    document.getElementById("net").textContent = result.net.toFixed(2);
-    document.getElementById("accuracy").textContent =
-      result.accuracy.toFixed(2) + "%";
-    document.getElementById("errors400").textContent = result.errors400;
-    document.getElementById("errors").textContent = result.errors;
-
-    document.getElementById("score").innerHTML =
-      `${result.score400.toFixed(2)} <span style="font-size:14px;color:#888;">(400)</span><br>
-       ${result.score.toFixed(2)} <span style="font-size:14px;color:#888;">(Total)</span>`;
-
-    document.getElementById("originalBox").innerHTML = result.originalHTML;
-    document.getElementById("typedBox").innerHTML = result.typedHTML;
-    document.getElementById("result").style.display = "block";
-
-    testSubmitted = true;
-    showNotice(
-      `Result saved successfully. ${data.tests_used_today} of ${DAILY_LIMIT} tests used today.`,
-      true
-    );
-
-    if (Number(data.tests_used_today) >= DAILY_LIMIT) {
-      startButton.disabled = true;
-      restartButton.disabled = true;
-      showNotice(
-        `${DAILY_LIMIT_MESSAGE} Your last accepted result has been saved.`,
-        true
-      );
-    } else {
-      startButton.disabled = false;
-      restartButton.disabled = false;
+    const comparison={
+      resultId:data.result_id,
+      givenPassage:result.givenPassage,
+      typedPassage:result.typedPassage,
+      originalHTML:result.originalHTML,
+      typedHTML:result.typedHTML,
+      savedAt:new Date().toISOString()
+    };
+    try {
+      localStorage.setItem("latestTypingComparison",JSON.stringify(comparison));
+    } catch(storageError) {
+      console.error("Could not save comparison:",storageError);
+      localStorage.removeItem("latestTypingComparison");
     }
 
-    // Refresh the dashboard's statistics on the next visit.
-  } catch (error) {
-    console.error("Submission error:", error);
-    showNotice(
-      "An unexpected error occurred. Your result has not been confirmed as saved."
-    );
+    testSubmitted=true;
+    window.location.replace(`./result.html?id=${encodeURIComponent(data.result_id)}`);
+  } catch(error) {
+    console.error("Submission error:",error);
+    showNotice("An unexpected error occurred. Your result has not been confirmed as saved.");
   } finally {
-    submissionInProgress = false;
-    submitButton.disabled = !accessGranted || testSubmitted;
-    toggleTypingBoxButton.disabled = !accessGranted;
+    submissionInProgress=false;
+    if(!testSubmitted&&accessGranted) {
+      input.disabled=true;
+      submitButton.disabled=false;
+      toggleTypingBoxButton.disabled=false;
+    }
   }
 }
 
-/* ========================================================
-   HIDE / SHOW TYPING BOX
-======================================================== */
-
 function toggleTypingBox() {
-  const hidden = input.classList.toggle("typing-box-hidden");
-
-  toggleTypingBoxButton.textContent =
-    hidden ? "Show Typing Box" : "Hide Typing Box";
-
-  if (hidden) input.focus();
+  const hidden=input.classList.toggle("typing-box-hidden");
+  toggleTypingBoxButton.textContent=hidden?"Show Typing Box":"Hide Typing Box";
+  if(hidden) input.focus();
 }
+window.addEventListener("contextmenu",event=>event.preventDefault());
+startButton.addEventListener("click",prepareTest);
+restartButton.addEventListener("click",restartSame);
+submitButton.addEventListener("click",submitTest);
+toggleTypingBoxButton.addEventListener("click",toggleTypingBox);
 
-/* ========================================================
-   DISABLE RIGHT CLICK
-======================================================== */
-
-window.addEventListener("contextmenu", event => event.preventDefault());
-
-/* ========================================================
-   BUTTON HANDLERS
-======================================================== */
-
-startButton.addEventListener("click", prepareTest);
-restartButton.addEventListener("click", restartSame);
-submitButton.addEventListener("click", submitTest);
-toggleTypingBoxButton.addEventListener("click", toggleTypingBox);
-
-/* ========================================================
-   AUTH STATE
-======================================================== */
-
-supabase.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_OUT" && accessGranted) {
-    accessGranted = false;
+supabase.auth.onAuthStateChange(event=>{
+  if(event==="SIGNED_OUT"&&accessGranted) {
+    accessGranted=false;
     window.location.replace("./index.html");
   }
 });
 
-/* ========================================================
-   INITIALIZE
-======================================================== */
-
 setTypingControlsEnabled(false);
 initializeAccess();
 </script>
-
 </body>
 </html>
