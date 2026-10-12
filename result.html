@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BHC Typing Test Results</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#080808;
+  color:#f0f0f0;
+  font-family:Arial,sans-serif;
+  min-height:100vh
+}
+
+.container{
+  width:100%;
+  max-width:1500px;
+  margin:auto;
+  padding:20px
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  background:#121212;
+  border:1px solid #1f1f1f;
+  padding:16px 20px;
+  border-radius:16px;
+  margin-bottom:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.4);
+  position:sticky;
+  top:0;
+  z-index:100
+}
+
+.brand{
+  font-size:18px;
+  font-weight:700;
+  color:#00ffae
+}
+
+.nav,.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap
+}
+
+.nav a,.actions a,.nav button{
+  display:inline-block;
+  border:none;
+  padding:12px 18px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#00ffae,#00cfff);
+  color:#000;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+  transition:.2s;
+  text-decoration:none;
+  text-align:center
+}
+
+.nav a:hover,.actions a:hover,.nav button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,255,174,.2)
+}
+
+.nav .secondary,.actions .secondary{
+  background:#1a1a1a;
+  border:1px solid #303030;
+  color:#eee
+}
+
+.access-notice{
+  display:none;
+  margin:14px 0;
+  padding:14px 16px;
+  border:1px solid #593333;
+  border-radius:10px;
+  background:#241818;
+  color:#ffb0b0;
+  line-height:1.6;
+  font-size:14px;
+  overflow-wrap:anywhere
+}
+
+.access-notice.visible{display:block}
+
+.result{
+  margin-top:25px;
+  background:#111;
+  border:1px solid #1c1c1c;
+  border-radius:16px;
+  padding:24px
+}
+
+.result-header{margin-bottom:24px}
+
+.result-header h1{
+  font-size:clamp(26px,4vw,36px);
+  margin-bottom:8px
+}
+
+.result-header p{
+  color:#999;
+  line-height:1.7
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-bottom:24px
+}
+
+.card{
+  background:#171717;
+  border:1px solid #232323;
+  border-radius:14px;
+  padding:18px;
+  text-align:center;
+  min-width:0
+}
+
+.card h3{
+  font-size:14px;
+  color:#888;
+  margin-bottom:10px;
+  font-weight:500
+}
+
+.card p{
+  font-size:28px;
+  font-weight:700;
+  color:#00ffae;
+  overflow-wrap:anywhere
+}
+
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px
+}
+
+.box{
+  background:#181818;
+  border:1px solid #252525;
+  border-radius:14px;
+  padding:18px;
+  line-height:1.9;
+  white-space:pre-wrap;
+  overflow-wrap:break-word;
+  min-width:0
+}
+
+.box h3{
+  margin-bottom:14px;
+  font-size:17px;
+  color:#f0f0f0
+}
+
+.comparison-content{
+  overflow-wrap:anywhere;
+  word-break:normal;
+  line-height:1.9
+}
+
+.red{color:#ff5252}
+
+.missing{
+  background:#ff9800;
+  color:#000;
+  padding:2px 4px;
+  border-radius:4px
+}
+
+.extra{
+  background:#ffe600;
+  color:#000;
+  padding:2px 4px;
+  border-radius:4px
+}
+
+.dim{opacity:.35}
+
+.loading{
+  background:#111;
+  border:1px solid #1c1c1c;
+  border-radius:16px;
+  padding:24px;
+  color:#aaa;
+  line-height:1.8
+}
+
+@media(max-width:900px){
+  .compare{grid-template-columns:1fr}
+}
+
+@media(max-width:480px){
+  .container{padding:12px}
+  .result{padding:16px}
+  .topbar{padding:14px}
+  .nav{width:100%}
+  .nav a,.nav button{flex:1;text-align:center}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <header class="topbar">
+    <div class="brand">BHC Typing Test</div>
+
+    <nav class="nav">
+      <a href="./typing-test.html">Start Test Again</a>
+      <a href="./dashboard.html" class="secondary">Dashboard</a>
+      <button type="button" id="logoutButton" class="secondary">Logout</button>
+    </nav>
+  </header>
+
+  <div
+    id="accessNotice"
+    class="access-notice"
+    role="alert"
+    aria-live="assertive"
+  ></div>
+
+  <div id="loadingPanel" class="loading">
+    Verifying your account and loading the saved result...
+  </div>
+
+  <main class="result" id="result" hidden>
+
+    <div class="result-header">
+      <h1>Test Results</h1>
+      <p id="resultSummary">Your accepted typing test result.</p>
+    </div>
+
+    <!-- ALL RESULT STATISTICS -->
+    <div class="stats">
+
+      <div class="card">
+        <h3>Gross WPM</h3>
+        <p id="gross">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Net WPM</h3>
+        <p id="net">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Accuracy</h3>
+        <p id="accuracy">0%</p>
+      </div>
+
+      <div class="card">
+        <h3>Errors (400 Words)</h3>
+        <p id="errors400">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Errors</h3>
+        <p id="errors">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Score</h3>
+        <p id="score">0</p>
+      </div>
+
+    </div>
+
+    <!-- SIDE-BY-SIDE PASSAGE COMPARISON -->
+    <div class="compare">
+
+      <div class="box">
+        <h3>Original Passage</h3>
+        <div
+          class="comparison-content"
+          id="originalBox"
+        ></div>
+      </div>
+
+      <div class="box">
+        <h3>Your Typing</h3>
+        <div
+          class="comparison-content"
+          id="typedBox"
+        ></div>
+      </div>
+
+    </div>
+
+    <div class="actions" style="margin-top:24px">
+      <a href="./typing-test.html">Start Test Again</a>
+      <a href="./dashboard.html" class="secondary">Back to Dashboard</a>
+    </div>
+
+  </main>
+</div>
+
+<script type="module">
+import { supabase } from "./js/supabase.js";
+
+const statusBox = document.getElementById("accessNotice");
+const loadingPanel = document.getElementById("loadingPanel");
+const resultPanel = document.getElementById("result");
+const logoutButton = document.getElementById("logoutButton");
+
+/* ========================================================
+   UI HELPERS
+======================================================== */
+
+function showNotice(message) {
+  statusBox.textContent = message;
+  statusBox.classList.add("visible");
+}
+
+function hideLoading() {
+  loadingPanel.style.display = "none";
+}
+
+function formatNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number.toFixed(2) : "—";
+}
+
+function formatDate(value) {
+  if (!value) return "—";
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "—";
+  }
+
+  return new Intl.DateTimeFormat("en-IN", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Asia/Kolkata"
+  }).format(date) + " IST";
+}
+
+/* ========================================================
+   LOGOUT
+======================================================== */
+
+async function logout() {
+  logoutButton.disabled = true;
+
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error("Logout failed:", error);
+    showNotice("Unable to log out. Please try again.");
+    logoutButton.disabled = false;
+    return;
+  }
+
+  window.location.replace("./index.html");
+}
+
+logoutButton.addEventListener("click", logout);
+
+/* ========================================================
+   LOAD THE LATEST COMPARISON
+======================================================== */
+
+/*
+ * The comparison is not stored in the database.
+ *
+ * typing-test.html writes the latest accepted comparison to
+ * one localStorage key. A new accepted submission replaces it.
+ *
+ * The result ID must match, so an older result page cannot
+ * accidentally display a different test's comparison.
+ */
+
+function loadLatestComparison(resultId) {
+  const originalBox = document.getElementById("originalBox");
+  const typedBox = document.getElementById("typedBox");
+
+  let comparison = null;
+
+  try {
+    const raw = localStorage.getItem("latestTypingComparison");
+    comparison = raw ? JSON.parse(raw) : null;
+  } catch (error) {
+    console.warn("Could not read the latest comparison:", error);
+  }
+
+  if (
+    !comparison ||
+    comparison.resultId !== resultId ||
+    typeof comparison.originalHTML !== "string" ||
+    typeof comparison.typedHTML !== "string"
+  ) {
+    originalBox.textContent = "Comparison is no longer available.";
+    typedBox.textContent = "Comparison is no longer available.";
+    return;
+  }
+
+  /*
+   * The HTML strings are produced by typing-test.html.
+   * Its formatter escapes text tokens before adding the
+   * comparison highlighting spans.
+   */
+  originalBox.innerHTML = comparison.originalHTML;
+  typedBox.innerHTML = comparison.typedHTML;
+}
+
+/* ========================================================
+   LOAD SAVED RESULT FROM SUPABASE
+======================================================== */
+
+async function initializeResultPage() {
+  try {
+
+    // 1. Verify login.
+    const {
+      data: sessionData,
+      error: sessionError
+    } = await supabase.auth.getSession();
+
+    if (sessionError) {
+      throw sessionError;
+    }
+
+    if (!sessionData.session) {
+      window.location.replace("./index.html");
+      return;
+    }
+
+    const user = sessionData.session.user;
+
+    // 2. Verify subscription.
+    const {
+      data: subscriptionData,
+      error: subscriptionError
+    } = await supabase.rpc("ensure_my_subscription");
+
+    if (subscriptionError) {
+      throw subscriptionError;
+    }
+
+    const subscription = Array.isArray(subscriptionData)
+      ? subscriptionData[0]
+      : subscriptionData;
+
+    if (
+      !subscription ||
+      subscription.is_expired ||
+      new Date(subscription.subscription_expires_at).getTime() <= Date.now()
+    ) {
+      await supabase.auth.signOut();
+
+      window.location.replace(
+        "./index.html?status=subscription_expired"
+      );
+
+      return;
+    }
+
+    // 3. Get the result ID from the URL.
+    const params = new URLSearchParams(window.location.search);
+    const resultId = params.get("id");
+
+    if (!resultId) {
+      hideLoading();
+      showNotice(
+        "No result ID was provided. Complete a typing test to view your result."
+      );
+      return;
+    }
+
+    // 4. Fetch the saved result for this user only.
+    // RLS also restricts access to the authenticated user's records.
+    const {
+      data: savedResult,
+      error: resultError
+    } = await supabase
+      .from("test_results")
+      .select(`
+        id,
+        passage_label,
+        gross_wpm,
+        net_wpm,
+        accuracy,
+        errors_400,
+        errors_total,
+        score_400,
+        score_total,
+        duration_seconds,
+        words_typed,
+        keystrokes,
+        created_at
+      `)
+      .eq("id", resultId)
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (resultError) {
+      throw resultError;
+    }
+
+    if (!savedResult) {
+      hideLoading();
+
+      showNotice(
+        "This result was not found in your account or is no longer available."
+      );
+
+      return;
+    }
+
+    // 5. Populate all saved statistics.
+    document.getElementById("gross").textContent =
+      formatNumber(savedResult.gross_wpm);
+
+    document.getElementById("net").textContent =
+      formatNumber(savedResult.net_wpm);
+
+    document.getElementById("accuracy").textContent =
+      formatNumber(savedResult.accuracy) + "%";
+
+    document.getElementById("errors400").textContent =
+      savedResult.errors_400;
+
+    document.getElementById("errors").textContent =
+      savedResult.errors_total;
+
+    document.getElementById("score").innerHTML =
+      `${formatNumber(savedResult.score_400)} ` +
+      `<span style="font-size:14px;color:#888;">(400)</span><br>` +
+      `${formatNumber(savedResult.score_total)} ` +
+      `<span style="font-size:14px;color:#888;">(Total)</span>`;
+
+    document.getElementById("resultSummary").textContent =
+      `${savedResult.passage_label || "Typing Test"} · Submitted ` +
+      `${formatDate(savedResult.created_at)}`;
+
+    // 6. Load the comparison belonging to this exact result.
+    loadLatestComparison(savedResult.id);
+
+    // 7. Show the result only after successful loading.
+    hideLoading();
+    resultPanel.hidden = false;
+
+  } catch (error) {
+    console.error("Unable to load result:", error);
+
+    hideLoading();
+
+    showNotice(
+      "Unable to load your saved result. Check your connection and refresh the page."
+    );
+  }
+}
+
+/* ========================================================
+   AUTH STATE
+======================================================== */
+
+supabase.auth.onAuthStateChange(event => {
+  if (event === "SIGNED_OUT") {
+    window.location.replace("./index.html");
+  }
+});
+
+/* ========================================================
+   INITIALIZE
+======================================================== */
+
+initializeResultPage();
+</script>
+</body>
+</html>
