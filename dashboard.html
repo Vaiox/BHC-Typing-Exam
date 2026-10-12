@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard | BHC Typing Test</title>
+
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-2: #0b0b0b;
+      --border: #292929;
+      --text: #f0f0f0;
+      --muted: #929292;
+      --accent: #00ffae;
+      --danger: #ff7777;
+      --success-bg: #10271f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    button, a {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      min-height: 72px;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      background: #0d0d0d;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      background: var(--success-bg);
+      border: 1px solid #174432;
+      border-radius: 12px;
+      color: var(--accent);
+      font-size: 21px;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user-email {
+      max-width: 250px;
+      color: var(--muted);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .logout-button {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .logout-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      padding: 38px 0 55px;
+    }
+
+    .welcome {
+      margin-bottom: 28px;
+    }
+
+    .welcome h1 {
+      margin-bottom: 10px;
+      font-size: clamp(25px, 4vw, 34px);
+      letter-spacing: -0.7px;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .notice {
+      display: none;
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      border: 1px solid #593333;
+      border-radius: 10px;
+      background: #241818;
+      color: #ffb0b0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .notice.visible {
+      display: block;
+    }
+
+    .notice.success {
+      border-color: #174432;
+      background: var(--success-bg);
+      color: var(--accent);
+    }
+
+    .section-title {
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      padding: 21px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      min-width: 0;
+    }
+
+    .stat-label {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .stat-value {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .stat-foot {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .panel {
+      min-width: 0;
+      padding: 25px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .panel h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .panel-description {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .primary-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 23px;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #00150e;
+      font-weight: 700;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .primary-button:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .primary-button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--text);
+      background: transparent;
+      font-size: 13px;
+    }
+
+    .secondary-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .subscription-status {
+      display: inline-block;
+      padding: 7px 10px;
+      margin-bottom: 20px;
+      border: 1px solid #174432;
+      border-radius: 7px;
+      background: var(--success-bg);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .subscription-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      padding-top: 20px;
+      margin-top: 23px;
+      border-top: 1px solid var(--border);
+    }
+
+    .detail-label {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .detail-value {
+      font-size: 14px;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+
+    .history-header h2 {
+      font-size: 20px;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 15px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .history-title {
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .history-date {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .history-result {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .history-wpm {
+      margin-bottom: 5px;
+      color: var(--accent);
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .history-accuracy {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .empty-state {
+      padding: 25px 12px;
+      border: 1px dashed #343434;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .loading {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding-top: 25px;
+      border-top: 1px solid var(--border);
+      color: #626262;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .topbar {
+        padding: 14px 4%;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-icon {
+        width: 35px;
+        height: 35px;
+      }
+
+      .topbar-right {
+        gap: 8px;
+      }
+
+      .user-email {
+        display: none;
+      }
+
+      .container {
+        width: 92%;
+        padding-top: 27px;
+      }
+
+      .stat-card {
+        padding: 16px;
+      }
+
+      .panel {
+        padding: 19px;
+      }
+
+      .history-header {
+        align-items: flex-start;
+      }
+
+      .history-item {
+        padding: 12px;
+      }
+
+      .subscription-details {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="./dashboard.html">
+      <span class="brand-icon" aria-hidden="true">⌨</span>
+      <span>BHC Typing Test</span>
+    </a>
+
+    <div class="topbar-right">
+      <span class="user-email" id="userEmail">Loading account...</span>
+      <button class="logout-button" id="logoutButton" type="button">
+        Log out
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <h1>Dashboard</h1>
+      <p>
+        Welcome to your typing practice portal.
+        Track your performance and improve with every test.
+      </p>
+    </section>
+
+    <div
+      id="notice"
+      class="notice"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <h2 class="section-title">Your Overview</h2>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-label">Best Net WPM</div>
+        <div class="stat-value accent" id="bestWpm">—</div>
+        <div class="stat-foot">From your saved results</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-label">Average Accuracy</div>
+        <div class="stat-value" id="averageAccuracy">—</div>
+        <div class="stat-foot">From your saved results</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-label">Tests Used Today</div>
+        <div class="stat-value" id="testsUsed">—</div>
+        <div class="stat-foot" id="testsRemaining">Checking daily limit...</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-label">Saved Results</div>
+        <div class="stat-value" id="savedResults">—</div>
+        <div class="stat-foot">Up to 25 recent results retained</div>
+      </article>
+    </section>
+
+    <section class="main-grid">
+      <article class="panel">
+        <h2>Ready to practice?</h2>
+
+        <p class="panel-description">
+          Start a BHC-style typing test. Your result will be
+          saved after the database accepts your submission.
+        </p>
+
+        <button class="primary-button" id="startExamButton" type="button" disabled>
+          Start Exam <span aria-hidden="true">→</span>
+        </button>
+
+        <p class="stat-foot" id="examStatus" style="margin-top: 14px;">
+          Checking your account...
+        </p>
+      </article>
+
+      <article class="panel">
+        <h2>Subscription</h2>
+
+        <p class="panel-description">
+          Your access period is managed by the administrator.
+        </p>
+
+        <div class="subscription-status" id="subscriptionStatus">
+          Checking status...
+        </div>
+
+        <div class="subscription-details">
+          <div>
+            <div class="detail-label">Days remaining</div>
+            <div class="detail-value" id="daysRemaining">—</div>
+          </div>
+
+          <div>
+            <div class="detail-label">Expires on</div>
+            <div class="detail-value" id="expiryDate">—</div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="history-header">
+        <h2>Recent Tests</h2>
+
+        <a class="secondary-button" href="./stats.html">
+          View Full History
+        </a>
+      </div>
+
+      <div id="historyList" class="history-list">
+        <div class="empty-state">Loading your results...</div>
+      </div>
+    </section>
+
+    <footer class="footer" style="margin-top: 30px;">
+      BHC Typing Test · Practice Portal
+    </footer>
+  </main>
+
+  <script type="module">
+    import { supabase } from "./js/supabase.js";
+
+    const $ = (id) => document.getElementById(id);
+
+    const notice = $("notice");
+    const startExamButton = $("startExamButton");
+
+    let currentUser = null;
+    let testsUsedToday = 0;
+    let subscriptionActive = false;
+
+    function showNotice(message, isSuccess = false) {
+      notice.textContent = message;
+      notice.classList.add("visible");
+      notice.classList.toggle("success", isSuccess);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function formatDate(value) {
+      if (!value) return "—";
+
+      return new Intl.DateTimeFormat("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        timeZone: "Asia/Kolkata"
+      }).format(new Date(value));
+    }
+
+    function getIndiaDayBounds() {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Kolkata",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+
+      const part = (type) =>
+        parts.find((item) => item.type === type).value;
+
+      const day = `${part("year")}-${part("month")}-${part("day")}`;
+
+      const start = new Date(`${day}T00:00:00+05:30`);
+      const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+
+      return {
+        start: start.toISOString(),
+        end: end.toISOString()
+      };
+    }
+
+    async function signOutAndRedirect(message) {
+      try {
+        await supabase.auth.signOut();
+      } catch (error) {
+        console.error("Sign-out failed:", error);
+      }
+
+      if (message === "expired") {
+        window.location.replace("./index.html?status=subscription_expired");
+      } else {
+        window.location.replace("./index.html");
+      }
+    }
+
+    async function loadDashboard() {
+      startExamButton.disabled = true;
+
+      // Verify the signed-in user.
+      const { data: sessionData, error: sessionError } =
+        await supabase.auth.getSession();
+
+      if (sessionError) throw sessionError;
+
+      if (!sessionData.session) {
+        window.location.replace("./index.html");
+        return;
+      }
+
+      currentUser = sessionData.session.user;
+      $("userEmail").textContent = currentUser.email || "Signed-in user";
+
+      // Initialize or retrieve the existing subscription.
+      const { data: subscriptionData, error: subscriptionError } =
+        await supabase.rpc("ensure_my_subscription");
+
+      if (subscriptionError) throw subscriptionError;
+
+      const subscription = Array.isArray(subscriptionData)
+        ? subscriptionData[0]
+        : subscriptionData;
+
+      if (!subscription) {
+        throw new Error("Subscription information is unavailable.");
+      }
+
+      const expiry = new Date(subscription.subscription_expires_at);
+
+      if (
+        subscription.is_expired ||
+        expiry.getTime() <= Date.now()
+      ) {
+        await signOutAndRedirect("expired");
+        return;
+      }
+
+      subscriptionActive = true;
+
+      $("subscriptionStatus").textContent = "Active";
+      $("daysRemaining").textContent =
+        String(subscription.days_remaining);
+
+      $("expiryDate").textContent = formatDate(expiry);
+
+      // Count accepted results for the current India calendar day.
+      const bounds = getIndiaDayBounds();
+
+      const { count, error: countError } = await supabase
+        .from("test_results")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", currentUser.id)
+        .gte("created_at", bounds.start)
+        .lt("created_at", bounds.end);
+
+      if (countError) throw countError;
+
+      testsUsedToday = count || 0;
+
+      $("testsUsed").textContent = `${testsUsedToday} / 10`;
+      $("testsRemaining").textContent =
+        `${Math.max(0, 10 - testsUsedToday)} accepted tests remaining today`;
+
+      if (testsUsedToday >= 10) {
+        startExamButton.disabled = true;
+        $("examStatus").textContent =
+          "Daily test limit reached. Please come back tomorrow.";
+      } else {
+        startExamButton.disabled = false;
+        $("examStatus").textContent =
+          "You can start a test. Abandoned tests do not count.";
+      }
+
+      // Fetch the latest 25 saved results.
+      const { data: results, error: resultsError } = await supabase
+        .from("test_results")
+        .select(
+          "id, passage_label, gross_wpm, net_wpm, accuracy, errors_total, score_total, created_at"
+        )
+        .eq("user_id", currentUser.id)
+        .order("created_at", { ascending: false })
+        .limit(25);
+
+      if (resultsError) throw resultsError;
+
+      const savedResults = results || [];
+
+      $("savedResults").textContent = String(savedResults.length);
+
+      if (savedResults.length > 0) {
+        const best = Math.max(
+          ...savedResults.map((result) => Number(result.net_wpm) || 0)
+        );
+
+        const averageAccuracy =
+          savedResults.reduce(
+            (sum, result) => sum + (Number(result.accuracy) || 0),
+            0
+          ) / savedResults.length;
+
+        $("bestWpm").textContent = best.toFixed(2);
+        $("averageAccuracy").textContent =
+          `${averageAccuracy.toFixed(2)}%`;
+
+        $("historyList").innerHTML = savedResults
+          .slice(0, 5)
+          .map((result) => `
+            <article class="history-item">
+              <div>
+                <div class="history-title">
+                  ${escapeHtml(result.passage_label || "BHC Typing Test")}
+                </div>
+                <div class="history-date">
+                  ${escapeHtml(formatDate(result.created_at))}
+                  · ${Number(result.errors_total) || 0} errors
+                </div>
+              </div>
+
+              <div class="history-result">
+                <div class="history-wpm">
+                  ${(Number(result.net_wpm) || 0).toFixed(2)} WPM
+                </div>
+                <div class="history-accuracy">
+                  ${(Number(result.accuracy) || 0).toFixed(2)}% accuracy
+                </div>
+              </div>
+            </article>
+          `)
+          .join("");
+      } else {
+        $("bestWpm").textContent = "0.00";
+        $("averageAccuracy").textContent = "0.00%";
+
+        $("historyList").innerHTML = `
+          <div class="empty-state">
+            You haven't saved any typing test results yet.<br>
+            Select Start Exam when you're ready to begin.
+          </div>
+        `;
+      }
+    }
+
+    startExamButton.addEventListener("click", () => {
+      if (!currentUser || !subscriptionActive) return;
+
+      if (testsUsedToday >= 10) {
+        showNotice(
+          "Daily test limit reached. Please come back tomorrow."
+        );
+        return;
+      }
+
+      window.location.href = "./typing-test.html";
+    });
+
+    $("logoutButton").addEventListener("click", async () => {
+      $("logoutButton").disabled = true;
+
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.error("Logout failed:", error);
+        showNotice("Could not log out. Please try again.");
+        $("logoutButton").disabled = false;
+        return;
+      }
+
+      window.location.replace("./index.html");
+    });
+
+    loadDashboard().catch((error) => {
+      console.error("Dashboard loading failed:", error);
+      showNotice(
+        "We couldn't load your dashboard. Check your Supabase connection and database setup, then try refreshing."
+      );
+    });
+  </script>
+</body>
+</html>
