@@ -538,7 +538,14 @@
   function showSubscriptionExpired() {
     showError("Subscription expired", EXPIRED_MESSAGE, true);
   }
-
+  
+  const params = new URLSearchParams(window.location.search);
+  
+  if (params.get("status") === "subscription_expired") {
+    showSubscriptionExpired();
+    window.history.replaceState({}, "", window.location.pathname);
+  }
+  
   function showDailyLimitReached() {
     showError("Daily limit reached", DAILY_LIMIT_MESSAGE, true);
   }
