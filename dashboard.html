@@ -883,6 +883,48 @@
     }
     
     loadDashboardUsername();
+
+
+    (function () {
+        const selector = document.getElementById("keystrokeLimit");
+    
+        if (!selector) return;
+    
+        const validLimits = ["2400", "2600", "2800", "3000"];
+        const savedLimit = localStorage.getItem("selectedKeystrokeLimit");
+    
+        if (validLimits.includes(savedLimit)) {
+            selector.value = savedLimit;
+        }
+    
+        // Save the selection whenever it changes.
+        selector.addEventListener("change", function () {
+            localStorage.setItem(
+                "selectedKeystrokeLimit",
+                selector.value
+            );
+        });
+    
+        // Save the current selection when Start Exam is clicked.
+        const startButton = document.getElementById("startExam");
+    
+        if (startButton) {
+            startButton.addEventListener("click", function () {
+                localStorage.setItem(
+                    "selectedKeystrokeLimit",
+                    selector.value
+                );
+            });
+        }
+    
+        // Save the default selection on first load.
+        if (!validLimits.includes(savedLimit)) {
+            localStorage.setItem(
+                "selectedKeystrokeLimit",
+                selector.value
+            );
+        }
+    })();
   </script>
 </body>
 </html>
