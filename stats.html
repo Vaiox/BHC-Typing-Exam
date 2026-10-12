@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statistics | BHC Typing Test</title>
+
+<style>
+:root {
+  --bg: #080808;
+  --surface: #111111;
+  --surface2: #0b0b0b;
+  --border: #292929;
+  --text: #f0f0f0;
+  --muted: #929292;
+  --accent: #00ffae;
+  --danger: #ff7777;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+button, a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.topbar {
+  min-height: 70px;
+  padding: 14px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #0d0d0d;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #174432;
+  border-radius: 12px;
+  background: #10271f;
+  color: var(--accent);
+  font-size: 21px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav a, .nav button {
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.nav a:hover, .nav button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.container {
+  width: min(1180px, 92%);
+  margin: auto;
+  padding: 36px 0 55px;
+}
+
+.heading {
+  margin-bottom: 26px;
+}
+
+.heading h1 {
+  margin-bottom: 10px;
+  font-size: clamp(25px, 4vw, 34px);
+  letter-spacing: -.6px;
+}
+
+.heading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.notice {
+  display: none;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #593333;
+  border-radius: 10px;
+  background: #241818;
+  color: #ffb0b0;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.notice.visible {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.card, .panel {
+  min-width: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.label {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.value {
+  font-size: clamp(23px, 3vw, 31px);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.subtext {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.panel {
+  margin-bottom: 22px;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.panel-heading h2 {
+  font-size: 19px;
+}
+
+.panel-heading p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.chart-wrap {
+  width: 100%;
+  min-height: 245px;
+}
+
+.chart-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart-empty {
+  display: grid;
+  place-items: center;
+  min-height: 220px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+th {
+  padding: 14px 13px;
+  color: var(--muted);
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+td {
+  padding: 16px 13px;
+  border-bottom: 1px solid #202020;
+}
+
+tbody tr:hover {
+  background: #171717;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.wpm {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.empty {
+  padding: 35px 15px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.loading {
+  color: var(--muted);
+}
+
+.footer {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: #626262;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card, .panel {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    padding: 12px 4%;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    padding-top: 25px;
+  }
+
+  .grid {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./dashboard.html">
+    <span class="brand-icon" aria-hidden="true">⌨</span>
+    <span>BHC Typing Test</span>
+  </a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="./dashboard.html">Dashboard</a>
+    <button id="logoutButton" type="button">Log out</button>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="heading">
+    <h1>Your Statistics</h1>
+    <p>
+      Review your saved typing results, speed, accuracy and
+      performance over time.
+    </p>
+  </section>
+
+  <div id="notice" class="notice" role="alert"></div>
+
+  <section class="grid">
+    <article class="card">
+      <div class="label">Best Net WPM</div>
+      <div class="value accent" id="bestWpm">—</div>
+      <div class="subtext">Among retained results</div>
+    </article>
+
+    <article class="card">
+      <div class="label">Average Net WPM</div>
+      <div class="value" id="averageWpm">—</div>
+      <div class="subtext">Among retained results</div>
+    </article>
+
+    <article class="card">
+      <div class="label">Average Accuracy</div>
+      <div class="value" id="averageAccuracy">—</div>
+      <div class="subtext">Among retained results</div>
+    </article>
+
+    <article class="card">
+      <div class="label">Results Retained</div>
+      <div class="value" id="totalResults">—</div>
+      <div class="subtext">Maximum 25 recent results</div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <div class="panel-heading">
+      <div>
+        <h2>Net WPM Progress</h2>
+        <p>Results displayed from oldest to newest.</p>
+      </div>
+    </div>
+
+    <div id="chart" class="chart-wrap">
+      <div class="chart-empty">Loading your statistics...</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-heading">
+      <div>
+        <h2>Test History</h2>
+        <p>Your saved results, newest first.</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Passage</th>
+            <th>Gross WPM</th>
+            <th>Net WPM</th>
+            <th>Accuracy</th>
+            <th>Errors</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+
+        <tbody id="historyBody">
+          <tr>
+            <td colspan="7" class="loading">
+              Loading your history...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    BHC Typing Test · Statistics
+  </footer>
+
+</main>
+
+<script type="module">
+import { supabase } from "./js/supabase.js";
+
+const $ = id => document.getElementById(id);
+
+function showNotice(message) {
+  $("notice").textContent = message;
+  $("notice").classList.add("visible");
+}
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function number(value) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function formatDate(value, includeTime = true) {
+  if (!value) return "—";
+
+  const options = {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    timeZone: "Asia/Kolkata"
+  };
+
+  if (includeTime) {
+    options.hour = "2-digit";
+    options.minute = "2-digit";
+  }
+
+  return new Intl.DateTimeFormat("en-IN", options)
+    .format(new Date(value));
+}
+
+/*
+ * Build a simple SVG chart without requiring an external
+ * charting library. Values are from the user's saved results.
+ */
+function renderChart(results) {
+  const chronological = [...results].reverse();
+
+  if (!chronological.length) {
+    $("chart").innerHTML = `
+      <div class="chart-empty">
+        Complete and save your first typing test to see your progress.
+      </div>
+    `;
+    return;
+  }
+
+  const width = 900;
+  const height = 270;
+  const left = 52;
+  const right = 24;
+  const top = 25;
+  const bottom = 45;
+
+  const plotWidth = width - left - right;
+  const plotHeight = height - top - bottom;
+
+  const values = chronological.map(row => number(row.net_wpm));
+  const maxValue = Math.max(10, ...values);
+  const upper = Math.ceil(maxValue / 10) * 10;
+
+  const x = index => chronological.length === 1
+    ? left + plotWidth / 2
+    : left + index * plotWidth / (chronological.length - 1);
+
+  const y = value =>
+    top + plotHeight - (value / upper) * plotHeight;
+
+  const grid = [];
+
+  for (let i = 0; i <= 4; i++) {
+    const value = upper * i / 4;
+    const yy = y(value);
+
+    grid.push(`
+      <line x1="${left}" y1="${yy}" x2="${width - right}" y2="${yy}"
+        stroke="#292929" stroke-width="1"/>
+      <text x="${left - 10}" y="${yy + 4}"
+        fill="#929292" font-size="11" text-anchor="end">${value.toFixed(0)}</text>
+    `);
+  }
+
+  const points = values.map((value, index) =>
+    `${x(index)},${y(value)}`
+  ).join(" ");
+
+  const dots = values.map((value, index) => `
+    <circle cx="${x(index)}" cy="${y(value)}" r="4"
+      fill="#00ffae" stroke="#080808" stroke-width="2">
+      <title>Test ${index + 1}: ${value.toFixed(2)} Net WPM</title>
+    </circle>
+  `).join("");
+
+  const labels = chronological.map((row, index) => {
+    const shouldLabel =
+      chronological.length <= 8 ||
+      index === 0 ||
+      index === chronological.length - 1 ||
+      index % Math.ceil(chronological.length / 6) === 0;
+
+    if (!shouldLabel) return "";
+
+    return `
+      <text x="${x(index)}" y="${height - 17}"
+        fill="#929292" font-size="10" text-anchor="middle">
+        ${index + 1}
+      </text>
+    `;
+  }).join("");
+
+  $("chart").innerHTML = `
+    <svg viewBox="0 0 ${width} ${height}"
+      role="img" aria-label="Net WPM progress chart">
+      ${grid.join("")}
+      <polyline points="${points}" fill="none"
+        stroke="#00ffae" stroke-width="2.5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+      ${dots}
+      ${labels}
+      <text x="${left}" y="13" fill="#929292" font-size="11">
+        Net WPM
+      </text>
+      <text x="${width - right}" y="${height - 2}"
+        fill="#929292" font-size="10" text-anchor="end">
+        Test number
+      </text>
+    </svg>
+  `;
+}
+
+async function loadStatistics() {
+  const { data: sessionData, error: sessionError } =
+    await supabase.auth.getSession();
+
+  if (sessionError) throw sessionError;
+
+  if (!sessionData.session) {
+    window.location.replace("./index.html");
+    return;
+  }
+
+  const user = sessionData.session.user;
+
+  /*
+   * Initialize/check subscription. The database function never
+   * resets an existing subscription.
+   */
+  const { data: subscriptionData, error: subscriptionError } =
+    await supabase.rpc("ensure_my_subscription");
+
+  if (subscriptionError) throw subscriptionError;
+
+  const subscription = Array.isArray(subscriptionData)
+    ? subscriptionData[0]
+    : subscriptionData;
+
+  if (!subscription) {
+    throw new Error("Subscription information unavailable.");
+  }
+
+  if (
+    subscription.is_expired ||
+    new Date(subscription.subscription_expires_at).getTime() <= Date.now()
+  ) {
+    await supabase.auth.signOut();
+    window.location.replace("./index.html?status=subscription_expired");
+    return;
+  }
+
+  /*
+   * RLS restricts these results to the authenticated user's rows.
+   * The explicit user filter is an additional safeguard.
+   */
+  const { data: results, error: resultsError } = await supabase
+    .from("test_results")
+    .select(`
+      id,
+      passage_label,
+      gross_wpm,
+      net_wpm,
+      accuracy,
+      errors_total,
+      score_total,
+      created_at
+    `)
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(25);
+
+  if (resultsError) throw resultsError;
+
+  const rows = results || [];
+
+  $("totalResults").textContent = String(rows.length);
+
+  if (!rows.length) {
+    $("bestWpm").textContent = "0.00";
+    $("averageWpm").textContent = "0.00";
+    $("averageAccuracy").textContent = "0.00%";
+
+    $("historyBody").innerHTML = `
+      <tr>
+        <td colspan="7" class="empty">
+          No saved results yet. Start a test from your dashboard.
+        </td>
+      </tr>
+    `;
+
+    renderChart([]);
+    return;
+  }
+
+  const bestWpm = Math.max(...rows.map(row => number(row.net_wpm)));
+
+  const averageWpm =
+    rows.reduce((sum, row) => sum + number(row.net_wpm), 0) / rows.length;
+
+  const averageAccuracy =
+    rows.reduce((sum, row) => sum + number(row.accuracy), 0) / rows.length;
+
+  $("bestWpm").textContent = bestWpm.toFixed(2);
+  $("averageWpm").textContent = averageWpm.toFixed(2);
+  $("averageAccuracy").textContent = averageAccuracy.toFixed(2) + "%";
+
+  $("historyBody").innerHTML = rows.map(row => `
+    <tr>
+      <td>${escapeHTML(formatDate(row.created_at))}</td>
+      <td>${escapeHTML(row.passage_label || "BHC Typing Test")}</td>
+      <td>${number(row.gross_wpm).toFixed(2)}</td>
+      <td class="wpm">${number(row.net_wpm).toFixed(2)}</td>
+      <td>${number(row.accuracy).toFixed(2)}%</td>
+      <td>${number(row.errors_total)}</td>
+      <td>${number(row.score_total).toFixed(2)} / 20</td>
+    </tr>
+  `).join("");
+
+  renderChart(rows);
+}
+
+$("logoutButton").addEventListener("click", async () => {
+  $("logoutButton").disabled = true;
+
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error("Logout failed:", error);
+    showNotice("Could not log out. Please try again.");
+    $("logoutButton").disabled = false;
+    return;
+  }
+
+  window.location.replace("./index.html");
+});
+
+loadStatistics().catch(error => {
+  console.error("Statistics loading failed:", error);
+
+  showNotice(
+    "Unable to load your statistics. Check your connection and Supabase configuration, then refresh."
+  );
+});
+</script>
+
+</body>
+</html>
