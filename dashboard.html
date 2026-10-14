@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,7 @@
       font-family: Arial, sans-serif;
     }
 
-    button, a {
+    button, a, select {
       font: inherit;
     }
 
@@ -113,53 +112,16 @@
       margin-bottom: 28px;
     }
 
-    
-.welcome-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
+    .welcome-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-.welcome-content {
-  min-width: 0;
-}
-
-.leaderboard-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  min-height: 46px;
-  padding: 0 18px;
-  flex-shrink: 0;
-  border: 1px solid #174432;
-  border-radius: 10px;
-  background: var(--success-bg);
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 700;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.leaderboard-button:hover {
-  background: #153528;
-  transform: translateY(-1px);
-}
-
-@media (max-width: 520px) {
-  .welcome-header {
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .leaderboard-button {
-    min-height: 40px;
-    padding: 0 12px;
-    font-size: 12px;
-  }
-}
-
+    .welcome-content {
+      min-width: 0;
+    }
 
     .welcome h1 {
       margin-bottom: 10px;
@@ -171,6 +133,28 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
+    }
+
+    .leaderboard-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      flex-shrink: 0;
+      border: 1px solid #174432;
+      border-radius: 10px;
+      background: var(--success-bg);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .leaderboard-button:hover {
+      background: #153528;
+      transform: translateY(-1px);
     }
 
     .notice {
@@ -308,6 +292,76 @@
       color: var(--accent);
     }
 
+    /* TYPING MODE SELECTORS */
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mode-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 19px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .mode-card h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .mode-description {
+      min-height: 60px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .passage-selector {
+      margin-bottom: 17px;
+    }
+
+    .passage-selector label {
+      display: block;
+      margin-bottom: 9px;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .passage-selector select {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      background: #111111;
+      color: #ffffff;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .passage-selector select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .mode-card .primary-button {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .mode-card .stat-foot {
+      min-height: 36px;
+    }
+
     .subscription-status {
       display: inline-block;
       padding: 7px 10px;
@@ -408,11 +462,6 @@
       text-align: center;
     }
 
-    .loading {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
     .footer {
       padding-top: 25px;
       border-top: 1px solid var(--border);
@@ -428,6 +477,16 @@
 
       .main-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .mode-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mode-description {
+        min-height: 0;
       }
     }
 
@@ -478,36 +537,17 @@
         grid-template-columns: 1fr;
         gap: 15px;
       }
-    }
 
-    .passage-selector {
-        margin-bottom: 18px;
-        text-align: center;
-    }
-    
-    .passage-selector label {
-        display: block;
-        margin-bottom: 8px;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 600;
-    }
-    
-    .passage-selector select {
-        width: 100%;
-        max-width: 300px;
-        padding: 12px 14px;
-        background: #111111;
-        color: #ffffff;
-        border: 1px solid #333333;
-        border-radius: 8px;
-        font-size: 15px;
-        cursor: pointer;
-    }
-    
-    .passage-selector select:focus {
-        outline: none;
-        border-color: #00bcd4;
+      .welcome-header {
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .leaderboard-button {
+        min-height: 40px;
+        padding: 0 12px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -521,6 +561,7 @@
 
     <div class="topbar-right">
       <span class="user-email" id="userEmail">Loading account...</span>
+
       <button class="logout-button" id="logoutButton" type="button">
         Log out
       </button>
@@ -528,23 +569,26 @@
   </header>
 
   <main class="container">
+
     <section class="welcome">
       <div class="welcome-header">
+
         <div class="welcome-content">
           <h1>
             <span id="dashboardUsername">User</span>'s Dashboard
           </h1>
-    
+
           <p>
             Welcome to your typing practice portal.
             Track your performance and improve with every test.
           </p>
         </div>
-    
+
         <a class="leaderboard-button" href="./leaderboard.html">
           <span aria-hidden="true">🏆</span>
           Leaderboard
         </a>
+
       </div>
     </section>
 
@@ -558,6 +602,7 @@
     <h2 class="section-title">Your Overview</h2>
 
     <section class="stats-grid">
+
       <article class="stat-card">
         <div class="stat-label">Best Net WPM</div>
         <div class="stat-value accent" id="bestWpm">—</div>
@@ -573,7 +618,9 @@
       <article class="stat-card">
         <div class="stat-label">Tests Used Today</div>
         <div class="stat-value" id="testsUsed">—</div>
-        <div class="stat-foot" id="testsRemaining">Checking daily limit...</div>
+        <div class="stat-foot" id="testsRemaining">
+          Checking daily limit...
+        </div>
       </article>
 
       <article class="stat-card">
@@ -581,38 +628,114 @@
         <div class="stat-value" id="savedResults">—</div>
         <div class="stat-foot">Up to 25 recent results retained</div>
       </article>
+
     </section>
 
     <section class="main-grid">
+
+      <!-- TYPING PRACTICE -->
+
       <article class="panel">
+
         <h2>Ready to practice?</h2>
 
         <p class="panel-description">
-          Start a BHC-style typing test. Your result will be
-          saved after the database accepts your submission.
+          Choose your typing mode and passage length.
+          Your result will be saved after the database accepts your submission.
         </p>
-        
-        <div class="passage-selector">
-            <label for="keystrokeLimit">Choose Passage Length</label>
-        
-            <select id="keystrokeLimit">
+
+        <div class="mode-grid">
+
+          <!-- SCREEN-TO-SCREEN MODE -->
+
+          <section class="mode-card">
+
+            <h3>Screen to Screen</h3>
+
+            <p class="mode-description">
+              The reference passage remains visible while you type.
+              Use this mode for regular typing practice.
+            </p>
+
+            <div class="passage-selector">
+              <label for="screenKeystrokeLimit">
+                Choose Passage Length
+              </label>
+
+              <select id="screenKeystrokeLimit">
                 <option value="2400">2,400 keystrokes</option>
                 <option value="2600">2,600 keystrokes</option>
                 <option value="2800">2,800 keystrokes</option>
                 <option value="3000">3,000 keystrokes</option>
-            </select>
-        </div>
-        
-        <button class="primary-button" id="startExamButton" type="button" disabled>
-          Start Exam <span aria-hidden="true">→</span>
-        </button>
+              </select>
+            </div>
 
-        <p class="stat-foot" id="examStatus" style="margin-top: 14px;">
-          Checking your account...
+            <button
+              class="primary-button"
+              id="startScreenExamButton"
+              type="button"
+              disabled
+            >
+              Start Exam <span aria-hidden="true">→</span>
+            </button>
+
+            <p class="stat-foot" id="screenExamStatus">
+              Checking your account...
+            </p>
+
+          </section>
+
+          <!-- PAPER-TO-SCREEN MODE -->
+
+          <section class="mode-card">
+
+            <h3>Paper to Screen</h3>
+
+            <p class="mode-description">
+              Type from a printed passage without seeing the reference
+              passage on your screen.
+            </p>
+
+            <div class="passage-selector">
+              <label for="paperKeystrokeLimit">
+                Choose Passage Length
+              </label>
+
+              <select id="paperKeystrokeLimit">
+                <option value="2400">2,400 keystrokes</option>
+                <option value="2600">2,600 keystrokes</option>
+                <option value="2800">2,800 keystrokes</option>
+                <option value="3000">3,000 keystrokes</option>
+              </select>
+            </div>
+
+            <button
+              class="primary-button"
+              id="startPaperExamButton"
+              type="button"
+              disabled
+            >
+              Start Exam <span aria-hidden="true">→</span>
+            </button>
+
+            <p class="stat-foot" id="paperExamStatus">
+              Checking your account...
+            </p>
+
+          </section>
+
+        </div>
+
+        <p class="stat-foot" style="margin-top: 18px;">
+          You can start a test. Abandoned tests do not count.
         </p>
+
       </article>
 
+      <!-- SUBSCRIPTION -->
+
       <article class="panel">
+
         <h2>Subscription</h2>
 
         <p class="panel-description">
@@ -624,6 +747,7 @@
         </div>
 
         <div class="subscription-details">
+
           <div>
             <div class="detail-label">Days remaining</div>
             <div class="detail-value" id="daysRemaining">—</div>
@@ -633,11 +757,17 @@
             <div class="detail-label">Expires on</div>
             <div class="detail-value" id="expiryDate">—</div>
           </div>
+
         </div>
+
       </article>
+
     </section>
 
+    <!-- RECENT RESULTS -->
+
     <section class="panel">
+
       <div class="history-header">
         <h2>Recent Tests</h2>
 
@@ -649,11 +779,13 @@
       <div id="historyList" class="history-list">
         <div class="empty-state">Loading your results...</div>
       </div>
+
     </section>
 
     <footer class="footer" style="margin-top: 30px;">
       BHC Typing Test · Practice Portal
     </footer>
+
   </main>
 
   <script type="module">
@@ -662,11 +794,28 @@
     const $ = (id) => document.getElementById(id);
 
     const notice = $("notice");
-    const startExamButton = $("startExamButton");
+
+    const screenStartButton = $("startScreenExamButton");
+    const paperStartButton = $("startPaperExamButton");
+
+    const screenSelector = $("screenKeystrokeLimit");
+    const paperSelector = $("paperKeystrokeLimit");
+
+    const DAILY_LIMIT = 10;
+    const VALID_LIMITS = ["2400", "2600", "2800", "3000"];
+
+    const SCREEN_STORAGE_KEY = "screenToScreenKeystrokeLimit";
+    const PAPER_STORAGE_KEY = "paperToScreenKeystrokeLimit";
+    const SHARED_STORAGE_KEY = "selectedKeystrokeLimit";
 
     let currentUser = null;
     let testsUsedToday = 0;
     let subscriptionActive = false;
+    let dashboardReady = false;
+
+    /* =====================================================
+       NOTICES AND HELPERS
+    ===================================================== */
 
     function showNotice(message, isSuccess = false) {
       notice.textContent = message;
@@ -687,12 +836,18 @@
     function formatDate(value) {
       if (!value) return "—";
 
+      const date = new Date(value);
+
+      if (!Number.isFinite(date.getTime())) {
+        return "—";
+      }
+
       return new Intl.DateTimeFormat("en-IN", {
         day: "2-digit",
         month: "short",
         year: "numeric",
         timeZone: "Asia/Kolkata"
-      }).format(new Date(value));
+      }).format(date);
     }
 
     function getIndiaDayBounds() {
@@ -706,10 +861,14 @@
       const part = (type) =>
         parts.find((item) => item.type === type).value;
 
-      const day = `${part("year")}-${part("month")}-${part("day")}`;
+      const day =
+        `${part("year")}-${part("month")}-${part("day")}`;
 
       const start = new Date(`${day}T00:00:00+05:30`);
-      const end = new Date(start.getTime() + 24 * 60 * 60 * 1000);
+
+      const end = new Date(
+        start.getTime() + 24 * 60 * 60 * 1000
+      );
 
       return {
         start: start.toISOString(),
@@ -725,20 +884,197 @@
       }
 
       if (message === "expired") {
-        window.location.replace("./index.html?status=subscription_expired");
+        window.location.replace(
+          "./index.html?status=subscription_expired"
+        );
       } else {
         window.location.replace("./index.html");
       }
     }
 
+    /* =====================================================
+       INDEPENDENT PASSAGE LENGTH PREFERENCES
+    ===================================================== */
+
+    function readStoredLimit(key, fallback) {
+      try {
+        const saved = localStorage.getItem(key);
+
+        if (VALID_LIMITS.includes(saved)) {
+          return saved;
+        }
+      } catch (error) {
+        console.warn("Could not read saved passage length:", error);
+      }
+
+      return fallback;
+    }
+
+    function writeStoredLimit(key, value) {
+      if (!VALID_LIMITS.includes(String(value))) {
+        return;
+      }
+
+      try {
+        localStorage.setItem(key, String(value));
+      } catch (error) {
+        console.warn("Could not save passage length:", error);
+      }
+    }
+
+    function initializePassageSelectors() {
+      let sharedDefault = "2400";
+
+      try {
+        const savedShared =
+          localStorage.getItem(SHARED_STORAGE_KEY);
+
+        if (VALID_LIMITS.includes(savedShared)) {
+          sharedDefault = savedShared;
+        }
+      } catch (error) {
+        console.warn("Could not read default passage length:", error);
+      }
+
+      const screenSaved = readStoredLimit(
+        SCREEN_STORAGE_KEY,
+        sharedDefault
+      );
+
+      const paperSaved = readStoredLimit(
+        PAPER_STORAGE_KEY,
+        sharedDefault
+      );
+
+      screenSelector.value = screenSaved;
+      paperSelector.value = paperSaved;
+
+      writeStoredLimit(SCREEN_STORAGE_KEY, screenSaved);
+      writeStoredLimit(PAPER_STORAGE_KEY, paperSaved);
+    }
+
+    initializePassageSelectors();
+
+    screenSelector.addEventListener("change", () => {
+      writeStoredLimit(
+        SCREEN_STORAGE_KEY,
+        screenSelector.value
+      );
+    });
+
+    paperSelector.addEventListener("change", () => {
+      writeStoredLimit(
+        PAPER_STORAGE_KEY,
+        paperSelector.value
+      );
+    });
+
+    /*
+     * Save the chosen mode's length into the shared key that
+     * the existing typing-test pages already read.
+     */
+    function saveSelectedLength(mode) {
+      const selector =
+        mode === "paper" ? paperSelector : screenSelector;
+
+      const modeKey =
+        mode === "paper"
+          ? PAPER_STORAGE_KEY
+          : SCREEN_STORAGE_KEY;
+
+      const selected = selector.value;
+
+      if (!VALID_LIMITS.includes(selected)) {
+        showNotice("Please choose a valid passage length.");
+        return false;
+      }
+
+      writeStoredLimit(modeKey, selected);
+
+      try {
+        localStorage.setItem(
+          SHARED_STORAGE_KEY,
+          selected
+        );
+      } catch (error) {
+        console.warn("Could not save selected passage length:", error);
+        showNotice(
+          "Your browser could not save the passage selection. Please enable site storage and try again."
+        );
+        return false;
+      }
+
+      return true;
+    }
+
+    /* =====================================================
+       EXAM BUTTON STATES
+    ===================================================== */
+
+    function setExamButtonsEnabled(enabled) {
+      screenStartButton.disabled = !enabled;
+      paperStartButton.disabled = !enabled;
+    }
+
+    function setExamStatuses(message) {
+      $("screenExamStatus").textContent = message;
+      $("paperExamStatus").textContent = message;
+    }
+
+    function redirectToExam(mode) {
+      if (
+        !dashboardReady ||
+        !currentUser ||
+        !subscriptionActive
+      ) {
+        return;
+      }
+
+      if (testsUsedToday >= DAILY_LIMIT) {
+        showNotice(
+          "Daily test limit reached. Please come back tomorrow."
+        );
+        setExamButtonsEnabled(false);
+        return;
+      }
+
+      if (!saveSelectedLength(mode)) {
+        return;
+      }
+
+      const destination =
+        mode === "paper"
+          ? "./typing-test-paper.html"
+          : "./typing-test.html";
+
+      window.location.href = destination;
+    }
+
+    screenStartButton.addEventListener("click", () => {
+      redirectToExam("screen");
+    });
+
+    paperStartButton.addEventListener("click", () => {
+      redirectToExam("paper");
+    });
+
+    /* =====================================================
+       LOAD DASHBOARD
+    ===================================================== */
+
     async function loadDashboard() {
-      startExamButton.disabled = true;
+      setExamButtonsEnabled(false);
+      dashboardReady = false;
 
-      // Verify the signed-in user.
-      const { data: sessionData, error: sessionError } =
-        await supabase.auth.getSession();
+      // Verify the current authentication session.
+      const {
+        data: sessionData,
+        error: sessionError
+      } = await supabase.auth.getSession();
 
-      if (sessionError) throw sessionError;
+      if (sessionError) {
+        throw sessionError;
+      }
 
       if (!sessionData.session) {
         window.location.replace("./index.html");
@@ -746,26 +1082,57 @@
       }
 
       currentUser = sessionData.session.user;
-      $("userEmail").textContent = currentUser.email || "Signed-in user";
 
-      // Initialize or retrieve the existing subscription.
-      const { data: subscriptionData, error: subscriptionError } =
-        await supabase.rpc("ensure_my_subscription");
+      $("userEmail").textContent =
+        currentUser.email || "Signed-in user";
 
-      if (subscriptionError) throw subscriptionError;
+      // Load the username used in the dashboard heading.
+      const {
+        data: profileData,
+        error: profileError
+      } = await supabase
+        .from("user_subscriptions")
+        .select("username")
+        .eq("user_id", currentUser.id)
+        .maybeSingle();
+
+      if (profileError) {
+        console.error(
+          "Error loading username:",
+          profileError.message
+        );
+      }
+
+      $("dashboardUsername").textContent =
+        profileData?.username || "User";
+
+      // Retrieve or initialize the existing subscription.
+      const {
+        data: subscriptionData,
+        error: subscriptionError
+      } = await supabase.rpc("ensure_my_subscription");
+
+      if (subscriptionError) {
+        throw subscriptionError;
+      }
 
       const subscription = Array.isArray(subscriptionData)
         ? subscriptionData[0]
         : subscriptionData;
 
       if (!subscription) {
-        throw new Error("Subscription information is unavailable.");
+        throw new Error(
+          "Subscription information is unavailable."
+        );
       }
 
-      const expiry = new Date(subscription.subscription_expires_at);
+      const expiry = new Date(
+        subscription.subscription_expires_at
+      );
 
       if (
         subscription.is_expired ||
+        !Number.isFinite(expiry.getTime()) ||
         expiry.getTime() <= Date.now()
       ) {
         await signOutAndRedirect("expired");
@@ -775,78 +1142,107 @@
       subscriptionActive = true;
 
       $("subscriptionStatus").textContent = "Active";
+
       $("daysRemaining").textContent =
         String(subscription.days_remaining);
 
       $("expiryDate").textContent = formatDate(expiry);
 
-      // Count accepted results for the current India calendar day.
+      // Count accepted tests during the current India calendar day.
       const bounds = getIndiaDayBounds();
 
-      const { count, error: countError } = await supabase
+      const {
+        count,
+        error: countError
+      } = await supabase
         .from("test_results")
-        .select("id", { count: "exact", head: true })
+        .select("id", {
+          count: "exact",
+          head: true
+        })
         .eq("user_id", currentUser.id)
         .gte("created_at", bounds.start)
         .lt("created_at", bounds.end);
 
-      if (countError) throw countError;
+      if (countError) {
+        throw countError;
+      }
 
       testsUsedToday = count || 0;
 
-      $("testsUsed").textContent = `${testsUsedToday} / 10`;
-      $("testsRemaining").textContent =
-        `${Math.max(0, 10 - testsUsedToday)} accepted tests remaining today`;
+      $("testsUsed").textContent =
+        `${testsUsedToday} / ${DAILY_LIMIT}`;
 
-      if (testsUsedToday >= 10) {
-        startExamButton.disabled = true;
-        $("examStatus").textContent =
-          "Daily test limit reached. Please come back tomorrow.";
+      $("testsRemaining").textContent =
+        `${Math.max(0, DAILY_LIMIT - testsUsedToday)} accepted tests remaining today`;
+
+      if (testsUsedToday >= DAILY_LIMIT) {
+        setExamButtonsEnabled(false);
+
+        setExamStatuses(
+          "Daily test limit reached. Please come back tomorrow."
+        );
       } else {
-        startExamButton.disabled = false;
-        $("examStatus").textContent =
-          "You can start a test. Abandoned tests do not count.";
+        setExamStatuses(
+          "You can start a test. Abandoned tests do not count."
+        );
       }
 
-      // Fetch the latest 25 saved results.
-      const { data: results, error: resultsError } = await supabase
+      // Load up to 25 saved results.
+      const {
+        data: results,
+        error: resultsError
+      } = await supabase
         .from("test_results")
         .select(
           "id, passage_label, gross_wpm, net_wpm, accuracy, errors_total, score_total, created_at"
         )
         .eq("user_id", currentUser.id)
-        .order("created_at", { ascending: false })
+        .order("created_at", {
+          ascending: false
+        })
         .limit(25);
 
-      if (resultsError) throw resultsError;
+      if (resultsError) {
+        throw resultsError;
+      }
 
       const savedResults = results || [];
 
-      $("savedResults").textContent = String(savedResults.length);
+      $("savedResults").textContent =
+        String(savedResults.length);
 
       if (savedResults.length > 0) {
         const best = Math.max(
-          ...savedResults.map((result) => Number(result.net_wpm) || 0)
+          ...savedResults.map(
+            result => Number(result.net_wpm) || 0
+          )
         );
 
         const averageAccuracy =
           savedResults.reduce(
-            (sum, result) => sum + (Number(result.accuracy) || 0),
+            (sum, result) =>
+              sum + (Number(result.accuracy) || 0),
             0
           ) / savedResults.length;
 
-        $("bestWpm").textContent = best.toFixed(2);
+        $("bestWpm").textContent =
+          best.toFixed(2);
+
         $("averageAccuracy").textContent =
           `${averageAccuracy.toFixed(2)}%`;
 
         $("historyList").innerHTML = savedResults
           .slice(0, 5)
-          .map((result) => `
+          .map(result => `
             <article class="history-item">
               <div>
                 <div class="history-title">
-                  ${escapeHtml(result.passage_label || "BHC Typing Test")}
+                  ${escapeHtml(
+                    result.passage_label || "BHC Typing Test"
+                  )}
                 </div>
+
                 <div class="history-date">
                   ${escapeHtml(formatDate(result.created_at))}
                   · ${Number(result.errors_total) || 0} errors
@@ -857,6 +1253,7 @@
                 <div class="history-wpm">
                   ${(Number(result.net_wpm) || 0).toFixed(2)} WPM
                 </div>
+
                 <div class="history-accuracy">
                   ${(Number(result.accuracy) || 0).toFixed(2)}% accuracy
                 </div>
@@ -864,6 +1261,7 @@
             </article>
           `)
           .join("");
+
       } else {
         $("bestWpm").textContent = "0.00";
         $("averageAccuracy").textContent = "0.00%";
@@ -875,20 +1273,18 @@
           </div>
         `;
       }
+
+      // Enable exam buttons only after account checks complete.
+      dashboardReady = true;
+
+      if (testsUsedToday < DAILY_LIMIT) {
+        setExamButtonsEnabled(true);
+      }
     }
 
-    startExamButton.addEventListener("click", () => {
-      if (!currentUser || !subscriptionActive) return;
-
-      if (testsUsedToday >= 10) {
-        showNotice(
-          "Daily test limit reached. Please come back tomorrow."
-        );
-        return;
-      }
-
-      window.location.href = "./typing-test.html";
-    });
+    /* =====================================================
+       LOG OUT
+    ===================================================== */
 
     $("logoutButton").addEventListener("click", async () => {
       $("logoutButton").disabled = true;
@@ -897,7 +1293,11 @@
 
       if (error) {
         console.error("Logout failed:", error);
-        showNotice("Could not log out. Please try again.");
+
+        showNotice(
+          "Could not log out. Please try again."
+        );
+
         $("logoutButton").disabled = false;
         return;
       }
@@ -905,86 +1305,23 @@
       window.location.replace("./index.html");
     });
 
-    loadDashboard().catch((error) => {
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    loadDashboard().catch(error => {
       console.error("Dashboard loading failed:", error);
+
+      setExamButtonsEnabled(false);
+
+      setExamStatuses(
+        "Unable to verify your account. Refresh the page and try again."
+      );
+
       showNotice(
         "We couldn't load your dashboard. Check your Supabase connection and database setup, then try refreshing."
       );
     });
-    
-    async function loadDashboardUsername() {
-        const { data: { user }, error: authError } =
-            await supabase.auth.getUser();
-    
-        if (authError || !user) {
-            window.location.href = "./index.html";
-            return;
-        }
-    
-        const { data, error } = await supabase
-            .from("user_subscriptions")
-            .select("username")
-            .eq("user_id", user.id)
-            .maybeSingle();
-    
-        const usernameElement =
-            document.getElementById("dashboardUsername");
-    
-        if (!usernameElement) return;
-    
-        if (error) {
-            console.error("Error loading username:", error.message);
-            usernameElement.textContent = "User";
-            return;
-        }
-    
-        usernameElement.textContent =
-            data?.username || "User";
-    }
-    
-    loadDashboardUsername();
-
-
-    (function () {
-        const selector = document.getElementById("keystrokeLimit");
-    
-        if (!selector) return;
-    
-        const validLimits = ["2400", "2600", "2800", "3000"];
-        const savedLimit = localStorage.getItem("selectedKeystrokeLimit");
-    
-        if (validLimits.includes(savedLimit)) {
-            selector.value = savedLimit;
-        }
-    
-        // Save the selection whenever it changes.
-        selector.addEventListener("change", function () {
-            localStorage.setItem(
-                "selectedKeystrokeLimit",
-                selector.value
-            );
-        });
-    
-        // Save the current selection when Start Exam is clicked.
-        const startButton = document.getElementById("startExam");
-    
-        if (startButton) {
-            startButton.addEventListener("click", function () {
-                localStorage.setItem(
-                    "selectedKeystrokeLimit",
-                    selector.value
-                );
-            });
-        }
-    
-        // Save the default selection on first load.
-        if (!validLimits.includes(savedLimit)) {
-            localStorage.setItem(
-                "selectedKeystrokeLimit",
-                selector.value
-            );
-        }
-    })();
   </script>
 </body>
 </html>
