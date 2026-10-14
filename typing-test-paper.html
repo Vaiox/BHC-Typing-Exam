@@ -1,0 +1,1670 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BHC Typing Test — Paper to Screen</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:#303238;
+  color:#f0f0f0;
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+}
+
+.container{
+  max-width:1500px;
+  margin:auto;
+  padding:20px;
+}
+
+/* TOP BAR */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  background:#41434a;
+  border:1px solid #555861;
+  padding:12px 16px;
+  border-radius:10px;
+  margin-bottom:14px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 3px 12px #0002;
+}
+
+.top-left{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.timer{
+  font-size:24px;
+  font-weight:700;
+  color:#00a878;
+}
+
+.info{
+  color:#d0d1d5;
+  font-size:14px;
+}
+
+/* FONT SIZE */
+
+.font-control{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#e0e0e0;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.font-control select{
+  background:#303238;
+  color:#fff;
+  border:1px solid #666a73;
+  border-radius:6px;
+  padding:7px 10px;
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  cursor:pointer;
+  outline:none;
+}
+
+.font-control select:focus{
+  border-color:#00c995;
+}
+
+.font-control select option{
+  background:#303238;
+  color:#fff;
+}
+
+/* PAPER-TO-SCREEN TYPING AREA */
+
+.typing-area{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  width:100%;
+  margin:0 auto 15px;
+}
+
+/* Reference passage hidden only in this file */
+
+.preview{
+  display:none!important;
+}
+
+/* Center the typing box */
+
+.typing-area textarea{
+  display:block;
+  width:min(100%,1050px);
+  height:800px;
+  min-width:0;
+  min-height:300px;
+  margin-inline:auto;
+
+  background:#fff;
+  border:1px solid #d5d5d5;
+  border-radius:3px;
+  padding:48px 52px;
+
+  color:#202020;
+  font-family:Arial,sans-serif;
+  font-size:18px;
+  line-height:1.65;
+
+  text-align:justify;
+  text-justify:inter-word;
+
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:normal;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  scrollbar-width:thin;
+  scrollbar-color:#b4b4b4 #f4f4f4;
+
+  box-shadow:0 5px 20px #0002;
+
+  tab-size:4;
+  -moz-tab-size:4;
+}
+
+textarea::-webkit-scrollbar{
+  width:8px;
+}
+
+textarea::-webkit-scrollbar-thumb{
+  background:#b4b4b4;
+  border-radius:10px;
+}
+
+textarea::-webkit-scrollbar-track{
+  background:#f4f4f4;
+}
+
+textarea{
+  background:#fff;
+  color:#202020;
+  resize:none;
+  outline:none;
+  caret-color:#008f70;
+}
+
+textarea:focus{
+  border-color:#008f70;
+  box-shadow:0 0 0 2px #008f7026,0 5px 20px #0002;
+}
+
+textarea:disabled{
+  opacity:.9;
+}
+
+.typing-box-hidden{
+  opacity:0!important;
+}
+
+/* BUTTONS */
+
+.buttons{
+  margin:18px 0;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  position:sticky;
+  top:70px;
+  z-index:9;
+}
+
+button{
+  border:0;
+  padding:12px 22px;
+  border-radius:9px;
+  background:linear-gradient(135deg,#00c995,#00b6d8);
+  color:#071713;
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 2px 8px #0002;
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+/* NOTICES */
+
+.access-notice{
+  display:none;
+  margin:14px 0;
+  padding:14px 16px;
+  border:1px solid #a85a5a;
+  border-radius:9px;
+  background:#4a2929;
+  color:#ffd0d0;
+  line-height:1.6;
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+
+.access-notice.visible{
+  display:block;
+}
+
+/* RESULTS */
+
+.result{
+  display:none;
+  margin-top:25px;
+  background:#41434a;
+  border:1px solid #555861;
+  border-radius:12px;
+  padding:24px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+  margin-bottom:24px;
+}
+
+.card{
+  background:#4a4c53;
+  border:1px solid #5b5d64;
+  border-radius:10px;
+  padding:18px;
+  text-align:center;
+}
+
+.card h3{
+  font-size:14px;
+  color:#d0d1d5;
+  margin-bottom:10px;
+  font-weight:500;
+}
+
+.card p{
+  font-size:28px;
+  font-weight:700;
+  color:#00d6a0;
+}
+
+/* COMPARISON */
+
+.compare{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:18px;
+}
+
+.box{
+  background:#fff;
+  color:#202020;
+  border:1px solid #d5d5d5;
+  border-radius:3px;
+  padding:24px;
+  line-height:1.9;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  min-width:0;
+  box-shadow:0 5px 20px #0002;
+  tab-size:4;
+  -moz-tab-size:4;
+}
+
+.red{
+  color:#d82020;
+}
+
+.missing{
+  background:#ffbd55;
+  color:#202020;
+  padding:2px 4px;
+  border-radius:3px;
+}
+
+.extra{
+  background:#fff08a;
+  color:#202020;
+  padding:2px 4px;
+  border-radius:3px;
+}
+
+.dim{
+  opacity:.45;
+}
+
+.wordCount{
+  margin-top:12px;
+  text-align:center;
+  color:#00d6a0;
+  font-size:18px;
+  font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+  .compare{
+    grid-template-columns:minmax(0,1fr);
+  }
+
+  .typing-area textarea{
+    width:100%;
+    height:800px;
+    min-height:300px;
+    padding:30px 28px;
+  }
+
+  .topbar{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .top-left{
+    gap:14px;
+  }
+
+  .container{
+    padding:12px;
+  }
+
+  .result{
+    padding:14px;
+  }
+}
+
+@media(max-width:480px){
+  .font-control{
+    width:100%;
+  }
+
+  .buttons button{
+    padding:10px 14px;
+    font-size:13px;
+  }
+
+  .typing-area textarea{
+    padding:22px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <div class="top-left">
+
+      <div class="timer" id="timer">10:00</div>
+
+      <div class="info">Strict Mode Enabled</div>
+
+      <div class="info" id="wordCount">0 / 0 words</div>
+
+      <div class="info" id="keystrokeCount">
+        Keystrokes 0 / 0
+      </div>
+
+      <label class="font-control" for="fontSizeSelect">
+        <span>Font size</span>
+
+        <select id="fontSizeSelect">
+          <option value="16">16 px</option>
+          <option value="18" selected>18 px</option>
+          <option value="20">20 px</option>
+          <option value="22">22 px</option>
+          <option value="24">24 px</option>
+        </select>
+      </label>
+
+    </div>
+
+    <div class="info" id="passageInfo">
+      Loading passage...
+    </div>
+  </div>
+
+  <div
+    id="accessNotice"
+    class="access-notice"
+    role="alert"
+    aria-live="assertive"
+  ></div>
+
+  <div class="typing-area">
+
+    <div class="preview" id="preview">
+      Checking your account...
+    </div>
+
+    <textarea
+      id="input"
+      spellcheck="false"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      placeholder="Start typing here..."
+      disabled
+    ></textarea>
+
+  </div>
+
+  <div class="buttons">
+    <button id="startButton" disabled>Start Test</button>
+    <button id="restartButton" disabled>Restart Same Passage</button>
+    <button id="submitButton" disabled>Submit</button>
+    <button id="toggleTypingBtn" disabled>Hide Typing Box</button>
+  </div>
+
+  <div class="result" id="result">
+
+    <div class="stats">
+
+      <div class="card">
+        <h3>Gross WPM</h3>
+        <p id="gross">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Net WPM</h3>
+        <p id="net">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Accuracy</h3>
+        <p id="accuracy">0%</p>
+      </div>
+
+      <div class="card">
+        <h3>Errors (400 Words)</h3>
+        <p id="errors400">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Errors</h3>
+        <p id="errors">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Score</h3>
+        <p id="score">0</p>
+      </div>
+
+    </div>
+
+    <div class="compare">
+
+      <div class="box">
+        <h3>Original Passage</h3>
+        <br>
+        <div id="originalBox"></div>
+      </div>
+
+      <div class="box">
+        <h3>Your Typing</h3>
+        <br>
+        <div id="typedBox"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+import { supabase } from "./js/supabase.js";
+
+const DAILY_LIMIT = 10;
+
+const DAILY_LIMIT_MESSAGE =
+  "Daily test limit reached. Please come back tomorrow.";
+
+const passageFiles = {
+  2400: "./2400-passage.js",
+  2600: "./2600-passage.js",
+  2800: "./2800-passage.js",
+  3000: "./3000-passage.js"
+};
+
+let passages = {};
+
+let currentPassageLimit =
+  Number(localStorage.getItem("selectedKeystrokeLimit"));
+
+if (
+  !Object.prototype.hasOwnProperty.call(
+    passageFiles,
+    currentPassageLimit
+  )
+) {
+  currentPassageLimit = 2400;
+}
+
+const input = document.getElementById("input");
+const timer = document.getElementById("timer");
+const preview = document.getElementById("preview");
+const accessNotice = document.getElementById("accessNotice");
+
+const startButton = document.getElementById("startButton");
+const restartButton = document.getElementById("restartButton");
+const submitButton = document.getElementById("submitButton");
+const toggleTypingBtn = document.getElementById("toggleTypingBtn");
+
+/* FONT SIZE CONTROL */
+
+const fontSizeSelect =
+  document.getElementById("fontSizeSelect");
+
+const ALLOWED_FONT_SIZES = [16, 18, 20, 22, 24];
+
+function applyFontSize(size) {
+  const fontSize = Number(size);
+
+  if (!ALLOWED_FONT_SIZES.includes(fontSize)) {
+    return;
+  }
+
+  preview.style.fontSize = `${fontSize}px`;
+  input.style.fontSize = `${fontSize}px`;
+
+  fontSizeSelect.value = String(fontSize);
+
+  try {
+    localStorage.setItem(
+      "typingTestFontSize",
+      String(fontSize)
+    );
+  } catch (error) {
+    console.warn("Could not save font size preference:", error);
+  }
+}
+
+function initializeFontSize() {
+  let savedSize = 18;
+
+  try {
+    const storedSize = Number(
+      localStorage.getItem("typingTestFontSize")
+    );
+
+    if (ALLOWED_FONT_SIZES.includes(storedSize)) {
+      savedSize = storedSize;
+    }
+  } catch (error) {
+    console.warn("Could not read font size preference:", error);
+  }
+
+  applyFontSize(savedSize);
+}
+
+fontSizeSelect.addEventListener("change", () => {
+  applyFontSize(fontSizeSelect.value);
+});
+
+initializeFontSize();
+
+/* TEST STATE */
+
+let currentPassage = "";
+let currentId = 0;
+let timerStarted = false;
+let testSubmitted = false;
+let submissionInProgress = false;
+let accessGranted = false;
+let timeLeft = 600;
+let interval = null;
+let totalWords = 0;
+let currentUser = null;
+
+/* PASSAGE LOADING */
+
+async function loadPassages(limit) {
+  const file = passageFiles[limit];
+
+  if (!file) {
+    throw Error("Invalid passage length selected.");
+  }
+
+  const mod = await import(file);
+
+  if (
+    !mod.passages ||
+    typeof mod.passages !== "object" ||
+    !Object.keys(mod.passages).length
+  ) {
+    throw Error(`No passages found in ${file}`);
+  }
+
+  passages = mod.passages;
+  currentPassageLimit = limit;
+}
+
+/* NOTICES */
+
+function showNotice(message) {
+  accessNotice.textContent = message;
+  accessNotice.classList.add("visible");
+}
+
+function clearNotice() {
+  accessNotice.textContent = "";
+  accessNotice.classList.remove("visible");
+}
+
+/* COUNTERS */
+
+function countKeystrokes(text) {
+  return [...text].length;
+}
+
+function getWordTokens(text) {
+  return text
+    .replace(/\r/g, "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function updateCounters() {
+  document.getElementById("wordCount").textContent =
+    `${getWordTokens(input.value).length} / ${totalWords} words`;
+
+  document.getElementById("keystrokeCount").textContent =
+    `Keystrokes ${countKeystrokes(input.value)} / ${countKeystrokes(currentPassage)}`;
+}
+
+function setTypingControlsEnabled(enabled) {
+  input.disabled = !enabled;
+  startButton.disabled = !enabled;
+  restartButton.disabled = !enabled;
+  toggleTypingBtn.disabled = !enabled;
+  submitButton.disabled = !enabled || submissionInProgress;
+}
+
+/* TIMER */
+
+function stopTimer() {
+  if (interval !== null) {
+    clearInterval(interval);
+    interval = null;
+  }
+}
+
+function getIndiaDayBounds() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Kolkata",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(new Date());
+
+  const part = type =>
+    parts.find(item => item.type === type).value;
+
+  const day =
+    `${part("year")}-${part("month")}-${part("day")}`;
+
+  const start = new Date(`${day}T00:00:00+05:30`);
+
+  return {
+    start: start.toISOString(),
+    end: new Date(
+      start.getTime() + 86400000
+    ).toISOString()
+  };
+}
+
+/* AUTHENTICATION */
+
+async function signOutAndRedirect(reason) {
+  accessGranted = false;
+  setTypingControlsEnabled(false);
+  stopTimer();
+
+  try {
+    await supabase.auth.signOut();
+  } catch (error) {
+    console.error("Sign-out failed:", error);
+  }
+
+  window.location.replace(
+    reason === "expired"
+      ? "./index.html?status=subscription_expired"
+      : "./index.html"
+  );
+}
+
+async function initializeAccess() {
+  try {
+    const {
+      data: sessionData,
+      error: sessionError
+    } = await supabase.auth.getSession();
+
+    if (sessionError) {
+      throw sessionError;
+    }
+
+    if (!sessionData.session) {
+      window.location.replace("./index.html");
+      return;
+    }
+
+    currentUser = sessionData.session.user;
+
+    const {
+      data,
+      error
+    } = await supabase.rpc("ensure_my_subscription");
+
+    if (error) {
+      throw error;
+    }
+
+    const subscription = Array.isArray(data)
+      ? data[0]
+      : data;
+
+    if (!subscription) {
+      throw Error("Subscription information is unavailable.");
+    }
+
+    const expiry = new Date(
+      subscription.subscription_expires_at
+    );
+
+    if (
+      subscription.is_expired ||
+      !Number.isFinite(expiry.getTime()) ||
+      expiry.getTime() <= Date.now()
+    ) {
+      await signOutAndRedirect("expired");
+      return;
+    }
+
+    const bounds = getIndiaDayBounds();
+
+    const {
+      count,
+      error: countError
+    } = await supabase
+      .from("test_results")
+      .select("id", {
+        count: "exact",
+        head: true
+      })
+      .eq("user_id", currentUser.id)
+      .gte("created_at", bounds.start)
+      .lt("created_at", bounds.end);
+
+    if (countError) {
+      throw countError;
+    }
+
+    if ((count || 0) >= DAILY_LIMIT) {
+      preview.textContent = DAILY_LIMIT_MESSAGE;
+      showNotice(DAILY_LIMIT_MESSAGE);
+      setTypingControlsEnabled(false);
+      return;
+    }
+
+    try {
+      await loadPassages(currentPassageLimit);
+    } catch (error) {
+      console.error("Passage loading failed:", error);
+
+      preview.textContent =
+        "Unable to load the selected passages.";
+
+      showNotice(
+        `Could not load the ${currentPassageLimit}-keystroke passage file. Check that the file exists and refresh.`
+      );
+
+      setTypingControlsEnabled(false);
+      return;
+    }
+
+    accessGranted = true;
+
+    setTypingControlsEnabled(true);
+    prepareTest();
+
+  } catch (error) {
+    console.error("Access verification failed:", error);
+
+    setTypingControlsEnabled(false);
+
+    preview.textContent =
+      "Unable to verify your account.";
+
+    showNotice(
+      "Unable to verify your subscription. Check your connection and refresh the page."
+    );
+  }
+}
+
+/* PREPARE TEST */
+
+function prepareTest() {
+  if (
+    !accessGranted ||
+    !currentUser ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  stopTimer();
+
+  timer.textContent = "10:00";
+  timeLeft = 600;
+  timerStarted = false;
+  testSubmitted = false;
+
+  clearNotice();
+
+  const key = `recentPassages_${currentPassageLimit}`;
+
+  let history = [];
+
+  try {
+    history = JSON.parse(
+      localStorage.getItem(key) || "[]"
+    );
+
+    if (!Array.isArray(history)) {
+      history = [];
+    }
+  } catch {
+    history = [];
+  }
+
+  const all = Object.keys(passages);
+
+  const unused = all.filter(
+    id => !history.includes(id)
+  );
+
+  const usable = unused.length ? unused : all;
+
+  if (!usable.length) {
+    showNotice("No passages are available in this collection.");
+    return;
+  }
+
+  currentId =
+    usable[Math.floor(Math.random() * usable.length)];
+
+  currentPassage = passages[currentId];
+
+  history.push(currentId);
+
+  if (history.length > 25) {
+    history.shift();
+  }
+
+  localStorage.setItem(
+    key,
+    JSON.stringify(history)
+  );
+
+  /*
+   * Paper-to-Screen mode:
+   * Keep the passage in memory for counters, scoring,
+   * and comparison, but do not display it on screen.
+   */
+  preview.textContent = "";
+
+  applyFontSize(fontSizeSelect.value);
+
+  document.getElementById("passageInfo").textContent =
+    `Paper-to-Screen · ${currentPassageLimit} keystrokes`;
+
+  document.getElementById("result").style.display = "none";
+
+  totalWords = getWordTokens(currentPassage).length;
+
+  input.value = "";
+  input.disabled = false;
+
+  startButton.disabled = false;
+  restartButton.disabled = false;
+  submitButton.disabled = false;
+  toggleTypingBtn.disabled = false;
+
+  input.classList.remove("typing-box-hidden");
+
+  toggleTypingBtn.textContent = "Hide Typing Box";
+
+  updateCounters();
+  input.focus();
+}
+
+/* RESTART SAME PASSAGE */
+
+function restartSame() {
+  if (
+    !accessGranted ||
+    submissionInProgress ||
+    testSubmitted
+  ) {
+    return;
+  }
+
+  stopTimer();
+
+  timer.textContent = "10:00";
+  timeLeft = 600;
+  timerStarted = false;
+
+  input.disabled = false;
+  submitButton.disabled = false;
+  input.value = "";
+
+  clearNotice();
+  updateCounters();
+  input.focus();
+}
+
+/* START TIMER */
+
+function startTimer() {
+  if (
+    interval !== null ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  interval = setInterval(() => {
+    timeLeft = Math.max(0, timeLeft - 1);
+
+    timer.textContent =
+      String(Math.floor(timeLeft / 60)).padStart(2, "0") +
+      ":" +
+      String(timeLeft % 60).padStart(2, "0");
+
+    if (timeLeft <= 0) {
+      stopTimer();
+      input.disabled = true;
+      submitTest();
+    }
+  }, 1000);
+}
+
+/* STRICT TYPING RULES */
+
+input.addEventListener("keydown", event => {
+  if (
+    !accessGranted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    event.preventDefault();
+    return;
+  }
+
+  if (
+    [
+      "Backspace",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown"
+    ].includes(event.key)
+  ) {
+    event.preventDefault();
+  }
+
+  if (event.ctrlKey || event.metaKey) {
+    event.preventDefault();
+  }
+
+  if (event.key === "Tab") {
+    event.preventDefault();
+
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+
+    input.value =
+      input.value.substring(0, start) +
+      "\t" +
+      input.value.substring(end);
+
+    input.selectionStart =
+      input.selectionEnd = start + 1;
+
+    input.dispatchEvent(
+      new Event("input", { bubbles: true })
+    );
+  }
+});
+
+input.addEventListener("paste", event => {
+  event.preventDefault();
+});
+
+input.addEventListener("input", () => {
+  if (
+    !accessGranted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  if (!timerStarted && input.value.length > 0) {
+    timerStarted = true;
+    startTimer();
+  }
+
+  updateCounters();
+});
+
+/* COMPARISON AND SCORING */
+
+function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function tokenize(text) {
+  text = String(text)
+    .replace(/\r\n?/g, "\n");
+
+  return text.match(
+    /\t| +|\n+|[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*|[^\sA-Za-z0-9]/g
+  ) || [];
+}
+
+function countBhcWordErrors(original, typed) {
+  const a = getWordTokens(original);
+  const b = getWordTokens(typed);
+
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  const op = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(null)
+  );
+
+  for (let i = 1; i <= m; i++) {
+    dp[i][0] = i;
+    op[i][0] = "delete";
+  }
+
+  for (let j = 1; j <= n; j++) {
+    dp[0][j] = j;
+    op[0][j] = "insert";
+  }
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (a[i - 1] === b[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+        op[i][j] = "match";
+      } else {
+        const replace = dp[i - 1][j - 1] + 1;
+        const remove = dp[i - 1][j] + 1;
+        const insert = dp[i][j - 1] + 1;
+
+        const best = Math.min(
+          replace,
+          remove,
+          insert
+        );
+
+        dp[i][j] = best;
+
+        op[i][j] =
+          best === replace
+            ? "replace"
+            : best === remove
+              ? "delete"
+              : "insert";
+      }
+    }
+  }
+
+  let i = m;
+  let j = n;
+
+  let errors = 0;
+  let errors400 = 0;
+
+  while (i > 0 || j > 0) {
+    const action = op[i][j];
+
+    if (action === "match") {
+      i--;
+      j--;
+      continue;
+    }
+
+    if (action === "replace") {
+      errors++;
+
+      if (i <= 400) {
+        errors400++;
+      }
+
+      i--;
+      j--;
+      continue;
+    }
+
+    if (action === "delete") {
+      errors++;
+
+      if (i <= 400) {
+        errors400++;
+      }
+
+      i--;
+      continue;
+    }
+
+    if (action === "insert") {
+      errors++;
+
+      if (i < 400) {
+        errors400++;
+      }
+
+      j--;
+      continue;
+    }
+
+    if (i > 0 && j > 0) {
+      errors++;
+
+      if (i <= 400) {
+        errors400++;
+      }
+
+      i--;
+      j--;
+    } else if (i > 0) {
+      errors++;
+
+      if (i <= 400) {
+        errors400++;
+      }
+
+      i--;
+    } else if (j > 0) {
+      errors++;
+
+      if (i < 400) {
+        errors400++;
+      }
+
+      j--;
+    }
+  }
+
+  return { errors, errors400 };
+}
+
+function alignAndCount(original, typed) {
+  const a = tokenize(original);
+  const b = tokenize(typed);
+
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  for (let i = 0; i <= m; i++) {
+    dp[i][0] = i;
+  }
+
+  for (let j = 0; j <= n; j++) {
+    dp[0][j] = j;
+  }
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1]
+          : Math.min(
+              dp[i - 1][j],
+              dp[i][j - 1],
+              dp[i - 1][j - 1]
+            ) + 1;
+    }
+  }
+
+  let i = m;
+  let j = n;
+
+  const alignedA = [];
+  const alignedB = [];
+
+  while (i > 0 || j > 0) {
+    if (
+      i > 0 &&
+      j > 0 &&
+      a[i - 1] === b[j - 1]
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
+
+      i--;
+      j--;
+    } else if (
+      i > 0 &&
+      j > 0 &&
+      dp[i][j] === dp[i - 1][j - 1] + 1
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
+
+      i--;
+      j--;
+    } else if (
+      i > 0 &&
+      dp[i][j] === dp[i - 1][j] + 1
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift("∅");
+
+      i--;
+    } else {
+      alignedA.unshift("∅");
+      alignedB.unshift(b[j - 1]);
+
+      j--;
+    }
+  }
+
+  return { alignedA, alignedB };
+}
+
+function formatToken(token) {
+  return escapeHTML(token);
+}
+
+function formatComparisonToken(token, className = "") {
+  if (token === "∅") {
+    return '<span class="dim">∅</span>';
+  }
+
+  const safeToken = escapeHTML(token);
+
+  if (!className) {
+    return safeToken;
+  }
+
+  return `<span class="${className}">${safeToken}</span>`;
+}
+
+function countCorrectWords(a, b) {
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] =
+        a[i - 1] === b[j - 1]
+          ? dp[i - 1][j - 1] + 1
+          : Math.max(
+              dp[i - 1][j],
+              dp[i][j - 1]
+            );
+    }
+  }
+
+  return dp[m][n];
+}
+
+function calculateResult() {
+  const typed = input.value;
+
+  const {
+    alignedA,
+    alignedB
+  } = alignAndCount(currentPassage, typed);
+
+  let originalHTML = "";
+  let typedHTML = "";
+
+  for (let k = 0; k < alignedA.length; k++) {
+    const originalToken = alignedA[k];
+    const typedToken = alignedB[k];
+
+    if (originalToken === typedToken) {
+      originalHTML += formatToken(originalToken);
+      typedHTML += formatToken(typedToken);
+      continue;
+    }
+
+    if (originalToken === "∅") {
+      originalHTML += formatComparisonToken("∅");
+
+      typedHTML += formatComparisonToken(
+        typedToken,
+        "extra"
+      );
+
+      continue;
+    }
+
+    if (typedToken === "∅") {
+      originalHTML += formatComparisonToken(
+        originalToken,
+        "missing"
+      );
+
+      typedHTML += formatComparisonToken("∅");
+
+      continue;
+    }
+
+    originalHTML += formatComparisonToken(
+      originalToken,
+      "red"
+    );
+
+    typedHTML += formatComparisonToken(
+      typedToken,
+      "red"
+    );
+  }
+
+  const {
+    errors,
+    errors400
+  } = countBhcWordErrors(currentPassage, typed);
+
+  const originalWords = getWordTokens(currentPassage);
+  const typedWords = getWordTokens(typed);
+
+  const correct = countCorrectWords(
+    originalWords,
+    typedWords
+  );
+
+  const accuracy = originalWords.length
+    ? (
+        (correct / originalWords.length) * 100
+      ).toFixed(2)
+    : "0.00";
+
+  const elapsed = Math.max(1, 600 - timeLeft);
+  const minutes = elapsed / 60;
+
+  const gross = (
+    (typed.length / 5) / minutes
+  ).toFixed(2);
+
+  const net = (
+    Number(gross) * (Number(accuracy) / 100)
+  ).toFixed(2);
+
+  const score400 = Math.max(
+    0,
+    20 - errors400 * 0.25
+  ).toFixed(2);
+
+  const score = Math.max(
+    0,
+    20 - errors * 0.25
+  ).toFixed(2);
+
+  return {
+    gross: Number(gross),
+    net: Number(net),
+    accuracy: Number(accuracy),
+    errors400,
+    errors,
+    score400: Number(score400),
+    score: Number(score),
+    durationSeconds: elapsed,
+    wordsTyped: typedWords.length,
+    keystrokes: countKeystrokes(typed),
+    originalHTML,
+    typedHTML,
+    givenPassage: currentPassage,
+    typedPassage: typed
+  };
+}
+
+/* SUBMIT TEST */
+
+async function submitTest() {
+  if (
+    !accessGranted ||
+    !currentUser ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  if (!currentPassage) {
+    showNotice("Please start a test first.");
+    return;
+  }
+
+  submissionInProgress = true;
+
+  stopTimer();
+
+  input.disabled = true;
+  startButton.disabled = true;
+  restartButton.disabled = true;
+  submitButton.disabled = true;
+  toggleTypingBtn.disabled = true;
+
+  clearNotice();
+  showNotice("Submitting your result securely...");
+
+  try {
+    const {
+      data: sessionData,
+      error: sessionError
+    } = await supabase.auth.getSession();
+
+    if (sessionError) {
+      throw sessionError;
+    }
+
+    if (!sessionData.session) {
+      await signOutAndRedirect("login");
+      return;
+    }
+
+    const {
+      data: subscriptionData,
+      error: subscriptionError
+    } = await supabase.rpc("ensure_my_subscription");
+
+    if (subscriptionError) {
+      throw subscriptionError;
+    }
+
+    const subscription = Array.isArray(subscriptionData)
+      ? subscriptionData[0]
+      : subscriptionData;
+
+    const expiry = subscription
+      ? new Date(subscription.subscription_expires_at)
+      : new Date(NaN);
+
+    if (
+      !subscription ||
+      subscription.is_expired ||
+      !Number.isFinite(expiry.getTime()) ||
+      expiry.getTime() <= Date.now()
+    ) {
+      await signOutAndRedirect("expired");
+      return;
+    }
+
+    const result = calculateResult();
+
+    const {
+      data,
+      error
+    } = await supabase.rpc(
+      "submit_typing_result",
+      {
+        p_passage_label: `Passage #${currentId}`,
+        p_gross_wpm: result.gross,
+        p_net_wpm: result.net,
+        p_accuracy: result.accuracy,
+        p_errors_400: result.errors400,
+        p_errors_total: result.errors,
+        p_score_400: result.score400,
+        p_score_total: result.score,
+        p_duration_seconds: result.durationSeconds,
+        p_words_typed: result.wordsTyped,
+        p_keystrokes: result.keystrokes
+      }
+    );
+
+    if (error) {
+      const message =
+        String(error.message || "").toUpperCase();
+
+      if (message.includes("SUBSCRIPTION_EXPIRED")) {
+        await signOutAndRedirect("expired");
+        return;
+      }
+
+      if (message.includes("DAILY_LIMIT_REACHED")) {
+        accessGranted = false;
+        setTypingControlsEnabled(false);
+        showNotice(DAILY_LIMIT_MESSAGE);
+        return;
+      }
+
+      if (
+        message.includes("AUTHENTICATION_REQUIRED") ||
+        message.includes("JWT") ||
+        message.includes("NOT AUTHENTICATED")
+      ) {
+        await signOutAndRedirect("login");
+        return;
+      }
+
+      if (
+        message.includes("SUBSCRIPTION_NOT_INITIALIZED")
+      ) {
+        showNotice(
+          "Your subscription could not be initialized. Please return to the dashboard and try again."
+        );
+        return;
+      }
+
+      console.error(
+        "Result submission failed:",
+        error
+      );
+
+      showNotice(
+        "Your result could not be saved. It has not been accepted. Check your connection and try submitting again."
+      );
+
+      return;
+    }
+
+    if (
+      data?.accepted !== true ||
+      !data.result_id
+    ) {
+      showNotice(
+        "The database did not confirm acceptance. Your result has not been redirected."
+      );
+      return;
+    }
+
+    const comparison = {
+      resultId: data.result_id,
+      givenPassage: result.givenPassage,
+      typedPassage: result.typedPassage,
+      originalHTML: result.originalHTML,
+      typedHTML: result.typedHTML,
+      savedAt: new Date().toISOString()
+    };
+
+    try {
+      localStorage.setItem(
+        "latestTypingComparison",
+        JSON.stringify(comparison)
+      );
+    } catch (error) {
+      console.error(
+        "Could not save comparison:",
+        error
+      );
+
+      localStorage.removeItem(
+        "latestTypingComparison"
+      );
+    }
+
+    testSubmitted = true;
+
+    window.location.replace(
+      `./result.html?id=${encodeURIComponent(data.result_id)}`
+    );
+
+  } catch (error) {
+    console.error("Submission error:", error);
+
+    showNotice(
+      "An unexpected error occurred. Your result has not been confirmed as saved."
+    );
+
+  } finally {
+    submissionInProgress = false;
+
+    if (!testSubmitted && accessGranted) {
+      input.disabled = true;
+      submitButton.disabled = false;
+      toggleTypingBtn.disabled = false;
+    }
+  }
+}
+
+/* HIDE / SHOW TYPING BOX */
+
+function toggleTypingBox() {
+  const hidden =
+    input.classList.toggle("typing-box-hidden");
+
+  toggleTypingBtn.textContent =
+    hidden
+      ? "Show Typing Box"
+      : "Hide Typing Box";
+
+  input.focus();
+}
+
+/* EVENT LISTENERS */
+
+window.addEventListener("contextmenu", event => {
+  event.preventDefault();
+});
+
+startButton.addEventListener("click", prepareTest);
+restartButton.addEventListener("click", restartSame);
+submitButton.addEventListener("click", submitTest);
+toggleTypingBtn.addEventListener("click", toggleTypingBox);
+
+supabase.auth.onAuthStateChange(event => {
+  if (event === "SIGNED_OUT" && accessGranted) {
+    accessGranted = false;
+    window.location.replace("./index.html");
+  }
+});
+
+/* INITIALIZE */
+
+setTypingControlsEnabled(false);
+initializeAccess();
+</script>
+</body>
+</html>
