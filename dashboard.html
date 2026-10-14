@@ -113,6 +113,54 @@
       margin-bottom: 28px;
     }
 
+    
+.welcome-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.welcome-content {
+  min-width: 0;
+}
+
+.leaderboard-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 18px;
+  flex-shrink: 0;
+  border: 1px solid #174432;
+  border-radius: 10px;
+  background: var(--success-bg);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.leaderboard-button:hover {
+  background: #153528;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 520px) {
+  .welcome-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .leaderboard-button {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+}
+
+
     .welcome h1 {
       margin-bottom: 10px;
       font-size: clamp(25px, 4vw, 34px);
@@ -481,11 +529,23 @@
 
   <main class="container">
     <section class="welcome">
-      <h1><span id="dashboardUsername">User</span>'s Dashboard</h1>
-      <p>
-        Welcome to your typing practice portal.
-        Track your performance and improve with every test.
-      </p>
+      <div class="welcome-header">
+        <div class="welcome-content">
+          <h1>
+            <span id="dashboardUsername">User</span>'s Dashboard
+          </h1>
+    
+          <p>
+            Welcome to your typing practice portal.
+            Track your performance and improve with every test.
+          </p>
+        </div>
+    
+        <a class="leaderboard-button" href="./leaderboard.html">
+          <span aria-hidden="true">🏆</span>
+          Leaderboard
+        </a>
+      </div>
     </section>
 
     <div
