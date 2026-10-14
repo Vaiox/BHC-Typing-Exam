@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Leaderboard | BHC Typing Test</title>
+
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-2: #0b0b0b;
+      --border: #292929;
+      --text: #f0f0f0;
+      --muted: #929292;
+      --accent: #00ffae;
+      --success-bg: #10271f;
+      --danger: #ff7777;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    button, a {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      min-height: 72px;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      background: #0d0d0d;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      background: var(--success-bg);
+      border: 1px solid #174432;
+      border-radius: 12px;
+      color: var(--accent);
+      font-size: 21px;
+    }
+
+    .back-button {
+      padding: 10px 15px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .back-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .container {
+      width: min(1400px, 94%);
+      margin: 0 auto;
+      padding: 38px 0 55px;
+    }
+
+    .page-heading {
+      margin-bottom: 25px;
+    }
+
+    .page-heading h1 {
+      margin-bottom: 10px;
+      font-size: clamp(26px, 4vw, 35px);
+      letter-spacing: -0.7px;
+    }
+
+    .page-heading p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .notice {
+      display: none;
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      border: 1px solid #593333;
+      border-radius: 10px;
+      background: #241818;
+      color: #ffb0b0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .notice.visible {
+      display: block;
+    }
+
+    .leaderboard-panel {
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .leaderboard-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 23px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .leaderboard-header h2 {
+      margin-bottom: 7px;
+      font-size: 20px;
+    }
+
+    .leaderboard-description {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .refresh-info {
+      flex-shrink: 0;
+      text-align: right;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .refresh-info strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-color: #444 #111;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1050px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    thead {
+      background: #0b0b0b;
+    }
+
+    th, td {
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: #171717;
+    }
+
+    .rank-cell {
+      width: 65px;
+      font-weight: 700;
+    }
+
+    .rank-top {
+      color: var(--accent);
+    }
+
+    .username-cell {
+      min-width: 130px;
+      font-weight: 700;
+    }
+
+    .metric-header {
+      padding: 0;
+    }
+
+    .sort-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .sort-button:hover {
+      color: var(--text);
+    }
+
+    .sort-button.active {
+      background: #10271f;
+      color: var(--accent);
+    }
+
+    .sort-indicator {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .selected-metric {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .state-message {
+      padding: 42px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .state-message.error {
+      color: var(--danger);
+    }
+
+    .table-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 17px 22px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding-top: 25px;
+      color: #626262;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      .topbar {
+        padding: 13px 4%;
+      }
+
+      .brand {
+        gap: 8px;
+        font-size: 15px;
+      }
+
+      .brand-icon {
+        width: 35px;
+        height: 35px;
+      }
+
+      .back-button {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .container {
+        width: 94%;
+        padding-top: 27px;
+      }
+
+      .leaderboard-header {
+        flex-direction: column;
+        padding: 19px;
+      }
+
+      .refresh-info {
+        text-align: left;
+      }
+
+      .table-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 15px 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="./dashboard.html">
+      <span class="brand-icon" aria-hidden="true">⌨</span>
+      <span>BHC Typing Test</span>
+    </a>
+
+    <a class="back-button" href="./dashboard.html">
+      ← Dashboard
+    </a>
+  </header>
+
+  <main class="container">
+    <section class="page-heading">
+      <h1>Leaderboard</h1>
+      <p>
+        Compare typing performance with other players.
+        Click any metric heading to see the top players in that category.
+      </p>
+    </section>
+
+    <div
+      id="notice"
+      class="notice"
+      role="alert"
+      aria-live="polite"
+    ></div>
+
+    <section class="leaderboard-panel">
+      <div class="leaderboard-header">
+        <div>
+          <h2 id="rankingTitle">Top Players — Total Marks</h2>
+          <p class="leaderboard-description" id="rankingDescription">
+            Highest total marks first. Marks (400) breaks ties.
+          </p>
+        </div>
+
+        <div class="refresh-info">
+          <div>Snapshot refreshes daily</div>
+          <div>
+            Last updated:
+            <strong id="lastUpdated">Loading...</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Username</th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button" data-category="gross_wpm"
+                  aria-pressed="false">
+                  Gross WPM <span class="sort-indicator"></span>
+                </button>
+              </th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button" data-category="net_wpm"
+                  aria-pressed="false">
+                  Net WPM <span class="sort-indicator"></span>
+                </button>
+              </th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button" data-category="accuracy"
+                  aria-pressed="false">
+                  Accuracy <span class="sort-indicator"></span>
+                </button>
+              </th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button" data-category="errors_400"
+                  aria-pressed="false">
+                  Errors (400) <span class="sort-indicator"></span>
+                </button>
+              </th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button" data-category="errors_total"
+                  aria-pressed="false">
+                  Total Error <span class="sort-indicator"></span>
+                </button>
+              </th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button" data-category="score_400"
+                  aria-pressed="false">
+                  Marks (400) <span class="sort-indicator"></span>
+                </button>
+              </th>
+
+              <th scope="col" class="metric-header">
+                <button class="sort-button active" data-category="score_total"
+                  aria-pressed="true">
+                  Total Marks <span class="sort-indicator">↓</span>
+                </button>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody id="leaderboardBody">
+            <tr>
+              <td colspan="9">
+                <div class="state-message">
+                  Loading leaderboard...
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-footer">
+        <span id="resultCount">Loading player count...</span>
+        <span>Rankings reflect the latest daily snapshot.</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      BHC Typing Test · Practice Portal
+    </footer>
+  </main>
+
+  <script type="module">
+    import { supabase } from "./js/supabase.js";
+
+    const $ = (id) => document.getElementById(id);
+
+    const leaderboardBody = $("leaderboardBody");
+    const notice = $("notice");
+
+    const categories = {
+      gross_wpm: {
+        label: "Gross WPM",
+        description:
+          "Highest Gross WPM first. Total Marks, then Marks (400), breaks ties.",
+        direction: "desc",
+        field: "gross_wpm"
+      },
+
+      net_wpm: {
+        label: "Net WPM",
+        description:
+          "Highest Net WPM first. Total Marks, then Marks (400), breaks ties.",
+        direction: "desc",
+        field: "net_wpm"
+      },
+
+      accuracy: {
+        label: "Accuracy",
+        description:
+          "Highest accuracy first. Total Marks, then Marks (400), breaks ties.",
+        direction: "desc",
+        field: "accuracy"
+      },
+
+      errors_400: {
+        label: "Errors (400)",
+        description:
+          "Fewest errors in the first 400 words first. Marks break ties.",
+        direction: "asc",
+        field: "errors_400"
+      },
+
+      errors_total: {
+        label: "Total Error",
+        description:
+          "Fewest total errors first. Marks break ties.",
+        direction: "asc",
+        field: "errors_total"
+      },
+
+      score_400: {
+        label: "Marks (400)",
+        description:
+          "Highest marks in the first 400 words first. Total Marks breaks ties.",
+        direction: "desc",
+        field: "score_400"
+      },
+
+      score_total: {
+        label: "Total Marks",
+        description:
+          "Highest total marks first. Marks (400) breaks ties.",
+        direction: "desc",
+        field: "score_total"
+      }
+    };
+
+    let categoryResults = {};
+    let activeCategory = "score_total";
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function formatNumber(value, decimals = 2) {
+      if (value === null || value === undefined || value === "") {
+        return "—";
+      }
+
+      const number = Number(value);
+
+      if (!Number.isFinite(number)) {
+        return "—";
+      }
+
+      return number.toLocaleString("en-IN", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: decimals
+      });
+    }
+
+    function formatTimestamp(value) {
+      if (!value) return "Unavailable";
+
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return "Unavailable";
+      }
+
+      return new Intl.DateTimeFormat("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "Asia/Kolkata"
+      }).format(date) + " IST";
+    }
+
+    function showNotice(message) {
+      notice.textContent = message;
+      notice.classList.add("visible");
+    }
+
+    function showTableMessage(message, isError = false) {
+      leaderboardBody.innerHTML = `
+        <tr>
+          <td colspan="9">
+            <div class="state-message ${isError ? "error" : ""}">
+              ${escapeHtml(message)}
+            </div>
+          </td>
+        </tr>
+      `;
+    }
+
+    async function loadLeaderboard() {
+      showTableMessage("Loading leaderboard...");
+
+      /*
+       * One database request loads all seven category snapshots.
+       * We deliberately do not select user_id or any private account data.
+       */
+      const { data, error } = await supabase
+        .from("leaderboard_snapshot")
+        .select(`
+          category,
+          rank,
+          username,
+          gross_wpm,
+          net_wpm,
+          accuracy,
+          errors_400,
+          errors_total,
+          score_400,
+          score_total,
+          refreshed_at
+        `)
+        .order("rank", { ascending: true });
+
+      if (error) {
+        console.error("Leaderboard loading failed:", error);
+        throw error;
+      }
+
+      categoryResults = {};
+
+      for (const category of Object.keys(categories)) {
+        categoryResults[category] = [];
+      }
+
+      for (const row of data || []) {
+        if (categoryResults[row.category]) {
+          categoryResults[row.category].push(row);
+        }
+      }
+
+      const timestamps = (data || [])
+        .map((row) => row.refreshed_at)
+        .filter(Boolean)
+        .map((value) => new Date(value).getTime())
+        .filter(Number.isFinite);
+
+      $("lastUpdated").textContent = timestamps.length
+        ? formatTimestamp(new Date(Math.max(...timestamps)).toISOString())
+        : "Not available";
+
+      renderCategory(activeCategory);
+    }
+
+    function renderCategory(category) {
+      const config = categories[category];
+
+      if (!config) return;
+
+      activeCategory = category;
+
+      const rows = categoryResults[category] || [];
+
+      $("rankingTitle").textContent =
+        `Top Players — ${config.label}`;
+
+      $("rankingDescription").textContent = config.description;
+
+      document.querySelectorAll(".sort-button").forEach((button) => {
+        const selected = button.dataset.category === category;
+
+        button.classList.toggle("active", selected);
+        button.setAttribute("aria-pressed", String(selected));
+
+        const indicator = button.querySelector(".sort-indicator");
+
+        indicator.textContent = selected
+          ? (config.direction === "desc" ? "↓" : "↑")
+          : "";
+      });
+
+      $("resultCount").textContent =
+        `${rows.length} ${rows.length === 1 ? "player" : "players"} in this category`;
+
+      if (rows.length === 0) {
+        showTableMessage(
+          "No leaderboard results are available for this category yet."
+        );
+        return;
+      }
+
+      leaderboardBody.innerHTML = rows.map((row) => `
+        <tr>
+          <td class="rank-cell ${row.rank <= 3 ? "rank-top" : ""}">
+            ${escapeHtml(row.rank)}
+          </td>
+
+          <td class="username-cell">
+            ${escapeHtml(row.username)}
+          </td>
+
+          <td class="${category === "gross_wpm" ? "selected-metric" : ""}">
+            ${formatNumber(row.gross_wpm)}
+          </td>
+
+          <td class="${category === "net_wpm" ? "selected-metric" : ""}">
+            ${formatNumber(row.net_wpm)}
+          </td>
+
+          <td class="${category === "accuracy" ? "selected-metric" : ""}">
+            ${formatNumber(row.accuracy)}${row.accuracy == null ? "" : "%"}
+          </td>
+
+          <td class="${category === "errors_400" ? "selected-metric" : ""}">
+            ${formatNumber(row.errors_400, 0)}
+          </td>
+
+          <td class="${category === "errors_total" ? "selected-metric" : ""}">
+            ${formatNumber(row.errors_total, 0)}
+          </td>
+
+          <td class="${category === "score_400" ? "selected-metric" : ""}">
+            ${formatNumber(row.score_400)}
+          </td>
+
+          <td class="${category === "score_total" ? "selected-metric" : ""}">
+            ${formatNumber(row.score_total)}
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    // Switching categories uses data already loaded into the browser.
+    document.querySelectorAll(".sort-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        renderCategory(button.dataset.category);
+      });
+    });
+
+    loadLeaderboard().catch((error) => {
+      showNotice(
+        "The leaderboard could not be loaded. Please try refreshing the page."
+      );
+
+      showTableMessage(
+        "Unable to load leaderboard data. Check your connection and Supabase permissions.",
+        true
+      );
+    });
+  </script>
+</body>
+</html>
