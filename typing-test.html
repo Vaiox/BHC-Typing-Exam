@@ -136,16 +136,13 @@ textarea {
   font-size: 18px;
   line-height: 1.65;
 
-  /* Justify passage and typed text */
   text-align: justify;
   text-justify: inter-word;
 
-  /* Keep text within the panel */
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   word-break: normal;
 
-  /* Independent panel scrolling */
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -154,7 +151,6 @@ textarea {
 
   box-shadow: 0 5px 20px #0002;
 
-  /* Preserve tab indentation */
   tab-size: 4;
   -moz-tab-size: 4;
 }
@@ -323,6 +319,10 @@ button:disabled {
   overflow-wrap: anywhere;
   min-width: 0;
   box-shadow: 0 5px 20px #0002;
+
+  /* Preserve tabs and whitespace in comparison */
+  tab-size: 4;
+  -moz-tab-size: 4;
 }
 
 .red {
@@ -946,7 +946,6 @@ function prepareTest() {
 
   preview.textContent = currentPassage;
 
-  /* Reapply font preference after loading passage */
   applyFontSize(fontSizeSelect.value);
 
   document.getElementById("passageInfo").textContent =
@@ -1113,15 +1112,23 @@ function escapeHTML(text) {
     .replace(/'/g, "&#39;");
 }
 
+/*
+ * Preserve:
+ * - Words
+ * - Punctuation
+ * - Quotation marks
+ * - Consecutive spaces
+ * - Tabs
+ * - Line breaks
+ *
+ * Whitespace is tokenized instead of being discarded.
+ */
 function tokenize(text) {
-  text = text
-    .replace(/\r/g, "")
-    .replace(/[ ]+\n/g, "\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
+  text = String(text)
+    .replace(/\r\n?/g, "\n");
 
   return text.match(
-    /\t|\n+|[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*|[.,!?;:%()[\]]/g
+    /\t| +|\n+|[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*|[^\sA-Za-z0-9]/g
   ) || [];
 }
 
@@ -1261,7 +1268,10 @@ function countBhcWordErrors(original, typed) {
   return { errors, errors400 };
 }
 
-/* Token alignment for comparison highlighting */
+/*
+ * Align original and typed text.
+ * Punctuation and whitespace are retained as tokens.
+ */
 function alignAndCount(original, typed) {
   const a = tokenize(original);
   const b = tokenize(typed);
@@ -1341,16 +1351,26 @@ function alignAndCount(original, typed) {
   return { alignedA, alignedB };
 }
 
+/*
+ * Do not append artificial spaces.
+ * CSS white-space: pre-wrap preserves the original whitespace.
+ */
 function formatToken(token) {
-  if (token === "\n" || token === "\n\n") {
-    return "<br><br>";
+  return escapeHTML(token);
+}
+
+function formatComparisonToken(token, className = "") {
+  if (token === "∅") {
+    return '<span class="dim">∅</span>';
   }
 
-  if (token === "\t") {
-    return "&nbsp;&nbsp;&nbsp;&nbsp;";
+  const safeToken = escapeHTML(token);
+
+  if (!className) {
+    return safeToken;
   }
 
-  return escapeHTML(token) + " ";
+  return `<span class="${className}">${safeToken}</span>`;
 }
 
 function countCorrectWords(a, b) {
@@ -1395,37 +1415,40 @@ function calculateResult() {
     if (originalToken === typedToken) {
       originalHTML += formatToken(originalToken);
       typedHTML += formatToken(typedToken);
-    } else {
-      if (
-        (
-          originalToken === "\n" ||
-          originalToken === "\n\n"
-        ) &&
-        typedToken === "∅"
-      ) {
-        continue;
-      }
-
-      if (originalToken === "∅") {
-        originalHTML +=
-          '<span class="dim">∅</span> ';
-
-        typedHTML +=
-          `<span class="extra">${escapeHTML(typedToken)}</span> `;
-      } else if (typedToken === "∅") {
-        originalHTML +=
-          `<span class="missing">${escapeHTML(originalToken)}</span> `;
-
-        typedHTML +=
-          '<span class="dim">∅</span> ';
-      } else {
-        originalHTML +=
-          `<span class="red">${escapeHTML(originalToken)}</span> `;
-
-        typedHTML +=
-          `<span class="red">${escapeHTML(typedToken)}</span> `;
-      }
+      continue;
     }
+
+    if (originalToken === "∅") {
+      originalHTML += formatComparisonToken("∅");
+
+      typedHTML += formatComparisonToken(
+        typedToken,
+        "extra"
+      );
+
+      continue;
+    }
+
+    if (typedToken === "∅") {
+      originalHTML += formatComparisonToken(
+        originalToken,
+        "missing"
+      );
+
+      typedHTML += formatComparisonToken("∅");
+
+      continue;
+    }
+
+    originalHTML += formatComparisonToken(
+      originalToken,
+      "red"
+    );
+
+    typedHTML += formatComparisonToken(
+      typedToken,
+      "red"
+    );
   }
 
   const {
@@ -1467,16 +1490,6 @@ function calculateResult() {
     0,
     20 - errors * 0.25
   ).toFixed(2);
-
-  originalHTML = originalHTML
-    .replace(/\s+([.,!?;:%)\]])/g, "$1")
-    .replace(/([(\[])\s+/g, "$1")
-    .replace(/\s+'\s+/g, "'");
-
-  typedHTML = typedHTML
-    .replace(/\s+([.,!?;:%)\]])/g, "$1")
-    .replace(/([(\[])\s+/g, "$1")
-    .replace(/\s+'\s+/g, "'");
 
   return {
     gross: Number(gross),
