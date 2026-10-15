@@ -16,6 +16,16 @@ export const passages = {
 
 \t20.2 President of society shall not be eligible for election or after election, shall not be eligible to continue in Board of Director, if 20.2(7) Except the circumstances which are outside, he represents the society and has supplied the milk for at least 270 days to Sangh. 20.2(9) He represents the society which has failed to supply the minimum quantity of milk."
 
-\t4. Despite due service of notice, there was no representation on behalf of Respondent No. 1 - writ petitioner either in person or through any learned counsel.`
+\t4. Despite due service of notice, there was no representation on behalf of Respondent No. 1 - writ petitioner either in person or through any learned counsel.`,
+
+3: `\t1. These civil appeals, sourced in arbitral awards passed under the Arbitration and Conciliation Act, 19961, seek to raise questions about the interpretation and implementation of two enactments – ‘The Building and Other Construction Workers (Regulation of Employment and Conditions babita pandey Date: 2026.01.20 17:11:17 IST Reason:
+
+\t1 For short, the ‘Arbitration Act’ of Service) Act, 1996’2, and ‘The Building and Other Construction Workers’ Welfare Cess Act, 1996’3. Prakash Atlanta (JV) filed the first of these appeals, viz., Civil Appeal No. 4513 of 2025, while National Highways Authority of India4 is the appellant in the other five appeals, viz., Civil Appeal Nos. 5301, 5302, 5304, 5412 and 5416 of 2025. Insofar as the appeals filed by NHAI are concerned, a common issue arises therein. The issue is as to whether the BOCW Act and the Cess Act can be treated as ‘subsequent legislation’ for the purposes of the contracts entered into by NHAI with its contractors, the respondents in NHAI’s five appeals. By way of their awards passed in favour of the said respondents, the arbitral tribunals held that these Acts did qualify as ‘subsequent legislation’.
+
+\t2. This being the milieu, it would be apposite to first note the statutory schemes of the BOCW Act and the Cess Act. Both these enactments had their origin in Ordinances promulgated on 03.11.1995. These Ordinances were followed by the later Ordinances dated 05.01.1996, 27.03.1996 and 20.06.1996. Finally, both the enactments took shape on 19.08.1996, with the sanction of the Parliament. The BOCW Act came into force on 01.03.1996, as per Section 1(3) thereof. The Cess Act, on the other hand, came into force even earlier on 03.11.1995, as per Section 1(3) thereof.
+
+\tThe preamble to the BOCW Act states that it is an Act to regulate the 2 For short, ‘the BOCW Act’ 3 For short, ‘the Cess Act’ 4 For short, ‘NHAI’ employment and conditions of service of building and other construction workers and to provide for their safety, health and welfare measures and for other matters connected therewith or incidental thereto.
+
+\tThe Cess Act is linked to the BOCW Act, as is evident from its preamble and Statement of Objects and Reasons, which state that it is an Act to provide for levy and collection of cess on the cost of construction incurred by employers with a view to augmenting the resources of the Building and Other Construction Workers’ Welfare Boards constituted under the BOCW Act.`
 
 };
