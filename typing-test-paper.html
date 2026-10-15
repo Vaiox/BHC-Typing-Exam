@@ -496,6 +496,10 @@ import { supabase } from "./js/supabase.js";
 
 const DAILY_LIMIT = 10;
 
+const TEST_MODE = "paper_to_screen";
+
+const TEST_MODE = "paper_to_screen";
+
 const DAILY_LIMIT_MESSAGE =
   "Daily test limit reached. Please come back tomorrow.";
 
@@ -1520,7 +1524,9 @@ async function submitTest() {
         p_score_total: result.score,
         p_duration_seconds: result.durationSeconds,
         p_words_typed: result.wordsTyped,
-        p_keystrokes: result.keystrokes
+        p_keystrokes: result.keystrokes,
+        p_keystroke_category: currentPassageLimit,
+        p_test_mode: TEST_MODE
       }
     );
 
