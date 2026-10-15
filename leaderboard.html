@@ -740,6 +740,9 @@
 
     let categoryResults = {};
     let activeCategory = "score_total";
+    let activeMode = "paper_to_screen";
+    let activeLength = 2400;
+
 
     function escapeHtml(value) {
       return String(value ?? "").replace(/[&<>"']/g, (character) => ({
@@ -966,7 +969,25 @@
     // Switching test lengths uses the same snapshot data.
     document.querySelectorAll(".length-button").forEach((button) => {
       button.addEventListener("click", () => {
-        renderCategory(button.dataset.category);
+        activeLength = Number(button.dataset.length);
+    
+        renderCategory(`${activeMode}_${activeLength}`);
+      });
+    });
+
+    
+    document.querySelectorAll(".mode-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeMode = button.dataset.mode;
+    
+        document.querySelectorAll(".mode-button").forEach((btn) => {
+          const selected = btn.dataset.mode === activeMode;
+    
+          btn.classList.toggle("active", selected);
+          btn.setAttribute("aria-pressed", String(selected));
+        });
+    
+        renderCategory(`${activeMode}_${activeLength}`);
       });
     });
 
