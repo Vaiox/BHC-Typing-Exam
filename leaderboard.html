@@ -156,6 +156,71 @@
       line-height: 1.6;
     }
 
+    
+    /* Test-length selector */
+    .length-selector {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 24px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .length-selector-label {
+      margin-right: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    .length-button {
+      min-width: 82px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #111111;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    
+    .length-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    
+    .length-button.active {
+      border-color: var(--accent);
+      background: var(--success-bg);
+      color: var(--accent);
+    }
+    
+    .length-button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    
+    @media (max-width: 650px) {
+      .length-selector {
+        padding: 16px 19px;
+        gap: 8px;
+      }
+    
+      .length-selector-label {
+        width: 100%;
+        margin-bottom: 3px;
+      }
+    
+      .length-button {
+        flex: 1;
+        min-width: 65px;
+        padding: 10px 8px;
+      }
+    }
+
     .refresh-info {
       flex-shrink: 0;
       text-align: right;
@@ -385,6 +450,47 @@
         </div>
       </div>
 
+      
+      <div class="length-selector" aria-label="Filter leaderboard by test length">
+        <span class="length-selector-label">Test Length:</span>
+
+        <button
+          type="button"
+          class="length-button"
+          data-category="keystrokes_2400"
+          aria-pressed="false"
+        >
+          2400
+        </button>
+
+        <button
+          type="button"
+          class="length-button"
+          data-category="keystrokes_2600"
+          aria-pressed="false"
+        >
+          2600
+        </button>
+
+        <button
+          type="button"
+          class="length-button"
+          data-category="keystrokes_2800"
+          aria-pressed="false"
+        >
+          2800
+        </button>
+
+        <button
+          type="button"
+          class="length-button"
+          data-category="keystrokes_3000"
+          aria-pressed="false"
+        >
+          3000
+        </button>
+      </div>
+
       <div class="table-wrapper">
         <table>
           <thead>
@@ -529,6 +635,38 @@
           "Highest total marks first. Marks (400) breaks ties.",
         direction: "desc",
         field: "score_total"
+      },
+      
+      keystrokes_2400: {
+        label: "Total Marks — 2400 Keystrokes",
+        description:
+          "Players who selected the 2400-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+        direction: "desc",
+        field: "score_total"
+      },
+
+      keystrokes_2600: {
+        label: "Total Marks — 2600 Keystrokes",
+        description:
+          "Players who selected the 2600-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+        direction: "desc",
+        field: "score_total"
+      },
+
+      keystrokes_2800: {
+        label: "Total Marks — 2800 Keystrokes",
+        description:
+          "Players who selected the 2800-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+        direction: "desc",
+        field: "score_total"
+      },
+
+      keystrokes_3000: {
+        label: "Total Marks — 3000 Keystrokes",
+        description:
+          "Players who selected the 3000-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+        direction: "desc",
+        field: "score_total"
       }
     };
 
@@ -603,8 +741,9 @@
       showTableMessage("Loading leaderboard...");
 
       /*
-       * One database request loads all seven category snapshots.
-       * We deliberately do not select user_id or any private account data.
+       * One request loads all 11 categories:
+       * seven overall metric rankings and four test-length rankings.
+       * Private account data is not selected.
        */
       const { data, error } = await supabase
         .from("leaderboard_snapshot")
@@ -667,6 +806,8 @@
 
       $("rankingDescription").textContent = config.description;
 
+      
+      // Highlight the selected overall metric, if applicable.
       document.querySelectorAll(".sort-button").forEach((button) => {
         const selected = button.dataset.category === category;
 
@@ -678,6 +819,14 @@
         indicator.textContent = selected
           ? (config.direction === "desc" ? "↓" : "↑")
           : "";
+      });
+
+      // Highlight the selected test length, if applicable.
+      document.querySelectorAll(".length-button").forEach((button) => {
+        const selected = button.dataset.category === category;
+
+        button.classList.toggle("active", selected);
+        button.setAttribute("aria-pressed", String(selected));
       });
 
       $("resultCount").textContent =
@@ -724,15 +873,30 @@
             ${formatNumber(row.score_400)}
           </td>
 
-          <td class="${category === "score_total" ? "selected-metric" : ""}">
+          
+          <td class="${
+            category === "score_total" ||
+            category.startsWith("keystrokes_")
+              ? "selected-metric"
+              : ""
+          }">
             ${formatNumber(row.score_total)}
           </td>
+
         </tr>
       `).join("");
     }
 
-    // Switching categories uses data already loaded into the browser.
+    
+    // Switching overall metrics uses the loaded snapshot data.
     document.querySelectorAll(".sort-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        renderCategory(button.dataset.category);
+      });
+    });
+
+    // Switching test lengths uses the same snapshot data.
+    document.querySelectorAll(".length-button").forEach((button) => {
       button.addEventListener("click", () => {
         renderCategory(button.dataset.category);
       });
