@@ -366,6 +366,45 @@ button:disabled{
     padding:22px 18px;
   }
 }
+
+/* PASSAGE IDENTIFICATION */
+
+.passage-identification {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 15px;
+  padding: 14px 18px;
+  background: #41434a;
+  border: 1px solid #555861;
+  border-left: 4px solid #00c995;
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.passage-identification strong {
+  flex-shrink: 0;
+  color: #00d6a0;
+  font-weight: 700;
+}
+
+.passage-identification span {
+  min-width: 0;
+}
+
+@media (max-width: 480px) {
+  .passage-identification {
+    flex-direction: column;
+    gap: 3px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+}
+
 </style>
 </head>
 
@@ -402,6 +441,12 @@ button:disabled{
     <div class="info" id="passageInfo">
       Loading passage...
     </div>
+  </div>
+
+  
+  <div class="passage-identification" aria-live="polite">
+    <strong id="passageLabel">Passage —</strong>
+    <span id="passageSnippet">Loading passage...</span>
   </div>
 
   <div
@@ -880,6 +925,25 @@ function prepareTest() {
     usable[Math.floor(Math.random() * usable.length)];
 
   currentPassage = passages[currentId];
+
+  
+  // Show the passage number and a short identifying excerpt.
+  const passageLabel = document.getElementById("passageLabel");
+  const passageSnippet = document.getElementById("passageSnippet");
+
+  passageLabel.textContent = `Passage ${currentId}:`;
+
+  const normalizedPassage = currentPassage
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const excerptLength = 150;
+
+  passageSnippet.textContent =
+    normalizedPassage.length > excerptLength
+      ? normalizedPassage.slice(0, excerptLength).trimEnd() + "…"
+      : normalizedPassage;
+
 
   history.push(currentId);
 
