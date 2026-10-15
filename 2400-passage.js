@@ -48,4 +48,16 @@ export const passages = {
 
 \t3.7. Aggrieved thereby, the appellants have preferred the present appeals before this Court. Mr. Ajay Vohra, learned Senior Counsel for the appellants, primarily submitted that the impugned judgment of the High Court is liable to be set aside as it travels beyond the jurisdiction conferred under Section 260A of the I.T. (1997) 224 ITR 371 (SC) : (1997) 3 SCC 340 Act.`
 
+6: `\tThis appeal arises from the order passed by the High court of Allahabad dated 23.02.2006 in application under Section 482 No. 20610 of 2024 by which the application preferred by the appellant-herein praying for quashing of the criminal proceedings of Case No. 545 of 1991 arising out of Case Crime No. 115 of 1989 registered with the GRP Rambagh Police Station for the offence punishable under Sections 147, 323 and 504 of the Indian Penal Code,(for short, “IPC”) respectively and Section 120 of the Railways Act came to be dismissed.
+
+\tIt appears from the materials on record that one Gajendra Singh, constable No. 614, posted at the relevant point of time, at GRP Rambagh, Distt. Gonda, Allahabad lodged a First Information Report with the GRP Rambagh police station referred to above against the appellant-herein and four other police constables for the offences enumerated above.
+
+\tThe FIR dated 19.02.1989 reads thus: “Respectfully submitted that on 19.2.1989 at about 20:00 hours I was going to Mess No 1 At that time Constable No. 57 Shiv Charan Tiwari; Constable No 95 Arvind Kumai", Constable No. 51 Kailash Katariya, Constable No. 90 Harish Chandra Joshi and Constable No. 190 Kailash Chandra Kapri who had come from District Almora; for Kumbh Mela duty at G.R.P., began to say that you have become very close to Mess Manager Shukla. I said that I have no concern with anyone. They started abusing me. I told them not to abuse.
+
+\tThereupon they surrounded me and assaulted me with fists and kicks and beat me with red shoes. Constable No. 825 Parmhansh Singh and Constable  No. 713 Achyutanand Mishra saved me and witnessed the incident. Afterwards the accused persons ran away taking their belongings. My report be written and action be taken. Constable No. 614 Gajendra Singh District Gonda Dated 19.02.1989.”
+
+\tUpon completion of the investigation chargesheet came to be filed for the offences enumerated above against the appellant and other co-accused. The filing of the chargesheet culminated in Criminal Case No. 545 of 1991 pending as on date in the court of Additional Chief Judicial Magistrate (Railway) Allahabad.
+
+\tWe take notice of the fact that two of the co-accused passed away during the pendency of the proceedings and the other two co-accused were put to trial and came to be acquitted by the Additional Chief Judicial Magistrate (Railway) Allahabad vide judgment and order dated 01.02.2023.`
+
 };
