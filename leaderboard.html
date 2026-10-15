@@ -893,9 +893,26 @@
       });
 
       // Highlight the selected test length, if applicable.
+      const isModeCategory =
+        category.startsWith("paper_to_screen_") ||
+        category.startsWith("screen_to_screen_");
+      
+      // Highlight the selected test length.
       document.querySelectorAll(".length-button").forEach((button) => {
-        const selected = button.dataset.category === category;
-
+        const selected =
+          isModeCategory &&
+          Number(button.dataset.length) === activeLength;
+      
+        button.classList.toggle("active", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+      
+      // Highlight the selected mode when viewing a mode-specific leaderboard.
+      document.querySelectorAll(".mode-button").forEach((button) => {
+        const selected =
+          isModeCategory &&
+          button.dataset.mode === activeMode;
+      
         button.classList.toggle("active", selected);
         button.setAttribute("aria-pressed", String(selected));
       });
