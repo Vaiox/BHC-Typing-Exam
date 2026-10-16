@@ -801,7 +801,7 @@
     const screenSelector = $("screenKeystrokeLimit");
     const paperSelector = $("paperKeystrokeLimit");
 
-    const DAILY_LIMIT = 10;
+    let dailyTestLimit = 10;
     const VALID_LIMITS = ["2400", "2600", "2800", "3000"];
 
     const SCREEN_STORAGE_KEY = "screenToScreenKeystrokeLimit";
@@ -1092,7 +1092,7 @@
         error: profileError
       } = await supabase
         .from("user_subscriptions")
-        .select("username")
+        .select("username, daily_test_limit")
         .eq("user_id", currentUser.id)
         .maybeSingle();
 
@@ -1101,6 +1101,15 @@
           "Error loading username:",
           profileError.message
         );
+      }
+
+      dailyTestLimit = Number(profileData?.daily_test_limit);
+
+      if (
+        !Number.isInteger(dailyTestLimit) ||
+        dailyTestLimit < 1
+      ) {
+        dailyTestLimit = 10;
       }
 
       $("dashboardUsername").textContent =
