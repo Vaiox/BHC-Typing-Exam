@@ -46,7 +46,7 @@ export const passages = {
 
 \tAccordingly, the matter was remanded to the Tribunal for determination of the nature of the appellants' holding of JFAL shares, i.e., whether such holdings constituted capital assets or stock-in-trade.
 
-\t3.7. Aggrieved thereby, the appellants have preferred the present appeals before this Court. Mr. Ajay Vohra, learned Senior Counsel for the appellants, primarily submitted that the impugned judgment of the High Court is liable to be set aside as it travels beyond the jurisdiction conferred under Section 260A of the I.T. (1997) 224 ITR 371 (SC) : (1997) 3 SCC 340 Act.`
+\t3.7. Aggrieved thereby, the appellants have preferred the present appeals before this Court. Mr. Ajay Vohra, learned Senior Counsel for the appellants, primarily submitted that the impugned judgment of the High Court is liable to be set aside as it travels beyond the jurisdiction conferred under Section 260A of the I.T. (1997) 224 ITR 371 (SC) : (1997) 3 SCC 340 Act.`,
 
 6: `\tThis appeal arises from the order passed by the High court of Allahabad dated 23.02.2006 in application under Section 482 No. 20610 of 2024 by which the application preferred by the appellant-herein praying for quashing of the criminal proceedings of Case No. 545 of 1991 arising out of Case Crime No. 115 of 1989 registered with the GRP Rambagh Police Station for the offence punishable under Sections 147, 323 and 504 of the Indian Penal Code,(for short, "IPC") respectively and Section 120 of the Railways Act came to be dismissed.
 
@@ -62,9 +62,7 @@ export const passages = {
 
 7: `\tHereinafter referred to as "the Act". The Division Bench arrived at wrong answers. It is not just this Division Bench, in fact this perceived duality in the appointment process has given rise to divergent views of different High Courts. Before we deal with the divergent views of the High Court, followed by our analysis, short and necessary facts are as follows.
 
-\tIII. Facts of the case
-
-\tThe present dispute arose out of Memorandum of Family Settlement (MFS) dated 11.01.2021 executed between the parties herein, who all form part of the 'Chowgule' family. Owing to further differences, arbitration was invoked under clause 24 of the MFS on 18.05.2021. On 05.08.2023, the respondent no. 2 filed application for extension under Section 29A before the Commercial Court. In the meanwhile, owing to the resignation of the presiding arbitrator, the respondent no. 2 filed application for appointment of arbitrator under Section 11 before the High Court.
+\tIII. Facts of the case: The present dispute arose out of Memorandum of Family Settlement (MFS) dated 11.01.2021 executed between the parties herein, who all form part of the 'Chowgule' family. Owing to further differences, arbitration was invoked under clause 24 of the MFS on 18.05.2021. On 05.08.2023, the respondent no. 2 filed application for extension under Section 29A before the Commercial Court. In the meanwhile, owing to the resignation of the presiding arbitrator, the respondent no. 2 filed application for appointment of arbitrator under Section 11 before the High Court.
 
 \tThe application under Section 11 was allowed by the High Court vide order dated 31.10.2023. This was followed by the Commercial Court allowing the application under Section 29A, vide order dated 02.01.2024. The same came to be challenged by respondent no. 1 by filing a writ petition on 08.01.2024, on the ground that the Commercial Court did not have jurisdiction to extend duration under Section 29A on account of appointment of the arbitrator by the High Court under Section 11.
 
