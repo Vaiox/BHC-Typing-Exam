@@ -1030,7 +1030,7 @@
         return;
       }
 
-      if (testsUsedToday >= DAILY_LIMIT) {
+      if (testsUsedToday >= dailyTestLimit) {
         showNotice(
           "Daily test limit reached. Please come back tomorrow."
         );
@@ -1180,13 +1180,13 @@
       testsUsedToday = count || 0;
 
       $("testsUsed").textContent =
-        `${testsUsedToday} / ${DAILY_LIMIT}`;
+        `${testsUsedToday} / ${dailyTestLimit}`;
 
       $("testsRemaining").textContent =
-        `${Math.max(0, DAILY_LIMIT - testsUsedToday)} accepted tests remaining today`;
+        `${Math.max(0, dailyTestLimit - testsUsedToday)} accepted tests remaining today`;
 
-      if (testsUsedToday >= DAILY_LIMIT) {
-        setExamButtonsEnabled(false);
+      if (testsUsedToday < dailyTestLimit) {
+        setExamButtonsEnabled(true);
 
         setExamStatuses(
           "Daily test limit reached. Please come back tomorrow."
@@ -1286,7 +1286,7 @@
       // Enable exam buttons only after account checks complete.
       dashboardReady = true;
 
-      if (testsUsedToday < DAILY_LIMIT) {
+      if (testsUsedToday < dailyTestLimit) {
         setExamButtonsEnabled(true);
       }
     }
