@@ -56,7 +56,7 @@ export const passages = {
 
 \tChallenging the above order, the Appellant is before this Court. The question that arises before us in the given factual matrix is 'Whether an appeal under Section 374 of the Code of Criminal Procedure, 1973 (corresponding to Section 415 of the Bharatiya Nagarik Suraksha Sanhita, 2023) is maintainable against a judgment of conviction recorded by a Sessions Court while exercising appellate jurisdiction and reversing an order of acquittal passed by a Trial Court?' II. BRIEF FACTS: Though the facts in brief have been reproduced above, for the purposes of completion, the same are reiterated below: 3.1.The marriage between the Appellant, Vishnu Kumar Gupta, and Respondent No. 2 was solemnized on 01.02.2013 at Vidisha, Madhya Pradesh.`,
 
-7: `\tThis appeal is directed against the judgment and order dated 13.11.2019 passed by the High Court of Patna in Criminal Writ Petition No. 1492 of 2019, filed by the Appellants under Section 482 of the Code of Criminal Procedure (hereinafter referred to as ‘CrPC’) challenging the FIR No. 248/2019 dated 01.04.2019 implicating the Appellants for offences under Sections 341, 323, 379, 354, 498A read with Section 34 of the Indian Penal Code (hereinafter referred to as ‘IPC’). The High Court vide order impugned herein dismissed the same.
+7: `\tThis appeal is directed against the judgment and order dated 13.11.2019 passed by the High Court of Patna in Criminal Writ Petition No. 1492 of 2019, filed by the Appellants under Section 482 of the Code of Criminal Procedure (hereinafter referred to as 'CrPC') challenging the FIR No. 248/2019 dated 01.04.2019 implicating the Appellants for offences under Sections 341, 323, 379, 354, 498A read with Section 34 of the Indian Penal Code (hereinafter referred to as 'IPC'). The High Court vide order impugned herein dismissed the same.
 
 \tThe Complainant (Respondent No. 5 herein) Tarannum Akhtar @ Soni, was married to Md. Ikram on 18.09.17. The appellants herein are the in-laws of Respondent No. 5. On 11.12.17, the said Respondent initially instituted a criminal complaint against her husband and the appellants before the Court of Chief Judicial Magistrate, Purnea alleging demand for dowry and harassment.
 
@@ -66,7 +66,20 @@ export const passages = {
 
 \tAggrieved, the Husband and appellant herein filed a criminal writ petition before the Patna High Court, for quashing of the said FIR dated 01.04.19, which was dismissed vide impugned judgment. The High Court observed that the averments made in the FIR prima-facie disclosed commission of an offence and therefore the matter was required to be investigated by the police.
 
-\tThe Appellants herein, being the niece (Respondent No. 1), Mother in-law (Respondent No. 2), Sister in-law (Respondent No. 3), and brother in law (Respondent No. 4) have thereby approached this court by way of the present Special Leave Petition.  This Court in its judgment in Rajesh Sharma and Ors. Vs. State of U.P. & Anr.4, has observed.`
+\tThe Appellants herein, being the niece (Respondent No. 1), Mother in-law (Respondent No. 2), Sister in-law (Respondent No. 3), and brother in law (Respondent No. 4) have thereby approached this court by way of the present Special Leave Petition.  This Court in its judgment in Rajesh Sharma and Ors. Vs. State of U.P. & Anr.4, has observed.`,
 
-8:  
+8: `\tThe present appeal is directed against the judgment and order dated 22.10.2021 passed by the High Court of Judicature at Allahabad, Lucknow Bench (hereinafter referred to as "High Court") in Bail No. 11848 of 2021 filed by Respondent No.2 - Accused with a prayer to release him on bail in Case Crime No. 16 of 2021 registered at PS Para, Lucknow under Sections 302 and 34 of the Indian Penal Code, 1860 (hereinafter referred to as "IPC") during pendency of trial.
+
+\tBy the said judgment, the High Court granted bail to Respondent No.2/Accused on furnishing a personal bond and two sureties each in the like amount to the satisfaction of the trial court subject to certain conditions.
+
+\t3. Briefly, the facts relevant for the purpose of this appeal are that the Appellant/Informant Deepak Yadav lodged an FIR being Crime Case No. 16/2021 on 09.01.2021 at PS Para, Lucknow under Section 307 IPC against Respondent No. 2/Accused Harjeet Yadav, co-accused Sushil Kumar Yadav and two unknown persons.
+
+\tThe allegations against the said accused persons were that on the night of 08.01.2021, at around 8.30 PM, Appellant's father Mr. Virendera Yadav (deceased) was on way to his home from the lawn located near Jaipuria School and at the same time, the accused persons took position on Kulhad Katta Bridge and fired at him with the common intention to kill the deceased. The bullet shot hit his right cheek and made its exit through the other side leaving him severely injured.
+
+\tIn view of his serious condition, the people present on the spot informed the local police station and admitted him at the Trauma Centre, Medical College, Lucknow. The Appellant/Informant, on receiving the information about his injured father rushed to the Trauma Centre with his mother Smt. Sunita Yadav and elder sister Ms. Jyoti Yadav.
+
+\tThe Appellant's mother asked her husband about the incident to which he replied that he was shot by Respondent No.2/Accused Harjeet Yadav and one, Sushil Yadav and that they were accompanied by two other persons as well. The statement given by the deceased was noted down by Sri Mahesh Kumar Chaurasia, DSP/ACP Chowk, Lucknow and Sri. Ashok Kumar Singh, SI/First Investigating Officer.
+
+\tRespondent No. 2/Accused was arrested by the police on 13.01.2021 and one country made pistol with two live cartages were recovered from him. The Appellant/Informant's father passed away on 14.01.2021 on account of which the case was converted to one under Section 302 IPC. The co-accused, Sushil Kumar Yadav surrendered before the Judicial Magistrate, Lucknow on 16.01.2021. In case of breach of any of the above conditions, it shall be a ground for cancellation of bail.`
+
 };
