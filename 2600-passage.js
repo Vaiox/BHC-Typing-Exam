@@ -80,6 +80,32 @@ export const passages = {
 
 \tThe Appellant's mother asked her husband about the incident to which he replied that he was shot by Respondent No.2/Accused Harjeet Yadav and one, Sushil Yadav and that they were accompanied by two other persons as well. The statement given by the deceased was noted down by Sri Mahesh Kumar Chaurasia, DSP/ACP Chowk, Lucknow and Sri. Ashok Kumar Singh, SI/First Investigating Officer.
 
-\tRespondent No. 2/Accused was arrested by the police on 13.01.2021 and one country made pistol with two live cartages were recovered from him. The Appellant/Informant's father passed away on 14.01.2021 on account of which the case was converted to one under Section 302 IPC. The co-accused, Sushil Kumar Yadav surrendered before the Judicial Magistrate, Lucknow on 16.01.2021. In case of breach of any of the above conditions, it shall be a ground for cancellation of bail.`
+\tRespondent No. 2/Accused was arrested by the police on 13.01.2021 and one country made pistol with two live cartages were recovered from him. The Appellant/Informant's father passed away on 14.01.2021 on account of which the case was converted to one under Section 302 IPC. The co-accused, Sushil Kumar Yadav surrendered before the Judicial Magistrate, Lucknow on 16.01.2021. In case of breach of any of the above conditions, it shall be a ground for cancellation of bail.`,
+
+9: `\tThis appeal is directed against the judgment and order dated 01.10.2019 passed by the High Court of Calcutta (hereinafter referred to as "High Court") in C.R.R No. 731 of 2017 filed by the appellants praying for quashing of proceedings being G.R. Case No. 1221 of 2013 pending before the Court of Learned Chief Metropolitan Magistrate, Kolkata and arising out of Bowbazar Police Station Case No. 168 dated 28.03.2013 under Sections 420, 406 and 120B of the Indian Penal Code, 1860 (hereinafter referred to as "IPC").
+
+\tBy the said judgment, the High Court dismissed the prayer for 17:11:34 IST Reason: quashing of the proceedings and held that continuance of criminal proceedings against the present appellant/accused would not be an abuse of the process of the court.
+
+\tBrief facts necessary for the disposal of this appeal are as under: M/s. Priknit Retails Limited a public limited company having its registered office at BXXV, 539A, 10, Jalandhar, Bye Pass Road, Ludhiana, Punjab was incorporated in the year 2002 and subsequently changed its name to Priknit Apparels in 2007.
+
+\tThe company is engaged in the manufacture and trade of apparels through chain of retail stores under the brand name and style of Priknit. Appellant No. 1 is the Managing Director of the Company and Appellant Nos. 2 and 3 are the Directors of the said Company. The company has been arrayed as proforma Respondent No. 3. In January 2008, Respondent No. 2 an authorized representative of SMC Global Securities Ltd, Delhi desired to make an investment on its behalf with the appellants.
+
+\tIt was mutually decided between the parties that Respondent No. 2 will invest an amount of Rs. 2.5 crore with the company in lieu of which they will be issued 2,50,000 equity shares of Priknit Apparel Pvt. Ltd. Subsequently, Respondent No. 2 filed their share application form along with the cheque of Rs. 2.5 crore.
+
+\tSubsequently, an allotment letter dated 29.03.2008 was issued in favour of Respondent No. 2 whereby 2,50,000 shares were issued in lieu of the investment made by him. The proforma respondent no. 3 company and Respondent No. 2 arrived at an understanding, regarding the investment made by Respondent No. 2.
+
+\tHaving failed to bring the I.P.O as per memorandum of understanding dated 20.08.2009, Respondent No. 2 issued a legal notice dated 06.12.2011 to the Appellants, who duly replied to the legal notice denying all the allegations contained in the legal notice. That on 06.01.2012, Respondent No. 2 filed a police complaint with PS Rajender Nagar, New Delhi and the concerned officer of PS Rajender Nagar apprised Respondent No. 2 that the complaint does not pertain to their jurisdiction.`,
+
+10: `\tThat on 06.06.2012, Respondent No. 2 filed a complaint being CC No. 306/1/12 under Section 156(3) of Cr.P.C before the Tiz Hazari Court, New Delhi for registration of FIR against the Appellants and their company. On 01.09.2012, Respondent No. 2 also filed another Complaint No. 190 of 12 before Tis Hazari Court, New Delhi under Section 68 of the Companies Act read with Section 200 of Cr.P.C which is pending adjudication.
+
+\tThat the Metropolitan Magistrate (hereinafter referred to as "MM"), Tis Hazari vide order dated 28.02.2013 observed that the entire dispute raised by Respondent No. 2 was civil in nature and there was no criminality involved, thereby turning down the prayer of Respondent No. 2 for registration of an FIR and posted the case for pre-summoning evidence with regard to the application under Section 156(3) Cr.P.C filed by Respondent No.2. It is pertinent to mention here that the order of the MM, Tis Hazari Court, New Delhi attained finality as it was not put to further challenge. 
+
+\tThat on 28.03.2013, Respondent No. 2 filed a second complaint under Section 406, 409, 420, 468,120B and 34 IPC on the basis of the same cause of action with the PS Bowbazar at Kolkata, West Bengal and the same was converted into an FIR bearing No. 168 under Section 406, 420, 120B IPC. A final closure report dated 04.03.2014 was filed by the concerned Police Station recommending closure of the case since the entire dispute was found to be civil in nature.
+
+\tThat Respondent No. 2 filed a protest petition being GR No. 1221/2013 with the Chief Metropolitan Magistrate (hereinafter referred to as "CMM"), Kolkata against closure report dated 04.03.2014 and vide order dated 08.03.2016.In the meantime, the authorized representative of Respondent No. 2 made a statement before the MM, Tish Hazari, New Delhi for withdrawing the complaint case.
+
+\tAppellant No. 1 received a notice dated 14.11.2016 under Section 41(a) Cr.P.C for appearance before the Investigation Officer (hereinafter referred to as "IO") at PS Bowbazar, Kolkata. In his reply to the said notice, Appellant No. 1 stated that a complaint has already been filed with the same cause of action before the Tis Hazari Court and further sought time to produce the documents sought in the notice.
+
+\tThereafter, Appellant No. 1 sent a letter with all the relevant documents required for investigation thereby extending full co- operation to the IO at PS Bowbazar, Kolkata in connection with Case No. 168. The IO PS Bowbazar, Kolkata sent another notice under Section 41(a) Cr.P.C dated 23.12.2016 to Appellant No. 1 and 2 to appear before him with the relevant documents.`
 
 };
