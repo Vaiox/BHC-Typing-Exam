@@ -106,6 +106,62 @@ export const passages = {
 
 \tAppellant No. 1 received a notice dated 14.11.2016 under Section 41(a) Cr.P.C for appearance before the Investigation Officer (hereinafter referred to as "IO") at PS Bowbazar, Kolkata. In his reply to the said notice, Appellant No. 1 stated that a complaint has already been filed with the same cause of action before the Tis Hazari Court and further sought time to produce the documents sought in the notice.
 
-\tThereafter, Appellant No. 1 sent a letter with all the relevant documents required for investigation thereby extending full co- operation to the IO at PS Bowbazar, Kolkata in connection with Case No. 168. The IO PS Bowbazar, Kolkata sent another notice under Section 41(a) Cr.P.C dated 23.12.2016 to Appellant No. 1 and 2 to appear before him with the relevant documents.`
+\tThereafter, Appellant No. 1 sent a letter with all the relevant documents required for investigation thereby extending full co- operation to the IO at PS Bowbazar, Kolkata in connection with Case No. 168. The IO PS Bowbazar, Kolkata sent another notice under Section 41(a) Cr.P.C dated 23.12.2016 to Appellant No. 1 and 2 to appear before him with the relevant documents.`,
+
+11: `\t1. This appeal is directed against the judgment and order dated 13.08.2019 passed by the High Court of Karnataka at Bengaluru in Criminal Petition No. 2691 of 2016, filed by the Appellants under Section 482 of the Code of Criminal Procedure (hereinafter referred to as 'CrPC') challenging the FIR No. 185/2016 dated 29.03.2016 implicating the appellants for offences under Section 420 read with Section 34 IPC and to quash the proceedings in C.C. No. 20609 of 2017 on the file of VI Additional CMM, Bengaluru, initiated pursuant to charge sheet dated 29.03.2017 against the appellants for offences punishable under Sections 406, 419, 420 read with Section 34 of IPC.
+
+\t2. The High Court vide order impugned herein dismissed the same.
+
+\t3. Pending instant appeal before this Court, Appellant No. 1 has died and his name has been deleted vide order dated 29.09.2021. The term 'Appellants' used herein should thus be construed to include only Appellant No. 2. Facts
+
+\t4. On 07.08.13 Respondent No. 2 had initially executed a Joint Development Agreement (JDA) for developing a particular property with the company of the Appellants (The Appellants being directors in this company), i.e., Rajarajeshwari Buildcon Private Ltd. (hereinafter referred to as 'the builder company'). The property was to be developed either entirely as residential apartments, or as residential apartments with commercial complex. In furtherance of the Joint Development Agreement, a General Power of Attorney (GPA) was also executed on the same date. Respondent No. 2 thereafter also entered into a Supplementary Agreement with the Appellants specifying their respective shares in undivided area and super built up area.
+
+\t5. Further, on 19.02.15 a Memorandum of Understanding (MoU) was entered into by Respondent No. 2 with the builder company, whereby the company was authorized to sell 8000 sq. ft out of respondent No.2's share in the undivided area and super built up area. The MoU was entered into by Respondent No. 2 for the purpose of making partial payment of a loan borrowed by him from one Religare Finvest Ltd. Pursuant to the MoU, Appellants had to obtain NOC for 15 flats by making payment of Rs. 40,00,000/- for each flat.
+
+\t6. The Appellants herein contend at this juncture, that it was verbally agreed between the parties, that the company would be entitled to adjust the payments made to Religare Finvest Ltd., by way of selling additional flats beyond its share, i.e., an additional 8000 sq.ft of built up area would be allotted to the company's share in lieu of the partial payment of loan borrowed by Respondent No. 2 from Religare Finvest Ltd.`,
+
+12: `\t1. The present appeal is directed against the judgment and order dated 31.01.2022 passed by the High Court of Judicature at Madras (hereinafter referred to as "High Court") in Criminal Appeal No. 166 of 2021 filed by the Appellants herein seeking to set aside the order of conviction passed by the Sessions Judge, Mahila Court, Chennai (hereinafter referred to as "Trial Court") in S.C No. 209 of 2016 under Sections 498A and 306 of the Indian Penal Code (hereinafter referred to as "IPC").
+
+\tThe Appellants were sentenced to undergo imprisonment for a period of 3 years with a fine of Rs. 5,000/- each, in default of which to undergo simple imprisonment for a period of one month under Section 498A IPC and to undergo imprisonment for a period of 7 years with a fine of Rs. 25,000/- each in default of which to undergo simple imprisonment for a period of 3 months under Section 306 IPC. By impugned judgment, the High Court upheld the conviction of the Appellants for the offence under Sections 498A and 306 IPC.
+
+\t2. Briefly, the facts relevant for the purpose of this appeal are as follows: 2.1 The marriage between Appellant No. 1 and Dr. M. Amali Victoria (hereinafter referred to as "deceased") was solemnised on 08.09.2005 and a male child was born out of wedlock in the year 2007. On the professional front, both parties are doctors.
+
+\tAppellant No. 1 was informed on 05.11.2014 that the deceased had collapsed in the bathroom of their home and was non-responsive. Immediately, an ambulance was called by the father of Appellant No. 1. On reaching the site of the incident, Appellant No. 1 found the deceased having no pulse.
+
+\tDespite intervention from the neighbors of Appellant No. 1 who were doctors, the deceased could not be resuscitated and passed away on 05.11.2014. Post mortem of the body was conducted on 06.11.2014 and the cause of death was asphyxia due to external compression of the neck.
+
+\t2.2 On 06.11.2014, The Respondent Police registered FIR No. 1865 of 2015 at Police Station K2, Ayanavaram, District Kilpauk, Chennai based on the statement of Appellant No. 1 owing to the unnatural death of the deceased under Section 174 of the Code of Criminal Procedure, 1973 (hereinafter referred to as "Cr.P.C").
+
+\t2.3 After 3 weeks of the death of the deceased, PW-1(the mother of the deceased) lodged a complaint against the Appellant No.1, Appellant No. 2(mother-in-law), and the father-in-law of the deceased for the offences punishable under Sections 498A and 306 IPC. Thereafter, the FIR was converted from Section 174 Cr.P.C to Sections 498A and 306 IPC. The complaint against the appellants was filed after 3 weeks of the death of the deceased.`,
+
+13: `\t1. These appeals arise from the judgment of the Division Bench of the High Court of Gujarat dated 28 th September 2016 convicting the appellants under Section 302 read with Sections 363, 364, 364-A and 365 and Section 120-B of the Indian Penal Code, under Section 21 (1)(a) of the Arms Act and under Section 3 and 5 of the Indian Explosive Act.
+
+\tThe Division Bench while reversing the order of acquittal passed by the trial court, has imposed following punishment upon the appellants: Offence under Sentence Imposed Default Sentence Section 302 of IPC Life Imprisonment + Two month's simple  Fine of Rs. 10,000/- imprisonment. 
+
+\t2. Briefly stated, the case of the prosecution is that on 5 th February 2001, the complainant, Paramhansh Mangal Yadav (PW-1), had informed the police at Kapodra Police Station that his youngest son, Arjun, aged about 9 years who was studying in second standard, was missing from 4th February 2001. On the fateful day, the complainant, as per routine, had left for work at 8:00 am and had returned at 2:00 pm for lunch, when he noticed that Arjun was missing. The complainant had searched for Arjun in the streets and at the relatives' residing nearby but he could not be located.
+
+\tThis information given by the complainant was recorded by an entry made in the police diary. Thereafter, formal complaint was registered on 14th February 2001. In this complaint, Paramhansh (PW-1) had pointed out that initially Shailendra Rajdev Pasvan, Appellant/Accused No.1, had joined the search but thereafter he had suddenly vanished.
+
+\tAfter about four days, the Appellant No.1  had made a call to the complainant and disclosed that he was in Vapi. The complainant got suspicious and thereupon had sent his brother-in-law Sadhusharan Harinandan Yadav (PW-9) and two other relatives Sudarshan and Premchand Yadav to Vapi to bring Appellant No. 1 back. Upon returning, Appellant No. 1 is alleged to have made an extra-judicial confession before about 50 people near Paramhansh's (PW-1) house.
+
+\tAppellant No. 1 had confessed that he had kidnapped Arjun at the behest of Ramkeval Mutur Yadav, Accused No. 5, who had animosity and grievance against the complainant. Appellant No. 1 had made Arjun sit on his bicycle and had taken him to the railway station, where he was handed over to Ram Ashish and Shivnath, Appellant/Accused Nos. 2 and
+
+\t3. Thereupon, Shailendra, Appellant No. 1, was arrested by the police on 14th February 2001.
+
+\t4. After the alleged extra-judicial confession, the complainant had sent his brother-in-law, Sadhusharan (PW-9), again to Vapi along with one Jugeswar to search for Appellant Nos. 2 and 3.`,
+
+14: `\tThe Appellant/Complainant, Nirmala Kothari's husband, Vinod GEETA AHUJA Ray Kothari was owner of a Hyundai Elantra vehicle, registration no. RJ36CA 0111, which was insured with the Insurance Company for a sum of Rs.5,00,000/- .
+
+\tThe said vehicle met with an accident with a tractor bearing no. HR38K 3216, on 06.06.2010 as a result of which the Appellant's husband, Vinod Ray Kothari, who was the owner of the car, and his daughter died and the vehicle was damaged. The driver of the vehicle, Dharmendra Singh Chauhan got an FIR registered with the police.
+
+\tThe Respondent/ Insurance Company, on intimation having been given to them, appointed a spot surveyor, and also a regular surveyor to carry out survey in the matter, but the claim was rejected by them vide their letter dated 28.03.2011. The Respondent/ Insurance Company stated in the repudiation letter that the driver Dharmendra Singh Chauhan did not have a proper driving licence at the time of the accident.
+
+\tThe licence produced by him, alleged to have been procured from the office of the licencing authority, Sheikh Sarai, Delhi could not be verified, as the concerned officer of the transport department returned their letter with the endorsement that the record pertaining to the said licence was not available.
+
+\tAlleging deficiency on the part of the Respondent/ Insurance Company, the complainant filed a consumer complaint, seeking directions to the Respondent/Insurance Company to pay the Insured declared value (IDV) i.e. a sum of Rs. 5,00,000/- alongwith interest @ 9% per annum from the date of filing the complaint till payment and also to pay a sum of Rs. 50,000/- as compensation for mental agony and Rs. 11,000/- as litigation cost.
+
+\tThe District Forum vide their order dated 30.05.2012, allowed the said consumer complaint and directed payment of an amount of Rs. 3,57,500/- to the complainant, as assessed by the surveyor alongwith interest @ 9% p.a. and cost of litigation of Rs. 2,500/-. Being aggrieved against the said order of the District Forum, the Respondent/ Insurance Company challenged the same by way of appeal before the State Commission, but the said appeal having been dismissed vide impugned order dated 18.09.2015, the Respondent/ Insurance Company came before National Commission by way of the Revision Petition No. 2835/2015.
+
+\tThe complaint no. 227/2012 had been filed by the same complainant Nirmala Kothari, against the Respondent/ Insurance Company, requesting for compensation of Rs. 2,00,000/- as accident claim with interest @ 9% per annum and compensation of Rs. 20,000/- for mental agony and Rs. 11,000/- for cost of litigation.`
 
 };
