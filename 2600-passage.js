@@ -400,6 +400,20 @@ export const passages = {
 
 \tThe distinction between these two provisions has been authoritatively explained by the Supreme Court in its decision in Tulasamma and Ors. v. Shesha Reddy (dead) by LRs,9 whereby it was held that in case of limited interest given to a woman by way of any instrument, if the said interest was given in recognition of her pre-existing right, the same would become enlarged into an absolute interest under Section 14(1) of the HSA.
 
-\tHowever, if the limited interest of any woman was created for the first time through the instrument, the terms of the instrument would prevail. The relevant portion of the said judgment reads as under: "After considering various aspects of the matter we are inclined to agree with the contentions raised by Mr Krishna Murty Iyer appearing for the appellants."`
+\tHowever, if the limited interest of any woman was created for the first time through the instrument, the terms of the instrument would prevail. The relevant portion of the said judgment reads as under: "After considering various aspects of the matter we are inclined to agree with the contentions raised by Mr Krishna Murty Iyer appearing for the appellants."`,
+
+34: `\t1. By this Interim Application, the Applicant / Decree Holder has sought interim relief in aid of enforcement of the final Arbitral Award dated 30th November, 2023 passed by the Sole ia-5306-2025.doc Arbitrator ("the Award").
+
+\t2. By the said Award, the Sole Arbitrator has awarded a principal decretal sum of INR 12,52,53,938/- and interest on the principal decretal sum at 10% p.a. from the date of the Award (i.e. 30th November, 2023) till actual payment against the Respondent No.1 and costs of INR 22,25,000/- against the Respondents.
+
+\t3. The Respondent Nos.1 and 2 have filed a joint / common Petition under Section 34 of the Arbitration Act (Commercial Arbitration Petition No.149 of 2025), challenging the Award. By an Order dated 22nd April, 2025 read with Order dated 29th April, 2025, the execution of the said Award was stayed to the limited extent of paragraph 176(c) of the Award i.e. to the extent of "costs" component of the Award of INR 22,25,000/- conditional upon a 100% deposit of that sum, which deposit was thereafter made. Resultantly, the amount of INR 14,79,71,228/- under the Award remains admittedly unsatisfied and outstanding. There is no stay on recovery of the said amount.
+
+\t4. This Court by an order dated 21st January, 2025 passed ia-5306-2025.doc in the above Execution Application, directed the Respondent No.1 to file an Affidavit of Disclosure of assets / income. Respondent No.2 deposing and acting on behalf of Respondent No.1 as its karta, filed an Affidavit of Disclosure dated 21st February 2025.
+
+\t5. The Applicant had filed an Affidavit in Reply dated 5th March 2025 in order to show how the Affidavit filed by Respondent No.2 (deposing on behalf of Respondent No.1) makes disclosures which are deliberately selective, insufficient, incomplete and non- compliant.
+
+\t6. It is the case of the Applicant that the Affidavit of Disclosure shows that Respondent Nos.1 and 2 have clearly been siphoning / dissipating / diverting / stripping Respondent No.1 of assets / value during the pendency of the legal proceedings with an intent to defeat the Award, which the Applicant claims highlights its case for reliefs against Respondent No.1 / 2. Further, the Applicant claims that Respondent No.1's Affidavit of Disclosure, even if taken on face value shows on admission that Respondent No.1 does not even have assets worth 5% of the decretal sum.
+
+\tHe has submitted that "though 'person' is not defined under the Arbitration Act, 'person' under Clause (42) of Section 2 of the General Clauses Act, 1897, is defined as "person" shall include any company or association or body of individuals, whether incorporated or not".`,
 
 };
