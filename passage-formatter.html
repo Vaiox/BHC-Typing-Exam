@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BHC Passage Formatter</title>
+
+<style>
+:root {
+    --bg: #080808;
+    --surface: #111318;
+    --surface-2: #181b22;
+    --border: #292d36;
+    --text: #f1f3f8;
+    --muted: #969eae;
+    --accent: #5da9ff;
+    --success: #43d9a3;
+    --danger: #ff7373;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    padding: 32px 18px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+header {
+    margin-bottom: 28px;
+}
+
+h1 {
+    font-size: clamp(25px, 4vw, 36px);
+    margin-bottom: 10px;
+    letter-spacing: -0.8px;
+}
+
+header p {
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 760px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    min-width: 0;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 9px;
+}
+
+.stat-value {
+    font-size: clamp(21px, 3vw, 29px);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.stat-value small {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.panel {
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 17px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.panel-header h2 {
+    font-size: 16px;
+}
+
+.panel-body {
+    padding: 16px;
+}
+
+textarea,
+.output {
+    display: block;
+    width: 100%;
+    min-height: 420px;
+    resize: vertical;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #0b0d11;
+    color: var(--text);
+    padding: 16px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.85;
+    tab-size: 4;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+textarea {
+    outline: none;
+}
+
+textarea:focus {
+    border-color: var(--accent);
+}
+
+.output {
+    overflow: auto;
+}
+
+.output:empty::before {
+    content: "Your formatted passage will appear here...";
+    color: #666d7a;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 13px;
+}
+
+button {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: var(--text);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+button:hover {
+    border-color: var(--accent);
+}
+
+button.primary {
+    background: var(--accent);
+    color: #07111f;
+    border-color: var(--accent);
+}
+
+button.success {
+    background: var(--success);
+    color: #061a13;
+    border-color: var(--success);
+}
+
+button.danger:hover {
+    border-color: var(--danger);
+}
+
+.settings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #c7cbd5;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.toggle input {
+    accent-color: var(--accent);
+    width: 15px;
+    height: 15px;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 12px;
+}
+
+.status {
+    min-height: 20px;
+    font-size: 12px;
+    color: var(--success);
+    margin-top: 10px;
+}
+
+footer {
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+@media (max-width: 850px) {
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    textarea,
+    .output {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .stat {
+        padding: 13px;
+    }
+
+    .panel-body {
+        padding: 11px;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+        <h1>BHC Passage Formatter</h1>
+        <p>
+            Paste your court passage, automatically convert curly quotes,
+            count words and characters, indent paragraphs, and generate
+            JavaScript-ready code for your typing test passages.
+        </p>
+    </header>
+
+    <section class="stats">
+        <div class="stat">
+            <div class="stat-label">Words</div>
+            <div class="stat-value" id="wordCount">0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">Characters with spaces</div>
+            <div class="stat-value" id="charWithSpaces">0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">Characters without spaces</div>
+            <div class="stat-value" id="charWithoutSpaces">0</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">Paragraphs</div>
+            <div class="stat-value" id="paragraphCount">0</div>
+        </div>
+    </section>
+
+    <div class="workspace">
+
+        <!-- INPUT PANEL -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Original Passage</h2>
+                <button class="danger" id="clearBtn">Clear</button>
+            </div>
+
+            <div class="settings">
+                <label class="toggle">
+                    <input type="checkbox" id="normalizeQuotes" checked>
+                    Convert curly quotes
+                </label>
+
+                <label class="toggle">
+                    <input type="checkbox" id="autoIndent" checked>
+                    Add paragraph \t
+                </label>
+            </div>
+
+            <div class="panel-body">
+                <textarea
+                    id="editor"
+                    placeholder="Paste your court judgment or typing passage here..."
+                    spellcheck="false"
+                    autocomplete="off"
+                ></textarea>
+
+                <div class="actions">
+                    <button class="primary" id="formatBtn">
+                        Format Passage
+                    </button>
+
+                    <button id="copyCleanBtn">
+                        Copy Clean Text
+                    </button>
+                </div>
+
+                <p class="hint">
+                    Blank lines separate paragraphs. Quote conversion and
+                    indentation are applied automatically. Your original
+                    wording and punctuation are preserved.
+                </p>
+
+                <div class="status" id="inputStatus" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- OUTPUT PANEL -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>JavaScript Output</h2>
+                <button id="copyOutputBtn" class="success">
+                    Copy Formatted Code
+                </button>
+            </div>
+
+            <div class="panel-body">
+                <textarea
+                    id="output"
+                    class="output"
+                    readonly
+                    spellcheck="false"
+                    placeholder="Formatted output will appear here..."
+                ></textarea>
+
+                <div class="actions">
+                    <button id="selectOutputBtn">
+                        Select All
+                    </button>
+
+                    <button id="downloadBtn">
+                        Download .txt
+                    </button>
+                </div>
+
+                <p class="hint">
+                    The output includes the outer backticks and trailing
+                    comma, but no passage number. Add your passage number
+                    manually when pasting into your collection.
+                </p>
+
+                <div class="status" id="outputStatus" aria-live="polite"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        Runs locally in your browser. Your passage is not uploaded to a server.
+    </footer>
+
+</div>
+
+<script>
+"use strict";
+
+const editor = document.getElementById("editor");
+const output = document.getElementById("output");
+
+const normalizeQuotesCheckbox =
+    document.getElementById("normalizeQuotes");
+
+const autoIndentCheckbox =
+    document.getElementById("autoIndent");
+
+const wordCountEl = document.getElementById("wordCount");
+const charWithSpacesEl = document.getElementById("charWithSpaces");
+const charWithoutSpacesEl = document.getElementById("charWithoutSpaces");
+const paragraphCountEl = document.getElementById("paragraphCount");
+
+const inputStatus = document.getElementById("inputStatus");
+const outputStatus = document.getElementById("outputStatus");
+
+let isUpdatingEditor = false;
+let lastInputText = "";
+
+/*
+=========================================================
+1. CONVERT CURLY QUOTES TO STRAIGHT QUOTES
+=========================================================
+*/
+
+function normalizeQuotes(text) {
+    return text
+        .replace(/[\u2018\u2019\u201A\u201B]/g, "'")
+        .replace(/[\u201C\u201D\u201E\u201F]/g, '"');
+}
+
+/*
+=========================================================
+2. CLEAN INPUT
+=========================================================
+*/
+
+function cleanText(text) {
+    let result = text.replace(/\r\n?/g, "\n");
+
+    if (normalizeQuotesCheckbox.checked) {
+        result = normalizeQuotes(result);
+    }
+
+    return result;
+}
+
+/*
+=========================================================
+3. SPLIT INTO PARAGRAPHS
+
+Blank lines separate paragraphs. Multiple blank lines are
+preserved in the editor, while generated output uses one
+blank line between paragraphs.
+=========================================================
+*/
+
+function getParagraphs(text) {
+    const normalized = text.replace(/\r\n?/g, "\n").trim();
+
+    if (!normalized) {
+        return [];
+    }
+
+    return normalized
+        .split(/\n[ \t]*\n+/)
+        .map(paragraph => paragraph.trim())
+        .filter(paragraph => paragraph.length > 0);
+}
+
+/*
+=========================================================
+4. ADD LITERAL \t TO EACH PARAGRAPH
+
+The output contains two characters: backslash and t.
+Existing literal \t prefixes are not duplicated.
+Actual leading tab characters are also recognized.
+=========================================================
+*/
+
+function indentParagraphs(text) {
+    const paragraphs = getParagraphs(text);
+
+    if (!autoIndentCheckbox.checked) {
+        return paragraphs.join("\n\n");
+    }
+
+    return paragraphs.map(paragraph => {
+        const cleaned = paragraph.replace(/^(?:\\t|\t)+/, "");
+        return "\\t" + cleaned;
+    }).join("\n\n");
+}
+
+/*
+=========================================================
+5. ESCAPE TEXT FOR JAVASCRIPT TEMPLATE LITERALS
+
+Protects backticks and ${ so they remain literal text
+inside the generated JavaScript template literal.
+=========================================================
+*/
+
+function escapeTemplateLiteral(text) {
+    return text
+        .replace(/\\/g, "\\\\")
+        .replace(/`/g, "\\`")
+        .replace(/\$\{/g, "\\${");
+}
+
+/*
+=========================================================
+6. GENERATE JAVASCRIPT OUTPUT
+=========================================================
+*/
+
+function generateOutput(text) {
+    const cleaned = cleanText(text);
+    const formatted = indentParagraphs(cleaned);
+
+    if (!formatted) {
+        return "";
+    }
+
+    const escaped = escapeTemplateLiteral(formatted);
+
+    return "`" + escaped + "`,";
+}
+
+/*
+=========================================================
+7. WORD COUNT
+
+Counts groups of non-whitespace characters separated by
+spaces or line breaks.
+=========================================================
+*/
+
+function countWords(text) {
+    const trimmed = text.trim();
+
+    if (!trimmed) {
+        return 0;
+    }
+
+    return trimmed.split(/\s+/u).length;
+}
+
+/*
+=========================================================
+8. PARAGRAPH COUNT
+=========================================================
+*/
+
+function countParagraphs(text) {
+    return getParagraphs(text).length;
+}
+
+/*
+=========================================================
+9. LIVE STATISTICS
+=========================================================
+*/
+
+function updateStats() {
+    const text = cleanText(editor.value);
+
+    wordCountEl.textContent =
+        countWords(text).toLocaleString();
+
+    charWithSpacesEl.textContent =
+        text.length.toLocaleString();
+
+    charWithoutSpacesEl.textContent =
+        text.replace(/\s/g, "").length.toLocaleString();
+
+    paragraphCountEl.textContent =
+        countParagraphs(text).toLocaleString();
+}
+
+/*
+=========================================================
+10. AUTOMATIC QUOTE CONVERSION
+
+Applies on paste and typing. The cursor position is
+preserved as far as possible.
+=========================================================
+*/
+
+function normalizeEditorValue() {
+    if (!normalizeQuotesCheckbox.checked || isUpdatingEditor) {
+        return;
+    }
+
+    const before = editor.value;
+    const after = normalizeQuotes(before);
+
+    if (before === after) {
+        return;
+    }
+
+    const start = editor.selectionStart;
+    const end = editor.selectionEnd;
+
+    isUpdatingEditor = true;
+    editor.value = after;
+
+    editor.setSelectionRange(
+        Math.min(start, after.length),
+        Math.min(end, after.length)
+    );
+
+    isUpdatingEditor = false;
+}
+
+/*
+=========================================================
+11. UPDATE OUTPUT
+=========================================================
+*/
+
+function updateOutput() {
+    normalizeEditorValue();
+
+    updateStats();
+
+    output.value = generateOutput(editor.value);
+
+    lastInputText = editor.value;
+}
+
+/*
+=========================================================
+12. PASTE HANDLING
+
+Normalize curly quotes immediately when text is pasted.
+=========================================================
+*/
+
+editor.addEventListener("paste", event => {
+    if (!normalizeQuotesCheckbox.checked) {
+        return;
+    }
+
+    const clipboardText =
+        event.clipboardData?.getData("text/plain");
+
+    if (clipboardText === undefined) {
+        return;
+    }
+
+    event.preventDefault();
+
+    const start = editor.selectionStart;
+    const end = editor.selectionEnd;
+
+    const pastedText = normalizeQuotes(
+        clipboardText.replace(/\r\n?/g, "\n")
+    );
+
+    const before = editor.value.slice(0, start);
+    const after = editor.value.slice(end);
+
+    editor.value = before + pastedText + after;
+
+    const cursor = start + pastedText.length;
+
+    editor.setSelectionRange(cursor, cursor);
+
+    updateOutput();
+});
+
+/*
+=========================================================
+13. EVENT LISTENERS
+=========================================================
+*/
+
+editor.addEventListener("input", () => {
+    updateOutput();
+});
+
+normalizeQuotesCheckbox.addEventListener("change", () => {
+    updateOutput();
+});
+
+autoIndentCheckbox.addEventListener("change", () => {
+    updateOutput();
+});
+
+document.getElementById("formatBtn").addEventListener("click", () => {
+    updateOutput();
+
+    inputStatus.textContent = "Passage formatted.";
+    outputStatus.textContent = "";
+
+    setTimeout(() => {
+        inputStatus.textContent = "";
+    }, 2500);
+});
+
+/*
+=========================================================
+14. COPY HELPER
+=========================================================
+*/
+
+async function copyText(text, statusElement, successMessage) {
+    if (!text) {
+        statusElement.textContent = "Nothing to copy.";
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(text);
+        statusElement.textContent = successMessage;
+    } catch (error) {
+        // Fallback for browsers where Clipboard API is unavailable.
+        const temporary = document.createElement("textarea");
+
+        temporary.value = text;
+        temporary.style.position = "fixed";
+        temporary.style.opacity = "0";
+
+        document.body.appendChild(temporary);
+        temporary.select();
+
+        const copied = document.execCommand("copy");
+        temporary.remove();
+
+        statusElement.textContent = copied
+            ? successMessage
+            : "Copy failed. Select the text and copy manually.";
+    }
+
+    setTimeout(() => {
+        statusElement.textContent = "";
+    }, 2500);
+}
+
+/*
+=========================================================
+15. COPY FORMATTED CODE
+=========================================================
+*/
+
+document.getElementById("copyOutputBtn").addEventListener("click", () => {
+    copyText(
+        output.value,
+        outputStatus,
+        "Formatted code copied!"
+    );
+});
+
+/*
+=========================================================
+16. COPY CLEAN TEXT WITHOUT JAVASCRIPT WRAPPING
+=========================================================
+*/
+
+document.getElementById("copyCleanBtn").addEventListener("click", () => {
+    const cleaned = cleanText(editor.value);
+    const formatted = indentParagraphs(cleaned);
+
+    copyText(
+        formatted,
+        inputStatus,
+        "Clean text copied!"
+    );
+});
+
+/*
+=========================================================
+17. SELECT ALL OUTPUT
+=========================================================
+*/
+
+document.getElementById("selectOutputBtn").addEventListener("click", () => {
+    output.focus();
+    output.select();
+
+    outputStatus.textContent = "Output selected.";
+});
+
+/*
+=========================================================
+18. CLEAR EDITOR
+=========================================================
+*/
+
+document.getElementById("clearBtn").addEventListener("click", () => {
+    if (!editor.value.trim()) {
+        return;
+    }
+
+    const confirmed = confirm(
+        "Clear the current passage? This cannot be undone."
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    editor.value = "";
+    output.value = "";
+
+    updateStats();
+
+    inputStatus.textContent = "";
+    outputStatus.textContent = "";
+
+    editor.focus();
+});
+
+/*
+=========================================================
+19. DOWNLOAD OUTPUT AS TXT
+=========================================================
+*/
+
+document.getElementById("downloadBtn").addEventListener("click", () => {
+    if (!output.value) {
+        outputStatus.textContent = "Nothing to download.";
+        return;
+    }
+
+    const blob = new Blob(
+        [output.value],
+        { type: "text/plain;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "formatted-passage.txt";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+    outputStatus.textContent = "Download started.";
+
+    setTimeout(() => {
+        outputStatus.textContent = "";
+    }, 2500);
+});
+
+/*
+=========================================================
+20. INITIALIZE
+=========================================================
+*/
+
+updateOutput();
+
+</script>
+</body>
+</html>
