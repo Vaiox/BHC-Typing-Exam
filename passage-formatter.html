@@ -511,7 +511,6 @@ inside the generated JavaScript template literal.
 
 function escapeTemplateLiteral(text) {
     return text
-        .replace(/\\/g, "\\\\")
         .replace(/`/g, "\\`")
         .replace(/\$\{/g, "\\${");
 }
