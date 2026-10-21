@@ -879,6 +879,147 @@ async function initializeAccess() {
   }
 }
 
+
+/* =========================================================
+   PERSISTENT PASSAGE SHUFFLE CYCLE
+========================================================= */
+
+// Separate history for each passage file.
+// Both typing modes share this history.
+function getPassageHistoryKey() {
+  return `passageCycle_${currentPassageLimit}`;
+}
+
+function getPassageHistory() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(getPassageHistoryKey()) || "{}"
+    );
+
+    return {
+      used: Array.isArray(saved.used)
+        ? saved.used.map(String)
+        : [],
+
+      remaining: Array.isArray(saved.remaining)
+        ? saved.remaining.map(String)
+        : [],
+
+      pending: saved.pending == null
+        ? null
+        : String(saved.pending)
+    };
+  } catch (error) {
+    console.warn("Could not read passage history:", error);
+
+    return {
+      used: [],
+      remaining: [],
+      pending: null
+    };
+  }
+}
+
+function savePassageHistory(history) {
+  try {
+    localStorage.setItem(
+      getPassageHistoryKey(),
+      JSON.stringify(history)
+    );
+  } catch (error) {
+    console.error("Could not save passage history:", error);
+  }
+}
+
+function shuffleArray(items) {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffled[i], shuffled[j]] =
+      [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+function selectNextPassage() {
+  const allIds = Object.keys(passages).map(String);
+
+  if (!allIds.length) {
+    throw new Error("No passages are available.");
+  }
+
+  const history = getPassageHistory();
+
+  // If the previous passage was selected but typing never
+  // started, show that same passage again.
+  if (
+    history.pending &&
+    allIds.includes(history.pending)
+  ) {
+    return {
+      id: history.pending,
+      history
+    };
+  }
+
+  // Remove IDs that no longer exist in the passage file.
+  history.used = history.used.filter(
+    id => allIds.includes(id)
+  );
+
+  history.remaining = history.remaining.filter(
+    id =>
+      allIds.includes(id) &&
+      !history.used.includes(id)
+  );
+
+  // Remove accidental duplicate IDs from saved history.
+  history.remaining = [
+    ...new Set(history.remaining)
+  ];
+
+  // Start a new shuffled cycle only when no passages remain.
+  if (history.remaining.length === 0) {
+    history.remaining = shuffleArray(
+      allIds.filter(id => !history.used.includes(id))
+    );
+  }
+
+  // All current passages were used: reset the cycle.
+  if (history.remaining.length === 0) {
+    history.used = [];
+    history.remaining = shuffleArray(allIds);
+  }
+
+  const id = history.remaining.shift();
+
+  history.pending = id;
+
+  savePassageHistory(history);
+
+  return {
+    id,
+    history
+  };
+}
+
+function markCurrentPassageUsed() {
+  const history = getPassageHistory();
+  const id = String(currentId);
+
+  // Mark the selected passage as used only once.
+  if (!history.used.includes(id)) {
+    history.used.push(id);
+  }
+
+  history.pending = null;
+
+  savePassageHistory(history);
+}
+
 /* =========================================================
    PREPARE TEST
 ========================================================= */
@@ -901,50 +1042,22 @@ function prepareTest() {
 
   clearNotice();
 
-  const key = `recentPassages_${currentPassageLimit}`;
-
-  let history = [];
+  let selected;
 
   try {
-    history = JSON.parse(
-      localStorage.getItem(key) || "[]"
+    selected = selectNextPassage();
+  } catch (error) {
+    console.error("Passage selection failed:", error);
+
+    showNotice(
+      "No passages are available in this collection."
     );
 
-    if (!Array.isArray(history)) {
-      history = [];
-    }
-  } catch {
-    history = [];
-  }
-
-  const all = Object.keys(passages);
-
-  const unused = all.filter(
-    id => !history.includes(id)
-  );
-
-  const usable = unused.length ? unused : all;
-
-  if (!usable.length) {
-    showNotice("No passages are available in this collection.");
     return;
   }
 
-  currentId =
-    usable[Math.floor(Math.random() * usable.length)];
-
+  currentId = selected.id;
   currentPassage = passages[currentId];
-
-  history.push(currentId);
-
-  if (history.length > 25) {
-    history.shift();
-  }
-
-  localStorage.setItem(
-    key,
-    JSON.stringify(history)
-  );
 
   preview.textContent = currentPassage;
 
@@ -1095,11 +1208,16 @@ input.addEventListener("input", () => {
 
   if (!timerStarted && input.value.length > 0) {
     timerStarted = true;
+
+    // Record the passage only when typing actually begins.
+    markCurrentPassageUsed();
+
     startTimer();
   }
 
   updateCounters();
 });
+
 
 /* =========================================================
    COMPARISON AND SCORING
