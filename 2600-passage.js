@@ -416,4 +416,84 @@ export const passages = {
 
 \tHe has submitted that "though 'person' is not defined under the Arbitration Act, 'person' under Clause (42) of Section 2 of the General Clauses Act, 1897, is defined as "person" shall include any company or association or body of individuals, whether incorporated or not".`,
 
+35: `\tSection 213(1) stipulates that no right "as executor or legatee" can be established in a court of law on the strength of a Will unless probate has been granted in respect thereof. The key expression in the said sub-section is "as executor or legatee".
+
+\tAgainst such backdrop, sub-section (1) of Section 211 provides that the executor of a testator is his legal representative "for all purposes"
+
+\tand all the property of the deceased person "vests in him as such". It is to be noted that the conferment of powers as the legal representative of the estate of the deceased testator on the executor is "for all purposes". Moreover, the expression "as such" suffixing the phrase "vests in him" makes it abundantly clear that the investiture of the estate of the deceased testator on the executor is in the capacity of the legal representative of the deceased.
+
+\tA conjoint reading of Sections 213 and 211 makes it abundantly clear that the bar on acting as an executor under Section 213 is restricted to the capacity of executor alone, and does not extend to the role of a legal representative of the deceased testator. For example, there cannot be any distribution of assets by the executor (acting as executor) in favour of the legatees in terms of the Will without a probate being granted first. Such fetter is only from acting as an executor and not otherwise.
+
+\tOn the other hand, under sub-section (1) of Section 211, the bar on the executor acting as an "executor" does not denude the executor of his power, acting as the "legal representative" of the testator (on whom the property of the deceased vests on his demise), to protect the property and to participate in any legal proceeding for such purpose in respect of the property of the deceased.
+
+\tThus, the executor can act as the legal representative of the testator before any judicial forum or otherwise, stopping short of distributing the property as executor in terms of the Will, even before getting a probate. Nothing in Section 211 of the Succession Act makes such investiture of the testator"s property and the locus to act as legal representative of the testator for all purposes on his executor subject to a prior grant of probate. Thus, such investiture of property and character as legal representative is triggered by the demise of the testator itself (of course, only if a Will has been executed by the testator), irrespective of probate being granted.
+
+\tTo answer this question, the term "survivorship" is to be examined in proper perspective. In law, particularly in the context of Hindu law, by the Dayabhaga School of which the testator was undisputedly governed, the expression "survivorship" is different from "succession".`,
+
+36: `\tThis appeal takes exception to the judgment and order dated 07.05.2018 passed by the Division Bench of Allahabad High Court (hereinafter referred to as 'the High Court') allowing the Special Appeal filed by the State-Respondent and setting aside the judgment and order dated 15.05.2014 passed in Writ Petition filed by the appellant herein.
+
+\tThe appellant is a Post Graduate from Kanpur University and also holds the certificate of Sangit Prabhakar and Senior Diploma from the Prayag Sangit Samiti, Allahabad. On 23.07.1984, she was appointed as Assistant Music Teacher in Government Inter College, Mahmoodabad, District Sitapur on a leave vacancy as the regular incumbent went on leave without pay. The terms of the appointment order specified that the appointment was temporary and meant to last till the permanent incumbent rejoined the service. The educational qualifications of the appellant satisfied the requirements prescribed under the relevant service rules. Vide letter dated 16.05.1986, the terms of the appointment order dated 23.07.1984 was modified by providing that the appointment was to last till the regular incumbent joined back or 20.05.1986, whichever was earlier.
+
+\tAggrieved by the said modification in the terms of appointment, the appellant filed a Writ Petition No. 3316 (SS) of 1986 before the High Court challenging the modified terms of the appointment. On 19.05.1986, the management of the College issued another order dispensing with the services of the appellant w.e.f. 20.05.1986.
+
+\tA learned Single Judge vide order dated 20.05.1986 while issuing notice to the respondents stayed the operation of the order dated 16.05.1986 modifying the terms of the appointment order. It was further provided that the interim order shall automatically lapse on return of the permanent incumbent Smt. Safia Khatoon.
+
+\tIt so happened that Smt. Safia Khatoon did not rejoin the service, as a result her services were terminated vide order dated 16.01.1988. It is undisputed fact that the respondents never undertook any steps for filling up the post and the appellant was continued on the said post without any interruption till 2020.
+
+\tOn 17.08.2001, the State of Uttar Pradesh Promulgated the UP Secondary Education Department Regularization of Ad hoc appointments on the Post of Trained Graduate Teachers Rules, 2001 ( for short known as 'Regularization Rules, 2001).
+
+\tOn 02.11.2001, the appellant made a representation to the authorities seeking regularization in accordance with the said Rules. When no action was taken on a representation for a substantial period of time, she approached the High Court.`,
+
+37: `\tThe assessee is a HUF of which Seth Gopaldas of Ichhawar is the "karta". The relevant assessment year is 1964-65, for which the accounting period ended on Diwali, 1963, i.e., October 20, 1963. The assessee was assessed as a HUF up to the assessment year. 1963-64. For the assessment year 1963-64, an application was made on July 6, 1963, under Section 171 of the Act, for recording a finding of total partition in respect of this HUF. However, that application was rejected and the assessee's claim of total partition was not recognised.
+
+\tFor the relevant assessment year 1964-65, initially a claim for recognising a total partition within the family was made by the assessee but subsequently by an application dated September 16, 1967, filed by Seth Gopaldas under Section 171 of the Act, a claim was made for recording a partial partition only, which prayer was reiterated by Mahendra Kumar, a major son of Seth Gopaldas, by another application made on January 16, 1969, to the ITO.
+
+\tSome of the relevant details concerning the HUF, of which Seth Gopaldas is the karta, are now stated. The assessee, HUF, was running two shops known as "M/s. Ramkishan Dhanraj" and "M/s. Ramkishan Hemraj". Hemraj died leaving his widow, Harkuwarbai and no issues. Harkuwarbai then adopted Hiralal as her son who died issueless in early 1928, survived by his widow, Kasturibai, and the said Harkuwarbai. Therefore, on March 23, 1928, the widow, Kasturibai, with the consent of her mother-in-law, Harkuwarbai, adopted the said Gopaldas as a son.
+
+\tPrior to the adoption of Gopaldas, by an agreement between the concerned parties on March 19, 1928, Kasturibai was allotted certain specified properties. It appears that after some time the relations between Kasturibai and Gopaldas became strained which led to a litigation wherein the adoption of Gopaldas was challenged, but the civil court upheld the validity of adoption of Gopaldas.
+
+\tThe validity of adoption of Gopaldas, so settled, is no longer under challenge, Gopaldas has three sons, Mahendra Kumar, Krishna Kumar and Dinesh Kumar, the fourth son, Rajendra Kumar, having died in infancy, and three daughters, viz., Premlata, Suryakanta and Chandrakanta. Of the daughters, Premlata alone was married at the relevant time.
+
+\tBy a "registered deed" of partition dated October 23, 1962, Seth Gopaldas, in exercise of his right as patria, potestas, without the consent of his sons, who were all then minors, effected a partition of the family properties specified therein, describing that partition as a total partition. Similarly, on October 27, 1962, Seth Gopaldas, in exercise of his right as patria potestas, partitioned certain movables.`,
+
+38: `\tThis very principle has been referred to by Justice Varadacharlar in AIR (32) 1945 FC 25 at p. 33, in the following terms:
+
+\t"The Act is 'prima facie' prospective and its proper construction and operation must be determined with reference to conditions and contingencies likely to arise, after its commencement, because these alone could presumably have been within its contemplation."
+
+\tThe same principle of construction has also been adopted in a Pull Bench case of the Patna High Court relating to the Inheritance Amendment Act 1929 - See 'Bhagwat Narain v. Srinavas', AIR 124) 1937 Pat. 113, at p. 121, and also by Chief Justice Sir Courtney Terrell in 'Punyabrata Das v. Monmohan Ray', AIR (21) 1934 Pat. 427 at p. 430, when he construed the words "who marries" occurring in the Special Marriages (Amendment) Act XXX (30) of 1923 as synonymous with "who shall marry hereafter."
+
+\tI shall now turn to the sections of the Act other than Section 3 and the implications thereof. In my judgment) in the Division Bench I came to the conclusion - on a consideration also at Sections 2, 4 and 5 of the Act, 1937, as amended by the Act of 1938 - and having regard to the history of the amendment - that the Legislature had clearly intended that the Act ought not to be applied to the case of a widow of a coparcener who died prior to the passing of the Act.
+
+\tMy Lord the Chief Justice and my learned brother Justice Narasimham have however - on a consideration of these very sections - come to a different conclusion. I do not propose to go into the matter any further except to make the following observations,. My learned brothers point out that, in the view I take of Sections 2, 4 and 5, the use of the phrase "dying intestate" appearing in Section 2, as applied to the case of a coparcener in respect of his joint family interest, will not be in consonance with accepted legal notions of testacy and intestacy and is - to say the least - bad English if not also bad law.
+
+\tThey further point out that the word "intestate" occurring in Sub-section (2) of Section 3 of the Act, as it stood in 1837, was omitted in the Amendment of 1938 and that having regard to that circumstance Section 4 would be absolutely redundant if it was not meant to imply and convey that Section 3 (2) is to apply to a death prior to the Act.
+
+\tWhile I do not deny the force of this criticism, I would with respect point out that, if the contrary view is taken of Sections. 2, 4 and 5 as my learned brothers have done, one is obliged to say - as indeed Justice Narasimham, has done - that Section 2 is redundant and the word "intestate" therein should in any case be deleted.`,
+
+39: `\tIf the emphasis, however, is on the statement, "for any consideration he pleases" and what was meant was that by adopting the device of stating some nominal consideration a coparcener cannot make a gift so as to defeat the right of survivorship of other members, it can no doubt be accepted. I think this is what the learned Judge meant when he added that the principle so stated conflicts with the decision in 'Rottala Ranganathan Chetti v. Pulicat Ramasami Chetti', 27 Mad 162. I do think that the learned Judges in 'Vadivelam v. Natesam', 37 Mad 435, when they stated the law in those terms intended to encourage gifts in the cloak of an unreal or nominal consideration.
+
+\tIn the sentence at page 830: "The result would be if the consideration is distributed over all the shares and if we then try to uphold the sale even as regards the alienor's share, the sale, of that share should (sic) be for a grossly inadequate consideration," in my opinion, the word "not" is omitted after the word "should" and before the words "be for a grossly inadequate consideration", in which case the sentence will mean that if the alienor's share is not undersold, the sale may be upheld. But then in the next sentence, the learned Judge seems to think that as the real value of the father's one fourth share was Rs. 500 and as the alienee paid only Rs. 400, 1/4th of the binding consideration being Rs. 100 and the sale of the one-fourth share was therefore for an inadequate consideration and therefore it should not be upheld on the principle laid down in 'Ranganathan Chetti v. Ramasami Chetti, 27 Mad 162.
+
+\tAt page 829 the learned Judge found that the sale could not be regarded as for a grossly inadequate consideration and "As practically effecting a gift of his share and there is no objection to upholding the sale as one of the father's share only."
+
+\tThis seems to conflict with the view stated In the next page, 830, but then in the next sentence the learned Judge states:
+
+\t"In such a case the only equity that can be worked out in favour of the vendee would be to uphold the sale of the alienor's share and to allot the whole of the consideration as consideration for that share."
+
+\tThe view taken by Mulla in his commentary on the Transfer of Property Act was followed in preference to that of Mayne by Chandrasekhara Aiyar J. in 'Eamaswami Chettiar v. Subramania Chettiar', S. A. No. 940 of 1945 and by Tyagarajan J. in 'Thimmu Reddiar v. Sennappa Reddiar', S. A. No. 2339 of 1945 and 95 of 1946. The last decision was affirmed on Letters Patent Appeal by Horwill and Balakrishna Ayyar JJ. in 'Thimmu Reddiar v. Sennappa Reddiar', L. P. A. Nos. 2 and 3 of 1948.`,
+
+40: `\t1. By means of the present petition filed under Article 226 of the Constitution of India, the petitioner has challenged the order dated 24th February, 1990 passed by the Additional District Magistrate (Finance and Revenue), Moradabad under Sections 47 and 33 read with Section 40 of the Indian Stamps Act (hereinafter referred to as 'the Act').
+
+\t2. We have heard Sri A.K. Gaur, learned counsel for the petitioners and the learned Standing Counsel for the respondents.
+
+\t3. We are conscious of the fact that the petitioner has an alternative statutory remedy available under Section 56 of the Act before the Chief Controlling Revenue Authority, U. P. However, since the petition was entertained by this Court and was admitted in the year 1990 and remained pending for more than 13 years, we do not think it proper to relegate the petitioners to the forum of alternative remedy after lapse of such a considerable period.
+
+\t4. The factual matrix as set out in the petition is that the petitioners purchased a land measuring 1.65 acre comprising of khasra plots No. 509 and 510/1 situate in village Maulagarh, Pargana and Tehsil Bilari, District Moradabad by means of sale deed dated 11-7-1985 registered on 18-9-1995 (1985). A total sum of Rs. 49,000/- was paid as consideration and a sum of Rs. 5,200/-was paid as stamp duty.
+
+\t5. The Additional District Magistrate (Finance and Revenue), respondent No. 1 issued notices to the petitioners in March, 1989 almost three and half years of the execution of the sale deed on the ground that property had been undervalued in the instrument and directed the Tehsildar to make spot inspection and submit a report.
+
+\t6. The respondent No. 1 vide order dated 24th February, 1990 determined the value of the land to Rs. 3,67,260/- and accordingly, levied a deficiency of Rs. 33,387/-towards stamp duty. A penalty of Rs. 33,000/- was also imposed.
+
+\t7. We have gone through the impugned order of the respondent No. 1. A very strange and peculiar method has been adopted by respondent No. 1 for determining the value of the property. An area of 0.20 decimal over which the machine for extracting peppermint oil was installed has been held to be a commercial land and accordingly, the market value of the said area has been determined to Rs. 3,23,760/- by applying the commercial rate of Rs. 400/- per sq. mtr. The remaining area of 1.45 acre has been valued at Rs. 43,000/- treating it to be an agricultural land. Thus it is clear that if the market value of the land was determined treating the entire area to be an agricultural land, the stamp duty paid by the petitioners on the instrument would have been sufficient.`
+
 };
