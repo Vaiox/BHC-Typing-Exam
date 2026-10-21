@@ -954,15 +954,46 @@ function selectNextPassage() {
   const history = getPassageHistory();
 
   // If the previous passage was selected but typing never
-  // started, show that same passage again.
+  // started, return it to the unused pool instead of getting
+  // stuck on it after every refresh.
   if (
     history.pending &&
     allIds.includes(history.pending)
   ) {
-    return {
-      id: history.pending,
-      history
-    };
+    if (!history.used.includes(history.pending)) {
+      history.remaining.push(history.pending);
+    }
+
+    history.remaining = [
+      ...new Set(
+        history.remaining.filter(
+          id =>
+            allIds.includes(id) &&
+            !history.used.includes(id)
+        )
+      )
+    ];
+
+    history.remaining = shuffleArray(history.remaining);
+
+    // Avoid showing the same pending passage again when
+    // other unused passages are available.
+    if (
+      history.remaining.length > 1 &&
+      history.remaining[history.remaining.length - 1] === history.pending
+    ) {
+      const lastIndex = history.remaining.length - 1;
+
+      [
+        history.remaining[0],
+        history.remaining[lastIndex]
+      ] = [
+        history.remaining[lastIndex],
+        history.remaining[0]
+      ];
+    }
+
+    history.pending = null;
   }
 
   // Remove IDs that no longer exist in the passage file.
