@@ -144,9 +144,7 @@ export const passages = {
 
 \tAfter about four days, the Appellant No.1  had made a call to the complainant and disclosed that he was in Vapi. The complainant got suspicious and thereupon had sent his brother-in-law Sadhusharan Harinandan Yadav (PW-9) and two other relatives Sudarshan and Premchand Yadav to Vapi to bring Appellant No. 1 back. Upon returning, Appellant No. 1 is alleged to have made an extra-judicial confession before about 50 people near Paramhansh's (PW-1) house.
 
-\tAppellant No. 1 had confessed that he had kidnapped Arjun at the behest of Ramkeval Mutur Yadav, Accused No. 5, who had animosity and grievance against the complainant. Appellant No. 1 had made Arjun sit on his bicycle and had taken him to the railway station, where he was handed over to Ram Ashish and Shivnath, Appellant/Accused Nos. 2 and
-
-\t3. Thereupon, Shailendra, Appellant No. 1, was arrested by the police on 14th February 2001.
+\tAppellant No. 1 had confessed that he had kidnapped Arjun at the behest of Ramkeval Mutur Yadav, Accused No. 5, who had animosity and grievance against the complainant. Appellant No. 1 had made Arjun sit on his bicycle and had taken him to the railway station, where he was handed over to Ram Ashish and Shivnath, Appellant/Accused Nos. 2 and 3. Thereupon, Shailendra, Appellant No. 1, was arrested by the police on 14th February 2001.
 
 \t4. After the alleged extra-judicial confession, the complainant had sent his brother-in-law, Sadhusharan (PW-9), again to Vapi along with one Jugeswar to search for Appellant Nos. 2 and 3.`,
 
