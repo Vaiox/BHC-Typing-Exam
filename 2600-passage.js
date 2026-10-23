@@ -622,6 +622,20 @@ export const passages = {
 
 \tLearned Advocate-General, appearing for the petitioner, has challenged the excess levy of the estate duty on the ground that the provisions of Section 34(1)(c) of the Estate Duty Act, 1953 (hereinafter referred to as "the Act") providing for aggregation of the shares of lineal descendants with that of the deceased are ultra vires the Constitution as it violates Article 14 of the Constitution of India. To appreciate the contention of the counsel for the petitioner and the scope of Section 34(1)(c) of the Act, we may also consider some of its other provisions which would help us in deciding the controversy.
 
-\tSection 2(15) defines "property "as including" any interest in property, movable or immovable, the proceeds of sale thereof and any money or investment for the time being representing the proceeds of sale and also including any property converted from one species into another by any method".`
+\tSection 2(15) defines "property "as including" any interest in property, movable or immovable, the proceeds of sale thereof and any money or investment for the time being representing the proceeds of sale and also including any property converted from one species into another by any method".`,
+
+51: `\tThe respondent relies for proof that the community had become "Hindu" out and out upon a series of decisions in which 'one gaddi after another' was treated as being governed generally by the Hindu Law. The first of these is a decision of the year 1793 relating to the Pandra gaddi, in which the property is described as held jointly.
+
+\tThe decision is referred to in 'Exhibit 9-D' at page 102 of the paper-book, parts I and II. The next decision is of the year 1816 of a case relating to the Jharia gaddi, The judgment is reported in 4. Select Reports at page 72, also in VII Indian Decisions at page 54 [Widows of Raja Zorawur Sing v. Koonwur Pertee Sing 4 Sel. Rep. 72 : 7 Ind. Dec. (O.S.) 54].
+
+\tAt page 75 of the Select Reports the Jharia family are spoken of by the local Court as Rajputs who have come from the "Western Provinces" and are governed by that law, and that is in fact the "Jharia" tradition now.
+
+\tOn the other hand at page 76 the case was decided in appeal on the ground that the family was governed by the customs prevailing in jungle estates. The next case is a decision of the year 1845 relating to the Gawan gaddi, the effect of which is, for the purpose we are considering, somewhat ambiguous. At pages 222, 223 and 224, part IV of the paper-book, there occur expressions which suggest that it is intended to apply the 'Mitakshara' Law.
+
+\tOn the other hand in the concluding portion of the judgment the decision appears to be based upon a custom which formerly was in vogue in the Parganas of Kharagdiha and other jungle and hill tracts. The custom is treated as exceptional. The next decision is of the year 1850 (page 130 of the same volume of the paper-book) relating to the Sarwan gaddi, in which it was held that the daughter's son, who was the then "Raja of Tundi" and other gaddis, was entitled to succeed.
+
+\tThe test of offering Panda, a pure "Hindu Law" test, was applied-Exhibit Y-4. The next decision is of the year 1862 relating to the Narainpur gaddi-Exhibit L at page 61 of the respondent's portion of the paper-book, in which it was held that one Ahlad Kumari was by the Hindu Law heir to her son. The next decision relating to the Chakai gaddi of the year 1870 is reported as Tekait Doorga Pershad Singh v. Musammat Doorga Koonwaree 13 W.R. 10 : 9 B.L.R. 306 (note), in which both sides admitted that the right of a mother to succeed should be determined in accordance with the Hindu Law.
+
+\tThe defendant at a later stage in the case appears to have set up a custom of female exclusion but he was not allowed to prove it. Recognition of the adoption and delay in asserting that it was contrary to Custom.`
 
 };
