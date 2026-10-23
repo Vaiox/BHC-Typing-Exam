@@ -636,6 +636,58 @@ export const passages = {
 
 \tThe test of offering Panda, a pure "Hindu Law" test, was applied-Exhibit Y-4. The next decision is of the year 1862 relating to the Narainpur gaddi-Exhibit L at page 61 of the respondent's portion of the paper-book, in which it was held that one Ahlad Kumari was by the Hindu Law heir to her son. The next decision relating to the Chakai gaddi of the year 1870 is reported as Tekait Doorga Pershad Singh v. Musammat Doorga Koonwaree 13 W.R. 10 : 9 B.L.R. 306 (note), in which both sides admitted that the right of a mother to succeed should be determined in accordance with the Hindu Law.
 
-\tThe defendant at a later stage in the case appears to have set up a custom of female exclusion but he was not allowed to prove it. Recognition of the adoption and delay in asserting that it was contrary to Custom.`
+\tThe defendant at a later stage in the case appears to have set up a custom of female exclusion but he was not allowed to prove it. Recognition of the adoption and delay in asserting that it was contrary to Custom.`,
+
+52: `\tIt is true that the estates of the community are impartible and descend to the eldest son, but though this form of succession is not expressly dealt with in the Mitakshara, it is certainly not foreign to Hindu Law and is in fact referred to in authoritative Hindu books of law.
+
+\tIn Fanindra Deb Raikat's case 11 C. 463 : 12 I.A. 72 : 4 Sar. P.C.J.610 : 9 Ind. Jur. 277 : 5 Ind. Dec. (N.S.) 1068 (P.C.) their Lordships also notice that the High Court had erred in referring to a previous case as showing that the family was treated as one governed by Hindu Law. In the case before us, on the other hand, several instances have been placed before us in which members of this community were undoubtedly treated as governed by Hindu Law.
+
+\tMr. Das has relied, upon the custom of marrying within the gotra, but as we have pointed out, that rule which is not a universal rule among Hindus is followed in spirit by this community, inasmuch as they do not marry within certain groups. A further distinction in the present case from Fanindra Deb Raikat's case 11 C. 463 : 12 I.A. 72 : 4 Sar. P.C.J.610 : 9 Ind. Jur. 277 : 5 Ind. Dec. (N.S.) 1068 (P.C.) is this.
+
+\tThe main body of the community including the great majority of the gaddis became Hindu at some period of which there is no record. The date of their adoption of Hinduism cannot be placed at so recent a date as in the case of the family which was the subject of the case of Fanindra Deb Raikat v. Rajeswar Das 11 C. 463 : 12 I.A. 72 : 4 Sar. P.C.J.610 : 9 Ind. Jur. 277 : 5 Ind. Dec. (N.S.) 1068 (P.C.): it is only in respect of the Lachmipur family and the gaddis adjacent thereto in the Santal Parganas who are, it seems, offshoots of the main body of the community that we have evidence to suggest that the adoption of Hinduism was recent.
+
+\tBut in dealing with the custom of the entire community, it is of more importance to have regard to the history of the main body than to the history of these less important branches. After all the question of the burden of proof is not of any very great importance in a Court of Appeal where evidence has been given upon both sides in the original Court.
+
+\tWe observe that in the case of Fanindra Deb Raikat v. Rajeswar Das 11 C. 463 : 12 I.A. 72 : 4 Sar. P.C.J.610 : 9 Ind. Jur. 277 : 5 Ind. Dec. (N.S.) 1068 (P.C.) above referred to, there was absolutely no counter-evidence. When we say that having regard to the origin and history of the present community the burden of proving that the right to adopt was hot assimilated was on the plaintiffs, we merely mean that in our opinion it is more probable that this community assimilated the law of adoption than that they did not do so.`,
+
+53: `\tThe first of these witnesses is the Raja of Tundi. His evidence is first that "there is no custom of taking a child in adoption amongst us." Now the custom stated in this form has now been abandoned. He is then asked, "if adoption at all took place, would you recognize it?"
+
+\tHe answers, as there is no custom of adoption amongst us, therefore how can it be recognized?" which is a very equivocal answer and does not indicate a consciousness of a custom against inheritance by adoption. In cross-examination he says, "that no question about adoption has ever arisen to his knowledge", that he is not aware of the object of adoption and knows no reason for the custom.
+
+\tWhen asked whether he would go if he was invited to Lachmipur, be said "that he would decide after consulting." The next witness upon whom we are asked to rely is the Raja of Katras, witness No. 3. In answer to the question, whether there was any custom forbidding adoption, he replied that adoption had never taken place.
+
+\tWhen asked "if any adoption is made in your clan, would you recognise it"; he replied "our elan does not do so; if in future such occurrence takes place our clans would consider about it." The question was repeated and ho answered "if our clan accepts it I shall recognise, otherwise not." He states in cross-examination that the question of adopted son had never arisen. When asked "was it ever said whether a son can or cannot be adopted"; the reply was "never."
+
+\tHe appears to have sent a present through a servant at the time of the adoption ceremony; and he claims that the castemen have the power of deciding either for or against a claim to succession. It is clear from his evidence that the fact of Pratap being an adopted son made no social difference to him at all. On a previous occasion this witness stated that there was a custom of adoption in the family, see Exhibit M-3 at page 59 of the 4th part of the paper-book.
+
+\tThe evidence that he made this previous statement was not discovered till after his death and he was not confronted with it; and we have for that reason excluded it from consideration. It may be noted that Mr. Das contends that Exhibit M-3 is susceptible of interpretation in his favour. It certainly is somewhat ambiguous. Apart from that the result of Katras's deposition is very equivocal.
+
+\tThe next witness is the Raja of Jharia. He gives clear evidence that there is no custom of adoption, a statement which is now given up by the appellant. In reply to the question "if any son is adopted, is he entitled to succeed"; he answers "there is no custom of adoption at all, how can he get it"?`,
+
+54: `\tThe only question to be decided in this Second Appeal is one of succession to the properties of one C. Subbayya, who died in 1906 or 1907 leaving a widow Narakka who died in October 1918. The plaintiff is a vendee (under a sale deed, dated 14th October 1919) from A. Venkata Reddi and Bali Reddi, who are the mother's sister's sons of Subbayya.
+
+\tThe District Munsif found that Subbayya has also left his mother's brother's sons but held, relying on Appandai Vathiyar v. Bagubali Mudaliyar (1910) I.L.R., 33 Mad., 439 that the plaintiff was entitled to succeed. The Subordinate Judge confirmed his judgment. The defendants file this Second Appeal and contend that the mother's brother's son is entitled to priority over the mother's sister's son under the Hindu Law.
+
+\tThey point out that the decision in Appandai Vathiyar v. Bagubali Mudaliyar (1910) I.L.R., 33 Mad., 439 has been dissented from in Ram Chadan Lal v. Rahim Baksh (1916) I.L.R., 38 All., 416 and it must be regarded as shaken if not overruled by the decision in Vedachela Mudaliar v. Subramania Mudaliar (1921) I.L.R., 44 Mad., 753 (P.C.).
+
+\tThe question is one relating to the succession of bandhus. It is desirable to clear the ground by stating the principles of succession among bandhus, at least such of them as may help to solve the question.
+
+\tThere is no doubt as to the meaning of the term "bandhu" for purposes of succession. Though only some bandhus are enumerated in the well-known ancient smrithi text (attributed variously to Vridha Satatapa and Baudhayana), it has been laid down that the enumeration is not exhaustive and that it includes all bhinnagotra sapindas (see Gridhari Lal Roy v. The Bengal Government (1808) 12 M.I.A., 448 and Ramchandra Martand Waikar v. Vinayek Venkatesh Kothekar (1915) I.L.R., 42 Calc., 384, (P.C.).
+
+\tRelying on this definition, Sarvadhikari (Tagore Law. Lectures, 1882) attempts to construct exhaustive tables of bandhus. Ho restricted the bandhus to four families : (1) the family of the agnates of the propositus, (2) the family of the agnates of his mother's father, (3) the family of the agnates of his father's mother's father, and (4) the family of agnates of his mother's mother's father.
+
+\tWhether the bandhus ought to be limited to these four families, though they otherwise satisfy the definition of bhinnagotra sapindas, has not arisen for judicial decision and does not arise in this case. With the said limitation and also excluding the so-called sapindas by "frog's leap" (see Sarvadhikari, 2nd edition, pp". 592, 597 and 600) and remembering that sapindaship is mutual he tabulated the possible bandhus in four tables (facing pages 606, 607).`,
+
+55:`\tThe question however is ; can we add to the three classes of bandhus? The question arose before their Lordships in the Privy Council in the case of Ram Chandra v. Vinayak A.I.R. 1914 P.C. 1 quoted above, but their Lordships did not decide the question although it appears that their Lordships were inclined to the view that the classes could not be added to.
+
+\tMy own opinion is that the classes cannot be added to, and, for this reason, that by the statement that bandhus were of three kinds, Vijnaneshwar limited the number of classes. These classes, as already stated, are Atma-bandhus, Pitri-bandhus, and Matri-bandhus. If we could add to the classes there would be no sense in stating that the classes were only three. The fact should not be lost sight of that Pitri-bandhus and Matri-bandhus are the bandhus of the propositus himself and have no status except as the bandhus of the propositus.
+
+\tWe have to find out the bandhus of the propositus. We are-told that we would find them under three descriptions, and under three descriptions alone. The text quoted by Vijnaneshwar, to explain the nature of a bandhu doss not at all use the word "bandhu." The word that it used is "bandhav,"' which only means a "relation" or "connexion". The word "bandhu" has been used by the Mitakshara in a "technical"' sense, while the word "bandhus" have been used in a non-technical sense.
+
+\tThe commentary of Vijnaneshwar and the text quoted by him, taken together, indicate that 'bandhus" of the propositus are to be found among the persons who were" related directly to the propositus, through a female, and among persons who were similarly related to him through his mother and father.
+
+\tSo far as the term "Atma-bandhu"' goes, it is not capable of having two meanings. It must be taken as meaning ''direct relations". The expressions, pitri-bandhu" and rnatri-bandhus" ar& compound words, formed by the process-known in Sanskrit grammar, as "samasa" or "shortening process." On breaking up the "samasa", we may have the worda "Pitooh bandhu" or "Matooh bandhu" or we may have the words "Pitri bandhu" or "Matri-bandhu".
+
+\tThe two words relating to father and mother having the same form, I will take one only, for the" sake of brevity. Now "Pitooh bandhu" if we treat the expression as a shashthi tatpurusha samasa" would mean father's, bandhu". If we treat the expression as. a panchami tatpurusha" the word would mean 'bandhus through or by reason of the fathers", according to the rule "hetau cha", which means that the suffix: "panchami" which gives the same forntt as shashthi to the words pitri and matri,, may be used where "the reason is to be-assigned."`
 
 };
