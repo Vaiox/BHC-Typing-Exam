@@ -806,5 +806,20 @@ export const passages = {
 
 \t4. The plaintiff\`s claim for partition and separate possession of 1/3rd share in all the 3 items of the plaint schedule property is on the grounds that items Nos.1 and 2 supra are that of late Ramaiah-(great grandfather of the plaintiff and 2nd defendant and grandfather of Rama Rao) and item No.3 was purchased with the nucleus by late Rama Rao. It is also her claim otherwise that the item-1 of the plaint schedule property in her possession was given to her at the time of her marriage by her father, orally towards Pasupukumkuma.
 
-\t5.(a). The defendants 1 and 2 in their separate written statements contested that the suit is not maintainable even otherwise by virtue of the bar under Section 23 of the Hindu Succession Act (hereinafter being called HS Act). It is the further contest of the defendants that the item No.3 of the plaint schedule property is not the ancestral or coparcenary property but for self-acquired property of late Rama Rao, vide sale deed dated 29.11.1966.`
+\t5.(a). The defendants 1 and 2 in their separate written statements contested that the suit is not maintainable even otherwise by virtue of the bar under Section 23 of the Hindu Succession Act (hereinafter being called HS Act). It is the further contest of the defendants that the item No.3 of the plaint schedule property is not the ancestral or coparcenary property but for self-acquired property of late Rama Rao, vide sale deed dated 29.11.1966.`,
+
+65: `\tIn order to appreciate the questions that arise for determination in these cases, it is enough to notice the facts in Writ Petition No. 1462 of 1973 as illustrative only and not as exhaustive.
+
+\tOne Sirigeri Govindappa, a resident of Gangavathi of Raichur District, who was the karta of a Mitakshara Hindu undivided joint family (HUF) consisting of himself, his wife, Smt. Sirigeri Thippamma, his son, Ranganna, and an unmarried daughter, Kumari Raghamma, died on February 8, 1969.
+
+\tOn November 17, 1969, Smt. Sirigeri Thippamma, the petitioner before us, as the "accountable person" under the Estate Duty Act of 1953 (Central Act 34 of 1953) ("the Act"), filed a return before the Assistant Controller of Estate Duty, Hubli ("the Assistant Controller"), declaring the value of the estate passing on the death of her husband at Rs. 1,73,770. On June 15,1971, the Assistant Controller completed his assessment (exhibit-l) in which he included a sum of Rs. 1,53,303 as the share value of the lineal descendants of the Hindu undivided family for rate purposes under section 34(1)(c) of the Act and levied estate duty on the petitioner on that basis.
+
+\tAgainst the said order of the Assistant Controller, the petitioners filed an appeal in Appeal No. EDA 11 of 1971-72/HBL before the Appellate Controller of Estate Duty, Southern Zone, Madras ("the Appellate Controller"), who by his order dated October 31, 1972 (exhibit-2), disposed of the same giving certain minor reliefs with which we are not now concerned, but declining to interfere with the aggregation of the share value of the lineal descendants, with which alone we are now concerned.
+
+\tIn this petition under article 226 of the Constitution, the petitioner has challenged the validity of section 34(1)(c) of the Act and the orders of the Appellate Controller and the Assistant Controller to the extent they relate to the aggregation of the share value of the lineal descendants and the consequent levy of higher duty the retounder the Act.In all other cases also, the facts are somewhat similar to the facts in Writ Petition No. 1462 of 1973 and their challenge in all of them is similar as in that writ petition.
+
+\tThe petitioners have urged that section 34(1)(c) of the Act was beyond the legislative competence of the Union Parliament and if it was within its legislative competence, then it was violative of articles 14 and 19(1)(f) of the Constitution. The respondents have resisted these writ petitions.
+
+\tWith the deletion of article 19(1)(f) of the Constitution from June 20, 1979, by the 44th Amendment of the Constitution, the challenge based on that provision is no longer available`,
+
 };
