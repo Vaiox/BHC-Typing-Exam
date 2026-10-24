@@ -688,6 +688,114 @@ export const passages = {
 
 \tSo far as the term "Atma-bandhu"' goes, it is not capable of having two meanings. It must be taken as meaning ''direct relations". The expressions, pitri-bandhu" and rnatri-bandhus" ar& compound words, formed by the process-known in Sanskrit grammar, as "samasa" or "shortening process." On breaking up the "samasa", we may have the worda "Pitooh bandhu" or "Matooh bandhu" or we may have the words "Pitri bandhu" or "Matri-bandhu".
 
-\tThe two words relating to father and mother having the same form, I will take one only, for the" sake of brevity. Now "Pitooh bandhu" if we treat the expression as a shashthi tatpurusha samasa" would mean father's, bandhu". If we treat the expression as. a panchami tatpurusha" the word would mean 'bandhus through or by reason of the fathers", according to the rule "hetau cha", which means that the suffix: "panchami" which gives the same forntt as shashthi to the words pitri and matri,, may be used where "the reason is to be-assigned."`
+\tThe two words relating to father and mother having the same form, I will take one only, for the" sake of brevity. Now "Pitooh bandhu" if we treat the expression as a shashthi tatpurusha samasa" would mean father's, bandhu". If we treat the expression as. a panchami tatpurusha" the word would mean 'bandhus through or by reason of the fathers", according to the rule "hetau cha", which means that the suffix: "panchami" which gives the same forntt as shashthi to the words pitri and matri,, may be used where "the reason is to be-assigned."`,
+
+56: `\tThe period between 1943 and 1945 witnessed the active involvement of Indian soldiers fighting for the British Armed Forces. During There is much controversy about the very existence of such rules. This issue will be examined in the latter part of this judgment. This period, the concept of a disability benefit was introduced for the first time, adopting a liberal approach to its entitlement. Subsequently, the notification of the Wartime Rules, 1946, introduced the principle of attributability through the explicit use of phrases.
+
+\tLater, upon attaining Independence, the Army Act, 1950, the Air Force Act, 1950, and the Navy Act, 1957, provided for dedicated pension regulations. These regulations codified the substantive right to the grant of disability pension under specified circumstances, which shall be adverted to in detail later in this judgment.
+
+\tDue to large-scale casualties during the unanticipated and tragic Indo-China and Indo-Pak wars of 1962 and 1971, context-specific entitlement rules were formulated on 26.12.1962, 16.12.1971, and 01.02.1972 to make special provisions covering cases of death and disability. In the year 1961, the Pension Regulations for Army, 1961 ("PRA 1961") were issued, superseding the 1940 Regulations. The 1961 PRA structurally categorised pensionary benefits based on rank and mode of cessation.
+
+\tIn so far as rank is concerned, Chapter II (Regulations 47 to 64) of PRA 1961 governs the Disability Pensionary Awards for Commissioned Officers, whereas Chapter III (Regulations 172 to 190) delineates the parallel framework for Junior Commissioned Officers (JCOs) and Other Ranks (ORs).
+
+\tTo comprehend the core principles governing disability pension, it is essential to first examine the Entitlement Rules 1982. On 22.11.1983, the consolidated Entitlement Rules for Casualty Pensionary Awards, 1982, were notified, and made applicable to personnel who became non- effective from 01.01.1982.
+
+\tLearned Attorney General submits that on 18.01.2010, the Entitlement Rules 1982 were superseded with effect from 1st January 2008 and the Entitlement Rules 2008 were brought into force. Before we deal with the Entitlement Rules 2008, it is necessary for us to mention that there is a great amount of uncertainty about the very existence of the Entitlement Rules 2008.
+
+\tThe clearest articulation of the differences between the Entitlement Rules of 1982 and 2008 came in Union of India v. Bhaskaran N. 29 The Kerala High Court in Bhaskaran held that the Entitlement Rules 2008 altered the earlier position by recognising that dormant, hereditary and congenital diseases may not be detected at recruitment.`,
+
+57: `\tThe Aircel Group entities - Aircel Limited, Aircel Cellular Limited and Dishnet Wireless Limited (hereinafter collectively referred to as "the corporate debtors") - were granted telecom licences by the DoT under Unified Access Service Licences (UASL) pursuant to Licence Agreements dated 05.12.2006, each valid for a term of twenty years.
+
+\tDomestic lenders, including the State Bank of India, extended rupee term loan facilities aggregating to ₹13,729 crores under a Rupee Loan Facility Agreement dated 29.03.2014, followed by execution of Indentures of Mortgage dated 02.05.2014 in favour of the lenders. In spectrum auctions conducted by DoT during the years 2010, 2014, 2015 and 2016, the corporate debtor acquired rights to use spectrum in the 900 MHz, 1800 MHz and 2100 MHz bands upon payment of ₹6,249.27 crores.
+
+\tCorporate debtors failed to pay licence fee. When DoT attempted to recover these amounts, they invoked IBC by filing an application under Section 10 for voluntary corporate insolvency resolution process. The application was admitted by the National Company Law Tribunal, Mumbai Bench, vide order dated 12.03.2018 in respect of Aircel Limited, appointing Vijaykumar V. Iyer as the Interim Resolution Professional. By a subsequent order dated 19.03.2018, Aircel Cellular Limited and Dishnet Wireless Limited were also admitted into CIRP.
+
+\tUpon constitution of the Committees of Creditors (CoC) for Aircel Cellular Limited and Dishnet Wireless Limited on 30.03.2018, claims were invited from all stakeholders. The DoT was invited to participate in the CoC meeting held on 06.06.2018, and thereafter filed its claim on 16.08.2018 in Form-F, asserting a claim of ₹9,894.13 crores as a licensor, arising from Annual Licence Fee and Spectrum Usage Charges payable under the Licence Agreements.
+
+\tA resolution plan submitted by UV Asset Reconstruction Company was approved by the CoC on 13.05.2019 and thereafter sanctioned by the NCLT by order dated 09.06.2020. Aggrieved, DoT assailed the NCLT order approving the resolution plan before the appellate tribunal, NCLAT.
+
+\tDuring the pendency of the aforesaid proceedings, this Court delivered its judgment in Union of India v. Association of Unified Telecom Service Providers of India1, affirming the definition of Adjusted Gross Revenue (AGR) as stipulated in the licence agreements executed 1 (2020) 3 SCC 525. (Hereinafter 'AUSPI (II)) between the DoT and the TSPs.
+
+\tPursuant thereto, the Union of India filed M.A. (D) No. 9887 of 2020 on certain aspects relating to payment of the AGR dues. In the course of consideration of the said application, it was brought to the notice of this Court that several TSPs.`,
+
+58: `\tThese are the civil appeals challenging the common judgment and order dated 15.04.2008 passed by the High Court of Karnataka at Bengaluru in Regular Second Appeal Nos. 1574 of 2005 and 1575 of 2005, whereby the High Court dismissed the second appeals filed under Section 100 of the Code of Civil Procedure, 1908 (hereinafter referred to as "the CPC"), and affirmed the concurrent judgments and decrees of the Courts below, which had declared Syed Mohammed Adil Pasha Khadri (Respondent No. 1 herein) as the lawful Sajjadanashin of the Hazarath Mardane-e-Gaib Dargah, Shivasamudram, located in Chamarajanagar District, Karnataka.
+
+\tThe present dispute concerns succession to the office of Sajjadanashin of the Hazarath Mardane-e-Gaib Dargah, Shivasamudram, located in Chamarajanagar District, Karnataka.
+
+\tThe original Sajjadanashin of the Dargah was Peer Pasha Khadri, as per the Wakf Board's Notification dated 01.04.1965. Thereafter, Peer Pasha Khadri appointed his eldest son, Akhil Pasha Khadri, as Jan-Nasheen Sajjada (i.e. successor of the Sajjadanashin) of the Dargah. On 27.10.1980, Akhil Pasha Khadri passed away, predeceasing his father.
+
+\tOn 26.02.1981, at a religious function held in the presence of Sajjadanashins of other dargahs and elders in the community, Peer Pasha Khadri appointed and nominated Syed Mohammed Adil Pasha Khadri (respondent no. 1 herein), his grandson and son of late Akhil Pasha Khadri, to be the Jan-Nasheen Sajjada of the Dargah. The appointment and nomination was reduced in writing as Khilafatnama dated 26.02.1981 (Ex. P-72). On 06.10.1988, the original Sajjadanashin passed away and the respondent no. 1 became the Sajjadanashin of the Dargah.
+
+\tThe appellant (Syed Mohammed Ghouse Pasha Khadri), being the youngest son of the original Sajjadanashin, asserts a rival claim to the office of the Sajjadanashin, relying upon certain documents, including a General Power of Attorney (Ex. D-1), a handwritten Khilafatnama (Ex. D-13) and an affidavit (Ex. D-23) executed by the predecessor. Whereas, the respondent no. 1, being the grandson of the original Sajjadanashin, claims succession to the same office on the basis of a nomination made by the predecessor in Khilafatnama dated 26.02.1981 (Ex. P-72).
+
+\tThus, two civil suits came to be instituted before the Principal Civil Judge (Senior Division), Mysuru: A. O.S. No. 724 of 1988 (renumbered as O.S. No. 342 of 1995), instituted by the appellant, asserting his claim as Sajjadanashin of the Dargah. Respondent No. 1 was not made a party to the suit and later filed an impleadment application. O.S. No. 233 of 1989, instituted by the respondent no. 1.`,
+
+59: `\t1. The present appeals have been filed challenging the common judgment and order dated 28th December 2011 passed by the High Court of Andhra Pradesh in Criminal Appeal No. 405 of 2004 and Criminal Revision Case No. 2055 of 2004, whereby the criminal appeal filed by the Appellant-Accused and the criminal revision filed by the mother of the deceased were dismissed. By way of the Impugned Judgment, the High Court reduced the sentence for offence punishable under Section 306 IPC to two years but increased the fine to ₹ 50,000/.
+
+\t2. It is pertinent to mention that the Criminal Appeal and Criminal Revision were filed against the judgment dated 23rd February 2004 in Sessions Case No.88 15:38:39 IST Reason:
+
+\tof 2003, whereby the Appellant-Accused was convicted for offences punishable under Sections 306 and 309 of Indian Penal Code, 1860 ("IPC") and sentenced to rigorous imprisonment for five years and fined ₹ 5,000/- under Section 306 IPC and one year simple imprisonment and fined ₹ 1,000/- under Section 309 IPC.
+
+\t3. The deceased Ms. Pratyusha was an actress, who had acted as a heroine in a number of feature films in South India. The Appellant-Accused was an engineering student. They had known each other close to a decade and wanted to marry each other. Smt. Sarojini Devi (PW-1), mother of the deceased and Appellant in Criminal Appeal Nos.894-895 of 2012 was initially opposed to the marriage but had subsequently agreed to it. However, the parents of the Appellant-Accused were opposed to the marriage and the mother of the Appellant-Accused had even threatened to commit suicide in the event the Appellant-Accused married the deceased.
+
+\t4. In the morning of 23rd February 2002, the Appellant-Accused informed the deceased of the threat of suicide extended by his mother. At around 5:00 PM, the deceased along with her cousin Ms. Prafulla Sri (PW-2) went to a beauty parlour as the deceased had been engaged for a Kannada feature film and had planned to leave for Bangalore on the morning of 24th February 2002.
+
+\t5. At the parlour, the deceased asked Ms. Prafulla Sri (PW-2) to call the Appellant-Accused to the parlour. Upon his arrival, PW-2 talked to the Appellant- Accused for a while and when the deceased came out of the parlour, the Appellant-Accused and the deceased started crying.
+
+\t6. Both the deceased and the Appellant-Accused were thereafter seen together at CARE Hospital, Banjara Hills, Hyderabad ('CARE Hospital) at around 7:30 or 8:00 PM. Both of them had consumed poison and were admitted in the said hospital. The deceased could not survive and passed away the next day, i.e., 24th February 2002.`,
+
+60: `\tThese appeals arise from the common judgment and order dated 11.02.2025 passed by a Division Bench of the High Court of Delhi in FAO(OS) (COMM) Nos. 23 and 24 of 2025 respectively (hereinafter, the "Impugned Judgment"), by which the appeals filed by the appellants herein under Section 37 of the Arbitration and Conciliation Act, 1996 (for short, the "Act, 1996") came to be dismissed thereby affirming the order dated 19.02.2022 passed by a learned Single Judge of the High Court in OMP (COMM) Nos. 414 and 415 of 2018 respectively under Section 34 of the Act, 1996 (hereinafter, the "Single Judge") dismissing the preliminary objection raised by the appellants as regards unilateral appointment of a sole arbitrator by the respondent.
+
+\tIn response to these notices, the appellant no. 3 emerged as the successful bidder. Pursuant to the two notices, the parties executed two License Agreement dated 29.11.2010 ("License Agreement").
+
+\tProvided that parties may, subsequent to disputes having arisen between them, waive the applicability of this sub-section by an express agreement in writing.]" v. Sometime, in the year 2015, various disputes cropped up between the appellants and the respondent herein. Accordingly,  the appellants vide notice dated 27.11.2015 invoked the arbitration clause and requested the respondent to appoint an arbitrator in terms of Clause 78 of the aforesaid License Agreement.
+
+\tThe relevant part of the notice reads thus:- "We also like to bring out most humbly that it is incumbent upon the Chairman AAI to appoint the Sole Arbitrator within a reasonable time, least we might not be left with no recourse, but to seek a relief under Section 11, Sub Section 6, Chapter III of the Arbitration & Reconciliation Act 1996." vi. On 22.03.2016, the sole arbitrator passed the first procedural order recording that none of the parties had any objection to his appointment.
+
+\tThe procedural order reads thus:- With Minutes of, and the Directions made at, the hearing on 22.03.2016 at 1:00 pm [AT D-247 (Basement), Defence Colony, New Delhi-110024] This preliminary meeting of the Tribunal was held D-247 (Basement), Defence Colony, New Delhi-110024 on 22nd March, 2016 at 1:00 PM.
+
+\tNone of the parties have any objection to my appointment as the Sole Arbitrator. I declare that I have no interest in any of the Parties, or in the disputes referred to the Sole Arbitrator." (Emphasis supplied) vii. At the joint request of the parties, two applications were filed under Section 29A of the Act, 1966, seeking extension of time for the completion of the proceedings. On both the occasions, the applications were allowed by the High Court.`,
+
+61: `\tThe present batch of appeals concerns the challenge to the power of the State Government to prescribe the essential qualifications different from the qualification prescribed by the Central Government under Rule 49 of the Drug Rules, 1945 1 (in short, 'Drug Rules') framed in exercise of the power under Sections 6(2), 12, 33 and 33N2 of the Drugs and Cosmetics Act, 1940 (in short, 'D&C Act') for appointment to the post of Drug Inspector (in short, 'DI'), or Drug Control Officer (in short, 'DCO'). 1 As amended by (Amendment) Rules, 2025.
+
+\tThese appeals arise from the proceedings in the State of Haryana and Karnataka respectively. Since there is a commonality of the facts and legal issues, they are being dealt with by this common judgment. For the sake of brevity, we are first dealing with the facts of the appeals from the State of Haryana, followed by those from the State of Karnataka.
+
+\tCivil Appeal Nos. 1725-1731 of 2023, Civil Appeal Nos. 1732- 1738 of 2023 and Diary No. 1909 of 2024
+
+\tIn Civil Appeal Nos. 1725-1731 of 2023 and Civil Appeal Nos. 1732-1738 of 2023, the State of Haryana and the participants, both have challenged the final impugned judgement dated 09.09.2022 of the Full Bench of the High Court of Punjab and Haryana at Chandigarh in the letters patent appeal and connected civil writ petitions, whereby the High Court answered the reference and quashed the advertisement, which was followed by the corrigendum, for appointment to the post of DCO in the State of Haryana.
+
+\tIn Diary No. 1909 of 2024, the sole participant has challenged the final impugned judgement dated 30.09.2022 of the Single Judge of the High Court of Punjab and Haryana at Chandigarh in the writ petition, whereby the High Court disposed of the same in terms of the Full Bench judgement of the High Court dated 09.09.2022.
+
+\tThe facts put in brief are that the Haryana Public Service Commission (in short, 'HPSC') issued an advertisement on 07.09.2015, which was published on 10.09.2015, followed by the corrigendum dated 04.06.2019 for appointment to the post of DCO, prescribing qualification under the Haryana Food and Drugs Administration Department, Subordinate Offices (Group B) Service Rules, 2018 (in short, 'Rules of 2018') framed in exercise of the power under the proviso to Article 309 of the Constitution of India.
+
+\tThe essential qualification as specified was different from the qualification prescribed by the Central Government under the Drug Rules. Applying the Rules of 2018, the candidature of the participants was rejected for want of possessing the essential qualifications prescribed in the advertisement.`
+
+62: `\tThis appeal arises from the Judgment and Final Order No. 55604/2024 dated 19.04.2024 passed by the Customs, Excise and Service Tax Appellate Tribunal, Principal Bench, New Delhi (hereinafter referred to as "CESTAT"), in Customs Appeal No. 50542 of 2021, wherein the tribunal allowed the appeal and thereby held that the aluminium shelves imported by the respondent should be classified under Customs Tariff Item 84369900, as 'parts' of agricultural machinery, as opposed to Customs Tariff Item 76109010, as aluminium structures.
+
+\tCustoms Tariff Item (hereinafter "CTI") 84369900 carries a nil rate of duty, whereas CTI 76109010 attracts a basic customs duty of 10%, a countervailing duty of 12.5%, a customs cess of 3%, and an additional customs duty of 4% respectively.
+
+\tM/s Welkin Foods, the respondent, imported aluminium shelving along with a floor drain and an automatic watering system and filed a Bill of Entry No. 7399702 dated 09.11.2016 under Section 46 of the Customs Act, 1962 (hereinafter referred to as "the Act, 1962"). In the said bill of entry, the respondent declared and classified the imported goods as follows: The appellant accepted the classification of floor drain and automatic watering system under CTI 84369900 as 'parts' of agricultural machinery.
+
+\tHowever, the Audit Scrutiny revealed that the aluminium shelving (hereinafter referred to as "the Subject Goods") was a type of aluminium structure and not a 'part' of any agricultural machinery & therefore, the revenue ought to have classified the subject goods under CTI 76109010, which would attract a basic customs duty rate of 10%, a countervailing duty rate of 12.5%, customs cess at 3%, and additional customs duty at 4%.
+
+\tThe misclassification caused a short levy of duty amounting to INR 21,01,983, which was recoverable from the Respondent under Section 28(1) of the Act, 1962, along with interest under Section 28AA of the Act, 1962.
+
+\tChapter Heading 7610 and Chapter Heading 8436 respectively, along with their respective sub-headings and tariff items, as specified in the First Schedule of the Customs Tariff Act, 1975 (hereinafter referred to as "the Act, 1975"), are outlined below:
+
+\tChapter Heading 7610 Tariff Item Description of Unit Rate of goods duty 7610 Aluminium structures  (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge- Consequently, a notice dated 08.08.2018 under Section 28(1) of the Act, 1962 was issued to the respondent, calling upon to show cause as to why (i) the subject goods should not be classified under CTI 76109010 instead of CTI 84369900 and charged to duty as applicable to the goods of that tariff item.`,
+
+63: `\tAppellant credited the two cheque amounts into the aforesaid savings bank account of the respondent on 01.06.2018. The transactions were recorded at 13.01.34 and 14.55.06 hours respectively as indicated by the accounts clearing section of Vijaya Bank. However, on the same day, both the cheque amounts were debited from the account of the respondent with the caption 'online cheque return'.
+
+\tLater in the day, respondent received SMS notifications on her registered mobile number stating that the two cheque amounts were debited from her account. There was another SMS thereafter stating that the cheque No. 46381 for Rs. 94,73,900.00 which was deposited on 29.05.2018 was returned due to 'connectivity failure'.
+
+\tOn 05.06.2018, appellant deposited cheque No. 46381 into the account of the respondent deducting certain amount on account of collection charges. However, the said cheque amount was debited once again with the caption 'online cheque return'. Subsequently, the said cheque was returned to the respondent on 05.06.2018 itself alongwith a return memo dated 05.06.2018 with the endorsement 'instrument out dated/stale'.
+
+\tLikewise, on 11.06.2018, cheque No. 43682 for Rs. 11,36,868.00 was credited into the account of the respondent. Once again, the said amount was debited from the account of the respondent on that day itself with the description 'online cheque return' after deducting a certain amount as collection charges. This cheque was returned to the respondent alongwith a return memo dated 11.06.2018 citing the reason 'instrument out dated/stale'.
+
+\tOn both the occasions, collection charges at the rate of Rs. 177.00 were debited by the appellant from the account of the respondent.
+
+\tAccording to the respondent, appellant had failed to present the cheques for clearing or collection to the drawee bank within the validity period causing the cheques to expire. Because of such negligence leading to deficiency in service, respondent had incurred a loss amounting to Rs. 1,06,10,768.00. This also deprived the respondent from availing the legal remedies against the drawer of the cheques, Assotech Limited, including the remedy under Section 138 of the Negotiable Instruments Act, 1881 as Assotech Limited was undergoing corporate insolvency resolution process but continued to remain liable for criminal liability under Section 138 of the Negotiable Instruments Act, 1881.
+
+\tRespondent sent a legal notice on 26.07.2018 to the appellant seeking compensation for the loss of Rs. 1,06,10,768.00 i.e. sum of both the cheque amounts. Due to a typographical error in the said notice, where the date of deposit was wrongly mentioned as 29.06.2018 instead of 29.05.2018`
 
 };
