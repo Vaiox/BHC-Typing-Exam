@@ -888,6 +888,19 @@ export const passages = {
 
 \tThe plaintiffs marriage was taken place prior to September, 1985 and as such she has no right to demand a share in the properties. D1 gave a reply to the notice issued by the plaintiff. Item No. 3 of the plaint A-schedule consists of Ac.0.41 cents, but not Ac.0.71 cents. Equally, item No. 4 consists of Ac.0.21 cents and not Ac.0.61 cents as mentioned. Item No. 2 was given to the plaintiff towards her share. D1, by his self exertions purchased the plaint B-schedule house, which became old and dilapidated. He gave the remaining items to his other daughters.
 
-\tThe total extent of items - 1, 3, 4, 5 and 6 is Ac.2.00. Item No. 2 consists of Ac.0.25 cents. He executed a settlement deed dated 9.3.1996 in favour of D6 in regard to the above properties. Since then, he has been enjoying the said property. He also executed a registered Will dated 26.5.1993 bequeathing his properties to D6. D6 filed written statement alleging that he was adopted by D1 on 1.6.1983, when he was aged 14 years.`
+\tThe total extent of items - 1, 3, 4, 5 and 6 is Ac.2.00. Item No. 2 consists of Ac.0.25 cents. He executed a settlement deed dated 9.3.1996 in favour of D6 in regard to the above properties. Since then, he has been enjoying the said property. He also executed a registered Will dated 26.5.1993 bequeathing his properties to D6. D6 filed written statement alleging that he was adopted by D1 on 1.6.1983, when he was aged 14 years.`,
 
+71: `\tIn the present reference, we are concerned with assessment year 1968-69 and 1969-70, the relevant previous year being Samvat years 2023 and 2024. Samvat year 2023 was from November 30, 196, to November 2, 1967, and Samvat year 2024 was for November 3, 1967 to October 20, 1968.
+
+\tThe facts leading to this reference are that the was an HUF of Shri Manilal Chokshi and in that family, in the year 1932, there were two coparceners,namely, Manilal himself and his son Chandulal Manilal. Manilal's wife Bai Chanchal was also a members of that HUF. A partition took place between Manilal and his son Chandulal on October 22, 1932. Thereafter these two separated members carried on family business in partnership in the name and style of Manilal Shamaldas. On December 4, 1937, a son Arvind was born to Chandulal, and Arvind Chandulal is the assessee before us.
+
+\tChandulal died on December 23, 1941. On March 26, 1942, a family arrangement document was executed and to this family arrangement the parties were Manial, bai chanchal, the wife of Manilal, and Bai Mani, the widow of Chandulal who was a party to the family arrangement for herself and as the natural guardian of minor Arvind. Manilal died on April 21, 1942, and Bai chanchal, Manilal widow, died on June 18, 1942.
+
+\tIt is not in dispute that the assessee Arvind got married on February 8, 1960, and on September 12/13, 1961, one daughter was born to Arvind. Thereafter, two more daughters were born and on September 20, 1968, a son was born to Arvind. Thus, Arvind son was born during the previous year relevant to the assessment year 1969-70.
+
+\tUnder the family arrangement, all the properties belonging to or owned by the different family members who were parties to the family arrangement, were profits together and it is s contended on behalf of the Revenue that all these properties had come to Arvind as his absoulate property.
+
+\tFor the assessment year 1940-41 to 1955-56, assessment was made on Manilal Shamaldas HUF an d, for the assessment year 1950-51 in connection with Manilal Shamal das HUF, the Tribunal delivered a judgment on December 3, 1955. From the assessment year 1956-57 to the assessment year 1967-68, Arvind Chandulal was assessed in the states of an "individual" so far as income-tax was concerned and no appeal was preferred against this decision to assessee in the status of an individual.
+
+\tFor the assessment year 1968-69 and 1969-70, the assessee claimed the status as HUF in the assessment proceedings but this claim was rejected by the ITO following his order passed earlier in the assessment year 1967-68. The ITO assessed Arvind Chanduala in the start of an individual.`
 };
