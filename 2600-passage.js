@@ -768,7 +768,7 @@ export const passages = {
 
 \tThe facts put in brief are that the Haryana Public Service Commission (in short, 'HPSC') issued an advertisement on 07.09.2015, which was published on 10.09.2015, followed by the corrigendum dated 04.06.2019 for appointment to the post of DCO, prescribing qualification under the Haryana Food and Drugs Administration Department, Subordinate Offices (Group B) Service Rules, 2018 (in short, 'Rules of 2018') framed in exercise of the power under the proviso to Article 309 of the Constitution of India.
 
-\tThe essential qualification as specified was different from the qualification prescribed by the Central Government under the Drug Rules. Applying the Rules of 2018, the candidature of the participants was rejected for want of possessing the essential qualifications prescribed in the advertisement.`
+\tThe essential qualification as specified was different from the qualification prescribed by the Central Government under the Drug Rules. Applying the Rules of 2018, the candidature of the participants was rejected for want of possessing the essential qualifications prescribed in the advertisement.`,
 
 62: `\tThis appeal arises from the Judgment and Final Order No. 55604/2024 dated 19.04.2024 passed by the Customs, Excise and Service Tax Appellate Tribunal, Principal Bench, New Delhi (hereinafter referred to as "CESTAT"), in Customs Appeal No. 50542 of 2021, wherein the tribunal allowed the appeal and thereby held that the aluminium shelves imported by the respondent should be classified under Customs Tariff Item 84369900, as 'parts' of agricultural machinery, as opposed to Customs Tariff Item 76109010, as aluminium structures.
 
@@ -821,5 +821,73 @@ export const passages = {
 \tThe petitioners have urged that section 34(1)(c) of the Act was beyond the legislative competence of the Union Parliament and if it was within its legislative competence, then it was violative of articles 14 and 19(1)(f) of the Constitution. The respondents have resisted these writ petitions.
 
 \tWith the deletion of article 19(1)(f) of the Constitution from June 20, 1979, by the 44th Amendment of the Constitution, the challenge based on that provision is no longer available`,
+
+66: `\tThis second Appeal is filed by legal heirs of Original Defendant No.1, challenging the concurrent findings recorded by Civil Judge Junior Division, Ulhasnagar and as confirmed by District Court, Kalyan. Respondent no.1 in this second appeal is the Original Plaintiff being the sister of Original Defendant no.1 to 4, who had filed Regular Civil Suit No.258 of 1991, in the Court of Civil Judge Junior Division, Ulhasnagar praying for declaration that she has 1/5 share in the properties of her deceased father Janu, and for possession of the said 1/5 share of her's, and further for a declaration that her brother Maruti (Defendant No.1) and brother Gannupath (Defendant No.2), and her two sisters Gulab (Defendant No.3) and Hirabai (Defendant No.4), also have 1/5 share, in each of the properties of their father.
+
+\tFor the sake of brevity, parties are referred as per their Amol D. Nawale SA.699.2012.doc original nomenclature in the Trial Court. It was the case of the plaintiff (who is the sister of Defendant) in her suit for partition, that her father died somewhere in the year 1959. And subsequently, thereto even her mother died in the year 1982.
+
+\tThe said suit being R.C.S. No. 258/1991, filed by Plaintiff was decreed and the plaintiff was granted 1/5 share in suit property. An Appeal preferred by Original Defendant No.1 along with his wife (Defendant No.5) was dismissed. Hence, the present Second Appeal is filed, by Defendant No.1 (who is the brother of Plaintiff), challenging concurrent findings.
+
+\tThe present second appeal has been 'Admitted' by an Order dated 17/8/2012 and two Questions of Law were framed; (a) Whether Respondent No.1 entitled to claim any share in the property of her father who had expired in 1951, when the Respondent No.1 has married in the year in 1976 as per section 29 A (iv) of the Hindu Succession (Maharashtra Amendment) Act, 1994? (b) Whether the Hindu Succession (Maharashtra Amendment) Act, 1994 would apply to the daughter married before the date of commencement of the Hindu Succession (Maharashtra Amendment) Act, 1994?
+
+\tMr. Killedar to buttress his submission laid emphasis on the judgment of Vineeta Sharma V/s. Rakesh Sharma reported in 2020 (9) SCC 1 delivered by the Supreme Court. He laid emphasize on paragraph No. 137 of the said judgment and more specifically paragraph No.137.5.
+
+\tIn the present proceedings the Regular Civil Appeal No. 133 of 2003 was filed on 11.12.2003 and was pending as on the date of commencement of the amendment to Section 6 of the said Act. The Regular Civil Appeal No. 133 of 2003 was decided on 26.06.2012 i.e. after the commencement of Amol D. Nawale SA.699.2012.doc amendment to Section 6.`,
+
+67: `\t1. This application for reference under Section 27(1) of theW.T. Act, 1957, is at the instance of the CWT, West Bengal-III, Calcutta.
+
+\t2. The assessee is an HUF. The assessment years are 1960-61 to 1968-69 and the relevant valuation dates are the last day of 2016 R.N. to 2024 R.N. respectively.
+
+\t3. The original assessments for the assessment years 1960-61 to 1962-63 were completed on July 18, 1973, which, however, were set aside by the AAC. The karta of the assessee had received certain properties under the will dated May 4, 1958, of his father, Jaskaran Bhutoria, who died on February 12, 1960.
+
+\t4. The assessee did not show the said properties in its wealth-tax returns for the years under reference as it was of the view that the said properties belonged to its karta in his individual capacity. The ITO, while completing the assessment under the I.T. Act, 1961, for the assessment year 1965-66, treated the said properties as that of the assessee. The ITO, reading the terms of the will, concluded that the property bequeathed by late Jaskaran Bhutoria was intended to be the separate property of the sons and not the ancestral properties in the hands of the sons as regards their male issues. He concluded that it was only an integral part of the scheme to partition his separate property amongst the heirs and, therefore, he assessed the income in the hands of the HUF.
+
+\t5. Relying on the I.T. assessment order for the assessment year 1965-66, the WTO reopened the assessment for the assessment years 1960-61 to 1962-63, under reference, in order to include the value of the properties in the net wealth of the assessee. In the assessment orders for the assessment years 1960-61 to 1962-63 made under Section 16(3) read with Section 23 of the Act, the WTO included the value of the said property in the net wealth of the assessee.
+
+\t6. Similarly, for the assessment years 1963-64 to 1968-69, the WTO, in his assessment order made under Section 16(3) of the Act included the value of the said property in the net wealth of the assessee. The WTO also included the value of the zamindary compensation receivable estimated at Rs. 45,000 in the net wealth in each of the years under reference.
+
+\t7. On appeal, the AAC in his consolidated order dated October 19, 1972, confirmed the action of the WTO in respect of the inclusion of the value of the said properties received under the will.
+
+\t8. In the case of Addl. CIT v. P. L. Karuppan Chettiar [1978] 114 ITR 523, the Full Bench of the Madras High Court, dissenting from the views of the Gujarat High Court in the case of CIT v. Dr. Babubhai Mansukhbhai [1977] 108 ITR 417, held that property inherited by a son is separate property of the son.`,
+
+68: `\t1. These are five Regular Second Appeals, namely, R.S.A. Nos.528 of 1977, 2134 of 1982, 540 of 1987, 1656 of 1987 and 411 of 1998, which have been referred to this Five-Judge Bench by noticing a conflict between two earlier 3 Judge Benches in the case of Joginder Singh Kundha Singh v. Kehar Singh Dasaundha Singh and Pritam Singh v. Assistant Controller of Estate Duty, Patiala (1976)78 P.L.R. 342. The suspected conflict hag. been pointed out by Hon'ble Mr. Justice S.P. Goyal in the reference order dated 25.4.1980, passed in R.S.A. No. 105 of 1979.
+
+\t2. To begin with, it may first be appropriate to notice the issue on which two Full Benches are stated to have conflict. The aforementioned conflict has been noticed by Hon'ble Mr. Justice S.P. Goyal (as he then was) in his reference order dated 25.4.1980, which is required to be read in extenso. The reference order was recorded in Regular Second Appeal No. 105 of 1979 (Mai Singh v. Jassa Singh and Ors.).
+
+\t3. In Darshan Singh's case, a suit was filed on August 22, 1966, challenging customary adoption of the defendant and the gift deed made in his favour. It was claimed that the plaintiff was entitled to the property to be mutated in his favour. The suit was decided by the trial Court on October 16, 1968 and on first appeal, the District Judge remanded the case on January 12, 1970. The trial Court after remand delivered the judgment on August 26, 1971.
+
+\t4. Again an appeal was filed before the District Judge, who disposed of the same on February 28, 1973. In the meanwhile, the Amendment Act 1973 came into force on January 23, 1973. The second appeal was filed on March 25, 1973 and it was dismissed on April 3, 1973.
+
+\t5. On the question as to whether the Amendment Act of 1973 was to apply or not, their Lordships' of the Supreme Court held that no person has any right to contest any alienation of immovable property whether ancestral or non-ancestral on the ground of being contrary to custom after January 23, 1973. Section 7 as amended by the Amendment Act, 1973 was to apply to all pending actions whether at the stage of trial or before the Appellate Court.
+
+\t6. In Haryana, the situation as enunciated by Act No. 2 of 1920 continued to prevail in respect of alienation because no reforms parallel to Punjab as brought by the Amendment Act of 1973, has been enacted although right to pre-emption has been substantially abolished in Haryana also.
+
+\t7. Learned Advocate General, Haryana, has categorically stated that no steps even have been taken in that regard. Therefore, situation in Haryana have to be regarded as it existed under Act No. 2 of 1920.`,
+
+69: `\tThis is a reference under Section 66(1) of the Indian Income-tax Act, 1922. The reference relates to the assessment years 1955-56, 1956-57 and 1957-58. In this reference four questions of law which are set out hereinafter have been referred by the Tribunal for this court's consideration. For proper appreciation of the questions of law referred by the Tribunal it would be necessary to refer to certain facts which have been found and stated.
+
+\t2. One Liladhar Hirachand, a Hindu governed by Mitakshara school of law, died on March 31, 1943, leaving behind his widow, Smt. Kankubai, and a son, the applicant, Bhupatrai Hirachand, who at the time was near about 18 years of age. It appears that after the death of his father, Bhupatrai Hirachand was married and got a son in August, 1950, by name, Tarun Kumar, who is still living.
+
+\t3. During his lifetime Liladhar carried on business under the style of "Liladhar Hirachand" and also had acquired house property. The business was his individual business. The house property was also his self-acquired property. In respect of income from the said business and also the house property Liladhar was assessed to income-tax in the status of individual up to the assessment year 1943-44. From the assessment year 1944-45, Bhupatrai Hirachand, the assessee, was assessed as individual in respect of the income from the said two sources right up to the assessment year 1952-53. For the assessment year 1953-54, the business income as well as the property income had been clubbed together as before.
+
+\tThe Appellate Assistant Commissioner held that under the Hindu Women's Rights to Property Act, 1937, the assessee's widowed mother had half share and so only the half share of the income should be assessed in the hands of the assessee. Thereafter, assessments were made for the assessment years 1954-55, 1955-56, 1956-57 and 1957-58, on the assessee in the status of individual including therein income from business and half share of income from property.
+
+\tSuch assessments for 1955-56, 1956-57 and 1957-58 were made on November 1, 1957, December 7, 1957, and July 31, 1957. In course of the assessment proceedings for the assessment year 1958-59, the Income-tax Officer went into the question of status and came to the conclusion that the correct status of the assessee should be that of Hindu undivided family and not individual. The assessment for the assessment year 1958-59 was completed on July 11, 1959.
+
+\tSubsequently, on March 9, 1960, the Income-tax Officer initiated proceedings lor reopening of the assessment under Section 34 of the Indian Income-tax Act, 1922, for the assessment years 1955-56, 1956-57 and 1957-58.`,
+
+70: `\tThis is an appeal preferred by the Defendants 1, 2 and 6 against granting of a Preliminary Decree for partition in the suit filed in O.S. No. 7 of 1996, on the file of the learned Senior Civil Judge, Pithapuram.
+
+\tThe case of the plaintiff, in brief, is that she is the daughter of the 1st defendant. D2 to D5 are her sisters. Her marriage was performed on 11.5.1986. The marriage of 5th defendant was performed subsequently. The marriages of D2 and D3 were performed about 20 years ago.
+
+\tD2 and D4 were given substantial properties from out of the joint family properties and therefore, they were not entitled to any share. She is having 1/3rd share along with D1 and D5. During the pendency of the suit, D1 said to have executed a settlement deed dated 9.3.1996, and a registered Will dated 26.5.1993, in respect of the joint family properties. They are not valid. D6 claims that he is the adopted son of D1. It is not true.
+
+\tThis plea was put up to deny her share. She gave a lawyer's notice on 5.2.1996 demanding her share in the properties. Therefore, she sought 1/3rd share in the joint family properties consisting of Ac.4.55 cents mentioned in the plaint A-schedule and a house bearing Door No. 11-1-139 of Pithapuram shown in the B-schedule.
+
+\tD1, D2, D4 and D5 resisted the suit. It is their case that D1 had taken D6, the son of D2 in adoption, on 1.6.1983, as per Hindu rites about ten years prior to 15.5.1993. D1's wife died in the year 1972. His daughter D2 and her husband Satyanaranayana gave their son D6 in adoption to D1. Later he executed registered adoption deed evidencing adoption. Since then D6 has been living with him as his Aurasa son.
+
+\tThe plaintiffs marriage was taken place prior to September, 1985 and as such she has no right to demand a share in the properties. D1 gave a reply to the notice issued by the plaintiff. Item No. 3 of the plaint A-schedule consists of Ac.0.41 cents, but not Ac.0.71 cents. Equally, item No. 4 consists of Ac.0.21 cents and not Ac.0.61 cents as mentioned. Item No. 2 was given to the plaintiff towards her share. D1, by his self exertions purchased the plaint B-schedule house, which became old and dilapidated. He gave the remaining items to his other daughters.
+
+\tThe total extent of items - 1, 3, 4, 5 and 6 is Ac.2.00. Item No. 2 consists of Ac.0.25 cents. He executed a settlement deed dated 9.3.1996 in favour of D6 in regard to the above properties. Since then, he has been enjoying the said property. He also executed a registered Will dated 26.5.1993 bequeathing his properties to D6. D6 filed written statement alleging that he was adopted by D1 on 1.6.1983, when he was aged 14 years.`
 
 };
