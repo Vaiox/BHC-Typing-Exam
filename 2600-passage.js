@@ -902,5 +902,18 @@ export const passages = {
 
 \tFor the assessment year 1940-41 to 1955-56, assessment was made on Manilal Shamaldas HUF an d, for the assessment year 1950-51 in connection with Manilal Shamal das HUF, the Tribunal delivered a judgment on December 3, 1955. From the assessment year 1956-57 to the assessment year 1967-68, Arvind Chandulal was assessed in the states of an "individual" so far as income-tax was concerned and no appeal was preferred against this decision to assessee in the status of an individual.
 
-\tFor the assessment year 1968-69 and 1969-70, the assessee claimed the status as HUF in the assessment proceedings but this claim was rejected by the ITO following his order passed earlier in the assessment year 1967-68. The ITO assessed Arvind Chanduala in the start of an individual.`
+\tFor the assessment year 1968-69 and 1969-70, the assessee claimed the status as HUF in the assessment proceedings but this claim was rejected by the ITO following his order passed earlier in the assessment year 1967-68. The ITO assessed Arvind Chanduala in the start of an individual.`,
+
+72: `\t1. This is an application under Articles 226 and 227 of the Constitution of India. The petitioner prays for an appropriate writ for quashing the order passed by the Appellate Controller of Estate Duty, Ranchi Range, Ranchi (annex. 3), dated 18th December, 1974, and for a declaration that Section 34(1)(c) of the E.D. Act is unconstitutional.
+
+\t2. The petitioner's father, Tejmal Agarwal, died on 7th December, 1969, leaving behind movable and immovable properties and was governed by the Mitakshara school of Hindu law. Evidently, the share of the deceased in the movable as well as the immovable properties in the estate, would be half. The petitioner being an accountable person within the meaning of the E.D. Act (hereinafter referred to as "the Act") filed a return declaring the principal value of the share of the deceased in the joint family properties at Rs. 60,208.
+
+\tRespondent No. 3, namely, the Asst. Controller of Estate Duty, Ranchi, by his order dated September 4, 1973 (annex. "1"), determined the value of the properties passing on the death of the deceased at Rs. 1,01,359. He also added an equal sum and further a sum of Rs. 31,336 being the share of the petitioner as the lineal descendant of the deceased, in accordance with the provisions of Section 34(1)(c) of the Act. Thus, the principal value of the estate was determined at Rs. 2,34,054 in accordance with the provisions of Section 34(1)(c) of the Act.
+
+\t3. The petitioner preferred an appeal before respondent no. 2 and challenged the order of respondent No. 3 on various grounds. Respondent No. 3 gave partial relief to the petitioner and held that the total of the estate of the deceased, comprising of the HUF and the individual property, was Rs. 86,256 and the share of the lineal descendant was Rs. 68,177. Thus, he reduced the value of the immovable properties by Rs. 25,760. He, however, being a creature under the statute, namely, the E.D. Act, rightly declined to go into the question of the vires of the impugned provision of the Act.
+
+\tThe cases of the Andhra Pradesh High Court are Komanduri Seshamma v. Appellate CED [1973] 88 ITR 82 and Somaraju v. Government of India [1974] 97 ITR 97, that of the Kerala High Court injayasankar v. Assistant CED [1972] 83 ITR 445, of the Allahabad High Court in the case of Badri Vishal Tandon v. Assistant CED [1976] 103 ITR 468 and that of the Punjab and Haryana High Court in the case of Hari Ram v. Assistant CED [1975] 101 ItR 539.
+
+\tThe provision of Section 34(1)(c) of the Act, providing for an aggregation of the shares of the lineal descendants, was added by the Amendment Act, 1958, which came into force on July 1, 1960.`
+
 };
