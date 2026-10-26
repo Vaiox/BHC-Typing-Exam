@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BHC Typing Practice</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #303238;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* TOP BAR */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #41434a;
+  border: 1px solid #555861;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 3px 12px #0002;
+}
+
+.top-left {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00a878;
+}
+
+.info {
+  color: #d0d1d5;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+/* FONT SIZE */
+
+.font-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e0e0e0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.font-control select {
+  background: #303238;
+  color: #fff;
+  border: 1px solid #666a73;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.font-control select:focus {
+  border-color: #00c995;
+}
+
+.font-control select option {
+  background: #303238;
+  color: #fff;
+}
+
+/* TYPING AREA */
+
+.typing-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: 15px;
+  align-items: stretch;
+}
+
+.preview,
+textarea {
+  display: block;
+  width: 100%;
+  height: 800px;
+  min-width: 0;
+  min-height: 300px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  padding: 48px 52px;
+  color: #202020;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  text-align: justify;
+  text-justify: inter-word;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f4f4f4;
+  box-shadow: 0 5px 20px #0002;
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+.preview {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.preview::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background: #b4b4b4;
+  border-radius: 10px;
+}
+
+.preview::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+textarea {
+  background: #fff;
+  color: #202020;
+  resize: none;
+  outline: none;
+  caret-color: #008f70;
+}
+
+textarea:focus {
+  border-color: #008f70;
+  box-shadow: 0 0 0 2px #008f7026, 0 5px 20px #0002;
+}
+
+textarea:disabled {
+  opacity: .9;
+}
+
+.typing-box-hidden {
+  opacity: 0 !important;
+}
+
+/* BUTTONS */
+
+.buttons {
+  margin: 18px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 70px;
+  z-index: 9;
+}
+
+button {
+  border: 0;
+  padding: 12px 22px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #00c995, #00b6d8);
+  color: #071713;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* NOTICE */
+
+.access-notice {
+  display: none;
+  margin: 14px 0;
+  padding: 14px 16px;
+  border: 1px solid #a85a5a;
+  border-radius: 9px;
+  background: #4a2929;
+  color: #ffd0d0;
+  line-height: 1.6;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.access-notice.visible {
+  display: block;
+}
+
+/* RESULTS */
+
+.result {
+  display: none;
+  margin-top: 25px;
+  background: #41434a;
+  border: 1px solid #555861;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #4a4c53;
+  border: 1px solid #5b5d64;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #d0d1d5;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: 700;
+  color: #00d6a0;
+}
+
+/* COMPARISON */
+
+.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.box {
+  background: #fff;
+  color: #202020;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  padding: 24px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  overflow-x: auto;
+  box-shadow: 0 5px 20px #0002;
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+.red {
+  color: #d82020;
+}
+
+.missing {
+  background: #ffbd55;
+  color: #202020;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.extra {
+  background: #fff08a;
+  color: #202020;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.dim {
+  opacity: .45;
+}
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+@media (max-width: 900px) {
+  .typing-area,
+  .compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .preview,
+  .typing-area textarea {
+    height: 800px;
+    min-height: 300px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .top-left {
+    gap: 14px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .result {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .font-control {
+    width: 100%;
+  }
+
+  .buttons button,
+  .result-actions button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .preview,
+  textarea {
+    padding: 22px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="topbar">
+    <div class="top-left">
+      <div class="timer" id="timer">10:00</div>
+      <div class="info">Strict Mode Enabled</div>
+      <div class="info" id="wordCount">0 / 0 words</div>
+      <div class="info" id="keystrokeCount">Keystrokes 0 / 0</div>
+
+      <label class="font-control" for="fontSizeSelect">
+        <span>Font size</span>
+        <select id="fontSizeSelect">
+          <option value="16">16 px</option>
+          <option value="18" selected>18 px</option>
+          <option value="20">20 px</option>
+          <option value="22">22 px</option>
+          <option value="24">24 px</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="info" id="passageInfo">Loading selected passage...</div>
+  </div>
+
+  <div
+    id="accessNotice"
+    class="access-notice"
+    role="alert"
+    aria-live="assertive"
+  ></div>
+
+  <div class="typing-area">
+    <div class="preview" id="preview">
+      Loading selected passage...
+    </div>
+
+    <textarea
+      id="input"
+      spellcheck="false"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      placeholder="Press Start Test, then begin typing..."
+      disabled
+    ></textarea>
+  </div>
+
+  <div class="buttons">
+    <button id="startButton" disabled>Start Test</button>
+    <button id="restartButton" disabled>Restart Same Passage</button>
+    <button id="submitButton" disabled>Submit</button>
+    <button id="toggleTypingBtn" disabled>Hide Typing Box</button>
+  </div>
+
+  <div class="result" id="result">
+    <div class="stats">
+      <div class="card">
+        <h3>Gross WPM</h3>
+        <p id="gross">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Net WPM</h3>
+        <p id="net">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Accuracy</h3>
+        <p id="accuracy">0%</p>
+      </div>
+
+      <div class="card">
+        <h3>Errors (400 Words)</h3>
+        <p id="errors400">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Errors</h3>
+        <p id="errors">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Score (400 Words)</h3>
+        <p id="score400">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Score</h3>
+        <p id="score">0</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="box">
+        <h3>Original Passage</h3>
+        <br>
+        <div id="originalBox"></div>
+      </div>
+
+      <div class="box">
+        <h3>Your Typing</h3>
+        <br>
+        <div id="typedBox"></div>
+      </div>
+    </div>
+
+    <div class="result-actions">
+      <button id="viewResultButton" type="button">
+        Open Full Results
+      </button>
+
+      <button id="chooseAnotherButton" type="button">
+        Choose Another Passage
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script type="module">
+"use strict";
+
+/* =========================================================
+   INDEPENDENT FRONTEND-ONLY TYPING TEST
+
+   Reads the selected passage from new-passage.html.
+
+   No Supabase.
+   No authentication.
+   No database writes.
+   No daily test limit.
+   No original passage-file imports.
+========================================================= */
+
+const SELECTION_KEY = "newTypingSelectedPassage";
+const RESULT_KEY = "newTypingResult";
+const TEST_DURATION = 600;
+
+const $ = id => document.getElementById(id);
+
+const input = $("input");
+const timer = $("timer");
+const preview = $("preview");
+const accessNotice = $("accessNotice");
+
+const startButton = $("startButton");
+const restartButton = $("restartButton");
+const submitButton = $("submitButton");
+const toggleTypingBtn = $("toggleTypingBtn");
+
+const fontSizeSelect = $("fontSizeSelect");
+
+const ALLOWED_FONT_SIZES = [16, 18, 20, 22, 24];
+
+let currentPassage = "";
+let currentCollectionId = "";
+let currentPassageId = "";
+
+let timeLeft = TEST_DURATION;
+let interval = null;
+
+let testStarted = false;
+let testSubmitted = false;
+let submissionInProgress = false;
+
+let typingBoxHidden = false;
+
+/* =========================================================
+   NOTICES
+========================================================= */
+
+function showNotice(message) {
+  accessNotice.textContent = message;
+  accessNotice.classList.add("visible");
+}
+
+function clearNotice() {
+  accessNotice.textContent = "";
+  accessNotice.classList.remove("visible");
+}
+
+/* =========================================================
+   SAFE STORAGE
+========================================================= */
+
+function readSessionJSON(key) {
+  try {
+    const value = sessionStorage.getItem(key);
+
+    if (!value) {
+      return null;
+    }
+
+    return JSON.parse(value);
+  } catch (error) {
+    console.error(`Could not read ${key}:`, error);
+    return null;
+  }
+}
+
+function writeSessionJSON(key, value) {
+  try {
+    sessionStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch (error) {
+    console.error(`Could not save ${key}:`, error);
+    showNotice(
+      "Your browser could not temporarily store the test data. Check browser storage settings and try again."
+    );
+    return false;
+  }
+}
+
+/* =========================================================
+   LOAD SELECTED PASSAGE
+========================================================= */
+
+function loadSelectedPassage() {
+  const selection = readSessionJSON(SELECTION_KEY);
+
+  if (
+    !selection ||
+    typeof selection.passageText !== "string" ||
+    !selection.passageText.trim() ||
+    selection.collectionId == null ||
+    selection.passageId == null
+  ) {
+    input.disabled = true;
+    setButtons(false);
+
+    preview.textContent =
+      "No passage has been selected.";
+
+    $("passageInfo").textContent =
+      "Passage selection required";
+
+    showNotice(
+      "No valid passage selection was found. Return to new-passage.html and select a passage first."
+    );
+
+    startButton.disabled = true;
+    restartButton.disabled = true;
+    submitButton.disabled = true;
+    toggleTypingBtn.disabled = true;
+
+    return false;
+  }
+
+  currentCollectionId = String(selection.collectionId);
+  currentPassageId = String(selection.passageId);
+  currentPassage = selection.passageText;
+
+  preview.textContent = currentPassage;
+
+  $("passageInfo").textContent =
+    `Collection ${currentCollectionId} · Passage #${currentPassageId}`;
+
+  $("wordCount").textContent =
+    `0 / ${getWordTokens(currentPassage).length} words`;
+
+  $("keystrokeCount").textContent =
+    `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
+
+  return true;
+}
+
+/* =========================================================
+   FONT SIZE
+========================================================= */
+
+function applyFontSize(size) {
+  const fontSize = Number(size);
+
+  if (!ALLOWED_FONT_SIZES.includes(fontSize)) {
+    return;
+  }
+
+  preview.style.fontSize = `${fontSize}px`;
+  input.style.fontSize = `${fontSize}px`;
+
+  fontSizeSelect.value = String(fontSize);
+
+  try {
+    localStorage.setItem("newTypingTestFontSize", String(fontSize));
+  } catch (error) {
+    console.warn("Could not save font preference:", error);
+  }
+}
+
+function initializeFontSize() {
+  let savedSize = 18;
+
+  try {
+    const stored = Number(
+      localStorage.getItem("newTypingTestFontSize")
+    );
+
+    if (ALLOWED_FONT_SIZES.includes(stored)) {
+      savedSize = stored;
+    }
+  } catch (error) {
+    console.warn("Could not read font preference:", error);
+  }
+
+  applyFontSize(savedSize);
+}
+
+fontSizeSelect.addEventListener("change", () => {
+  applyFontSize(fontSizeSelect.value);
+});
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+function countKeystrokes(text) {
+  return [...text].length;
+}
+
+function getWordTokens(text) {
+  const trimmed = String(text)
+    .replace(/\r/g, "")
+    .trim();
+
+  return trimmed ? trimmed.split(/\s+/) : [];
+}
+
+function updateCounters() {
+  $("wordCount").textContent =
+    `${getWordTokens(input.value).length} / ${getWordTokens(currentPassage).length} words`;
+
+  $("keystrokeCount").textContent =
+    `Keystrokes ${countKeystrokes(input.value)} / ${countKeystrokes(currentPassage)}`;
+}
+
+function setButtons(enabled) {
+  startButton.disabled = !enabled || testStarted || testSubmitted;
+  restartButton.disabled = !enabled || submissionInProgress;
+  submitButton.disabled = !enabled || submissionInProgress;
+  toggleTypingBtn.disabled = !enabled || submissionInProgress;
+}
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function stopTimer() {
+  if (interval !== null) {
+    clearInterval(interval);
+    interval = null;
+  }
+}
+
+function renderTimer() {
+  timer.textContent =
+    `${String(Math.floor(timeLeft / 60)).padStart(2, "0")}:${String(timeLeft % 60).padStart(2, "0")}`;
+}
+
+function startTimer() {
+  if (
+    interval !== null ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  interval = setInterval(() => {
+    timeLeft = Math.max(0, timeLeft - 1);
+    renderTimer();
+
+    if (timeLeft <= 0) {
+      stopTimer();
+      finishTest();
+    }
+  }, 1000);
+}
+
+/* =========================================================
+   START / RESTART
+========================================================= */
+
+function startTest() {
+  if (
+    !currentPassage ||
+    testStarted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  testStarted = true;
+
+  clearNotice();
+
+  input.disabled = false;
+  startButton.disabled = true;
+  restartButton.disabled = false;
+  submitButton.disabled = false;
+  toggleTypingBtn.disabled = false;
+
+  input.focus();
+  startTimer();
+}
+
+function restartSamePassage() {
+  if (
+    !currentPassage ||
+    submissionInProgress ||
+    testSubmitted
+  ) {
+    return;
+  }
+
+  stopTimer();
+
+  timeLeft = TEST_DURATION;
+  testStarted = false;
+
+  renderTimer();
+
+  input.value = "";
+  input.disabled = true;
+
+  $("result").style.display = "none";
+
+  clearNotice();
+  updateCounters();
+
+  startButton.disabled = false;
+  restartButton.disabled = false;
+  submitButton.disabled = true;
+
+  // Keep the same selected passage. Do not choose another.
+  startButton.textContent = "Start Test";
+}
+
+/* =========================================================
+   STRICT TYPING RULES
+========================================================= */
+
+input.addEventListener("keydown", event => {
+  if (
+    !testStarted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    event.preventDefault();
+    return;
+  }
+
+  // Preserve the original strict behavior.
+  if (
+    [
+      "Backspace",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown"
+    ].includes(event.key)
+  ) {
+    event.preventDefault();
+  }
+
+  // Prevent editing shortcuts such as Ctrl+A and Ctrl+V.
+  if (event.ctrlKey || event.metaKey) {
+    event.preventDefault();
+  }
+
+  // Insert a literal tab for paragraph indentation.
+  if (event.key === "Tab") {
+    event.preventDefault();
+
+    const start = input.selectionStart;
+    const end = input.selectionEnd;
+
+    input.setRangeText("\t", start, end, "end");
+
+    input.dispatchEvent(
+      new Event("input", { bubbles: true })
+    );
+  }
+});
+
+input.addEventListener("paste", event => {
+  event.preventDefault();
+});
+
+input.addEventListener("drop", event => {
+  event.preventDefault();
+});
+
+input.addEventListener("input", () => {
+  if (
+    !testStarted ||
+    testSubmitted ||
+    submissionInProgress
+  ) {
+    return;
+  }
+
+  updateCounters();
+});
+
+/* =========================================================
+   TEXT ALIGNMENT AND COMPARISON
+========================================================= */
+
+function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function tokenize(text) {
+  text = String(text).replace(/\r\n?/g, "\n");
+
+  return text.match(
+    /\t| +|\n+|[A-Za-z0-9]+(?:['’\-][A-Za-z0-9]+)*|[^\sA-Za-z0-9]/g
+  ) || [];
+}
+
+function alignAndCount(original, typed) {
+  const a = tokenize(original);
+  const b = tokenize(typed);
+
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1]
+        ? dp[i - 1][j - 1]
+        : Math.min(
+            dp[i - 1][j] + 1,
+            dp[i][j - 1] + 1,
+            dp[i - 1][j - 1] + 1
+          );
+    }
+  }
+
+  let i = m;
+  let j = n;
+
+  const alignedA = [];
+  const alignedB = [];
+
+  while (i > 0 || j > 0) {
+    if (
+      i > 0 &&
+      j > 0 &&
+      a[i - 1] === b[j - 1]
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
+      i--;
+      j--;
+    } else if (
+      i > 0 &&
+      j > 0 &&
+      dp[i][j] === dp[i - 1][j - 1] + 1
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
+      i--;
+      j--;
+    } else if (
+      i > 0 &&
+      dp[i][j] === dp[i - 1][j] + 1
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift("∅");
+      i--;
+    } else {
+      alignedA.unshift("∅");
+      alignedB.unshift(b[j - 1]);
+      j--;
+    }
+  }
+
+  return { alignedA, alignedB };
+}
+
+/* =========================================================
+   BHC WORD-LEVEL ERROR COUNT
+========================================================= */
+
+function countBhcWordErrors(original, typed) {
+  const a = getWordTokens(original);
+  const b = getWordTokens(typed);
+
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  const op = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(null)
+  );
+
+  for (let i = 1; i <= m; i++) {
+    dp[i][0] = i;
+    op[i][0] = "delete";
+  }
+
+  for (let j = 1; j <= n; j++) {
+    dp[0][j] = j;
+    op[0][j] = "insert";
+  }
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (a[i - 1] === b[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+        op[i][j] = "match";
+      } else {
+        const replace = dp[i - 1][j - 1] + 1;
+        const remove = dp[i - 1][j] + 1;
+        const insert = dp[i][j - 1] + 1;
+
+        const best = Math.min(replace, remove, insert);
+
+        dp[i][j] = best;
+
+        op[i][j] = best === replace
+          ? "replace"
+          : best === remove
+            ? "delete"
+            : "insert";
+      }
+    }
+  }
+
+  let i = m;
+  let j = n;
+
+  let errors = 0;
+  let errors400 = 0;
+
+  while (i > 0 || j > 0) {
+    const action = op[i][j];
+
+    if (action === "match") {
+      i--;
+      j--;
+      continue;
+    }
+
+    if (action === "replace") {
+      errors++;
+      if (i <= 400) errors400++;
+      i--;
+      j--;
+      continue;
+    }
+
+    if (action === "delete") {
+      errors++;
+      if (i <= 400) errors400++;
+      i--;
+      continue;
+    }
+
+    if (action === "insert") {
+      errors++;
+      if (i < 400) errors400++;
+      j--;
+      continue;
+    }
+
+    // Defensive fallback for an incomplete alignment.
+    if (i > 0) {
+      errors++;
+      if (i <= 400) errors400++;
+      i--;
+    } else if (j > 0) {
+      errors++;
+      if (i < 400) errors400++;
+      j--;
+    }
+  }
+
+  return { errors, errors400 };
+}
+
+function countCorrectWords(a, b) {
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1]
+        ? dp[i - 1][j - 1] + 1
+        : Math.max(dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+
+  return dp[m][n];
+}
+
+function comparisonToken(token, className = "") {
+  if (token === "∅") {
+    return '<span class="dim">∅</span>';
+  }
+
+  const safe = escapeHTML(token);
+
+  return className
+    ? `<span class="${className}">${safe}</span>`
+    : safe;
+}
+
+function buildComparison(original, typed) {
+  const { alignedA, alignedB } = alignAndCount(original, typed);
+
+  let originalHTML = "";
+  let typedHTML = "";
+
+  for (let k = 0; k < alignedA.length; k++) {
+    const a = alignedA[k];
+    const b = alignedB[k];
+
+    if (a === b) {
+      originalHTML += escapeHTML(a);
+      typedHTML += escapeHTML(b);
+    } else if (a === "∅") {
+      originalHTML += comparisonToken("∅");
+      typedHTML += comparisonToken(b, "extra");
+    } else if (b === "∅") {
+      originalHTML += comparisonToken(a, "missing");
+      typedHTML += comparisonToken("∅");
+    } else {
+      originalHTML += comparisonToken(a, "red");
+      typedHTML += comparisonToken(b, "red");
+    }
+  }
+
+  return { originalHTML, typedHTML };
+}
+
+/* =========================================================
+   CALCULATE RESULTS
+========================================================= */
+
+function calculateResult() {
+  const typed = input.value;
+
+  const originalWords = getWordTokens(currentPassage);
+  const typedWords = getWordTokens(typed);
+
+  const { errors, errors400 } =
+    countBhcWordErrors(currentPassage, typed);
+
+  const correct = countCorrectWords(originalWords, typedWords);
+
+  const accuracy = originalWords.length
+    ? (correct / originalWords.length) * 100
+    : 0;
+
+  const elapsed = Math.max(1, TEST_DURATION - timeLeft);
+  const minutes = elapsed / 60;
+
+  const gross = (typed.length / 5) / minutes;
+
+  const net = gross * (accuracy / 100);
+
+  const score400 = Math.max(
+    0,
+    20 - errors400 * 0.25
+  );
+
+  const score = Math.max(
+    0,
+    20 - errors * 0.25
+  );
+
+  const comparison = buildComparison(currentPassage, typed);
+
+  return {
+    collectionId: currentCollectionId,
+    passageId: currentPassageId,
+    passageLabel: `Collection ${currentCollectionId} · Passage #${currentPassageId}`,
+
+    gross: Number(gross.toFixed(2)),
+    net: Number(net.toFixed(2)),
+    accuracy: Number(accuracy.toFixed(2)),
+
+    errors400,
+    errors,
+
+    score400: Number(score400.toFixed(2)),
+    score: Number(score.toFixed(2)),
+
+    durationSeconds: elapsed,
+    wordsTyped: typedWords.length,
+    keystrokes: countKeystrokes(typed),
+
+    originalHTML: comparison.originalHTML,
+    typedHTML: comparison.typedHTML,
+
+    givenPassage: currentPassage,
+    typedPassage: typed,
+
+    completedAt: new Date().toISOString()
+  };
+}
+
+/* =========================================================
+   DISPLAY RESULTS
+========================================================= */
+
+function displayResults(result) {
+  $("gross").textContent = result.gross.toFixed(2);
+  $("net").textContent = result.net.toFixed(2);
+  $("accuracy").textContent = `${result.accuracy.toFixed(2)}%`;
+
+  $("errors400").textContent = String(result.errors400);
+  $("errors").textContent = String(result.errors);
+
+  $("score400").textContent = result.score400.toFixed(2);
+  $("score").textContent = result.score.toFixed(2);
+
+  $("originalBox").innerHTML = result.originalHTML;
+  $("typedBox").innerHTML = result.typedHTML;
+
+  $("result").style.display = "block";
+
+  $("result").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+/* =========================================================
+   FINISH TEST
+
+   Results are held in sessionStorage only.
+   Nothing is submitted to Supabase or another database.
+========================================================= */
+
+function finishTest() {
+  if (
+    testSubmitted ||
+    submissionInProgress ||
+    !currentPassage
+  ) {
+    return;
+  }
+
+  submissionInProgress = true;
+
+  stopTimer();
+
+  input.disabled = true;
+
+  startButton.disabled = true;
+  restartButton.disabled = true;
+  submitButton.disabled = true;
+  toggleTypingBtn.disabled = true;
+
+  clearNotice();
+
+  try {
+    const result = calculateResult();
+
+    if (!writeSessionJSON(RESULT_KEY, result)) {
+      submissionInProgress = false;
+      showNotice(
+        "The result could not be stored temporarily. Copy or record the displayed result before leaving this page."
+      );
+
+      displayResults(result);
+      testSubmitted = true;
+      return;
+    }
+
+    testSubmitted = true;
+    displayResults(result);
+
+    startButton.disabled = true;
+    restartButton.disabled = true;
+    submitButton.disabled = true;
+
+    showNotice(
+      "Test completed. Your result is available in this browser session; it has not been saved to a database."
+    );
+
+  } catch (error) {
+    console.error("Could not calculate result:", error);
+
+    showNotice(
+      "An error occurred while calculating your result. Your test text is still present on this page."
+    );
+
+    input.disabled = false;
+    submitButton.disabled = false;
+
+  } finally {
+    submissionInProgress = false;
+  }
+}
+
+/* =========================================================
+   HIDE / SHOW TYPING BOX
+========================================================= */
+
+function toggleTypingBox() {
+  typingBoxHidden = !typingBoxHidden;
+
+  input.classList.toggle(
+    "typing-box-hidden",
+    typingBoxHidden
+  );
+
+  toggleTypingBtn.textContent = typingBoxHidden
+    ? "Show Typing Box"
+    : "Hide Typing Box";
+
+  if (testStarted && !testSubmitted) {
+    input.focus();
+  }
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+$("viewResultButton").addEventListener("click", () => {
+  const result = readSessionJSON(RESULT_KEY);
+
+  if (!result) {
+    showNotice(
+      "No completed result was found. Submit the test first."
+    );
+    return;
+  }
+
+  window.location.href = "./new-result.html";
+});
+
+$("chooseAnotherButton").addEventListener("click", () => {
+  window.location.href = "./new-passage.html";
+});
+
+/* =========================================================
+   EVENT LISTENERS
+========================================================= */
+
+startButton.addEventListener("click", startTest);
+
+restartButton.addEventListener("click", restartSamePassage);
+
+submitButton.addEventListener("click", finishTest);
+
+toggleTypingBtn.addEventListener("click", toggleTypingBox);
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+initializeFontSize();
+
+if (loadSelectedPassage()) {
+  input.value = "";
+  input.disabled = true;
+
+  testStarted = false;
+  testSubmitted = false;
+
+  renderTimer();
+  updateCounters();
+
+  startButton.disabled = false;
+  restartButton.disabled = false;
+  submitButton.disabled = true;
+  toggleTypingBtn.disabled = false;
+
+  startButton.textContent = "Start Test";
+}
+</script>
+</body>
+</html>
