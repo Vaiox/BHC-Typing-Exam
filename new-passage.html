@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Passage Selection | BHC Typing Practice</title>
+
+  <style>
+    :root {
+      --bg: #080808;
+      --surface: #111111;
+      --surface-2: #0b0b0b;
+      --border: #292929;
+      --text: #f0f0f0;
+      --muted: #929292;
+      --accent: #00ffae;
+      --success-bg: #10271f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
+
+    button, select, input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .topbar {
+      min-height: 72px;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--border);
+      background: #0d0d0d;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      background: var(--success-bg);
+      border: 1px solid #174432;
+      border-radius: 12px;
+      color: var(--accent);
+      font-size: 21px;
+    }
+
+    .private-label {
+      padding: 8px 11px;
+      border: 1px solid #174432;
+      border-radius: 8px;
+      background: var(--success-bg);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      padding: 38px 0 55px;
+    }
+
+    .welcome {
+      margin-bottom: 28px;
+    }
+
+    .welcome h1 {
+      margin-bottom: 10px;
+      font-size: clamp(25px, 4vw, 34px);
+      letter-spacing: -0.7px;
+    }
+
+    .welcome p {
+      max-width: 750px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .panel {
+      min-width: 0;
+      padding: 25px;
+      margin-bottom: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .panel h2 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .panel-description {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .selector-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 9px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .field select,
+    .field input {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 12px;
+      background: #080808;
+      color: var(--text);
+      border: 1px solid #333;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .field select:focus,
+    .field input:focus {
+      border-color: var(--accent);
+    }
+
+    .help-text {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .notice {
+      display: none;
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      border: 1px solid #593333;
+      border-radius: 10px;
+      background: #241818;
+      color: #ffb0b0;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .notice.visible {
+      display: block;
+    }
+
+    .notice.success {
+      border-color: #174432;
+      background: var(--success-bg);
+      color: var(--accent);
+    }
+
+    .passage-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .passage-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-width: 0;
+      padding: 17px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .passage-card:hover {
+      border-color: #3d554b;
+    }
+
+    .passage-card.selected {
+      border-color: var(--accent);
+      background: #0d1b15;
+    }
+
+    .passage-info {
+      min-width: 0;
+    }
+
+    .passage-title {
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .passage-meta {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .select-passage {
+      flex-shrink: 0;
+      min-height: 38px;
+      padding: 0 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .select-passage:hover,
+    .passage-card.selected .select-passage {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 28px 15px;
+      border: 1px dashed #343434;
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .preview-box {
+      max-height: 300px;
+      padding: 18px;
+      overflow: auto;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      background: #080808;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #d5d5d5;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .preview-placeholder {
+      color: var(--muted);
+    }
+
+    .preview-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .preview-stat {
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #0b0b0b;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .preview-stat strong {
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .primary-button {
+      border: none;
+      background: var(--accent);
+      color: #00150e;
+    }
+
+    .primary-button:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    .primary-button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .secondary-button {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+    }
+
+    .secondary-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .footer {
+      padding-top: 25px;
+      border-top: 1px solid var(--border);
+      color: #626262;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .selector-grid,
+      .passage-list {
+        grid-template-columns: 1fr;
+      }
+
+      .panel {
+        padding: 19px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .topbar {
+        padding: 14px 4%;
+      }
+
+      .brand {
+        font-size: 15px;
+      }
+
+      .brand-icon {
+        width: 35px;
+        height: 35px;
+      }
+
+      .private-label {
+        font-size: 10px;
+        padding: 7px 8px;
+      }
+
+      .container {
+        padding-top: 27px;
+      }
+
+      .passage-card {
+        padding: 13px;
+      }
+
+      .select-passage {
+        padding: 0 10px;
+      }
+
+      .actions > button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">⌨</span>
+      <span>BHC Typing Practice</span>
+    </div>
+
+    <span class="private-label">Independent Practice</span>
+  </header>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h1>Select a Passage</h1>
+      <p>
+        Choose a passage collection, find an individual passage,
+        preview its contents, and start a typing test using that
+        exact passage.
+      </p>
+    </section>
+
+    <div
+      id="notice"
+      class="notice"
+      role="status"
+      aria-live="polite"
+    ></div>
+
+    <section class="panel">
+      <h2>Passage Library</h2>
+
+      <p class="panel-description">
+        Select a collection and choose the passage you want to practise.
+        Your selection will be passed to the separate typing-test page.
+      </p>
+
+      <div class="selector-grid">
+        <div class="field">
+          <label for="collectionSelect">Passage Collection</label>
+
+          <select id="collectionSelect">
+            <option value="3200">3,200 keystrokes</option>
+          </select>
+
+          <p class="help-text">
+            Add more collections to the configuration in this file
+            when their passage files are ready.
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="searchInput">Find a Passage</label>
+
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search by passage number..."
+            autocomplete="off"
+          >
+
+          <p class="help-text">
+            Search by passage number or the passage's text.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Available Passages</h2>
+
+      <p class="panel-description" id="listDescription">
+        Loading passages...
+      </p>
+
+      <div id="passageList" class="passage-list">
+        <div class="empty-state">Loading passage collection...</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Selected Passage Preview</h2>
+
+      <p class="panel-description" id="selectedDescription">
+        Select a passage above to preview it here.
+      </p>
+
+      <div id="passagePreview" class="preview-box">
+        <span class="preview-placeholder">
+          No passage selected yet.
+        </span>
+      </div>
+
+      <div class="preview-stats">
+        <div class="preview-stat">
+          Passage: <strong id="previewPassageId">—</strong>
+        </div>
+
+        <div class="preview-stat">
+          Words: <strong id="previewWords">—</strong>
+        </div>
+
+        <div class="preview-stat">
+          Characters: <strong id="previewCharacters">—</strong>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button
+          class="primary-button"
+          id="startTypingButton"
+          type="button"
+          disabled
+        >
+          Start Typing Test <span aria-hidden="true">→</span>
+        </button>
+
+        <button
+          class="secondary-button"
+          id="clearSelectionButton"
+          type="button"
+        >
+          Clear Selection
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      BHC Typing Practice · Independent Passage Library
+    </footer>
+
+  </main>
+
+  <script type="module">
+    const $ = (id) => document.getElementById(id);
+
+    const collectionSelect = $("collectionSelect");
+    const searchInput = $("searchInput");
+    const passageList = $("passageList");
+    const passagePreview = $("passagePreview");
+    const startTypingButton = $("startTypingButton");
+    const notice = $("notice");
+
+    /*
+     * PASSAGE FILE CONFIGURATION
+     *
+     * Keep the passage files in the same folder as this HTML file.
+     *
+     * Expected file format:
+     *
+     * export const passages = {
+     *   1: `First passage text...`,
+     *   2: `Second passage text...`,
+     * };
+     *
+     * IMPORTANT:
+     * Replace "./3200-passage.js" below if the file is in another folder
+     * or has a different filename.
+     */
+    const PASSAGE_COLLECTIONS = {
+      "3200": {
+        label: "3,200 keystrokes",
+        file: "./3200-passage.js"
+      }
+    };
+
+    const SELECTED_PASSAGE_KEY = "newTypingSelectedPassage";
+
+    let currentCollection = "";
+    let passages = {};
+    let selectedPassageId = null;
+
+    function showNotice(message, success = false) {
+      notice.textContent = message;
+      notice.classList.add("visible");
+      notice.classList.toggle("success", success);
+    }
+
+    function hideNotice() {
+      notice.textContent = "";
+      notice.classList.remove("visible", "success");
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function getPassageText(value) {
+      if (typeof value === "string") {
+        return value;
+      }
+
+      if (value && typeof value.text === "string") {
+        return value.text;
+      }
+
+      return "";
+    }
+
+    function getWordCount(text) {
+      const trimmed = text.trim();
+
+      return trimmed
+        ? trimmed.split(/\s+/u).length
+        : 0;
+    }
+
+    function getCharacterCount(text) {
+      return [...text].length;
+    }
+
+    function getSelectedPassage() {
+      if (selectedPassageId === null) {
+        return null;
+      }
+
+      const value = passages[selectedPassageId];
+
+      if (value === undefined) {
+        return null;
+      }
+
+      const text = getPassageText(value);
+
+      if (!text) {
+        return null;
+      }
+
+      return {
+        id: String(selectedPassageId),
+        text
+      };
+    }
+
+    function resetPreview() {
+      selectedPassageId = null;
+
+      $("selectedDescription").textContent =
+        "Select a passage above to preview it here.";
+
+      passagePreview.innerHTML = `
+        <span class="preview-placeholder">
+          No passage selected yet.
+        </span>
+      `;
+
+      $("previewPassageId").textContent = "—";
+      $("previewWords").textContent = "—";
+      $("previewCharacters").textContent = "—";
+
+      startTypingButton.disabled = true;
+
+      renderPassageList();
+    }
+
+    function renderPassageList() {
+      const query = searchInput.value.trim().toLowerCase();
+
+      const entries = Object.entries(passages)
+        .filter(([id, value]) => {
+          const text = getPassageText(value);
+
+          if (!text) {
+            return false;
+          }
+
+          return (
+            String(id).toLowerCase().includes(query) ||
+            text.toLowerCase().includes(query)
+          );
+        })
+        .sort((a, b) => {
+          const aNumber = Number(a[0]);
+          const bNumber = Number(b[0]);
+
+          if (
+            Number.isFinite(aNumber) &&
+            Number.isFinite(bNumber)
+          ) {
+            return aNumber - bNumber;
+          }
+
+          return String(a[0]).localeCompare(String(b[0]));
+        });
+
+      $("listDescription").textContent =
+        `${entries.length} passage${entries.length === 1 ? "" : "s"} found in this collection. Select one to preview it.`;
+
+      if (entries.length === 0) {
+        passageList.innerHTML = `
+          <div class="empty-state">
+            No matching passages found. Try a different search.
+          </div>
+        `;
+
+        return;
+      }
+
+      passageList.innerHTML = entries.map(([id, value]) => {
+        const text = getPassageText(value);
+        const isSelected =
+          String(id) === String(selectedPassageId);
+
+        return `
+          <article
+            class="passage-card ${isSelected ? "selected" : ""}"
+            data-passage-id="${escapeHtml(id)}"
+          >
+            <div class="passage-info">
+              <div class="passage-title">
+                Passage ${escapeHtml(id)}
+              </div>
+
+              <div class="passage-meta">
+                ${getWordCount(text)} words
+                · ${getCharacterCount(text)} characters
+              </div>
+            </div>
+
+            <button
+              class="select-passage"
+              type="button"
+              data-select-passage="${escapeHtml(id)}"
+              aria-pressed="${isSelected ? "true" : "false"}"
+            >
+              ${isSelected ? "Selected ✓" : "Select"}
+            </button>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function selectPassage(id) {
+      const value = passages[id];
+
+      if (value === undefined) {
+        showNotice("The selected passage could not be found.");
+        return;
+      }
+
+      const text = getPassageText(value);
+
+      if (!text.trim()) {
+        showNotice("This passage is empty or has an unsupported format.");
+        return;
+      }
+
+      selectedPassageId = String(id);
+
+      $("selectedDescription").textContent =
+        `Passage ${id} is selected. Review the text before starting.`;
+
+      // textContent keeps passage content safe and preserves literal text.
+      passagePreview.textContent = text;
+
+      $("previewPassageId").textContent =
+        `${currentCollection} / ${id}`;
+
+      $("previewWords").textContent =
+        String(getWordCount(text));
+
+      $("previewCharacters").textContent =
+        String(getCharacterCount(text));
+
+      startTypingButton.disabled = false;
+
+      hideNotice();
+      renderPassageList();
+    }
+
+    async function loadCollection(collectionId) {
+      const collection = PASSAGE_COLLECTIONS[collectionId];
+
+      if (!collection) {
+        showNotice("This passage collection is not configured.");
+        return;
+      }
+
+      currentCollection = collectionId;
+      passages = {};
+      resetPreview();
+
+      passageList.innerHTML = `
+        <div class="empty-state">
+          Loading passages...
+        </div>
+      `;
+
+      $("listDescription").textContent =
+        `Loading ${collection.label}...`;
+
+      try {
+        const module = await import(collection.file);
+
+        if (
+          !module.passages ||
+          typeof module.passages !== "object"
+        ) {
+          throw new Error(
+            "The JavaScript file must export a passages object."
+          );
+        }
+
+        passages = module.passages;
+
+        renderPassageList();
+
+        if (Object.keys(passages).length === 0) {
+          showNotice(
+            "The passage file loaded, but it contains no passages."
+          );
+        } else {
+          hideNotice();
+        }
+
+      } catch (error) {
+        console.error("Passage loading failed:", error);
+
+        passageList.innerHTML = `
+          <div class="empty-state">
+            Could not load this passage collection.<br>
+            Check the filename, export format, and browser console.
+          </div>
+        `;
+
+        $("listDescription").textContent =
+          "The collection could not be loaded.";
+
+        showNotice(
+          `Unable to load ${collection.file}. ${error.message}`
+        );
+      }
+    }
+
+    passageList.addEventListener("click", event => {
+      const button = event.target.closest("[data-select-passage]");
+
+      if (!button) {
+        return;
+      }
+
+      selectPassage(button.dataset.selectPassage);
+    });
+
+    searchInput.addEventListener("input", renderPassageList);
+
+    collectionSelect.addEventListener("change", () => {
+      loadCollection(collectionSelect.value);
+    });
+
+    $("clearSelectionButton").addEventListener("click", () => {
+      resetPreview();
+      hideNotice();
+    });
+
+    startTypingButton.addEventListener("click", () => {
+      const selected = getSelectedPassage();
+
+      if (!selected) {
+        showNotice("Select a passage before starting the test.");
+        return;
+      }
+
+      /*
+       * Store only the chosen passage and its ID temporarily
+       * in this browser. This does not save test results.
+       *
+       * The next page will read this key.
+       */
+      const selection = {
+        collectionId: currentCollection,
+        passageId: selected.id,
+        passageText: selected.text
+      };
+
+      try {
+        sessionStorage.setItem(
+          SELECTED_PASSAGE_KEY,
+          JSON.stringify(selection)
+        );
+      } catch (error) {
+        console.error("Could not save passage selection:", error);
+
+        showNotice(
+          "Your browser could not temporarily store the passage. Check your browser storage settings."
+        );
+
+        return;
+      }
+
+      window.location.href = "./new-typing-test.html";
+    });
+
+    // Load the initial collection.
+    loadCollection(collectionSelect.value);
+  </script>
+</body>
+</html>
