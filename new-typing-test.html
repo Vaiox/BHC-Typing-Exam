@@ -6,6 +6,10 @@
 <title>BHC Typing Practice</title>
 
 <style>
+/* =========================================================
+   GLOBAL THEME
+========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -105,6 +109,8 @@ body {
   align-items: stretch;
 }
 
+/* PASSAGE AND TYPING BOX */
+
 .preview,
 textarea {
   display: block;
@@ -168,10 +174,6 @@ textarea:focus {
   box-shadow: 0 0 0 2px #008f7026, 0 5px 20px #0002;
 }
 
-textarea:disabled {
-  opacity: .9;
-}
-
 .typing-box-hidden {
   opacity: 0 !important;
 }
@@ -206,7 +208,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* NOTICE */
+/* NOTICES */
 
 .access-notice {
   display: none;
@@ -318,6 +320,8 @@ button:disabled {
   margin-top: 22px;
 }
 
+/* RESPONSIVE */
+
 @media (max-width: 900px) {
   .typing-area,
   .compare {
@@ -400,9 +404,7 @@ button:disabled {
   ></div>
 
   <div class="typing-area">
-    <div class="preview" id="preview">
-      Loading selected passage...
-    </div>
+    <div class="preview" id="preview">Loading selected passage...</div>
 
     <textarea
       id="input"
@@ -410,13 +412,12 @@ button:disabled {
       autocomplete="off"
       autocorrect="off"
       autocapitalize="off"
-      placeholder="Press Start Test, then begin typing..."
+      placeholder="Start typing here..."
       disabled
     ></textarea>
   </div>
 
   <div class="buttons">
-    <button id="startButton" disabled>Start Test</button>
     <button id="restartButton" disabled>Restart Same Passage</button>
     <button id="submitButton" disabled>Submit</button>
     <button id="toggleTypingBtn" disabled>Hide Typing Box</button>
@@ -475,31 +476,20 @@ button:disabled {
     </div>
 
     <div class="result-actions">
-      <button id="viewResultButton" type="button">
-        Open Full Results
-      </button>
-
-      <button id="chooseAnotherButton" type="button">
-        Choose Another Passage
-      </button>
+      <button id="viewResultButton" type="button">Open Full Results</button>
+      <button id="chooseAnotherButton" type="button">Choose Another Passage</button>
     </div>
   </div>
 
 </div>
 
-<script type="module">
+<script>
 "use strict";
 
 /* =========================================================
-   INDEPENDENT FRONTEND-ONLY TYPING TEST
-
-   Reads the selected passage from new-passage.html.
-
-   No Supabase.
-   No authentication.
-   No database writes.
-   No daily test limit.
-   No original passage-file imports.
+   INDEPENDENT TYPING TEST
+   Selected passage comes from new-passage.html.
+   No authentication, Supabase, or database.
 ========================================================= */
 
 const SELECTION_KEY = "newTypingSelectedPassage";
@@ -513,11 +503,9 @@ const timer = $("timer");
 const preview = $("preview");
 const accessNotice = $("accessNotice");
 
-const startButton = $("startButton");
 const restartButton = $("restartButton");
 const submitButton = $("submitButton");
 const toggleTypingBtn = $("toggleTypingBtn");
-
 const fontSizeSelect = $("fontSizeSelect");
 
 const ALLOWED_FONT_SIZES = [16, 18, 20, 22, 24];
@@ -528,15 +516,13 @@ let currentPassageId = "";
 
 let timeLeft = TEST_DURATION;
 let interval = null;
-
-let testStarted = false;
+let timerStarted = false;
 let testSubmitted = false;
 let submissionInProgress = false;
-
 let typingBoxHidden = false;
 
 /* =========================================================
-   NOTICES
+   NOTICES AND SESSION STORAGE
 ========================================================= */
 
 function showNotice(message) {
@@ -549,19 +535,10 @@ function clearNotice() {
   accessNotice.classList.remove("visible");
 }
 
-/* =========================================================
-   SAFE STORAGE
-========================================================= */
-
 function readSessionJSON(key) {
   try {
     const value = sessionStorage.getItem(key);
-
-    if (!value) {
-      return null;
-    }
-
-    return JSON.parse(value);
+    return value ? JSON.parse(value) : null;
   } catch (error) {
     console.error(`Could not read ${key}:`, error);
     return null;
@@ -574,15 +551,12 @@ function writeSessionJSON(key, value) {
     return true;
   } catch (error) {
     console.error(`Could not save ${key}:`, error);
-    showNotice(
-      "Your browser could not temporarily store the test data. Check browser storage settings and try again."
-    );
     return false;
   }
 }
 
 /* =========================================================
-   LOAD SELECTED PASSAGE
+   LOAD THE SELECTED PASSAGE
 ========================================================= */
 
 function loadSelectedPassage() {
@@ -595,23 +569,17 @@ function loadSelectedPassage() {
     selection.collectionId == null ||
     selection.passageId == null
   ) {
+    preview.textContent = "No passage has been selected.";
+    $("passageInfo").textContent = "Passage selection required";
+
     input.disabled = true;
-    setButtons(false);
-
-    preview.textContent =
-      "No passage has been selected.";
-
-    $("passageInfo").textContent =
-      "Passage selection required";
-
-    showNotice(
-      "No valid passage selection was found. Return to new-passage.html and select a passage first."
-    );
-
-    startButton.disabled = true;
     restartButton.disabled = true;
     submitButton.disabled = true;
     toggleTypingBtn.disabled = true;
+
+    showNotice(
+      "Return to new-passage.html and select a passage first."
+    );
 
     return false;
   }
@@ -624,12 +592,6 @@ function loadSelectedPassage() {
 
   $("passageInfo").textContent =
     `Collection ${currentCollectionId} · Passage #${currentPassageId}`;
-
-  $("wordCount").textContent =
-    `0 / ${getWordTokens(currentPassage).length} words`;
-
-  $("keystrokeCount").textContent =
-    `Keystrokes 0 / ${countKeystrokes(currentPassage)}`;
 
   return true;
 }
@@ -647,13 +609,12 @@ function applyFontSize(size) {
 
   preview.style.fontSize = `${fontSize}px`;
   input.style.fontSize = `${fontSize}px`;
-
   fontSizeSelect.value = String(fontSize);
 
   try {
     localStorage.setItem("newTypingTestFontSize", String(fontSize));
   } catch (error) {
-    console.warn("Could not save font preference:", error);
+    console.warn("Could not save font size preference:", error);
   }
 }
 
@@ -661,15 +622,15 @@ function initializeFontSize() {
   let savedSize = 18;
 
   try {
-    const stored = Number(
+    const storedSize = Number(
       localStorage.getItem("newTypingTestFontSize")
     );
 
-    if (ALLOWED_FONT_SIZES.includes(stored)) {
-      savedSize = stored;
+    if (ALLOWED_FONT_SIZES.includes(storedSize)) {
+      savedSize = storedSize;
     }
   } catch (error) {
-    console.warn("Could not read font preference:", error);
+    console.warn("Could not read font size preference:", error);
   }
 
   applyFontSize(savedSize);
@@ -703,15 +664,9 @@ function updateCounters() {
     `Keystrokes ${countKeystrokes(input.value)} / ${countKeystrokes(currentPassage)}`;
 }
 
-function setButtons(enabled) {
-  startButton.disabled = !enabled || testStarted || testSubmitted;
-  restartButton.disabled = !enabled || submissionInProgress;
-  submitButton.disabled = !enabled || submissionInProgress;
-  toggleTypingBtn.disabled = !enabled || submissionInProgress;
-}
-
 /* =========================================================
    TIMER
+   Starts automatically on the first typed character.
 ========================================================= */
 
 function stopTimer() {
@@ -747,63 +702,36 @@ function startTimer() {
 }
 
 /* =========================================================
-   START / RESTART
+   RESTART THE SAME PASSAGE
 ========================================================= */
 
-function startTest() {
-  if (
-    !currentPassage ||
-    testStarted ||
-    testSubmitted ||
-    submissionInProgress
-  ) {
-    return;
-  }
-
-  testStarted = true;
-
-  clearNotice();
-
-  input.disabled = false;
-  startButton.disabled = true;
-  restartButton.disabled = false;
-  submitButton.disabled = false;
-  toggleTypingBtn.disabled = false;
-
-  input.focus();
-  startTimer();
-}
-
-function restartSamePassage() {
-  if (
-    !currentPassage ||
-    submissionInProgress ||
-    testSubmitted
-  ) {
+function restartSame() {
+  if (!currentPassage || submissionInProgress) {
     return;
   }
 
   stopTimer();
 
   timeLeft = TEST_DURATION;
-  testStarted = false;
+  timerStarted = false;
+  testSubmitted = false;
 
   renderTimer();
 
   input.value = "";
-  input.disabled = true;
+  input.disabled = false;
 
   $("result").style.display = "none";
 
   clearNotice();
   updateCounters();
 
-  startButton.disabled = false;
   restartButton.disabled = false;
-  submitButton.disabled = true;
+  submitButton.disabled = false;
+  toggleTypingBtn.disabled = false;
 
-  // Keep the same selected passage. Do not choose another.
-  startButton.textContent = "Start Test";
+  // Keep the same passage. Do not select another one.
+  input.focus();
 }
 
 /* =========================================================
@@ -812,15 +740,15 @@ function restartSamePassage() {
 
 input.addEventListener("keydown", event => {
   if (
-    !testStarted ||
     testSubmitted ||
-    submissionInProgress
+    submissionInProgress ||
+    input.disabled
   ) {
     event.preventDefault();
     return;
   }
 
-  // Preserve the original strict behavior.
+  // No backspace or arrow-key editing.
   if (
     [
       "Backspace",
@@ -831,14 +759,16 @@ input.addEventListener("keydown", event => {
     ].includes(event.key)
   ) {
     event.preventDefault();
+    return;
   }
 
-  // Prevent editing shortcuts such as Ctrl+A and Ctrl+V.
+  // Prevent shortcuts such as Ctrl+A, Ctrl+V and Cmd+A.
   if (event.ctrlKey || event.metaKey) {
     event.preventDefault();
+    return;
   }
 
-  // Insert a literal tab for paragraph indentation.
+  // Preserve paragraph indentation with a literal tab.
   if (event.key === "Tab") {
     event.preventDefault();
 
@@ -863,18 +793,23 @@ input.addEventListener("drop", event => {
 
 input.addEventListener("input", () => {
   if (
-    !testStarted ||
     testSubmitted ||
-    submissionInProgress
+    submissionInProgress ||
+    input.disabled
   ) {
     return;
+  }
+
+  if (!timerStarted && input.value.length > 0) {
+    timerStarted = true;
+    startTimer();
   }
 
   updateCounters();
 });
 
 /* =========================================================
-   TEXT ALIGNMENT AND COMPARISON
+   TEXT TOKENIZATION AND COMPARISON
 ========================================================= */
 
 function escapeHTML(text) {
@@ -894,77 +829,8 @@ function tokenize(text) {
   ) || [];
 }
 
-function alignAndCount(original, typed) {
-  const a = tokenize(original);
-  const b = tokenize(typed);
-
-  const m = a.length;
-  const n = b.length;
-
-  const dp = Array.from(
-    { length: m + 1 },
-    () => Array(n + 1).fill(0)
-  );
-
-  for (let i = 0; i <= m; i++) dp[i][0] = i;
-  for (let j = 0; j <= n; j++) dp[0][j] = j;
-
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      dp[i][j] = a[i - 1] === b[j - 1]
-        ? dp[i - 1][j - 1]
-        : Math.min(
-            dp[i - 1][j] + 1,
-            dp[i][j - 1] + 1,
-            dp[i - 1][j - 1] + 1
-          );
-    }
-  }
-
-  let i = m;
-  let j = n;
-
-  const alignedA = [];
-  const alignedB = [];
-
-  while (i > 0 || j > 0) {
-    if (
-      i > 0 &&
-      j > 0 &&
-      a[i - 1] === b[j - 1]
-    ) {
-      alignedA.unshift(a[i - 1]);
-      alignedB.unshift(b[j - 1]);
-      i--;
-      j--;
-    } else if (
-      i > 0 &&
-      j > 0 &&
-      dp[i][j] === dp[i - 1][j - 1] + 1
-    ) {
-      alignedA.unshift(a[i - 1]);
-      alignedB.unshift(b[j - 1]);
-      i--;
-      j--;
-    } else if (
-      i > 0 &&
-      dp[i][j] === dp[i - 1][j] + 1
-    ) {
-      alignedA.unshift(a[i - 1]);
-      alignedB.unshift("∅");
-      i--;
-    } else {
-      alignedA.unshift("∅");
-      alignedB.unshift(b[j - 1]);
-      j--;
-    }
-  }
-
-  return { alignedA, alignedB };
-}
-
 /* =========================================================
-   BHC WORD-LEVEL ERROR COUNT
+   WORD-LEVEL ERROR COUNT
 ========================================================= */
 
 function countBhcWordErrors(original, typed) {
@@ -1007,7 +873,6 @@ function countBhcWordErrors(original, typed) {
         const best = Math.min(replace, remove, insert);
 
         dp[i][j] = best;
-
         op[i][j] = best === replace
           ? "replace"
           : best === remove
@@ -1054,7 +919,6 @@ function countBhcWordErrors(original, typed) {
       continue;
     }
 
-    // Defensive fallback for an incomplete alignment.
     if (i > 0) {
       errors++;
       if (i <= 400) errors400++;
@@ -1067,6 +931,95 @@ function countBhcWordErrors(original, typed) {
   }
 
   return { errors, errors400 };
+}
+
+/* =========================================================
+   ALIGN TEXT FOR SIDE-BY-SIDE COMPARISON
+========================================================= */
+
+function alignAndCount(original, typed) {
+  const a = tokenize(original);
+  const b = tokenize(typed);
+
+  const m = a.length;
+  const n = b.length;
+
+  const dp = Array.from(
+    { length: m + 1 },
+    () => Array(n + 1).fill(0)
+  );
+
+  for (let i = 0; i <= m; i++) dp[i][0] = i;
+  for (let j = 0; j <= n; j++) dp[0][j] = j;
+
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] = a[i - 1] === b[j - 1]
+        ? dp[i - 1][j - 1]
+        : Math.min(
+            dp[i - 1][j],
+            dp[i][j - 1],
+            dp[i - 1][j - 1]
+          ) + 1;
+    }
+  }
+
+  let i = m;
+  let j = n;
+
+  const alignedA = [];
+  const alignedB = [];
+
+  while (i > 0 || j > 0) {
+    if (
+      i > 0 &&
+      j > 0 &&
+      a[i - 1] === b[j - 1]
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
+      i--;
+      j--;
+    } else if (
+      i > 0 &&
+      j > 0 &&
+      dp[i][j] === dp[i - 1][j - 1] + 1
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift(b[j - 1]);
+      i--;
+      j--;
+    } else if (
+      i > 0 &&
+      dp[i][j] === dp[i - 1][j] + 1
+    ) {
+      alignedA.unshift(a[i - 1]);
+      alignedB.unshift("∅");
+      i--;
+    } else {
+      alignedA.unshift("∅");
+      alignedB.unshift(b[j - 1]);
+      j--;
+    }
+  }
+
+  return { alignedA, alignedB };
+}
+
+function formatToken(token) {
+  return escapeHTML(token);
+}
+
+function formatComparisonToken(token, className = "") {
+  if (token === "∅") {
+    return '<span class="dim">∅</span>';
+  }
+
+  const safeToken = escapeHTML(token);
+
+  return className
+    ? `<span class="${className}">${safeToken}</span>`
+    : safeToken;
 }
 
 function countCorrectWords(a, b) {
@@ -1089,46 +1042,6 @@ function countCorrectWords(a, b) {
   return dp[m][n];
 }
 
-function comparisonToken(token, className = "") {
-  if (token === "∅") {
-    return '<span class="dim">∅</span>';
-  }
-
-  const safe = escapeHTML(token);
-
-  return className
-    ? `<span class="${className}">${safe}</span>`
-    : safe;
-}
-
-function buildComparison(original, typed) {
-  const { alignedA, alignedB } = alignAndCount(original, typed);
-
-  let originalHTML = "";
-  let typedHTML = "";
-
-  for (let k = 0; k < alignedA.length; k++) {
-    const a = alignedA[k];
-    const b = alignedB[k];
-
-    if (a === b) {
-      originalHTML += escapeHTML(a);
-      typedHTML += escapeHTML(b);
-    } else if (a === "∅") {
-      originalHTML += comparisonToken("∅");
-      typedHTML += comparisonToken(b, "extra");
-    } else if (b === "∅") {
-      originalHTML += comparisonToken(a, "missing");
-      typedHTML += comparisonToken("∅");
-    } else {
-      originalHTML += comparisonToken(a, "red");
-      typedHTML += comparisonToken(b, "red");
-    }
-  }
-
-  return { originalHTML, typedHTML };
-}
-
 /* =========================================================
    CALCULATE RESULTS
 ========================================================= */
@@ -1136,11 +1049,36 @@ function buildComparison(original, typed) {
 function calculateResult() {
   const typed = input.value;
 
-  const originalWords = getWordTokens(currentPassage);
-  const typedWords = getWordTokens(typed);
+  const { alignedA, alignedB } =
+    alignAndCount(currentPassage, typed);
+
+  let originalHTML = "";
+  let typedHTML = "";
+
+  for (let k = 0; k < alignedA.length; k++) {
+    const originalToken = alignedA[k];
+    const typedToken = alignedB[k];
+
+    if (originalToken === typedToken) {
+      originalHTML += formatToken(originalToken);
+      typedHTML += formatToken(typedToken);
+    } else if (originalToken === "∅") {
+      originalHTML += formatComparisonToken("∅");
+      typedHTML += formatComparisonToken(typedToken, "extra");
+    } else if (typedToken === "∅") {
+      originalHTML += formatComparisonToken(originalToken, "missing");
+      typedHTML += formatComparisonToken("∅");
+    } else {
+      originalHTML += formatComparisonToken(originalToken, "red");
+      typedHTML += formatComparisonToken(typedToken, "red");
+    }
+  }
 
   const { errors, errors400 } =
     countBhcWordErrors(currentPassage, typed);
+
+  const originalWords = getWordTokens(currentPassage);
+  const typedWords = getWordTokens(typed);
 
   const correct = countCorrectWords(originalWords, typedWords);
 
@@ -1152,20 +1090,10 @@ function calculateResult() {
   const minutes = elapsed / 60;
 
   const gross = (typed.length / 5) / minutes;
-
   const net = gross * (accuracy / 100);
 
-  const score400 = Math.max(
-    0,
-    20 - errors400 * 0.25
-  );
-
-  const score = Math.max(
-    0,
-    20 - errors * 0.25
-  );
-
-  const comparison = buildComparison(currentPassage, typed);
+  const score400 = Math.max(0, 20 - errors400 * 0.25);
+  const score = Math.max(0, 20 - errors * 0.25);
 
   return {
     collectionId: currentCollectionId,
@@ -1186,8 +1114,8 @@ function calculateResult() {
     wordsTyped: typedWords.length,
     keystrokes: countKeystrokes(typed),
 
-    originalHTML: comparison.originalHTML,
-    typedHTML: comparison.typedHTML,
+    originalHTML,
+    typedHTML,
 
     givenPassage: currentPassage,
     typedPassage: typed,
@@ -1223,10 +1151,7 @@ function displayResults(result) {
 }
 
 /* =========================================================
-   FINISH TEST
-
-   Results are held in sessionStorage only.
-   Nothing is submitted to Supabase or another database.
+   SUBMIT / FINISH TEST
 ========================================================= */
 
 function finishTest() {
@@ -1239,12 +1164,9 @@ function finishTest() {
   }
 
   submissionInProgress = true;
-
   stopTimer();
 
   input.disabled = true;
-
-  startButton.disabled = true;
   restartButton.disabled = true;
   submitButton.disabled = true;
   toggleTypingBtn.disabled = true;
@@ -1254,33 +1176,26 @@ function finishTest() {
   try {
     const result = calculateResult();
 
+    // Keep the result for new-result.html in this tab only.
     if (!writeSessionJSON(RESULT_KEY, result)) {
-      submissionInProgress = false;
-      showNotice(
-        "The result could not be stored temporarily. Copy or record the displayed result before leaving this page."
-      );
-
       displayResults(result);
       testSubmitted = true;
+
+      showNotice(
+        "The result could not be stored for the full-results page, but it is displayed below."
+      );
+
       return;
     }
 
     testSubmitted = true;
     displayResults(result);
 
-    startButton.disabled = true;
-    restartButton.disabled = true;
-    submitButton.disabled = true;
-
-    showNotice(
-      "Test completed. Your result is available in this browser session; it has not been saved to a database."
-    );
-
   } catch (error) {
     console.error("Could not calculate result:", error);
 
     showNotice(
-      "An error occurred while calculating your result. Your test text is still present on this page."
+      "An error occurred while calculating your result. Your typed text is still on this page."
     );
 
     input.disabled = false;
@@ -1307,7 +1222,7 @@ function toggleTypingBox() {
     ? "Show Typing Box"
     : "Hide Typing Box";
 
-  if (testStarted && !testSubmitted) {
+  if (!testSubmitted) {
     input.focus();
   }
 }
@@ -1320,9 +1235,7 @@ $("viewResultButton").addEventListener("click", () => {
   const result = readSessionJSON(RESULT_KEY);
 
   if (!result) {
-    showNotice(
-      "No completed result was found. Submit the test first."
-    );
+    showNotice("Submit the test first.");
     return;
   }
 
@@ -1337,13 +1250,13 @@ $("chooseAnotherButton").addEventListener("click", () => {
    EVENT LISTENERS
 ========================================================= */
 
-startButton.addEventListener("click", startTest);
-
-restartButton.addEventListener("click", restartSamePassage);
-
+restartButton.addEventListener("click", restartSame);
 submitButton.addEventListener("click", finishTest);
-
 toggleTypingBtn.addEventListener("click", toggleTypingBox);
+
+window.addEventListener("contextmenu", event => {
+  event.preventDefault();
+});
 
 /* =========================================================
    INITIALIZE
@@ -1353,20 +1266,17 @@ initializeFontSize();
 
 if (loadSelectedPassage()) {
   input.value = "";
-  input.disabled = true;
-
-  testStarted = false;
-  testSubmitted = false;
+  input.disabled = false;
 
   renderTimer();
   updateCounters();
 
-  startButton.disabled = false;
   restartButton.disabled = false;
-  submitButton.disabled = true;
+  submitButton.disabled = false;
   toggleTypingBtn.disabled = false;
 
-  startButton.textContent = "Start Test";
+  // Start typing immediately; no Start Test button.
+  input.focus();
 }
 </script>
 </body>
