@@ -914,6 +914,180 @@ export const passages = {
 
 \tThe cases of the Andhra Pradesh High Court are Komanduri Seshamma v. Appellate CED [1973] 88 ITR 82 and Somaraju v. Government of India [1974] 97 ITR 97, that of the Kerala High Court injayasankar v. Assistant CED [1972] 83 ITR 445, of the Allahabad High Court in the case of Badri Vishal Tandon v. Assistant CED [1976] 103 ITR 468 and that of the Punjab and Haryana High Court in the case of Hari Ram v. Assistant CED [1975] 101 ItR 539.
 
-\tThe provision of Section 34(1)(c) of the Act, providing for an aggregation of the shares of the lineal descendants, was added by the Amendment Act, 1958, which came into force on July 1, 1960.`
+\tThe provision of Section 34(1)(c) of the Act, providing for an aggregation of the shares of the lineal descendants, was added by the Amendment Act, 1958, which came into force on July 1, 1960.`,
+
+73: `\tIn so far as the proviso to Rule 351(A) is concerned, it deals with the condition for initiation of proceedings and the period of limitation within which such proceedings can be initiated.
+
+\tReading of Regulation 351 and 351(A) makes it abundantly clear that It is permissible for the Government to withhold or withdraw a pension or any part of it only when a pensioner is convicted of serious crime or is found guilty of grave misconduct in departmental inquiry or judicial proceedings.
+
+\tAt this stage, it may be relevant to point out that while passing the order dated 08.02.2006 denying pension to the petitioner, a direction was also issued to register First Information Report under relevant provisions of the Indian Penal Code. In pursuance of the aforesaid direction, First Information Report dated 04.04.2006 was lodged against the petitioner under Section 177, 181, 198, 107 and 463 of the Indian Penal Code which was registered as Case Crime No. 132 of 2006, Police Station-Obra, District-Sonbhadra.
+
+\tFurther undisputed facts are that the petitioner filed a Criminal Misc. Writ Petition No. 6200 of 2006 seeking quashing of the First Information Report wherein an interim order dated 17.05.2006 for staying the arrest of the petitioner was passed. However, after completing the investigation, the Police submitted a charge-sheet under Section 177, 181,198, 107, 466 and 468 on the basis of which Case No. 4128 of 2006 (State Vs. Ram Murti Pandey) was registered in the court of Chief Judicial Magistrate, Sonbhadra.
+
+\tPetitioner challenged the criminal proceedings by filing a miscellaneous application under Section 482 Cr.P.C. being Criminal Misc. Writ Petition No. 1574 of 2007 and an interim order was passed on 08.08.2007 and the said application is stated to be still pending.
+
+\tIn the background of the aforesaid facts, the question which arises for consideration is as to whether the State Government can deny and withhold the pension payable to the petitioner during the pendency of the criminal proceedings or without drawing any disciplinary proceedings and without establishing the guilt of grave misconduct.
+
+\tFrom a reading of Regulation 351, it is more than clear that there is no provision in the rules for withholding of the pension during the pendency of the criminal proceedings or even during the pendency of disciplinary proceedings. The view taken by us finds support from the pronouncement of Hon'ble the Apex Court in the case of State of Jharkhand and others Vs Jitendra Kumar Srivastava and anr. AIR 2013(Supreme Court) 3383. Admittedly, the petitioner was appointed on 27.01.1966. Prescribed period of four years lapsed long back.`,
+
+74: `\tThe present criminal appeal is directed against the Date: 2023.04.13 16:27:46 IST Reason: Final Judgment and Order dated 19.02.2010 (hereinafter referred to as the "Impugned Judgment") [2010 SCC OnLine P&H 2558] rendered by the High Court of Punjab and Haryana at Chandigarh dismissing Criminal Writ Petition No. 03 of 1997 (hereinafter referred to as the "High Court") preferred by the appellant (original writ petitioner). Leave was granted vide Order dated 29.08.2014.
+
+\tThe appellant joined the Indian Army on 09.02.1964. He was absorbed as an Assistant Commandant in the Border Security Force (hereinafter referred to as the "Force") on 04.06.1969. Thereafter, he was promoted to the post of Commandant in the Force as well as granted selection grade in the rank of Commandant. He was also awarded various medals, including the Police Medal in 1994 by Hon'ble the President of India for rendering about 30 years of unblemished service. Later, he was transferred to Punjab as Commandant of the 1956 Battalion (BN) (BSF) with Headquarters at Mamdot, Punjab.
+
+\tOn 05.04.1995, the local police conducted a search and a few Jerrycans of Acetic Anhydride, a controlled substance under Section 9A of the Narcotic Drugs and Psychotropic Substances Act, 1985 (hereinafter referred to as the "NDPS Act"), were stated to be located in Pakistani territory and in the fields owned by Indian civilians adjoining the border, for which First Information Report No. 92 dated 05.04.1995 i.e., on the same day, was lodged in Police Station Ferozepur, Punjab by the local police naming two persons viz. Lakhwinder Singh and Surjit Singh @ pahalwan as the accused showing them to be smugglers.
+
+\tOn 07.04.1995, the appellant was directed to hand over charge and move to the STC, the Force, Kharkan, where he was placed under arrest. However, search of the appellant's house did not lead to any recovery of any incriminating material(s).
+
+\tOn 09.04.1995, a one-man Staff Court of Inquiry was ordered into the incident headed by one Mr. V.K. Sharma. In the said Inquiry, Inspector Didar Singh, who was in actual and physical command and control of the area in the vicinity of which the alleged Jerrycans were recovered, is said to have made a statement that he was involved in the incident at the behest of the appellant.
+
+\tOn the basis of the Inquiry Report, the appellant was issued charge sheet dated 04.07.1995 under Sections 40 & 46 of the Border Security Force Act, 1968 (hereinafter referred to as the "BSF Act"). However, the charges, as laid aforesaid, were dropped.
+
+\tThereafter, the appellant superannuated on 31.08.1995 after rendering service in the Force for 31 years, 6 months and 22 days.`,
+
+75: `\tOn 20.10.1995, a fresh charge sheet containing three charges was served on the appellant. Two charges were under Section 46 of the BSF Act for Civil offence committed in contravention of Section 25 of the NDPS Act and one charge under Section 40 of the BSF Act. Trial against the appellant commenced on 30.10.1995 by convening a General Security Force Court (hereinafter referred to as the "GSFC").
+
+\tThe appellant, invoking Article 226 of the Constitution of India (hereinafter referred to as the "Constitution"), filed Writ Petition No. 16008 of 1995 before the High Court, against the rejection of his application questioning jurisdiction of the GSFC, which was dismissed on 18.01.1996.
+
+\tMeanwhile, one accused alleged smuggler in FIR No. 92 dated 05.04.1995 (described supra), namely Surjit Singh @ Pahalwan, moved the High Court, by way of Criminal Miscellaneous No. 10562-M of 1996, seeking quashing of the FIR against him. The ground urged was that, on the date of alleged incident, Surjit Singh @ Pahalwan was lodged in the Central Jail, Amritsar and could not have been involved in the crime. The said petition was allowed vide order dated 01.11.1996.
+
+\tOn 10.04.1996, the GSFC gave its verdict, finding the appellant not guilty of the first charge but guilty of the second and third charges. It sentenced him to 10 years' Rigorous Imprisonment; imposed fine of Rs. 1,00,000/-, and; dismissed him from service. This was confirmed by the Confirming Officers.
+
+\tStatutory petition against his conviction and sentence was then filed by the appellant on 15.05.1996. As the same was not being decided by the concerned authority, the appellant moved the High Court vide Civil Writ Petition No. 13020 of 1996, which was disposed of by order dated 28.08.1996, directing the respondent-Authority to dispose of the statutory petition within a period of two months.
+
+\tPursuant thereto, the respondent-Authority rejected the appellant's statutory petition on 02.11.1996. In this light, the appellant filed Criminal Writ Petition No. 3 of 1997 before the High Court for quashing his trial and the impugned order therein, as also seeking directions to quash all consequential orders and to release the pensionary and other benefits to the appellant.
+
+\tOn 19.09.1997 [1997 SCC OnLine P&H 1176], the appellant was granted bail by the High Court and he remained on bail w.e.f., 19.09.1997 till 19.02.2010. In the meantime, the other co-accused viz. Lakhwinder Singh was discharged by the learned Trial Court in the absence of any evidence. The High Court dismissed Criminal Writ Petition No. 3 of 1997 on 19.02.2010, which is the Impugned Judgment.`,
+
+76: `\tLearned counsel submitted that neither the BSF Act nor the Rules envision withholding pension, gratuity, leave encashment and other dues/benefits of any retiree, after retirement without there being a specific order under Section 48(1)(k) & 48(1)(l) of the BSF Act, which in the present case has admittedly, not been passed.
+
+\tEven otherwise it was contended that withholding pension is violative of Rule 9 of the Central Civil Services (Pension) Rules, 1972 (hereinafter referred to as "the Pension Rules") which provide that only Hon'ble the President of India can withhold pension of an employee.
+
+\tIn support of such contention, reliance was placed on the decisions of this Court in State of Jharkhand v Jitendra Kumar Srivastava, (2013) 12 SCC 210, the relevant being at Paragraph No. 16 holding that a person cannot be deprived of his pension without the authority of law, which is the constitutional mandate enshrined in Article 300A of the Constitution of India, and further, in Veena Pandey v Union of India, (2022) 2 SCC 379, the relevant being at Paragraph No. 10 where it was held that pension is the deferred portion of compensation for rendering long years of service and is a hard- earned benefit accruing to an employee and has been held to be in the nature of property.
+
+\tWe note that the appellant had addressed representations to different authorities seeking release of his dues or a copy of the order by which the same have been withheld, filed alongwith the application seeking early hearing i.e. Crl. M.P. No. 74756/2021 at Pages 16-17.
+
+\tIt was also submitted that as far as Acetic Anhydride is concerned, it is neither a narcotic drug nor a psychotropic substance, but only a controlled substance under Section 9A of the NDPS Act, punishable under Section 25A of the NDPS Act.
+
+\tIn Council of Civil Service Unions v Minister for the Civil Service, [1984] 3 WLR 1174 (HL), the House of Lords, speaking through Lord Diplock, stated: "Judicial review has I think developed to a stage today when, without reiterating any analysis of the steps by which the development has come about, one can conveniently classify under three heads the grounds on which administrative action is subject to control by judicial review.
+
+\tThe first ground I would call 'illegality', the second 'irrationality' and the third 'procedural impropriety'. That is not to say that further development on a case by case basis may not in course of time add further grounds. I have in mind particularly the possible adoption in the future of the principle of 'proportionality' which is recognised in the administrative law of several of our fellow members of the European Economic Community;"`,
+
+77: `\tThese appeals are directed against the orders dated 20.06.2016 and 08.09.2017 passed by the High Court of Madhya Pradesh Bench at Indore (hereinafter referred to as "High Court") in First Appeal No. 131 of 2010 and MCC No. 304/2017 respectively. By the said orders, the High Court allowed the MCC as well as first appeal and dismissed the appeals of the Appellant State by reducing the deduction awarded by the Reference Court from 65% towards largeness of plot + 48% towards development to 35% on the market value of Rs.1,04,64,000/- per hectare for the irrigated land and Rs. 69,76,000/- per hectare for the un-irrigated land.
+
+\tBrief facts necessary for the disposal of these appeals are as under: A Notification dated 27.02.2004 u/s 4(1) read with Section 17(1) of the Land Acquisition Act, 1894 (hereinafter referred to as "the act") was published in the official gazette for acquisition of land admeasuring 38.178 hectares of Village Sala, Tehsil, Dharampuri, District- Dhar for the purpose of "rehabilitation of displaced persons" of villages which came under the submergence due to increase of height of Sardar Sarovar Dam. A declaration under Section 6 of the Act in respect of Village Sala was issued on 14.05.2004, 11.05.2004 and 05.05.2004, respectively.
+
+\tThe Land Acquisition Officer (hereinafter referred to as "LAO") vide award dated 23.12.2004 passed an award for the acquired land in Village Sala, District- Dhar, MP, wherein the learned LAO assessed the market value and awarded compensation which is enumerated as below: (i). Irrigated Land - Rs. 47,165/- per hectare (ii). Unirrigated Land - Rs. 29,621/- per hectare (iii). Solatium - 30% (iv). Additional Compensation - 12%
+
+\tThe Reference Court vide order dated 09.09.2009, after determining the market value of the irrigated land to the tune of Rs. 36,62,400 per hectare and unirrigated land to the tune of Rs. 24,41,600 per hectare on the basis of sale deeds filed as exemplars enhanced the compensation along with 48% deduction towards development charges. The enhanced compensation made by reference court is enumerated as below: (i). Unirrigated land – Rs. 24,41,600 – 48% deduction = Rs.11,71,968/- per hectare  (ii). Irrigated Land - Rs. 36,62,400 – 48% deduction = Rs.17,57,952/- per hectare (iii). interest @ 12% per annum on enhanced compensation from 27.02.2004 to date of passing of award on 23.12.2004 iv. solatium @ 30% of enhanced compensation.
+
+\tReference Court assessed the market value of land of the village sala on the basis of sale deed Ex- P/2 dated 11.02.2002, Ex-P/3 dated 06.05.2002 and Ex-P/4 dated 04.02.2004 measuring 0.017 hectare, 0.013 hectare and 0.011 hectare, respectively.`,
+
+78: `\tThese appeals arise out of final order and judgment of the Hon'ble High Court of Gujarat at Ahmedabad (hereinafter referred to as 'High Court') dated 28.12.2018 corrected vide order dated 08.02.2019 in R/Criminal Appeal No. 833 of 2000 and final order and judgment dated 07.03.2019 in Criminal Misc. Application (for extension of time) No. 1 of 2019 filed by the appellants challenging the order of conviction against them.
+
+\tBy the said judgment, the High Court has dismissed the appeal filed by the appellant herein challenging the judgment dated 27.07.2000 passed by the Learned Sessions Judge, Vadodara in Sessions Case No. 92 of 1998 convicting the appellant in respect of the offence punishable under Section 306, 498A read with Section 114 of the Indian Penal Code (hereinafter referred to as 'IPC') is confirmed.
+
+\tIn brief, the prosecution case is that the marriage of Appellant No. 1 was solemnized with Tahera (hereinafter referred to as the 'Deceased') on 27.04.1997 and after the marriage, the deceased was residing with both the appellants. The Appellant No.1 was constantly asking the deceased to bring Rs.25,000/- from her father (PW-1) in order to purchase buffaloes as, he was keen on doing milk business.
+
+\tDue to poor financial condition, PW-1 was not able to satisfy the demand of Appellant No. 1. Therefore, Appellant No.1 frequently started beating the deceased, while Appellant No. 2 who was her mother-in-law used to pick up quarrel with her on the pretext that she neither knew how to cook nor do any house-hold work properly. The deceased committed suicide on 14.12.1997 between 17:00 and 17:30 hours by consuming poison at her matrimonial home for the sole reason that she was unable to bear the continuous mental and physical cruelty meted out to her by the appellants in a short span of 8 months.
+
+\tThe PW-1, father of the deceased filed a complaint with Padra Police Station which was registered as ICR No. 34 of 1997 for the offences punishable under Section 498A and 306 read with Section 114 of the IPC. After completion of the investigation, charge-sheet was filed in the Court of Learned Judicial Magistrate First Class, Padra, who committed the case to the Court of Sessions.
+
+\tThe case was registered as Sessions Case No. 92 of 1998 and was made over to the Learned Additional Sessions Judge for trial. Charges were framed and against the appellants and they pleaded not guilty and claimed to be tried.
+
+\tIn order to substantiate the case, the prosecution has examined seven witnesses and all the incriminating evidence was put to the appellants while recording their statement under Section 313 of Code of Criminal Procedure Code.`,
+
+79: `\tThese two appeals are directed against the judgment and final order dated 05.10.2010 passed by the High Court of Andhra Pradesh at Hyderabad (hereinafter referred to as 'High Court') in Appeal Suit No. 45 of 2008 filed by Respondent No. 1 herein against the judgment and decree dated 22.08.2007 passed by the Additional Senior Civil Judge, Ongole (hereinafter referred to as 'Trial Court') in O.S. No. 142 of 2004; and order dated 10.12.2010 in ASMP No. 2292 of 2010 filed by the Appellants herein, seeking to recall the aforementioned judgment dated 05.10.2010 passed in Appeal Suit No. 45 of 2008.
+
+\t2. The High Court allowed Appeal Suit No. 45 of 2008 filed by Respondent No. 1 and set aside the judgment and decree dated 22.08.2007 passed by the Trial Court in O.S. No. 142 of 2004, thereby directing the Appellants herein to execute sale deed in favour of Respondent No. 1 herein after receiving balance sale consideration.
+
+\t3. The Appellants in the present case (represented by their maternal grandmother) are the minor children of one G. Venugopala Rao, who died on 13.05.2003, leaving behind his wife and the Appelants herein. The brief facts giving rise to the present appeals are that during his lifetime G. Venugopala Rao purchased the suit schedule property measuring Ac. 0.90 cents from one B. Alivelu Mangamma under a registered sale deed and obtained possession of the same. Subsequently, on 14.08.2002, G. Venugopala Rao executed an agreement of sale with Respondent No. 1 herein, whereby he agreed to sell the aforementioned suit schedule property measuring Ac. 0.90 cents to Respondent No. 1 herein for a sale consideration of Rs. 11,88,000/- (@ Rs. 2,200/- per annum) out of which Respondent No. 1 herein paid an amount of Rs. 4,00,000/- as advance. Under the said agreement, G. Venugopala Rao agreed to execute the sale deed in favour of Respondent No. 1.
+
+\t4. Upon expiry of three months, G. Venugopala Rao issued a notice dated 02.01.2003 to Respondent No. 1 herein, demanding the balance consideration of Rs. 7,88,000/-, failing which, the sale agreement date 14.08.2002 would stand cancelled and the advance amount of Rs. 4,00,000/- would be confiscated.
+
+\tRespondent No. 1 herein sent a reply dated 10.01.2003 to the aforementioned notice, denying the allegations of non-payment of balance amount despite repeated demands. It was also stated that subsequent to the execution of sale agreement, Respondent No. 1 herein got to know that G. Venugopala Rao owed a debt of Rs. 1,69,017/- to one Ch. Subbayamma, who had filed a suit (being O.S. No. 188 of 2002) before the Senior Civil Judge, Ongole for recovery of the said amount.`,
+
+ 80: `\tG. Venugopala Rao sent a rejoinder notice dated 21.01.2003 to the aforementioned reply notice, wherein he denied the allegation that the land is not measured and stated that the same has been duly measured by the surveyor and boundaries have been fixed. It was further stated that Respondent No. 1 herein may deposit an amount of Rs. 1,69,017/- in the aforementioned O.S. No. 188 of 2002 from the balance sale consideration and pay the remaining amount to G. Venugopala Rao, failing which the sale agreement shall stand cancelled.
+
+\tIt appears that during his lifetime, G. Venugopala Rao borrowed amounts of Rs. 2,40,000/- and Rs. 2,00,000/- from Kalluri Kondaiah (Respondent No. 2 herein) and M. Koteswara Rao (husband of Respondent No. 3 herein), respectively. After G. Venugopala Rao's death on 13.05.2003, Kalluri Kondaiah and M. Koteswara Rao herein filed O.S. No. 233 of 2004 and O.S. No. 235 of 2004, respectively, before the Senior Civil Judge, Ongole for recovery of the said amounts. Both the suits were decreed.
+
+\tOn 29.03.2004, Respondent No. 1 sent another legal notice to the legal heirs of the deceased G. Venugopala Rao, i.e., his wife and minor children (Appellants herein). In the notice, it was stated that Respondent No. 1 has always been ready and willing to perform her part of the contract by paying the balance sale consideration, and that the legal heirs of the deceased G. Venugopala Rao have been delaying the execution of the sale deed.
+
+\tThe legal heirs of the deceased were called upon to clear the attachment over the schedule property by discharging the debt due in O.S. No. 188 of 2002, receive the balance sale consideration, and execute the sale deed in favour of Respondent No. 1 herein; failing which the latter shall file a suit for specific performance, and the legal heirs of the deceased will be liable to bear the costs and consequences.
+
+\tSubsequently, Respondent No. 1 herein filed a suit (being O.S. No. 142 of 2004) before the Senior Civil Judge, Ongole, seeking specific performance of the agreement of sale dated 14.08.2002 by directing the Defendants to execute a sale deed in the Plaintiff's favour.
+
+\tIn the said suit, Defendant No. 1 was the wife of deceased G. Venugopala Rao, while Defendant No.s 2 and 3 (Appellants herein) were his minor children. Kalluri Kondaiah (Respondent No. 2 herein) and M. Koteswara Rao (husband of Respondent No. 3 herein) were Defendant No.s 4 and 5, respectively.
+
+\tAfter hearing the parties and appreciating the evidence on record, the Trial Court vide judgment and decree dated 22.08.2007, held that the Plaintiff failed to prove that he is entitled for specific performance of the contract.`,
+
+81: `\tThe learned Senior Counsel contended that the deceased G. Venugopala Rao entered into a sale agreement with Respondent No. 1 herein with regard to 90 cents of land. Out of the said 90 cents, he was the owner of 50 cents which he had purchased from one Smt. Balsa Allvelu Magamma. The deceased G. Venugopala Rao 4 2017 (12) SCC 810 claimed that he had an agreement with Smt. Balsa Allvelu Magamma in respect of the remaining 40 Cents, and agreed to sell the entire 90 Cents of land to Respondent No. 1herein at the rate of Rs.2200/-per Gadi.
+
+\tRespondent No. 1 paid an advance amount of Rs.4,00,000/- towards sale consideration. The agreement specifically stipulated that the land shall be demarcated within 3 months from the date of agreement, with the boundaries as indicated in the agreement in respect of 90 cents land.
+
+\tHowever, the deceased G. Venugopala Rao did not carry out the demarcation of land as stipulated in the agreement. Moreover, on 18.11.2002, i.e., immediately after completion of three months of the sale agreement on 14.11.2002, the deceased G. Venugopala Rao executed two simple mortgages covering 25 cents each in favour of his close relatives, who were Defendant No.s 4 and 5 in the suit. The deceased G. Venugopala Rao concealed this fact from Respondent No. 1 herein and issued a legal notice dated 02.01.2003 seeking payment of the balance amount of Rs.7,88,000/-.
+
+\tRespondent No. 1 replied to the said notice and pointed out that the balance consideration amount was to be paid after the land is measured and boundaries are fixed in terms of the agreement. In her reply, Respondent No. 1 also mentioned that she came to know that the property in question was attached in a money recovery suit filed against the deceased G. Venugopala Rao by one Ch. Subbayamma. Respondent No. 1 called upon the deceased G. Venugopala Rao to remove the attachment and perform his part of contract and stated that she is ever ready to perform her part of contract by paying the balance sale consideration.
+
+\tMeanwhile, Smt. Allvelu Magamma sold the aforementioned 40 cents of land to some third party, and the deceased G. Venugopala Rao could sell only 50 cents of land to Respondent No. 1 herein. Under these circumstances, Respondent No. 1 filed a suit for specific performance of the sale agreement regarding 50 cents of land.
+
+\t"Admittedly no such documents were filed into court to show as on the date of agreement of sale or as on date of expiry of three months time they were having Rs.11,88,000/-."
+
+\tAccordingly, both the appeals are dismissed, and the judgment dated 05.10.2010 as well as order dated 10.12.2010, passed by the High Court are affirmed.`,
+
+82: `\tThese appeals arises out of the Judgment and Order dated 03.11.2020 passed by the Kerala High Court in Writ Appeal Nos. 1401 and 1413 of 2020, wherein the Division Bench of the said High Court modified the directions of the learned Single Judge to the extent of consideration for establishment of Medical College by the appellant for the Academic Year 2021-2022.
+
+\tThe issue arising for consideration before us is whether Essentiality Certificate (hereinafter referred to as 'EC') and Consent of Affiliation (hereinafter referred to as 'CoA') should be granted for the year 2020-2021 to the appellant. The other issues which need to be addressed are :- (i) Whether grant of Essentiality Certificate by the State Government is only a Ministerial Act? (ii) Whether Essentiality Certificate, once issued, can be withdrawn?
+
+\tFacts in brief :- The appellant is a trust set up with the object of promoting education in Health and Medicine. To start a Medical College, the appellant claims to have set up a 300 bedded hospital in Walayar, Palakkad District in 2006. According to the case set up by the appellant, the requisite infrastructure was put in place and it has been trying to establish a Medical College from the year 2006 onwards but due to the arbitrary and discriminatory action of the State Government and the Kerala University of Health Sciences by denying the EC and CoA, it has miserably failed in its attempt. It has been asserted in the pleading that in presenti, the appellant's hospital has 76 doctors, 380 nurses and paramedical staff, 4 major operation theatres, 2 minor operation theatres, along with all other facilities and infrastructure required to run a Medical College.
+
+\tThe EC was granted for the first time to the appellant on 24.01.2004 for 100 seats. However, since the same was not in the prescribed format, therefore, Medical Council of India (hereinafter referred to as 'MCI') refused to accept the application of the appellant.
+
+\tThe EC was again issued to the appellant on 18.06.2009 for 100 seats. Since the same was beyond the prescribed time limit, hence it was again rejected by the MCI. The appellant was again issued an EC dated 12.01.2011.
+
+\tHowever, the Kerala University of Health and Allied Science (hereinafter referred to as 'KUHS') granted CoA belatedly much after the time schedule as such the college could not be established. It may be pertinent to point out that the Essentiality Certificate dated 12.01.2011 was valid only for the Academic Year 2011-2012 and 2012-2013.
+
+\tIt is an admitted fact that the appellant failed to establish the college during the Academic Year 2011-2012 and 2012-2013 for which the EC was valid.`,
+
+83: `\tThe appellant again moved the High Court by filing Writ Petition (C) Nos. 21581 of 2017 and 22103 of 2017 alleging non-consideration of his application by the State Government and KUHS. Vide order dated 28.09.2017, the State Government rejected the application of the appellant for renewal of EC.
+
+\tThe appellant filed yet another Writ Petition (C) No. 40290 of 2017, challenging the order dated 28.09.2017 which was disposed of. However, the orders passed therein were stayed by the Division Bench of the High Court in Writ Appeals i.e., Writ Appeal No.1371 of 2018 and Writ Appeal No. 1370 of 2018.
+
+\tFor the Academic Year 2020-2021, the appellant again made an application for grant of EC and CoA before the State Government and KUHS, respectively. When no action was taken, appellant filed Writ Petition No. 18238 of 2019 seeking direction to KUHS to consider his application. Another Writ Petition No. 23460 of 2019 was also filed seeking direction to the State Government to consider the application for grant of EC.
+
+\tWrit Petition No. 18238 of 2019 seeking direction against the KUHS was dismissed vide order dated 05.09.2019 on the ground that last date for submission of application before the Medical Council of India was over. Insofar as, Writ Petition No. 23460 of 2019, the same was disposed of vide order dated 04.09.2019 directing the State Government to take a decision in the matter at the earliest and at any rate, within 45 days from the date of receipt of the order. In the meantime, the appellant received a letter dated 09.09.2019 from the MCI granting it further 10 days time to submit the relevant documents.
+
+\tThe appellant again preferred Writ Petition No. 25254 of 2019 seeking a direction to KUHS to revise CoA for Academic Year 2020-2021, wherein an interim direction was issued to consider the application of the appellant. Vide order dated 27.09.2019, KUHS rejected the application of the appellant. Ultimately, Writ Petition No. 25254 of 2019 was withdrawn by the appellant with liberty to challenge the order dated 27.09.2019.
+
+\tVide order dated 01.10.2019, the State Government rejected the application of the appellant for grant of EC. The appellant again approached the High Court by filing Writ Petition No. 27266 of 2019 seeking quashing of the order dated 01.09.2019 passed by the State Government rejecting the application for grant of EC. A further relief of mandamus was also prayed to command the State Government to renew the EC.
+
+\tThe order dated 27.09.2019 passed by KUHS was challenged in Writ Petition No. 29098 of 2019. Vide order dated 19.11.2019, the High Court disposed of Writ Petition No. 27266 of 2019 directing the State Government.`,
+
+84: `\tThe present Appeal is directed against the final order and judgment dated 13.02.2020 in Review Application No. 157 of 2019 passed by the High Court of Madras, and against order dated 16.04.2019 in W.P. No. 28295 of 2018 passed by the High Court of Madras (hereinafter referred to as "High Court") whereby the Appellants' challenge to the denial of his post-retirement benefits was dismissed. BACKGROUND FACTS
+
+\tThe Appellant was appointed as a clerk-cum-shroff in the Respondent bank on the basis of a community certificate dated 15.11.1975 certifying that he was from the Konda Reddy Community. After a tenure of 38 years, the Appellant retired as a Scale 3 officer, however, two days before his superannuation, he received a cessation order on grounds of his caste certificate being false, and all his retirement benefits except PF were withheld from him.
+
+\tDuring the Appellant's tenure in the respondent bank, The District collector (sixth respondent herein), without conducting any enquiry, cancelled the community certificate granted to the Appellant. Aggrieved by the same, the Appellant filed WP No. 12546 of 1998. The High Court vide order dated 09.08.2009 remanded the matter back to the Tamil Nadu State Level Scrutiny Committee (first respondent herein) to conduct a fresh enquiry.
+
+\tHowever, even after the High Court order, the verification with regard to the communal status of the Appellant was still not concluded, and this led to the Appellant's retirement without realization of his retirement benefits.
+
+\tThe Appellant then, to seek his post-retirement benefits filed WP No. 19006 of 2013 in the High Court, however the same was disposed off vide order dated 04.07.2014 , and the first respondent was directed to complete the enquiry within a period of eight weeks. The Appellant then preferred an SLP in the Supreme Court against the above mentioned High Court order, and during the pendency of the SLP, an interim order was passed by this Hon'ble Court directing the Appellant to appear before the first respondent for enquiry. Subsequently, the said SLP was withdrawn.
+
+\tIn the meantime, the fifth respondent concluded the enquiry and submitted a report dated 29.11.2017 with the finding that the Appellant in fact did not belong to the Konda Reddy Community. Based on this report, a show cause notice was issued to the Appellant dated 07.12.2017. As against this, the Appellant filed another W.P No. 33207/2017 seeking to set aside the show cause notice and the enquiry report.
+
+\tThe High Court, vide order dated 19.12.2017 allowed the same, and remanded the matter back to the scrutiny committee whilst quashing the show cause notice and the enquiry report.`,
+
+85: `\tSubsequent to the order of the High Court remanding the matter back to the scrutiny committee, the committee again proceeded and held that the caste certificate of the Appellant was not correct based on vigilance reports and other expert reports.
+
+\tThe Appellant, aggrieved by the above mentioned report of the scrutiny committee filed another W.P No. 28295/2018 and along with a contempt petition seeking for a restoration of the community certificate, however both were dismissed by the High Court vide impugned judgement dated 16.04.2019 on grounds that despite fair opportunity being granted to the Appellant, he had not abided by the same; The Appellant then preferred a Review Application No. 157/2019 in the High Court, however, this was also dismissed vide second impugned judgement dated 13.02.2020.
+
+\tMr. R. Balasubramanian and Mr. S. Prabakaran, Senior Counsel appearing on behalf of the Appellant vehemently argued that as per the directions of the High Court in order dated 19.12.2017, the Appellant was to be given due opportunity to cross-examine the witnesses, and copies of all documents relied on by the Respondents was to be furnished to the Appellant, however, the same was not done.
+
+\tIt has been further contended that at the time when the Appellant was given the cessation order, no enquiry against him was pending, and that in the entire process he has been subject to harassment for almost 19 years.
+
+\tPer Contra, Mr. Gopal Sankaranarayanan, Senior Advocate and Mr. Joseph Aristotle, AOR, appearing on behalf of the respondents argued that notice was duly served on the Appellant, and it was the Appellant who did not show up in the proceedings. It was also argued that due to the Appellant not showing up, the proceedings were adjourned, but even after the adjournment the Appellant did not show up, and hence the committee had no option but to pass its decision ex-parte.
+
+\tKeeping in mind the submissions of both the parties, at the very outset we would like to state that the right to pensionary benefit is a constitutional right and as such cannot be taken away without proper justification as has been held in the case of State Of Jharkhand & Ors. vs Jitendra Kumar Srivastava & Anr. 1. The relevant paragraph of the judgment is being extracted herein:
+
+\tIn State of W.B. v. Haresh C. Banerjee [(2006) 7 SCC 651 : 2006 SCC (L&S) 1719] this Court recognised that even when, after the repeal of Article 19(1)(f) and Article 31(1) of the Constitution vide Constitution (Forty-fourth Amendment) Act, 1978 w.e.f. 20-6-1979, the right to property no longer remained a fundamental right, it was still a constitutional right, as provided in Article 300-A of the Constitution.`
 
 };
