@@ -1088,6 +1088,20 @@ export const passages = {
 
 \tKeeping in mind the submissions of both the parties, at the very outset we would like to state that the right to pensionary benefit is a constitutional right and as such cannot be taken away without proper justification as has been held in the case of State Of Jharkhand & Ors. vs Jitendra Kumar Srivastava & Anr. 1. The relevant paragraph of the judgment is being extracted herein:
 
-\tIn State of W.B. v. Haresh C. Banerjee [(2006) 7 SCC 651 : 2006 SCC (L&S) 1719] this Court recognised that even when, after the repeal of Article 19(1)(f) and Article 31(1) of the Constitution vide Constitution (Forty-fourth Amendment) Act, 1978 w.e.f. 20-6-1979, the right to property no longer remained a fundamental right, it was still a constitutional right, as provided in Article 300-A of the Constitution.`
+\tIn State of W.B. v. Haresh C. Banerjee [(2006) 7 SCC 651 : 2006 SCC (L&S) 1719] this Court recognised that even when, after the repeal of Article 19(1)(f) and Article 31(1) of the Constitution vide Constitution (Forty-fourth Amendment) Act, 1978 w.e.f. 20-6-1979, the right to property no longer remained a fundamental right, it was still a constitutional right, as provided in Article 300-A of the Constitution.`,
+
+86:`\t1. The present appeal is directed against the final order dated 07.08.2018 passed by the High Court of Karnataka, Kalaburgi Bench (hereinafter referred to as "High Court") in Miscellaneous First Appeal No. 202250/2017 (WC) filed by the Appellant praying to call for the records and set aside the judgment and award dated 02.06.2017 passed by Additional Senior Civil Judge and Commissioner for Employees Compensation at Bidar (hereinafter referred to as "Commissioner") in E.C.A No. 12/2016.
+
+\t2. The High Court partly allowed the appeal of the Appellant and assessed the income as Rs.8000/- per month and accordingly computed the compensation at Rs. 2,19,512/-.
+
+\t3. Briefly, the facts relevant for the purpose of this appeal are as follows: 3.1 The Appellant was engaged in the construction of government hospital at Bidar, Karnataka. Respondent No. 1 was the contractor and undertook the construction of upgradation of the hospital building. On 22.07.2015, Appellant along with other laborers were attending the work of shifting the cement from ground floor to the second floor, the centering plate collapsed on the head of the appellant who fell down from second floor to the ground floor.
+
+\t3.2 Subsequently, the appellant was taken to the hospital wherein it was established that she has sustained fracture of spinal bone and compound fracture on various part of the body. After preliminary treatment at government hospital at Bidar, the Appellant went to Gurupadappa Nagmarpalli Hospital and was admitted as inpatient. The appellant was informed by the Doctor that she would not be able to lift any kind of weight through rest of her life.
+
+\t4. The appellant filed compensation application being E.C.A No. 12/2016 under Section 10 of Employees Compensation Act, 1923 (hereinafter referred to as "1923 Act") before the Commissioner seeking compensation of Rs. 20 Lakhs along with interest at 18% per annum from the date of accident.
+
+\tVide judgment and award dated 02.06.2017, the Commissioner held that the Appellant has not proved that she was paid Rs. 600 per day as cooli and accordingly computed notional income at Rs.6000/- per month. Further, it was held that the disability to the whole body is at 20% and as such assessed the compensation at Rs.1,32,600/-. Accordingly, the Appellant was held to be entitled for Rs.1,75,000/- as compensation.
+
+\t5. Being aggrieved, the Appellant filed an Appeal under Section 30(1) of the 1923 Act before the High Court praying to call for the records and set aside the judgment and award dated 02.06.2017. Vide final order dated 07.08.2018, the High Court partly allowed the appeal. The Civil Appeal stands allowed in the aforesaid terms.`
 
 };
