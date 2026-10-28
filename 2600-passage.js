@@ -1102,6 +1102,88 @@ export const passages = {
 
 \tVide judgment and award dated 02.06.2017, the Commissioner held that the Appellant has not proved that she was paid Rs. 600 per day as cooli and accordingly computed notional income at Rs.6000/- per month. Further, it was held that the disability to the whole body is at 20% and as such assessed the compensation at Rs.1,32,600/-. Accordingly, the Appellant was held to be entitled for Rs.1,75,000/- as compensation.
 
-\t5. Being aggrieved, the Appellant filed an Appeal under Section 30(1) of the 1923 Act before the High Court praying to call for the records and set aside the judgment and award dated 02.06.2017. Vide final order dated 07.08.2018, the High Court partly allowed the appeal. The Civil Appeal stands allowed in the aforesaid terms.`
+\t5. Being aggrieved, the Appellant filed an Appeal under Section 30(1) of the 1923 Act before the High Court praying to call for the records and set aside the judgment and award dated 02.06.2017. Vide final order dated 07.08.2018, the High Court partly allowed the appeal. The Civil Appeal stands allowed in the aforesaid terms.`,
+
+87: `\t"Heard both the learned counsel. The relationship between the employee and employer has not been disputed. The only grounds taken by the counsel for the employee is in respect of income. Though it was the case that the income of Rs. 8,000/- is to be accepted, the same is disbelieved and the commissioner has assessed the income at Rs. 6,000/- per month which is lower in side."
+
+\tThough it is claimed that the respondent has not seriously disputed the income of the claimant, under these circumstances, the claimants are entitled for enhanced income of Rs. 8,000/-. Accordingly, same is to be assessed. As per Section 4(1)(b) of the Employees Compensation Act 1993, 60% of the monthly wages of injured employee has to be multiplied by relevant factor 184.17 which is applicable to the age of 40 years.
+
+\tAccordingly, calculation is Rs. 8,000/- X 60% = Rs. 4,800/-. Hence Rs. 4,800 X 184.17 which comes to Rs.8,86,560/-. PW2 the doctor's evidence is that injured suffered 20% disability to the whole body and Tribunal assessed the disability at 20%. Hence the calculation is Rs.8,86,560 X 20%, which comes to Rs.1,77,312/- and same is awarded. Order of the E.C. Commissioner stands modified.
+
+\tEnhanced amount carries interest. Medical expenses of Rs. 42,200/- as ordered by the Commissioner is retained. In  total, the compensation would be Rs.2,19,512/- the same is awarded. Order stands modified. Appeal is partly allowed.
+
+\tUnder Section 4 of the 1923 Act, the amount of compensation an employer has to provide workers is as follows: i. Death of the worker: 50% of the worker's monthly wages multiplied with relevant factors; or ₹1,20,000, whichever is more. ii. Permanent Total Disability: 60% of the monthly wages, multiplied by relevant factor; or ₹1,40,000, whichever is more. iii. Permanent Partial Disability: In such cases, the amount payable is a percentage of the loss of earning capacity due to the injury. These injuries are mentioned in Part II of Schedule I of the Act. iv. Temporary Disability: 25% of the employee's monthly wages.
+
+\tA three-Judge Bench of this Court in Raj Kumar Vs. Ajay Kumar and Another1 categorically assessed the assessment of future loss of earnings due to permanent disability. The operative portion of the judgment reads as under: -
+
+\t"The percentage of permanent disability is expressed by the Doctors with reference to the whole body, or more often than not, with reference to a particular limb. When a disability certificate states that the injured has suffered permanent disability to an extent of 45% of the left lower limb, it is not the same as 45% permanent disability with reference to the whole body."`,
+
+88: `\tIn the Digest the following old texts are cited: A mother surpasses a thousand fathers, for she bears and nourishes the child in, her womb: therefore is a mother most venerable.
+
+\tVyasa - "Ten months a mother bore her infant in her womb, suffering extreme anguish; fainting with travail and other pangs, she brought forth her child." "Loving her sons more than her life, the tender mother is justly revered : who could recite all her merits, even though he spoke a hundred years?"
+
+\tOther texts are also cited showing the superiority of one parent to the other.
+
+\tComing now to the commentaries, the author of the Mitakshara, after declaring the right of the parents to succeed to the property of a deceased son in the absence of nearer heirs, in Sloka (r) which runs thus - "on failure of those heirs, the two parents, (meaning the mother and the father) are successors to the property" - proceeds to discuss the question of preference of the mother over the father. He draws an inference in favour of the mother from the compound term Matapitarau which has been reduced to 'Pitarau' and then proceeds thus:
+
+\tChapter II, Section 3: (3) "Besides, the father is a common parent to other sons, but the mother is not so : and since her propinquity is consequently greatest, it is fit that she should take the estate in the first instance conformably with the text : "To the nearest Sapinda the inheritance next belongs."
+
+\t(5) " Therefore since the mother is the nearest of the two parents, it is most fit that she should take the estate. But on failure of her, the father is successor to the property."
+
+\tThe author defines Sapindaship to arise "between two people through their being connected by particles of the one body," without any reference to the capacity to offer religious oblations. Thus the mother's right of succession is not made to depend upon her capacity to perform any ceremonies, or on the ground she may have a son to offer oblations as a condition precedent to succession. There is no reference to her chastity. It is based on the ground of her having borne and nourished the son in the womb. The author of the Mitakshara bases her right to take her place before the father upon her nearer relationship to the deceased. The Smriti Chandrika also has no reference to the capacity of the mother to confer spiritual benefits on the son.
+
+\tThis view of Vignaneswara that the mother's claim to inherit is based on consanguinity is in harmony with his doctrine which prefers family relationship, to efficacy of religious offerings as pointed out by Mr. Mayne 512 p. 692 and 510, 511, 512, 513, and § 521 at p. 708 and also in various decisions of this Court.`,
+
+89: `\tCh. 1, Section 12, of the Mitakshara, deals with a son begotten by a Sudra on a female slave. Verse 1 of that section quotes the text of Yajuyawalkya upon the subject, which is as follows: "Even a son begotten by a Sudra on a female slave (dasiputra) may take a share by the father's choice. But if the father be dead, the brethren should make him partaker of the moiety of a share; and one who has no brothers may inherit the whole property in default of daughter's sons."
+
+\tVerse 2 runs as follows: "The son begotten by a Sudra on a female slave obtains share by the father's choice, or at his pleasure. But after (the demise of) the father, if there be sons of a wedded wife, let these brothers allow the son of the female slave to participate for half a share; that is, let them give him half (as much as is the amount of one brother's) allottment.
+
+\tHowever, should there be no sons of a wedded wife, the son of the female slave takes the whole estate, provided there be no daughters of a wife nor sons of daughters. But if there be such, the son of the female slave participates for half a share only.
+
+\t11. The text of Yajuyawalkya quoted by the Mitakshara allows a son begotten by a Sudra on a female slave to take a share by the fathers's choice; and the question here arises whether the plaintiff is a son begotten by Tek Chand Garain on a female slave within the meaning of the said text.
+
+\tThe reason why in the days when Yajuyawalkya, Manu, and other sages gave their laws, the son of a Sudra by a female slave was declared entitled to participate in the property of the father, was explained by a Division Bench of this Court (Tottenham and Ghose, JJ.) in the case of Kirpal Narain Tewari v. Sukurmoni (1891) I.L.R. 19 Cal. 91 and it was this: "When slavery existed in India, a slave occupied the position of a member of the family; he, like the wife and son, was incapable of owning any property, and whatever he earned belonged to the master" (see "Tagore Law Lectures by Krishna Kamal Bhuttacharjee, and the Slokas from Manu quoted therein at pages 3-5).
+
+\t"But," as also observed in the same case, "the like reason would not exist in the ease of a concubine who is not a slave-girl, her position is wholly different indeed." "There were," as stated in that case, "in ancient times fifteen descriptions of slaves. We mean fifteen different ways in which a person might become a slave to another (see Shama Charan's Vyavastha Darpana, third edition, 1883, page 27, and Macnaghten's Hindu Law, Vol. II, p. 273); and it would be necessary to show, when a right of succession is claimed by an illegitimate son, that he was born of a female slave of one or other of those descriptions."`,
+
+90: `\t(a) Plaintiff and defendant nos.1 to 8 are children of one Mr. Bhagwandas Ahuja who expired on 14th April, 1996 (hereinafter referred to as the "said deceased"). Defendant Nos. 1 to 4 are the brothers of the plaintiff. Defendant nos. 5 to 8 are sisters of the plaintiff. Defendant no. 9 to 11 are the children of the deceased sister of the plaintiff and defendant nos.1 to 4 and defendant nos. 12, 13 and 14 are the son, daughter in law and daughter of defendant no.1 respectively. Defendant nos. 15 to 19 are the companies in which plaintiff and/or defendants are share holders.
+
+\t(b) During the period between 1942 and 1946, the said deceased was carrying on business of spices and dry fruits at Chaman in Pakistan. During the period between 1948 and 1969, the said deceased carried on business in partnership in the name of M/s. Moolchand & Co. at Bhat Bazar, Maszid Bundar, Mumbai 400 009. In the year 1948, the said deceased took a flat at Malad. In the year 1950, defendant no. 1 was born. In the year 1958, plaintiff was born. In the year 1969, M/s. Moolchand & Co. stopped its business as its partners were likely to face insolvency. The said deceased was one of the partners in the said firm M/s. Moolchand & Co.
+
+\tOn 5th December, 1969, the said deceased started the firm "M/s. Kanayalal Rameshkumar" with defendant no. 1 who was his eldest son and had just attained majority, as partner. It is the case of the plaintiff that since the said deceased was likely to face insolvency proceedings he did not become partner of the said firm, however, was in control thereof throughout. On 20th February, 1970, the said firm M/s.
+
+\tKanayalal Rameshkumar was reconstituted with effect from December, 1969 when other children of the said deceased who were then minor, were admitted to the benefits of the firm. The other partners in the said firm were Mr. Kanayalal and Ramchandra Lokram. The said firm started business of grocery at 257, Narsee Natha Street, 201, New Anant Bhavan, Mumbai 400
+
+\t009. On 9th October,1973 the said deceased was adjudicated insolvent. In the year 1976, from the earning of kirana commission business carried on by the said firm M/s. Kanayalal Rameshkumar partly and partly from the moneys advanced by Mr. Kanayalal to the said firm, flat at Jolly Maker Apartment at Cuffe Parade, Mumbai was purchased in the name of four brothers who had attained the age of majority.
+
+\tIt is the case of the plaintiff that the said firm had directly made payment for consideration for purchase of the said flat. On 13 th April, 1982, the said flat at Jolly Maker Apartment was sold for Rs.12,50,000/-.`,
+
+91: `\tThe Gift-tax Officer, however, did not agree with the contention of the assessee that the provisions of the Gift-tax Act are not applicable and by his order dated December 16, 1965, he held that the only documentary evidence of partition is an entry in the account books of the family whereby Rs. 24,03,221.11 have been equally divided between Seth Mukunddas and Gokuldas and since the assessee was entitled to 1/3rd share in this amount, it shall be considered as if the assessee has relinquished, surrendered, forfeited or abandoned her 1/3rd share valued at Rs. 8,01,073.70 in favour of her two sons which amounts to a gift and hence the provisions of Section 2(xxiv)(d) of the Gift-tax Act read with Section 4(1)(c) of the Act are attracted.
+
+\tAggrieved by this order of the Gift-tax Officer, the assessee appealed to the Appellate Assistant Commissioner of Gift-tax, Ajmer Range, Ajmer. In the said appeal, it was contended on behalf of the assessee that the notice issued under Section 16(1) of the Act was barred by limitation because after the partial partition, Seth Mukunddas and Seth Gokuldas formed a partnership and the deed of partnership was submitted to the Income-tax Officer-cum-Gift-tax Officer on April i8, 1958.
+
+\tOn that date, the Gift-tax Officer was fully aware that a partial partition had taken place and recourse should have been taken to the provisions of Section 16(1) of the Act within a period of four years from that date and that notice dated February 12, 1965, was barred by limitation.
+
+\tIt was also contended by the assessee that the partial partition took place on October 24, 1957, and the relevant assessment year was 1959-60 and that the assessment to gift-tax had been wrongly made in the assessment year 1958-59 on the basis that the gift was made on October 21, 1957.
+
+\tApart from these objections, the assessee made submissions on merits and contended that the Gift-tax Officer had erred in holding that a deemed gift had been made under Section 4(c) of the Act. It was also submitted that even if it was treated to be a deemed gift, since there were four coparceners comprising Gokuldas, Mukunddas, Sethani Gangabai and the assessee, the assessee was in fact entitled to 1/4th share and not 1/3rd share and that value of the deemed gift would work out to Rs. 6,00,000 and not Rs. 8,00,000.
+
+\tThe Appellate Assistant Commissioner by his order dated April 15, 1971, allowed the said appeal of the assessee.
+
+\tThe Appellate Assistant Commissioner also held that the provisions of Section 4 read with Section 2(xxiv)(d) of the Act are not applicable to the case of the assessee and no deemed gift can be said to have been made.`,
+
+92: `\tThe following questions of law have been referred under Section 26(1) of the Gift-tax Act, 1958 (hereinafter referred to as "the Act "), by the Income-tax Appellate Tribunal, Gauhati Bench (hereinafter referred to as "the Tribunal"):
+
+\t"(i) Whether, on the facts and in the circumstances of the case, the Tribunal was justified in holding that the assessment order passed against the six sons of Shri Kumudeswar Goswami as legal representatives of Shri Kumudeswar Goswami on the basis of the six separate returns filed by the six sons was valid?
+
+\t(ii) Whether, on the facts and in the circumstances of the case, the Tribunal was justified in holding that the gifted properties belonged exclusively to Shri Kumudeswar Goswami being his separate property?
+
+\t(iii) Whether, on the facts and in the circumstances of the case, the Tribunal was justified in holding that the gifts made by Shri Kumudeswar Goswami were assessable to gift-tax in the assessment year 1960-61?" The facts of the case may briefly be stated as follows:
+
+\tThe relevant assessment year is 1960-61. Kumudeswar Goswami gifted 5 bighas 2 kathas of land under six registered deeds of gift dated June 11, 1959, showing a total value of land at Rs. 1,50,000 in favour of his six sons, namely, K. Goswami, H. Goswami, 13. Goswami, D. Goswami, L. Goswami and J. Goswami. Each of the six sons got 4 1/2 kathas of land individually, the value of which was shown at "Rs. 25,000. Kumudeswar Goswami also gifted 24 shares of Rs. 1,000 each (face value) of M/s. Bahadur Tea Co. Private Ltd. to his six sons, whose names were recorded in the books of the company on March 4, 1960, and each son thus had got 4 shares Kumudeswar Goswami also gifted Rs. 90,000 in cash to his six sons and gave Rs. 15,000 in cash to each of them.
+
+\tAccording to the Gift-tax Officer, these gifts were made by Kumudes-war Goswami to his six sons in the previous year relevant to the assessment year 1960-61 before his death. Kumudeswar Goswami died on February 17, 1961.
+
+\tAfter the death of Kumudeswar Goswami on February 17, 1961, action was taken under the Gift-tax Act against the six sons of Kumudeswar Goswami as his legal representatives and notices were served under Section 13(2) of the Act. All the six sons filed separate returns as legal representatives showing equal amounts of gifts received from their deceased father. The Gift-tax Officer then issued notice under Section 15(4) of the Act and he valued 27 kathas of land at Sarania area at Rs. 7,500 per katha and thus the value of the entire area of 27 kathas was held to be Rs. 2,02,500. He also included the cash gift of Rs. 90,000 in his assessment order.`
 
 };
