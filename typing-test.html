@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title> Typing Test</title>
+<title>Typing Test</title>
 
 <style>
 /* =========================================================
@@ -1284,7 +1284,7 @@ function tokenize(text) {
 }
 
 /* Word-level error counting */
-function countWordErrors(original, typed) {
+function countBhcWordErrors(original, typed) {
   const a = getWordTokens(original);
   const b = getWordTokens(typed);
 
@@ -1605,7 +1605,7 @@ function calculateResult() {
   const {
     errors,
     errors400
-  } = countWordErrors(currentPassage, typed);
+  } = countBhcWordErrors(currentPassage, typed);
 
   const originalWords = getWordTokens(currentPassage);
   const typedWords = getWordTokens(typed);
