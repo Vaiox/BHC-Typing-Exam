@@ -649,13 +649,8 @@
       </div>
 
       <div class="mode-selector" aria-label="Select practice mode">
-        <button
-          type="button"
-          class="mode-button active"
-          data-mode="paper_to_screen"
-          aria-pressed="true"
-        >
-          Paper-to-Screen
+        <button class="mode-button active" data-mode="screen_to_screen" aria-pressed="true">
+            Screen-to-Screen
         </button>
       
         <button
@@ -909,9 +904,9 @@
     };
 
     let categoryResults = {};
-    let activeCategory = "score_total";
-    let activeMode = "paper_to_screen";
+    let activeMode = "screen_to_screen";
     let activeLength = 2400;
+    let activeCategory = `${activeMode}_${activeLength}`;
 
 
     function escapeHtml(value) {
