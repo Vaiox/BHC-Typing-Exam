@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BHC Typing Practice</title>
+<title>Typing Practice</title>
 
 <style>
 /* =========================================================
@@ -833,7 +833,7 @@ function tokenize(text) {
    WORD-LEVEL ERROR COUNT
 ========================================================= */
 
-function countBhcWordErrors(original, typed) {
+function countPracticeWordErrors(original, typed) {
   const a = getWordTokens(original);
   const b = getWordTokens(typed);
 
@@ -1075,7 +1075,7 @@ function calculateResult() {
   }
 
   const { errors, errors400 } =
-    countBhcWordErrors(currentPassage, typed);
+    countPracticeWordErrors(currentPassage, typed);
 
   const originalWords = getWordTokens(currentPassage);
   const typedWords = getWordTokens(typed);
