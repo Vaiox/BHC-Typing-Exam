@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BHC Typing Test Results</title>
+<title>Typing Practice Results</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -199,6 +198,25 @@ body{
   line-height:1.8
 }
 
+/* INDEPENDENT PLATFORM DISCLAIMER */
+
+.site-footer{
+  margin-top:30px;
+  padding:20px 12px;
+  border-top:1px solid #252525;
+  color:#999;
+  text-align:center;
+  font-size:12px;
+  line-height:1.7
+}
+
+.site-footer strong{
+  display:block;
+  color:#ddd;
+  font-size:13px;
+  margin-bottom:6px
+}
+
 @media(max-width:900px){
   .compare{grid-template-columns:1fr}
 }
@@ -217,10 +235,10 @@ body{
 <div class="container">
 
   <header class="topbar">
-    <div class="brand">BHC Typing Test</div>
+    <div class="brand">Typing Practice</div>
 
     <nav class="nav">
-      <a href="./typing-test.html">Start Test Again</a>
+      <a href="./typing-test.html">Start Practice Again</a>
       <a href="./dashboard.html" class="secondary">Dashboard</a>
       <button type="button" id="logoutButton" class="secondary">Logout</button>
     </nav>
@@ -234,14 +252,14 @@ body{
   ></div>
 
   <div id="loadingPanel" class="loading">
-    Verifying your account and loading the saved result...
+    Verifying your account and loading your saved result...
   </div>
 
   <main class="result" id="result" hidden>
 
     <div class="result-header">
-      <h1>Test Results</h1>
-      <p id="resultSummary">Your accepted typing test result.</p>
+      <h1>Practice Results</h1>
+      <p id="resultSummary">Your accepted typing practice result.</p>
     </div>
 
     <!-- ALL RESULT STATISTICS -->
@@ -301,11 +319,22 @@ body{
     </div>
 
     <div class="actions" style="margin-top:24px">
-      <a href="./typing-test.html">Start Test Again</a>
+      <a href="./typing-test.html">Start Practice Again</a>
       <a href="./dashboard.html" class="secondary">Back to Dashboard</a>
     </div>
 
   </main>
+
+  <footer class="site-footer">
+    <strong>Typing Practice · Independent Learning Platform</strong>
+    This website is an independent typing practice platform intended
+    solely for educational and skill-development purposes. It is not
+    affiliated with, associated with, endorsed by, or operated by any
+    court, government authority, or official examination body. Any legal
+    materials used on this platform are provided exclusively as practice
+    material and do not constitute official examination content.
+  </footer>
+
 </div>
 
 <script type="module">
@@ -382,7 +411,7 @@ logoutButton.addEventListener("click", logout);
  * one localStorage key. A new accepted submission replaces it.
  *
  * The result ID must match, so an older result page cannot
- * accidentally display a different test's comparison.
+ * accidentally display a different practice session's comparison.
  */
 
 function loadLatestComparison(resultId) {
@@ -477,7 +506,7 @@ async function initializeResultPage() {
     if (!resultId) {
       hideLoading();
       showNotice(
-        "No result ID was provided. Complete a typing test to view your result."
+        "No result ID was provided. Complete a practice session to view your result."
       );
       return;
     }
@@ -545,7 +574,7 @@ async function initializeResultPage() {
       `<span style="font-size:14px;color:#888;">(Total)</span>`;
 
     document.getElementById("resultSummary").textContent =
-      `${savedResult.passage_label || "Typing Test"} · Submitted ` +
+      `${savedResult.passage_label || "Typing Practice"} · Submitted ` +
       `${formatDate(savedResult.created_at)}`;
 
     // 6. Load the comparison belonging to this exact result.
