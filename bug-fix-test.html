@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BHC Bug Fix Test</title>
+<title>Bug Fix Test</title>
 
 <style>
 /* =========================================================
@@ -379,7 +379,7 @@ button:focus-visible {
 
   <header class="header">
     <div>
-      <h1>BHC Bug Fix Test</h1>
+      <h1>Bug Fix Test</h1>
       <p>
         Test punctuation, quotation marks, spaces, tabs,
         missing words and comparison alignment.
@@ -538,7 +538,7 @@ button:focus-visible {
       whitespace-separated word comparison approach as your
       current production code. Comparison token differences
       also detect punctuation and whitespace differences.
-      Neither count should be treated as an official BHC exam
+      Neither count should be treated as an official exam
       score. This page is intended for debugging.
     </div>
 
@@ -727,7 +727,7 @@ function alignAndCount(original, typed) {
  * entire word different. This is not a separate punctuation
  * error count.
  */
-function countBhcWordErrors(original, typed) {
+function countPracticeWordErrors(original, typed) {
   const a = getWordTokens(original);
   const b = getWordTokens(typed);
 
@@ -848,7 +848,7 @@ function compareText() {
       tokenErrors
     } = alignAndCount(original, typed);
 
-    const wordErrors = countBhcWordErrors(original, typed);
+    const wordErrors = countPracticeWordErrors(original, typed);
 
     renderComparison(alignedA, alignedB);
 
