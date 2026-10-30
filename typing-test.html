@@ -1284,7 +1284,7 @@ function tokenize(text) {
 }
 
 /* Word-level error counting */
-function countBhcWordErrors(original, typed) {
+function countPracticeWordErrors(original, typed) {
   const a = getWordTokens(original);
   const b = getWordTokens(typed);
 
@@ -1605,7 +1605,7 @@ function calculateResult() {
   const {
     errors,
     errors400
-  } = countBhcWordErrors(currentPassage, typed);
+  } = countPracticeWordErrors(currentPassage, typed);
 
   const originalWords = getWordTokens(currentPassage);
   const typedWords = getWordTokens(typed);
