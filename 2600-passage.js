@@ -1298,6 +1298,90 @@ export const passages = {
 
 \t"In view of above discussion, the claimant is, therefore, entitled to get Rs.4,91,482.68 paise towards the final bill, Rs.1,65,800/-towards earnest money and security money and interest thereon at the rate of 18% per annum with effect from 30.5.1988 till the date of award i.e. 18.01.2009. However, the claimant is not entitled to claim the loss of profits of Rs.17,17,152/-. The claimant is certainly legitimately entitled to claim compensation for the deprivation of the use of money which may be called interest, compensation or damages and which is valid for the period of dispute pending before the arbitration tribunal."
 
-\tThe claimant is also entitled to get Rs.33,000/- as fees paid to his counsel and Rs.1,00,000/- as arbitration fees and other expenses. The amount of Rs.32,62,415.30 paise, the details of which are being given below shall be paid by the opposite party.`
+\tThe claimant is also entitled to get Rs.33,000/- as fees paid to his counsel and Rs.1,00,000/- as arbitration fees and other expenses. The amount of Rs.32,62,415.30 paise, the details of which are being given below shall be paid by the opposite party.`,
+
+101: `\tConsequently, while confirming the conviction of the appellants for the offences punishable under Section 307 read with Section 34, Section 332 read with Section 34 and Section 353 read with Section 34, "the substantive sentence awarded to them by the High Court is reduced to the period already undergone. The fine amount and the default stipulation remain as it is."
+
+\tThe learned counsel for the appellant, on the other hand, submitted that merely because an offence is non-compoundable under Section 320 of the Code would not mean that the High Court is denuded of its power to quash the proceedings in exercising its jurisdiction under Section 482 of the Cr.P.C. He argued that Section 320(9) of the Code cannot limit or affect the power of the High Court under Section 482 of the Cr.P.C.
+
+\tSuch a power is recognized by the Supreme Court in catena of judgments. He further submitted that having regard to the circumstances in the present case where the fight had occurred on the spot in the heat of the moment inasmuch as both sides were verbally fighting when the petitioners had struck the victim, this assault was more of a crime against the individual than against the society at large. He further submitted that this Court in Dimpey Gujral v. Union Territory through Administrator 2012 AIR SCW 5333 had quashed the FIR registered under sections 147, 148, 149, 323, 307, 452 and 506 of the IPC.
+
+\tWe find that there are cases where the power of the High Court under Section 482 of the Code to quash the proceedings in those offences which are uncompoundable has been recognized.
+
+\tThe only difference is that under Section 320(1) of the Code, no permission is required from the Court in those cases which are compoundable though the Court has discretionary power to refuse to compound the offence. However, compounding under Section 320(1) of the Code is permissible only in minor offences or in non-serious offences.
+
+\tLikewise, when the parties reach settlement in respect of offences enumerated in Section 320(2) of the Code, compounding is permissible but it requires the approval of the Court. In so far as serious offences are concerned, quashing of criminal proceedings upon compromise is within the discretionary powers of the High Court. In such cases, the power is exercised under Section 482 of the Code and proceedings are quashed.
+
+\tContours of these powers were described by this Court in B.S.Joshi vs. State of Haryana (2003) 4 SCC 675 which has been followed and further explained/elaborated in so many cases thereafter, which are taken note of in the discussion that follows hereinafter. FIR was lodged under sections 147, 148, 149, 323, 307, 552 and 506 of the IPC.`,
+
+102: `\tAnnexure 3 is a government notification dated october 10, 1986 wherein 5 types of fertilizers have been specified which could be purchased or manufactured in the State of Bihar. Annexure 4 is a certificate of registration dated March 31, 1986 in favour of the firm registering it as wholesale dealer in the State of Bihar under the Fertilizers (Control) Order, 1957.
+
+\tAnnexure 5 dated July 29, 1986 is the renewal of the said certificate. Annexure 6 dated November 16, 1985 is the certificate given to the firm by the Assistant Director (Agriculture) quality control, Udaipur, Rajasthan to the effect that samples of fertilisers taken from its factory were standard.
+
+\tAnnexure 7 dated August, 1986 is the letter from Agriculture Department, Bihar to the Agriculture Department, Rajasthan showing that the firm's registration was renewed upto March 31, 1989 and it was granted permission to import the specified grades of fertiliser into the State of Bihar. Annexure 11 dated October 23, 1986 is the letter from G.D.Mishra to Director, Agriculture, Bihar asking his opinion regarding suitability of the fertiliser to be purchased from the firm at Rs.2,550 per M.T.
+
+\tAnnexure 15 dated December 19, 1986 is the letter from G.D. Mishra to the firm asking the firm to supply 408 M.T. of fertiliser. Annexure 16 dated May 5, 1987 contains the proceedings of the marketing committee of BISCO held on April 16, 1987 wherein memorandum of sale and purchase of fertiliser for the year 1986-87 was approved.
+
+\tAnnexure 17 Dated February 18, 1985 is the letter from R.K. Singh as District Magistrate, Patna to Agriculture production Commissioner, Patna which discloses that R.K. Singh had got samples of Essential Commodities tested from Rajendra Agriculture University.
+
+\tAnnexure 18 dated March 23, 1987 is the memorandum prepared by P.P. Sharma for the Board of Directors of BISCO suggesting that the fertiliser purchased from the firm be sent to BISCO factories asraw-material. This was suggested because the fertiliser was not being sold inspite of reduction of price and huge stock and money was blocked. Annexure 19 is the record of the proceedings of the meeting of Board of Directors of BISCO dated March 23, 1987 approving Managing Director's suggestion that fertiliser be sent to BISCO factories as raw material to be converted as \`Sada Bahar'.
+
+\tAnnexure 20 dated May 21, 1987 is the memorandum prepared by P.P. Sharma for Executive Committee of BISCO regarding manufacture of \`Hara Bahar' fertiliser by the BISCO factories. Annexure 20/1 is copy of the proceedings of the Executive Committee meeting held on May 21, 1987 regarding manufacture of \`Hara Bahar'.`,
+
+103: `\tThese appeals are preferred against the common judgment dated 13.02.2012 whereby the High Court of Punjab and Haryana dismissed the writ petitions C.W.P. No.20135 of 2008, C.W.P. No.20189 of 2008 and C.W.P. No.21746 of 2008.
+
+\tBrief facts which led to filing of these appeals are as follows: Punjab Public Service Commission issued advertisement for filling up 52 posts of Punjab Civil Services (Judicial Branch) vide advertisement dated 07.03.2007. Out of 52 posts, 27 posts were for General Category; 25 posts for reserved category which included 03 posts for Ex-servicemen; 02 posts for Physically Handicapped; 10 posts for Scheduled Castes; 03 posts for Scheduled Caste Ex-servicemen; 05 posts for Backward Classes; 01 post for Backward Class Ex-servicemen and 01 post for Sports Person.
+
+\tPreliminary examination was conducted on 27.05.2007. The main examination was conducted from 20th to 22nd July, 2007. The viva voce was conducted from 28th to 30th November, 2007 and final result was declared on 01.12.2007. 27 candidates from general category, 10 candidates from scheduled castes and 05 candidates from backward classes were declared successful and have joined in terms of letters of appointment issued to them. Eight posts were de-reserved in respect of the remaining unfilled vacant posts.
+
+\tAs against the said de-reserved posts, seven candidates from the general category i.e. candidates upto Sl. No.34 and 01 candidate from backward classes were offered appointments. However, three candidates belonging to general category namely Sumit Garg, Vijayant Sehgal and Yogesh Chaudhary placed at Sl. No.1, 5 and 32 respectively did not join the service.
+
+\tThe appellants, who belong to general category have appeared in preliminary examination and subsequently in the main examination including viva voce figured in the final merit list as they stood at Sl. Nos. 37 and 36 and Parminder Singh Grewal at Sl. No. 35. Since three candidates did not join service, the appellants submitted the representation on 02.04.2008 to the High Court for issuance of appointment orders to them.
+
+\tThe representation of the appellants was considered in the sixteenth meeting of the Administrative Committee held on 08.12.2010 and it was resolved to recommend the names of the appellants subject to approval of the Full Court.
+
+\tAgain the matter was considered in the eighteenth meeting of the Administrative Committee held on 06.07.2011 wherein it was decided that the appellants cannot be offered appointments due to lack of vacancies. In Punjab, there was an ongoing litigation regarding selection of the judicial officers (Junior Division) in 1998, 1999, 2000 and 2001 (known as Sidhu scam).`,
+
+104: `\tBy its judgment dated 25 November 2016, the High Court of Gujarat dismissed an application under Section 482 of the Code of Criminal Procedure, 1973. The appellants sought the quashing of a First Information Report registered against them on 18 June 2016 with the City 'C' Division Police Station, District Jamnagar, Gujarat for offences punishable under Sections 384, 467, 468, 471, 120-B and 506(2) of the Penal Code.
+
+\tIn his complaint dated 18 June 2016, the second respondent stated that certain land admeasuring 17 vigha comprised in survey 1408 at Panakhan Gokulnagar in Jamnagar city was his ancestral agricultural land. The land was converted to non-agricultural use on 21 June 1995 and 5 January 2000 pursuant to orders of the District Collector. One hundred and three plots were carved out of the land. Amongst them, plots 45 to 56 admeasuring 32,696 sq.ft. were in the joint names of six brothers and a sister (represented by the complainant).
+
+\tThe complainant was requested to provide a photocopy of the lay out plan of the plot, which he did. On the following day the first appellant is alleged to have gone to the house of the complainant with the second and the third appellants at which point in time, parties agreed that the land would be sold at the rate of Rs 4,221 per sq.ft. and a deal was struck for a consideration of Rs.1,13,58,711/- out of which an amount of Rs 11 lakhs was given in cash to the complainant for plot no.56.
+
+\tAccording to the complainant, neither the non-judicial stamp dated 25 January 2016 in the amount of Rs 10,30,000/- nor the judicial stamp dated 27 January 2016 has been purchased by him. In fact, according to the complainant, it was the fourth appellant who had purchased the judicial stamp dated 27 January 2016. 5 According to the complaint, plots no.45 to 55 admeasuring 30,005 sq.ft. are valued at Rs 12.50 crores.
+
+\tThe High Court noted that the fourth appellant had moved Special Criminal Application no.4538 of 2016 which had been rejected by the coordinate bench of the High Court on 3 August 2016.
+
+\tThe proper course for the High Court would have been to quash the FIR in exercise of the jurisdiction conferred by Section 482 of the Code of Criminal Procedure, 1973. 1 (2012) 10 SCC 303 2 (2014) 6 SCC 466 9 On the other hand, learned counsel appearing on behalf of the state has supported the judgment of the High Court.
+
+\tThe charge-sheet involved offences under Sections 406, 420, 467, 468, and 471 read with Section 120-B of the Penal Code. In that case, the High Court had, in the exercise of its inherent power under Section 482 quashed proceedings under Sections 420, 467, 468 and 471 read with Section 120-B of the Penal Code.`,
+
+105: `\tFeeling aggrieved and dissatisfied with the impugned interim order dated 28.09.2020 passed by the Division Bench of the High Court of Judicature at Bombay in Writ Petition (ST) No. 2306 of 2020, by which, in an application filed by private respondent nos. 2 to 4 herein (hereinafter referred to as the 'original accused') under Article 226 of the Constitution of India r/w Section 482 Cr.P.C. with a prayer to quash the criminal proceedings being FIR No. 367/2019 dated 19.09.2019, the 15:46:27 IST Reason:
+
+\tHigh Court has directed that "no coercive measures shall be adopted" against the original accused in respect of the said FIR, the original complainant has preferred the present appeal.
+
+\tThat the appellant herein has lodged an FIR against respondent nos. 2 to 4 herein original accused at Worli Police Station, Mumbai for the offences under Sections 406, 420, 465, 468, 471 and 120B of the Indian Penal Code. That the allegations against the original accused pertain to forgery and fabrication of Board Resolution and the fraudulent sale of a valuable property Naziribagh Palace ad-measuring 111,882 sq. ft. belonging to the appellant company to one M/s Irish Hospitality Pvt. Ltd.
+
+\tApprehending their arrest in connection with the aforesaid FIR, the original accused filed anticipatory bail application before the learned trial Court under Section 438 Cr.P.C. That the learned Sessions Court, Mumbai granted interim protection from arrest to the alleged accused. That the interim protection, which was granted by the learned Sessions Court, was further extended from time to time and continued nearly for a year thereafter.
+
+\tThat during the pendency of the anticipatory bail application pending before the learned Sessions Court, Mumbai, original accused-respondent nos. 2 to 4 herein preferred a petition before the High Court of Judicature at Bombay under Article 226 of the Constitution of India r/w Section 482 Cr.P.C. for quashing the FIR, on 17.09.2020.
+
+\tThat the said writ petition was listed for hearing before the Division Bench of the High Court on 22.09.2020, wherein an order was passed directing the matter to be listed on 24.09.2020 before another Bench. That on 28.09.2020, the writ petition was listed for hearing before another Division Bench. Learned counsel appearing on behalf of the appellant herein (respondent no.2 before the High Court) prayed for two weeks' time to file an affidavit in reply with an additional compilation of documents.
+
+\tThat the Division Bench granted two weeks' time to the appellant herein to file an affidavit in reply with an additional compilation of documents in the Registry on or before 12.10.2020 with copy to the other side.`,
+
+106: `\tThis appeal relates to the alleged irregularities in Foreign Investment Promotion Board (FIPB) clearance given to the INX Media for receiving foreign investment to the tune of Rs.305 crores against approved inflow of Rs.4.62 crores.
+
+\tThe High Court of Delhi rejected the appellant's plea for anticipatory bail in the case registered by Central Bureau of Investigation (CBI) being RC No.220/2017-E-0011 under Section 120B IPC read with Section 420 IPC, Section 8 and Section 13(2) read with Section 13(1)(d) of the Prevention of Corruption Act, 1988.
+
+\tBy the impugned order dated 20.08.2019, the High Court also refused to grant anticipatory bail in the case registered by the Enforcement Directorate in ECIR No.07/HIU/2017 punishable under Sections 3 and 4 of the Prevention of Money-Laundering Act, 2002.
+
+\tGrievance of the appellant is that against the impugned order of the High Court, the appellant tried to get the matter listed in the Supreme Court on 21.08.2019; but the appellant could not get an urgent hearing in the Supreme Court seeking stay of the impugned order of the High Court.
+
+\tThe appellant was arrested by the CBI on the night of 21.08.2019. Since the appellant was arrested and remanded to custody in CBI case, in view of the judgment of the Constitution Bench in Shri Gurbaksh Singh Sibbia and others v. State of Punjab (1980) 2 SCC 565, the appellant cannot seek anticipatory bail after he is arrested.
+
+\tAccordingly, SLP(Crl.) No.7525 of 2019 preferred by the appellant qua the CBI case was dismissed as infructuous vide order dated 26.08.2019 on the ground that the appellant has already been arrested and remanded to custody. This Court granted liberty to the appellant to work out his remedy in accordance with law.
+
+\tOn 15.05.2017, CBI registered FIR in RC No.220/2017-E-0011 under Section 120B IPC read with Section 420 IPC, Section 8 and Section 13(2) read with Section 13(1)(d) of the Prevention of Corruption Act, 1988 against the accused viz. (i) INX Media through its Director Indrani Mukherjea; (ii) INX News through its Director Sh. Pratim Mukherjea @ Peter Mukherjea and others; (iii) Sh. Karti P. Chidambaram; (iv) Chess Management Services through its Director Sh. Karti P. Chidambaram and others; (v) Advantage Strategic Consulting through its Director Ms. Padma Vishwanathan @ Padma Bhaskararaman and others; (vi) unknown officers/officials of Ministry of Finance, Govt. of India; and (vii) other unknown persons for the alleged irregularities in giving FIPB's clearance to INX Media to receive overseas funds of Rs.305 crores against approved Foreign Direct Investment (FDI) of Rs.4.62 crores.`
 
 };
