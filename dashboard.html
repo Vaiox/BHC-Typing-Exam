@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Dashboard | Typing Test</title>
+  <title>Dashboard | Typing Practice</title>
 
   <style>
     :root {
@@ -470,6 +470,22 @@
       text-align: center;
     }
 
+    .disclaimer {
+      max-width: 850px;
+      margin: 22px auto 0;
+      color: #777777;
+      font-size: 11px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .disclaimer strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #999999;
+      font-size: 12px;
+    }
+
     @media (max-width: 850px) {
       .stats-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -556,7 +572,7 @@
   <header class="topbar">
     <a class="brand" href="./dashboard.html">
       <span class="brand-icon" aria-hidden="true">⌨</span>
-      <span>Typing Test</span>
+      <span>Typing Practice</span>
     </a>
 
     <div class="topbar-right">
@@ -579,7 +595,7 @@
           </h1>
 
           <p>
-            Welcome to your typing practice portal.
+            Welcome to your independent typing practice platform.
             Track your performance and improve with every test.
           </p>
         </div>
@@ -676,7 +692,7 @@
               type="button"
               disabled
             >
-              Start Exam <span aria-hidden="true">→</span>
+              Start Practice <span aria-hidden="true">→</span>
             </button>
 
             <p class="stat-foot" id="screenExamStatus">
@@ -715,7 +731,7 @@
               type="button"
               disabled
             >
-              Start Exam <span aria-hidden="true">→</span>
+              Start Practice <span aria-hidden="true">→</span>
             </button>
 
             <p class="stat-foot" id="paperExamStatus">
@@ -727,7 +743,7 @@
         </div>
 
         <p class="stat-foot" style="margin-top: 18px;">
-          You can start a test. Abandoned tests do not count.
+          You can start a practice session. Abandoned sessions do not count.
         </p>
 
       </article>
@@ -769,7 +785,7 @@
     <section class="panel">
 
       <div class="history-header">
-        <h2>Recent Tests</h2>
+        <h2>Recent Practice Sessions</h2>
 
         <a class="secondary-button" href="./stats.html">
           View Full History
@@ -783,7 +799,19 @@
     </section>
 
     <footer class="footer" style="margin-top: 30px;">
-      Typing Test · Practice Portal
+      Typing Practice · Independent Learning Platform
+
+      <div class="disclaimer">
+        <strong>Educational Purpose and Non-Affiliation Disclaimer</strong>
+
+        This website is an independent typing practice platform
+        intended solely for educational and skill-development purposes.
+        It is not affiliated with, associated with, endorsed by, or
+        operated by any court, government authority, or official
+        examination body. Any legal materials used on this platform
+        are provided exclusively as practice material and do not
+        constitute official examination content.
+      </div>
     </footer>
 
   </main>
@@ -1032,9 +1060,15 @@
 
       if (testsUsedToday >= dailyTestLimit) {
         showNotice(
-          "If daily test limit reached. Please come back tomorrow."
+          "Daily practice limit reached. Please come back tomorrow."
         );
+
         setExamButtonsEnabled(false);
+
+        setExamStatuses(
+          "Daily practice limit reached. Please come back tomorrow."
+        );
+
         return;
       }
 
@@ -1189,11 +1223,17 @@
         setExamButtonsEnabled(true);
 
         setExamStatuses(
-          "If daily test limit reached. Please come back tomorrow."
+          "Ready when you are. Select a passage length to begin."
         );
       } else {
+        setExamButtonsEnabled(false);
+
         setExamStatuses(
-          "You can start a test. Abandoned tests do not count."
+          "Daily practice limit reached. Please come back tomorrow."
+        );
+
+        showNotice(
+          "Daily practice limit reached. Please come back tomorrow."
         );
       }
 
@@ -1248,7 +1288,7 @@
               <div>
                 <div class="history-title">
                   ${escapeHtml(
-                    result.passage_label || "Typing Test"
+                    result.passage_label || "Typing Practice"
                   )}
                 </div>
 
@@ -1277,8 +1317,8 @@
 
         $("historyList").innerHTML = `
           <div class="empty-state">
-            You haven't saved any typing test results yet.<br>
-            Select Start Exam when you're ready to begin.
+            You haven't saved any typing practice results yet.<br>
+            Select Start Practice when you're ready to begin.
           </div>
         `;
       }
@@ -1288,6 +1328,8 @@
 
       if (testsUsedToday < dailyTestLimit) {
         setExamButtonsEnabled(true);
+      } else {
+        setExamButtonsEnabled(false);
       }
     }
 
