@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Login | Typing Test</title>
+  <title>Login | Typing Practice</title>
 
   <meta
     name="description"
-    content="Sign in to your Typing Test practice portal."
+    content="Sign in to your independent Typing Practice platform and improve your typing skills."
   >
 
   <style>
@@ -327,6 +328,25 @@
     }
 
     /* =========================
+       EDUCATIONAL DISCLAIMER
+    ========================= */
+
+    .disclaimer {
+      margin-top: 22px;
+      color: #777777;
+      font-size: 11px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .disclaimer strong {
+      display: block;
+      color: #999999;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    /* =========================
        MOBILE
     ========================= */
 
@@ -371,7 +391,7 @@
     <header class="brand">
       <div class="brand-icon" aria-hidden="true">⌨</div>
 
-      <h1>Typing Test</h1>
+      <h1>Typing Practice</h1>
 
       <p>
         Practice with precision.<br>
@@ -463,9 +483,25 @@
       </div>
     </section>
 
+    <!-- EDUCATIONAL DISCLAIMER -->
+    <section class="disclaimer">
+      <strong>Independent Educational Platform</strong>
+
+      This website is an independent typing practice platform
+      intended solely for educational and skill-development purposes.
+
+      It is not affiliated with, associated with, endorsed by, or
+      operated by any court, government authority, or official
+      examination body.
+
+      Any legal materials used on this platform are provided
+      exclusively as practice material and do not constitute
+      official examination content.
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
-      Typing Test · Practice Portal
+      Typing Practice · Independent Learning Platform
     </footer>
 
   </main>
@@ -538,14 +574,14 @@
   function showSubscriptionExpired() {
     showError("Subscription expired", EXPIRED_MESSAGE, true);
   }
-  
+
   const params = new URLSearchParams(window.location.search);
-  
+
   if (params.get("status") === "subscription_expired") {
     showSubscriptionExpired();
     window.history.replaceState({}, "", window.location.pathname);
   }
-  
+
   function showDailyLimitReached() {
     showError("Daily limit reached", DAILY_LIMIT_MESSAGE, true);
   }
@@ -769,3 +805,5 @@
 
   checkExistingSession();
 </script>
+</body>
+</html>
