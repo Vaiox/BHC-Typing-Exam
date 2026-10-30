@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Typing Test — Paper to Screen</title>
+<title>Typing Practice — Paper to Screen</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -404,6 +404,25 @@ button:disabled{
   }
 }
 
+/* INDEPENDENT PLATFORM DISCLAIMER */
+
+.site-footer{
+  margin-top:30px;
+  padding:18px 12px;
+  border-top:1px solid #555861;
+  color:#bfc1c7;
+  text-align:center;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.site-footer strong{
+  display:block;
+  color:#e0e0e0;
+  font-size:13px;
+  margin-bottom:6px;
+}
+
 </style>
 </head>
 
@@ -442,7 +461,6 @@ button:disabled{
     </div>
   </div>
 
-  
   <div class="passage-identification" aria-live="polite">
     <strong id="passageLabel">Passage —</strong>
     <span id="passageSnippet">Loading passage...</span>
@@ -458,7 +476,7 @@ button:disabled{
   <div class="typing-area">
 
     <div class="preview" id="preview">
-      Checking your account...
+      Verifying your account...
     </div>
 
     <textarea
@@ -474,9 +492,9 @@ button:disabled{
   </div>
 
   <div class="buttons">
-    <button id="startButton" disabled>Start Test</button>
+    <button id="startButton" disabled>Start Practice</button>
     <button id="restartButton" disabled>Restart Same Passage</button>
-    <button id="submitButton" disabled>Submit</button>
+    <button id="submitButton" disabled>Submit Practice</button>
     <button id="toggleTypingBtn" disabled>Hide Typing Box</button>
   </div>
 
@@ -533,6 +551,16 @@ button:disabled{
     </div>
   </div>
 
+  <footer class="site-footer">
+    <strong>Typing Practice · Independent Learning Platform</strong>
+    This website is an independent typing practice platform intended
+    solely for educational and skill-development purposes. It is not
+    affiliated with, associated with, endorsed by, or operated by any
+    court, government authority, or official examination body. Any legal
+    materials used on this platform are provided exclusively as practice
+    material and do not constitute official examination content.
+  </footer>
+
 </div>
 
 <script type="module">
@@ -543,7 +571,7 @@ const DAILY_LIMIT = 10;
 const TEST_MODE = "paper_to_screen";
 
 const DAILY_LIMIT_MESSAGE =
-  "Daily test limit reached. Please come back tomorrow.";
+  "Daily practice limit reached. Please come back tomorrow.";
 
 const passageFiles = {
   2400: "./2400-passage.js",
@@ -869,7 +897,7 @@ async function initializeAccess() {
   }
 }
 
-/* PREPARE TEST */
+/* PREPARE PRACTICE */
 
 function prepareTest() {
   if (
@@ -923,7 +951,6 @@ function prepareTest() {
 
   currentPassage = passages[currentId];
 
-  
   // Show the passage number and a short identifying excerpt.
   const passageLabel = document.getElementById("passageLabel");
   const passageSnippet = document.getElementById("passageSnippet");
@@ -940,7 +967,6 @@ function prepareTest() {
     normalizedPassage.length > excerptLength
       ? normalizedPassage.slice(0, excerptLength).trimEnd() + "…"
       : normalizedPassage;
-
 
   history.push(currentId);
 
@@ -1127,7 +1153,7 @@ function tokenize(text) {
   ) || [];
 }
 
-function countBhcWordErrors(original, typed) {
+function countPracticeWordErrors(original, typed) {
   const a = getWordTokens(original);
   const b = getWordTokens(typed);
 
@@ -1440,7 +1466,7 @@ function calculateResult() {
   const {
     errors,
     errors400
-  } = countBhcWordErrors(currentPassage, typed);
+  } = countPracticeWordErrors(currentPassage, typed);
 
   const originalWords = getWordTokens(currentPassage);
   const typedWords = getWordTokens(typed);
@@ -1495,7 +1521,7 @@ function calculateResult() {
   };
 }
 
-/* SUBMIT TEST */
+/* SUBMIT PRACTICE RESULT */
 
 async function submitTest() {
   if (
@@ -1508,7 +1534,7 @@ async function submitTest() {
   }
 
   if (!currentPassage) {
-    showNotice("Please start a test first.");
+    showNotice("Please start a practice session first.");
     return;
   }
 
@@ -1523,7 +1549,7 @@ async function submitTest() {
   toggleTypingBtn.disabled = true;
 
   clearNotice();
-  showNotice("Submitting your result securely...");
+  showNotice("Submitting your practice result securely...");
 
   try {
     const {
