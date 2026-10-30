@@ -1184,6 +1184,120 @@ export const passages = {
 
 \tAccording to the Gift-tax Officer, these gifts were made by Kumudes-war Goswami to his six sons in the previous year relevant to the assessment year 1960-61 before his death. Kumudeswar Goswami died on February 17, 1961.
 
-\tAfter the death of Kumudeswar Goswami on February 17, 1961, action was taken under the Gift-tax Act against the six sons of Kumudeswar Goswami as his legal representatives and notices were served under Section 13(2) of the Act. All the six sons filed separate returns as legal representatives showing equal amounts of gifts received from their deceased father. The Gift-tax Officer then issued notice under Section 15(4) of the Act and he valued 27 kathas of land at Sarania area at Rs. 7,500 per katha and thus the value of the entire area of 27 kathas was held to be Rs. 2,02,500. He also included the cash gift of Rs. 90,000 in his assessment order.`
+\tAfter the death of Kumudeswar Goswami on February 17, 1961, action was taken under the Gift-tax Act against the six sons of Kumudeswar Goswami as his legal representatives and notices were served under Section 13(2) of the Act. All the six sons filed separate returns as legal representatives showing equal amounts of gifts received from their deceased father. The Gift-tax Officer then issued notice under Section 15(4) of the Act and he valued 27 kathas of land at Sarania area at Rs. 7,500 per katha and thus the value of the entire area of 27 kathas was held to be Rs. 2,02,500. He also included the cash gift of Rs. 90,000 in his assessment order.`,
+
+93: `\tIn the case on hand, the partition was effected between the defendants 1, 3 & 4 under a registered Partition Deed dated 14.06.1993 registered as Document No.1385 of 1993 in the office of the Sub Registrar, Sankarapuram. The plaintiff and the 7th defendant have not spoken anything about the registered Partition Deed dated 14.06.1993.
+
+\tIn spite of the fact that the defendants 1, 3 & 4 have specifically pleaded that there was a partition between themselves on 14.06.1993, the said averment was not disputed by the plaintiff and the 7th defendant in their counter. The plaintiff has suppressed the registered Partition Deed and has filed the suit for partition attacking the vires of the Amendment Act 39 of 2005 and Tamil Nadu Amendment Act 1 of 1990.
+
+\tWhen the provisions of Section 6 (5) of the Hindu Succession Act (Amended Act 39 of 2005) is very clear that nothing contained in the Section shall apply to partition, which had been effected before 20.12.2004, in view of the registered Partition Deed dated 14.06.1993 executed between the defendants 1, 3 & 4, the plaintiff and the 7th defendant cannot claim a share in the properties.
+
+\t18.The next question that arises for consideration is whether the Civil Court has jurisdiction to declare the Amendment Acts are unconstitutional, ultra vires and void ab initio.
+
+\tThe Hon'ble Supreme Court in the judgment reported in (2011) 12 Supreme Court Cases 268 cited supra, held that for questions relating to the validity of central or other laws, the appropriate forum is the extraordinary writ jurisdiction under Articles 32 and 226 of the Constitution of India in a writ petition and not an original suit filed under Article 131 before the Hon'ble Supreme Court, which vests exclusive jurisdiction in Supreme Court as regards the disputes enumerated therein.
+
+\t19.The contention of the learned senior counsel appearing for the 1st respondent that in view of the provisions of Order XXVII-A of the Civil Procedure Code, a Civil Court has jurisdiction to declare the Amendment Act (i.e.) Act 39 of 2005 and Tamil Nadu Amendment Act 1 of 1990 as ultra vires and unconstitutional, cannot stand, for the reason that the said provision relates to suits involving a substantial question of law as to the interpretation of the Constitution or as to the validity of any statutory instrument.
+
+\tHowever, the learned senior counsel for the 1st respondent submitted that since under the provisions of Order XXVII A, the validity of any statutory instrument can also be decided by Civil Court, the Principal District Court, Villupuram has got jurisdiction to declare the Amended Acts as ultra vires and unconstitutional.`,
+
+94: `\tDuring the trial, oral evidence was led and witnesses were examined. The plaintiff executed a power of attorney in favour of her husband Sri P.S. Narula who was examined during the trial as PW-1. Only the first defendant examined herself. On the basis of the evidence and materials on record, the learned Single Judge held that the power of attorney dated 22.03.2006 (Ex.4/D1-D3) was executed by the first defendant on behalf of her and her minor daughters i.e. the second and third defendant.
+
+\tIt was also held that the agreement to sell dated 20.05.2006 (Ex.PW1/4) was executed by fourth defendant (power of attorney holder) which superseded the earlier Agreement to sell dated 11.12.2005 and that the Addendum dated 08.05.2007 (Ex.PW1/10) was also validly executed by the fourth defendant in exercise of the authority conferred on him through Ex.4/D1-D3.
+
+\tThe R.F.A. (OS) 134/2014 Page 7 Learned Single, Judge relying on the admitted document, i.e. letter dated 11.02.2008 (Ex.3/D1) sent by the first defendant to the plaintiff's husband which referred to fourth defendant as her attorney through the express words "for further talks contact Mr. S.K. Malvankar, my power of attorney" and also the admission of the first defendant in her statement that she had not revoked Ex.4/D1-D3, held that the fourth defendant was power of attorney holder of the defendants and was duly authorized to sell the property on their behalf.
+
+\tIt was further held that Fourth defendant, on behalf of the other defendants had executed a valid agreement to sell and all his subsequent acts of applying to DDA for freehold conversion of suit property and moving the Court for permission to sell under Section 29 of Guardianship and Wards Act, 1890 were in terms of power of attorney.
+
+\tThe learned Single Judge also noticed that document 07.09.2007 (Ex.PW1/11) and its reply by the second and third defendants (Ex. PW1/D1- D3 and Ex.PW1/D4) were admitted documents. Further, the documents Ex.2/D1-D3, addressed to the plaintiff's husband applying to DDA for the freehold conversion of the property were admitted documents.
+
+\tThe defendants had moved an application under Section 29 of Guardianship and Wards Act, 1890 read with Order 32 CPC before the court for permission to sell the property of the minor daughters. This was admitted in view of the fact that fourth defendant in his statement under Order 1 Rule 10 CPC dated 17.05.2010 had admitted his signatures on the said application.
+
+\tWhile deciding the second issue, the learned Single Judge had considered the case laws relied upon by the first defendant in the case of M. Veera Raghaviah vs. M. China Veeriah & Anr. AIR 1975 AP 350.`,
+
+95: `\tThe captioned Interim Application has been filed by the Appellants under Order XLI Rule 27 of the Code of Civil Procedure, 1908 ("CPC"), seeking permission to produce on record, a Notice dated 15th January 1962. Although the Appellants contend that the said Notice has a direct bearing on the merits of the present Appeal, the Interim Application cannot be allowed, as the Appellants have failed to satisfy the requirements of Order XLI Rule 27 of the CPC, for production of additional evidence at the appellate stage.
+
+\tThe Respondent has filed a Reply Affidavit, opposing the Interim Application and has contended that the Application neither sets out any reason for the Appellants' failure in producing the document as evidence before the Trial Court nor clarifies in whose possession the said document was.
+
+\tThe Appellants contend that the Notice dated 15th January 1962, issued by the Respondent Authority to one Mr. Vitthal Kamble, establishes that, as early as January 1962, a structure existed between Shop Nos. 6 and 8. According to the Appellants, this establishes that the structure against which the impugned Notice came to be subsequently issued was in existence prior to the datum line, i.e., 1st April 1962. The Appellants therefore contend that the structure cannot be treated as an unauthorised structure, since it pre-dated 1st April 1962.
+
+\tIn my opinion, the Appellants have failed to make out a case for permitting the Notice dated 15th January 1962 to be produced on record in the present Appeal. The Appellants have failed to demonstrate the exercise of due diligence contemplated under Order XLI Rule 27 of the CPC. The captioned Interim Application is therefore dismissed.
+
+\tThe present First Appeal impugns a Judgment and Order dated 22nd February 2019 ("the impugned order") passed by the City Civil Court at Bombay in S.C. Suit No. 1330 of 2012 by which the Trial Court has dismissed the said Suit filed by the Appellants inter alia seeking a declaration that the Notice dated 28th January 2011 ("the impugned Notice"), issued by the Respondent Municipal Corporation under Section 53 of the Maharashtra Regional and Town Planning Act, 1966 ("MRTP Act"), was void.
+
+\tMr. Naphade, learned Counsel appearing on behalf of the Appellants, submitted that the Appellants and his family members had been tenants in respect of Garage Nos. 5, 6, 7 and 8 in Prem Court Building, Plot No. 119, Backbay Reclamation Scheme, Mumbai – 400 020, since 27th December 1999.
+
+\tIn support of his contention, he pointed out that the Appellants had placed reliance upon various documents, including the (i) rent agreement dated 17th December 1999 entered into between the landlady and the Appellants.`,
+
+96: `\tThis appeal arises out of the judgment and decree in O.S.No.168/2000 of the Sub Court, Alappuzha. The suit is one for partition. Defendant No.22 is the appellant herein. The suit property jointly belonged to one Rajan and his wife Sulochana. They had no issues. Rajan died in 1991. Subsequently, Sulochana died intestate in 1993.
+
+\tHence succession is governed by the provisions of Hindu Succession Act, 1956. But the point in controversy is as to whether the estate of the deceased will devolve on the legal heirs as per Section 16 or Section 17 of the Hindu Succession Act. In this regard it is contended by the learned Counsel, Sri Sadananda Prabhu, appearing for the appellant that at the time Sulochana died in 1993 she is not governed by the marumakkathayam law, since the marumakkathayam law in the State of Kerala had been repealed by the provisions contained in the Kerala Joint Hindu Family System (Abolition) Act, 1975.
+
+\tAccording to him, since the succession opens in 1993, on the  death of Sulochana when she is not governed by the marumakkathayam law, the estate of the deceased will be devolved on the legal heirs in terms of Section 17 of the Hindu Succession Act. Per contra it is contended by the contesting respondents that Section 17 itself gives sufficient indication that whether the provisions of Section 15 will apply or Section 17 will apply, will have to be decided as on the date of commencement of the Hindu Succession Act, 1956.
+
+\tAs per Section 17 of the Act, the provisions of Sections 8, 10, 15 and 23 shall have effect in relation to persons who would have been governed by the provisions of marumakkathayam law, if this Act had not been passed. In other words, according to them, the application of Section 15 or Section 17 as the case may be, will have to be decided as on the date of commencement of the Hindu Succession Act.
+
+\tThe parties are governed by the marumakkathayam law at the time of commencement of the provisions of the Hindu Succession Act. There were two provisions governing the succession.
+
+\tWhile enacting the law the legislature has taken care to provide two separate provisions indicating the manner in which the estate will devolve and the determination of the heirs will therefore be governed by the provisions of Section 15 in the case of marumakkathayi as per Section 17 of the Act.
+
+\tAccording to them,  both Section 15 and Section 17 have come into force. In the absence of any provision contained in the Joint Hindu Family System (Abolition) Act expressly amending the provision of Section 17, the continued application of Section 17 is not affected by the Joint Hindu Family System (Abolition) Act, 1975.`,
+
+97: `\tThe appellants in these two connected appeals have challenged the common judgment and order dated 16.01.2018 passed by the High Court of Judicature at Patna (hereinafter referred to as 'High Court') in Criminal Appeal (SJ) No. 69 of 2007 filed by the present appellants modifying the judgment passed by the Trial Court convicting the appellants under Section 307 read with Section 34 Indian Penal Code (for short 'IPC') and confirming their conviction under Section 27 of the Arms Act.
+
+\tThe Trial Court after convicting the appellants under Section 307 read with Section 27 of the Arms Act, sentenced them to undergo five years Rigorous Imprisonment under Section 307 and fine of Rs.5,000/- and three years Rigorous Imprisonment under Section 27 of the Arms Act and a fine of Rs.2,000/-.
+
+\tOn an appeal filed by them, the High Court converted their conviction under Section 307 read with Section 34 IPC to Section 324 IPC and awarded two years rigorous imprisonment with a fine of Rs.5,000/- and three months simple imprisonment in case of default. The sentence awarded to the appellant by the Trial Court of three years Rigorous Imprisonment under Section 27 of the Arms Act was confirmed. Aggrieved by the same, the two appellants are before us.
+
+\tThe prosecution case in brief is as under:- On the basis of fardbeyan of PW-6 (injured informant), Kumar Nandan Singh made at the clinic of Dr. Himkar, the police registered an FIR being Case No. 312 of 1999 dated 10.10.1999, Police Station - Lakhi Sarai, under Sections 323, 307 read with Section 34 IPC and Section 27 of the Arms Act.
+
+\tThe injured informant, PW-6, stated in his fardbeyan that on the fateful day at about 05:30 PM, while he was repairing the 'Kaccha Mud Wall', which had fallen down due to rain, with the help of hired labourers, his neighbour, namely, accused-appellant, Manoj Singh came  and objected to repairing of the wall.
+
+\tOn the basis of the aforesaid statement made by the injured informant PW-6, the FIR was registered on the same day, however, it was not forwarded to the Court of Chief Judicial Magistrate on the same day but was sent after two days i.e., on 12.10.1999. After completing the investigation, the police submitted a charge-sheet against the two appellants, Anuj Singh and Manoj Singh, under Section 307 IPC read with Section 27 of the Arms Act. The other two co-accused, Praveen Singh and Arvind Singh, were charged under Section 307 read with Section 34 IPC.
+
+\tThe Additional Chief Judicial Magistrate took cognizance against the accused persons on 01.09.2000 and the case was committed to the Court of Sessions on 16.01.2001.`,
+
+98: `\tWrit Petition No. 13735 of 2017 has been filed by Smt. Mithilesh Kumari & 2 others, whose land was subject matter of acquisition by the U.P. Avas Evam Vikas Parishad (hereinafter referred to as the 'Parishad'), seeking a mandamus commanding the Parishad to deposit enhanced amount of compensation along with other statutory benefit and interest pursuant to the order dated 08.11.2016 passed under Section 28A of the Land Acquisition Act, 1894 (for short the 'Act, 1894') within a reasonable time frame to be fixed by this Court.
+
+\tA mandamus has also been claimed commanding the Additional District Magistrate (Acquisition)/Special Land Acquisition Officer (Awas), respondent no. 1 to disburse the amount so deposited by the Parishad in favour of the petitioners.
+
+\tWrit Petition No. 15134 of 2017 has been filed by U.P. Avas Evam Vikas Parishad challenging the order dated 08.11.2016 passed by Additional District Magistrate, Land Acquisition on the application filed by the claimants under Section 28A of the Act, 1894.
+
+\tPleadings have been exchanged and we have heard Shri H.N. Singh, learned Senior Counsel assisted by Shri L.K. Singh for the claimants and Shri N.C. Tripathi appearing for the U.P. Avas Evam Vikas Parishad.
+
+\tUndisputed facts are that plot nos. 51/2, 80/2, 85, 86, 89, 91, 94, 96 and 97, wherein the claimants were having half share, were subject matter of acquisition by Parishad. Notifications under Sections 28 and 32 of the Act, 1894 were issued on 17.02.1973 and 27.02.1980 respectively.
+
+\tThe possession was taken over on 09.07.1982. An award was declared by the Special Land Acquisition Officer on 31.03.1986 awarding compensation at the rate of Rs.4.28 per sq. yd. It is not in dispute that the claimants herein accepted the compensation without any protest. However, other tenure holders, whose land was also subject matter of same acquisition, notification, filed objections and a reference was made under Section 18 and forwarded to the District Judge for adjudication. One of the reference Case No. 157/70 of 1994, Smt. Srimati Vs. State of U.P. & Anr. came to be decided on 21.04.2000 by IV Additional District Judge, Kanpur Nagar.
+
+\tThe market value of the land on the date of acquisition was determined to be Rs.45 per sq. yd. and, accordingly, the claimants were held entitled to the enhanced amount of compensation. The said order was challenged by Parishad by filing First Appeal No. 73 of 2001, which was dismissed vide order dated 09.07.2013. It is undisputed that the order dated 09.07.2013 has attained finality as the same has not been challenged. The claimants herein made an application dated 13.07.2000 under Section 28A of the Act, 1894.`,
+
+99: `\tThe claimants/appellants (hereinafter referred as the 'appellants') have filed the present appeal against the judgment and award dated 11th October, 2010 passed by Sri S.S. Upadhyay, Additional District Judge, Court No.4, /Motor Accident Claims Tribunal, Fatehpur in M.A.C.P. No.35 of 2007 (Smt.Jai Kumari Devi & others Vs. Smt. Pushpa Gupta & another) whereby the quantum of compensation awarded by the tribunal has been challenged on several grounds.
+
+\tThough the controversy relates only to the quantum of compensation but in order to appreciate the questions involved in the present appeal, we think it proper to briefly noticed the facts.
+
+\tShorn of unnecessary facts, the claim petition was filed by appellant no.1, mother, appellant no.2 father, appellant no.3 sister and appellant no.4 brother of the deceased Km.Vibha with the averments that the deceased was aged about 25 years. She was a teacher and earning about Rs.8, 560/- per month by way of salary, Rs.3,000/- from tuition and Rs.2,000/- from sewing work. Thus, her total income was Rs.14,840/-?.
+
+\tOn 31st October, 2006, the deceased was going with her brother, respondent no.4, to bus station Pakka Talab in order to board the bus to her school. They were walking on the left patri of the road. When they crossed Belahi Bazar, they met their father and started talking. At about 9.00 a.m. Truck No.U.P.78 B 4689 came there driven very rashly and negligently and hit the deceased and appellant no.4 on the wrong side. The deceased died at the spot and appellant no.4 sustained grievous injuries. F.I.R. was lodged at the police station on the same day.
+
+\tPost-mortem of the dead body of the deceased was conducted. Respondent No.1 is the owner of the offending vehicle. Respondent No.2 is the insurance company. The deceased had a very bright future. She was officiating as head mistress of the school. She was looking after the education of the appellants nos.3 and 4. Appellants are her legal representatives. On various heads Rs.28.59,240/- was claimed as compensation.
+
+\tThe tribunal has further held that the deceased was a teacher. During October 2006, she had drawn gross salary Rs.8,560/-. Out of this amount, Rs.83/- were deducted for insurance. Her annual income was held Rs.1,02,720/-.One third income was deducted towards her personal expenses and Rs.68,480/- were held to be annual loss of dependency of the appellants. The learned tribunal has further observed that the deceased was unmarried.
+
+\tLoss of dependency was multiplied by multiplier of age (chosen on the basis of the age of the appellant nos.1 & 2).Thus, Rs.5,47,840/- were held as compensation for loss of dependency.`,
+
+100: `\tThe instant appeal is directed against the order dated 30.3.2013 passed by the District Judge, Kanpur Nagar in Misc. Case No.40/70 of 2009 (Kanpur Jal Sansthan Vs. M/s Bapu Constructions) and Award dated 20.1.2009 passed by Shri Sunil Bhatnagar, Arbitrator in Arbitration Petition No.32 of 2003.
+
+\tHeard Shri Ravi Kant, learned Senior Advocate assisted by Shri R.M. Saggi, learned counsel for the appellants and Shri Anil Kumar Yadav, learned counsel for the respondent.
+
+\tThe brief facts involved in the matter are that Shri Sunil Bhatnagar was nominated as Arbitrator under Section 11 of the Arbitration and Conciliation Act, 1996 ( hereinafter referred to as ' the 1996 Act') by order dated 23.09.2005 by the Chief Justice to decide the dispute between the parties. According to the claimant/ respondent (hereinafter referred to as ' the respondent'), he had entered into an agreement with the opposite party/ appellant ( hereinafter referred to as ' the appellant') to carry out the works of supply and filling of 0.3 to 0.4 mm sand (Morang) for slow and filters. Work Order No.Jal/Civil/Work/3/87 dated 24.2.1987 of Rs.21,43,200/- was issued. The work was to be commenced from 23.05.1987 and was to be completed within one year.
+
+\tAccording to the respondent, he had completed the work within the time and there was no complaint against his work. Even then following amounts were illegally detained and not paid by the appellants.
+
+\t1.Balance amount toward final bill: Rs.491,492.68
+
+\t2.Earnest money and security money deducted from the running bill : Rs.1,65,800.00 Resultantly according to the respondent, he was entitled for payment of Rs.22,89,536.00 as interest on the claimed amount @ 15% with usual costs. Claim and counter-claim were filed. Affidavits were exchanged and the following award was passed;
+
+\t"In view of above discussion, the claimant is, therefore, entitled to get Rs.4,91,482.68 paise towards the final bill, Rs.1,65,800/-towards earnest money and security money and interest thereon at the rate of 18% per annum with effect from 30.5.1988 till the date of award i.e. 18.01.2009. However, the claimant is not entitled to claim the loss of profits of Rs.17,17,152/-. The claimant is certainly legitimately entitled to claim compensation for the deprivation of the use of money which may be called interest, compensation or damages and which is valid for the period of dispute pending before the arbitration tribunal."
+
+\tThe claimant is also entitled to get Rs.33,000/- as fees paid to his counsel and Rs.1,00,000/- as arbitration fees and other expenses. The amount of Rs.32,62,415.30 paise, the details of which are being given below shall be paid by the opposite party.`
 
 };
