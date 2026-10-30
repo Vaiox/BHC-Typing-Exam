@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,38 +18,38 @@
       --success-bg: #10271f;
       --danger: #ff7777;
     }
-  
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-  
+
     body {
       min-height: 100vh;
       background: var(--bg);
       color: var(--text);
       font-family: Arial, sans-serif;
     }
-  
+
     button,
     a {
       font: inherit;
     }
-  
+
     a {
       color: inherit;
       text-decoration: none;
     }
-  
+
     button {
       cursor: pointer;
     }
-  
+
     /* =========================
        TOP NAVIGATION
     ========================= */
-  
+
     .topbar {
       min-height: 72px;
       padding: 16px 5%;
@@ -61,7 +60,7 @@
       border-bottom: 1px solid var(--border);
       background: #0d0d0d;
     }
-  
+
     .brand {
       display: flex;
       align-items: center;
@@ -69,7 +68,7 @@
       font-size: 18px;
       font-weight: 700;
     }
-  
+
     .brand-icon {
       display: grid;
       place-items: center;
@@ -82,7 +81,7 @@
       font-size: 21px;
       flex-shrink: 0;
     }
-  
+
     .back-button {
       padding: 10px 15px;
       border: 1px solid var(--border);
@@ -92,44 +91,44 @@
       font-size: 13px;
       transition: border-color 0.2s, color 0.2s;
     }
-  
+
     .back-button:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
-  
+
     /* =========================
        PAGE LAYOUT
     ========================= */
-  
+
     .container {
       width: min(1400px, 94%);
       margin: 0 auto;
       padding: 38px 0 55px;
     }
-  
+
     .page-heading {
       margin-bottom: 28px;
     }
-  
+
     .page-heading h1 {
       margin-bottom: 10px;
       font-size: clamp(26px, 4vw, 35px);
       letter-spacing: -0.7px;
       line-height: 1.25;
     }
-  
+
     .page-heading p {
       max-width: 760px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.7;
     }
-  
+
     /* =========================
        ERROR NOTICE
     ========================= */
-  
+
     .notice {
       display: none;
       margin-bottom: 20px;
@@ -141,22 +140,22 @@
       font-size: 14px;
       line-height: 1.6;
     }
-  
+
     .notice.visible {
       display: block;
     }
-  
+
     /* =========================
        LEADERBOARD PANEL
     ========================= */
-  
+
     .leaderboard-panel {
       overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 15px;
     }
-  
+
     .leaderboard-header {
       display: flex;
       flex-direction: column;
@@ -167,18 +166,18 @@
       text-align: center;
       border-bottom: 1px solid var(--border);
     }
-  
+
     .leaderboard-header > div:first-child {
       width: 100%;
     }
-  
+
     .leaderboard-header h2 {
       margin-bottom: 9px;
       font-size: clamp(18px, 2.5vw, 21px);
       line-height: 1.4;
       overflow-wrap: anywhere;
     }
-  
+
     .leaderboard-description {
       max-width: 760px;
       margin: 0 auto;
@@ -186,7 +185,7 @@
       font-size: 13px;
       line-height: 1.7;
     }
-  
+
     .refresh-info {
       flex-shrink: 1;
       color: var(--muted);
@@ -194,16 +193,16 @@
       line-height: 1.8;
       text-align: center;
     }
-  
+
     .refresh-info strong {
       color: var(--accent);
       font-weight: 600;
     }
-  
+
     /* =========================
        PRACTICE MODE SELECTOR
     ========================= */
-  
+
     .mode-selector {
       display: flex;
       align-items: center;
@@ -213,7 +212,7 @@
       padding: 18px 24px 0;
       background: var(--surface-2);
     }
-  
+
     .mode-button {
       padding: 11px 18px;
       border: 1px solid var(--border);
@@ -224,27 +223,27 @@
       font-weight: 600;
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-  
+
     .mode-button:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
-  
+
     .mode-button.active {
       border-color: var(--accent);
       background: var(--success-bg);
       color: var(--accent);
     }
-  
+
     .mode-button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
-  
+
     /* =========================
        PRACTICE LENGTH SELECTOR
     ========================= */
-  
+
     .length-selector {
       display: flex;
       align-items: center;
@@ -255,14 +254,14 @@
       background: var(--surface-2);
       border-bottom: 1px solid var(--border);
     }
-  
+
     .length-selector-label {
       margin-right: 5px;
       color: var(--muted);
       font-size: 13px;
       font-weight: 600;
     }
-  
+
     .length-button {
       min-width: 82px;
       padding: 10px 16px;
@@ -274,33 +273,33 @@
       font-weight: 600;
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-  
+
     .length-button:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
-  
+
     .length-button.active {
       border-color: var(--accent);
       background: var(--success-bg);
       color: var(--accent);
     }
-  
+
     .length-button:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
-  
+
     /* =========================
        LEADERBOARD TABLE
     ========================= */
-  
+
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
       scrollbar-color: #444 #111;
     }
-  
+
     table {
       width: 100%;
       min-width: 1050px;
@@ -308,59 +307,59 @@
       text-align: left;
       font-size: 13px;
     }
-  
+
     thead {
       background: #0b0b0b;
     }
-  
+
     th,
     td {
       padding: 16px 14px;
       border-bottom: 1px solid var(--border);
       white-space: nowrap;
     }
-  
+
     th {
       color: var(--muted);
       font-size: 12px;
       font-weight: 600;
     }
-  
+
     td {
       color: var(--text);
       font-variant-numeric: tabular-nums;
     }
-  
+
     tbody tr:last-child td {
       border-bottom: none;
     }
-  
+
     tbody tr:hover {
       background: #171717;
     }
-  
+
     .rank-cell {
       width: 65px;
       font-weight: 700;
     }
-  
+
     .rank-top {
       color: var(--accent);
     }
-  
+
     .username-cell {
       min-width: 130px;
       font-weight: 700;
     }
-  
+
     /* =========================
        SORTABLE METRIC HEADINGS
     ========================= */
-  
+
     .metric-header {
       padding: 0;
     }
-  
+
     .sort-button {
       display: inline-flex;
       align-items: center;
@@ -376,30 +375,30 @@
       text-align: left;
       white-space: nowrap;
     }
-  
+
     .sort-button:hover {
       color: var(--text);
     }
-  
+
     .sort-button.active {
       background: #10271f;
       color: var(--accent);
     }
-  
+
     .sort-indicator {
       color: var(--accent);
       font-size: 14px;
     }
-  
+
     .selected-metric {
       color: var(--accent);
       font-weight: 700;
     }
-  
+
     /* =========================
        LOADING / EMPTY STATES
     ========================= */
-  
+
     .state-message {
       padding: 42px 20px;
       color: var(--muted);
@@ -407,15 +406,15 @@
       line-height: 1.8;
       text-align: center;
     }
-  
+
     .state-message.error {
       color: var(--danger);
     }
-  
+
     /* =========================
        TABLE FOOTER
     ========================= */
-  
+
     .table-footer {
       display: flex;
       justify-content: space-between;
@@ -427,7 +426,7 @@
       font-size: 12px;
       line-height: 1.7;
     }
-  
+
     /* =========================
        PAGE FOOTER & DISCLAIMERS
     ========================= */
@@ -461,93 +460,93 @@
       color: #a0a0a0;
       font-weight: 600;
     }
-  
+
     /* =========================
        RESPONSIVE: TABLETS / MOBILE
     ========================= */
-  
+
     @media (max-width: 650px) {
       .topbar {
         min-height: 64px;
         padding: 13px 4%;
       }
-  
+
       .brand {
         gap: 8px;
         font-size: 15px;
       }
-  
+
       .brand-icon {
         width: 35px;
         height: 35px;
         font-size: 19px;
       }
-  
+
       .back-button {
         padding: 9px 11px;
         font-size: 12px;
       }
-  
+
       .container {
         width: 94%;
         padding-top: 27px;
       }
-  
+
       .page-heading {
         margin-bottom: 22px;
       }
-  
+
       .page-heading h1 {
         font-size: 27px;
       }
-  
+
       .leaderboard-header {
         gap: 12px;
         padding: 22px 16px;
       }
-  
+
       .leaderboard-header h2 {
         font-size: 18px;
       }
-  
+
       .leaderboard-description {
         font-size: 12px;
       }
-  
+
       .refresh-info {
         font-size: 11px;
         overflow-wrap: anywhere;
       }
-  
+
       .mode-selector {
         padding: 16px 14px 0;
         gap: 8px;
       }
-  
+
       .mode-button {
         flex: 1 1 140px;
         padding: 10px 8px;
         font-size: 12px;
       }
-  
+
       .length-selector {
         padding: 16px 14px;
         gap: 8px;
       }
-  
+
       .length-selector-label {
         flex: 0 0 100%;
         margin: 0 0 3px;
         text-align: center;
       }
-  
+
       .length-button {
         flex: 1 1 110px;
         min-width: 0;
         padding: 10px 8px;
         font-size: 12px;
       }
-  
+
       .table-footer {
         align-items: center;
         flex-direction: column;
@@ -561,39 +560,39 @@
         font-size: 11px;
       }
     }
-  
+
     /* =========================
        SMALL MOBILE SCREENS
     ========================= */
-  
+
     @media (max-width: 380px) {
       .container {
         width: 96%;
       }
-  
+
       .page-heading h1 {
         font-size: 24px;
       }
-  
+
       .leaderboard-header {
         padding: 20px 12px;
       }
-  
+
       .mode-selector {
         padding-right: 10px;
         padding-left: 10px;
       }
-  
+
       .mode-button {
         flex-basis: 120px;
         font-size: 11px;
       }
-  
+
       .length-selector {
         padding-right: 10px;
         padding-left: 10px;
       }
-  
+
       .length-button {
         flex-basis: 100px;
         font-size: 11px;
@@ -633,9 +632,10 @@
     <section class="leaderboard-panel">
       <div class="leaderboard-header">
         <div>
-          <h2 id="rankingTitle">Top Users — Overall Score</h2>
+          <h2 id="rankingTitle">Top Users — Screen-to-Screen, 2400 Keystrokes</h2>
           <p class="leaderboard-description" id="rankingDescription">
-            Highest overall score first. Score (400 Words) breaks ties.
+            Screen-to-Screen practice results for 2400 keystrokes.
+            Highest Overall Score first, then Score (400 Words), then Net WPM.
           </p>
         </div>
 
@@ -648,28 +648,48 @@
         </div>
       </div>
 
+      <!-- PRACTICE MODE SELECTOR -->
       <div class="mode-selector" aria-label="Select practice mode">
-        <button class="mode-button active" data-mode="screen_to_screen" aria-pressed="true">
-            Screen-to-Screen
-        </button>
-      
+
         <button
           type="button"
           class="mode-button"
-          data-mode="screen_to_screen"
+          data-mode="paper_to_screen"
           aria-pressed="false"
+        >
+          Paper-to-Screen
+        </button>
+
+        <button
+          type="button"
+          class="mode-button active"
+          data-mode="screen_to_screen"
+          aria-pressed="true"
         >
           Screen-to-Screen
         </button>
+
       </div>
-      
+
+      <!-- PRACTICE LENGTH SELECTOR -->
       <div class="length-selector" aria-label="Filter leaderboard by practice length">
         <span class="length-selector-label">Practice Length:</span>
 
-        <button class="length-button" data-length="2400">2400 Keystrokes</button>
-        <button class="length-button" data-length="2600">2600 Keystrokes</button>
-        <button class="length-button" data-length="2800">2800 Keystrokes</button>
-        <button class="length-button" data-length="3000">3000 Keystrokes</button>
+        <button type="button" class="length-button active" data-length="2400" aria-pressed="true">
+          2400 Keystrokes
+        </button>
+
+        <button type="button" class="length-button" data-length="2600" aria-pressed="false">
+          2600 Keystrokes
+        </button>
+
+        <button type="button" class="length-button" data-length="2800" aria-pressed="false">
+          2800 Keystrokes
+        </button>
+
+        <button type="button" class="length-button" data-length="3000" aria-pressed="false">
+          3000 Keystrokes
+        </button>
       </div>
 
       <div class="table-wrapper">
@@ -680,51 +700,44 @@
               <th scope="col">Username</th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button" data-category="gross_wpm"
-                  aria-pressed="false">
+                <button type="button" class="sort-button" data-category="gross_wpm" aria-pressed="false">
                   Gross WPM <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button" data-category="net_wpm"
-                  aria-pressed="false">
+                <button type="button" class="sort-button" data-category="net_wpm" aria-pressed="false">
                   Net WPM <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button" data-category="accuracy"
-                  aria-pressed="false">
+                <button type="button" class="sort-button" data-category="accuracy" aria-pressed="false">
                   Accuracy <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button" data-category="errors_400"
-                  aria-pressed="false">
+                <button type="button" class="sort-button" data-category="errors_400" aria-pressed="false">
                   Errors (400 Words) <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button" data-category="errors_total"
-                  aria-pressed="false">
+                <button type="button" class="sort-button" data-category="errors_total" aria-pressed="false">
                   Total Errors <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button" data-category="score_400"
-                  aria-pressed="false">
+                <button type="button" class="sort-button" data-category="score_400" aria-pressed="false">
                   Score (400 Words) <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
-                <button class="sort-button active" data-category="score_total"
-                  aria-pressed="true">
-                  Overall Score <span class="sort-indicator">↓</span>
+                <button type="button" class="sort-button" data-category="score_total" aria-pressed="false">
+                  Overall Score <span class="sort-indicator"></span>
                 </button>
               </th>
             </tr>
@@ -780,6 +793,10 @@
 
     const leaderboardBody = $("leaderboardBody");
     const notice = $("notice");
+
+    /* =========================
+       LEADERBOARD CATEGORIES
+    ========================= */
 
     const categories = {
       gross_wpm: {
@@ -837,7 +854,7 @@
         direction: "desc",
         field: "score_total"
       },
-      
+
       paper_to_screen_2400: {
         label: "Paper-to-Screen — 2400 Keystrokes",
         description:
@@ -903,11 +920,24 @@
       }
     };
 
+    /* =========================
+       DEFAULT SELECTION
+    ========================= */
+
     let categoryResults = {};
+
+    // Default mode on page load or refresh.
     let activeMode = "screen_to_screen";
+
+    // Default practice length on page load or refresh.
     let activeLength = 2400;
+
+    // Initial category is Screen-to-Screen, 2400 keystrokes.
     let activeCategory = `${activeMode}_${activeLength}`;
 
+    /* =========================
+       HELPER FUNCTIONS
+    ========================= */
 
     function escapeHtml(value) {
       return String(value ?? "").replace(/[&<>"']/g, (character) => ({
@@ -973,14 +1003,19 @@
       `;
     }
 
+    /* =========================
+       LOAD LEADERBOARD DATA
+    ========================= */
+
     async function loadLeaderboard() {
       showTableMessage("Loading leaderboard...");
 
       /*
-       * One request loads all 11 categories:
-       * seven overall metric rankings and four practice-length rankings.
+       * One request loads all 15 categories:
+       * seven overall metric rankings and eight mode/length rankings.
        * Private account data is not selected.
        */
+
       const { data, error } = await supabase
         .from("leaderboard_snapshot")
         .select(`
@@ -1028,6 +1063,10 @@
       renderCategory(activeCategory);
     }
 
+    /* =========================
+       RENDER SELECTED CATEGORY
+    ========================= */
+
     function renderCategory(category) {
       const config = categories[category];
 
@@ -1056,11 +1095,12 @@
           : "";
       });
 
-      // Highlight the selected practice length, if applicable.
+      // Determine whether the selected category is mode-specific.
       const isModeCategory =
         category.startsWith("paper_to_screen_") ||
         category.startsWith("screen_to_screen_");
 
+      // Highlight the selected practice length.
       document.querySelectorAll(".length-button").forEach((button) => {
         const selected =
           isModeCategory &&
@@ -1070,7 +1110,7 @@
         button.setAttribute("aria-pressed", String(selected));
       });
 
-      // Highlight the selected mode when viewing a mode-specific leaderboard.
+      // Highlight the selected practice mode.
       document.querySelectorAll(".mode-button").forEach((button) => {
         const selected =
           isModeCategory &&
@@ -1126,7 +1166,8 @@
 
           <td class="${
             category === "score_total" ||
-            category.startsWith("keystrokes_")
+            category.startsWith("paper_to_screen_") ||
+            category.startsWith("screen_to_screen_")
               ? "selected-metric"
               : ""
           }">
@@ -1137,14 +1178,20 @@
       `).join("");
     }
 
-    // Switching overall metrics uses the loaded snapshot data.
+    /* =========================
+       OVERALL METRIC BUTTONS
+    ========================= */
+
     document.querySelectorAll(".sort-button").forEach((button) => {
       button.addEventListener("click", () => {
         renderCategory(button.dataset.category);
       });
     });
 
-    // Switching practice lengths uses the same snapshot data.
+    /* =========================
+       PRACTICE LENGTH BUTTONS
+    ========================= */
+
     document.querySelectorAll(".length-button").forEach((button) => {
       button.addEventListener("click", () => {
         activeLength = Number(button.dataset.length);
@@ -1153,20 +1200,21 @@
       });
     });
 
+    /* =========================
+       PRACTICE MODE BUTTONS
+    ========================= */
+
     document.querySelectorAll(".mode-button").forEach((button) => {
       button.addEventListener("click", () => {
         activeMode = button.dataset.mode;
 
-        document.querySelectorAll(".mode-button").forEach((btn) => {
-          const selected = btn.dataset.mode === activeMode;
-
-          btn.classList.toggle("active", selected);
-          btn.setAttribute("aria-pressed", String(selected));
-        });
-
         renderCategory(`${activeMode}_${activeLength}`);
       });
     });
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
 
     loadLeaderboard().catch((error) => {
       showNotice(
