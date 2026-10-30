@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Leaderboard |  Typing Test</title>
+  <title>Leaderboard | Typing Practice</title>
 
   <style>
     :root {
@@ -156,7 +157,6 @@
       border-radius: 15px;
     }
   
-    /* Center title, description and refresh information */
     .leaderboard-header {
       display: flex;
       flex-direction: column;
@@ -201,7 +201,7 @@
     }
   
     /* =========================
-       TEST MODE SELECTOR
+       PRACTICE MODE SELECTOR
     ========================= */
   
     .mode-selector {
@@ -242,7 +242,7 @@
     }
   
     /* =========================
-       TEST LENGTH SELECTOR
+       PRACTICE LENGTH SELECTOR
     ========================= */
   
     .length-selector {
@@ -428,11 +428,38 @@
       line-height: 1.7;
     }
   
+    /* =========================
+       PAGE FOOTER & DISCLAIMERS
+    ========================= */
+
     .footer {
-      padding-top: 25px;
-      color: #626262;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 10px 0;
+      color: #777777;
       font-size: 12px;
+      line-height: 1.8;
       text-align: center;
+    }
+
+    .footer-brand {
+      margin-bottom: 12px;
+      color: #929292;
+    }
+
+    .footer-disclaimer {
+      margin-bottom: 12px;
+    }
+
+    .leaderboard-disclaimer {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer strong {
+      color: #a0a0a0;
+      font-weight: 600;
     }
   
     /* =========================
@@ -528,6 +555,11 @@
         padding: 15px 16px;
         text-align: center;
       }
+
+      .footer {
+        padding-top: 24px;
+        font-size: 11px;
+      }
     }
   
     /* =========================
@@ -574,7 +606,7 @@
   <header class="topbar">
     <a class="brand" href="./dashboard.html">
       <span class="brand-icon" aria-hidden="true">⌨</span>
-      <span> Typing Test</span>
+      <span>Typing Practice</span>
     </a>
 
     <a class="back-button" href="./dashboard.html">
@@ -586,8 +618,8 @@
     <section class="page-heading">
       <h1>Leaderboard - Refreshes Daily</h1>
       <p>
-        Compare typing performance with other players.
-        Click any metric heading to see the top players in that category.
+        Compare typing practice performance with other users.
+        Click any metric heading to see the top users in that category.
       </p>
     </section>
 
@@ -601,9 +633,9 @@
     <section class="leaderboard-panel">
       <div class="leaderboard-header">
         <div>
-          <h2 id="rankingTitle">Top Players — Total Marks</h2>
+          <h2 id="rankingTitle">Top Users — Overall Score</h2>
           <p class="leaderboard-description" id="rankingDescription">
-            Highest total marks first. Marks (400) breaks ties.
+            Highest overall score first. Score (400 Words) breaks ties.
           </p>
         </div>
 
@@ -616,8 +648,7 @@
         </div>
       </div>
 
-      
-      <div class="mode-selector" aria-label="Select typing test mode">
+      <div class="mode-selector" aria-label="Select practice mode">
         <button
           type="button"
           class="mode-button active"
@@ -635,10 +666,10 @@
         >
           Screen-to-Screen
         </button>
-      </div>      
+      </div>
       
-      <div class="length-selector" aria-label="Filter leaderboard by test length">
-        <span class="length-selector-label">Test Length:</span>
+      <div class="length-selector" aria-label="Filter leaderboard by practice length">
+        <span class="length-selector-label">Practice Length:</span>
 
         <button class="length-button" data-length="2400">2400 Keystrokes</button>
         <button class="length-button" data-length="2600">2600 Keystrokes</button>
@@ -677,28 +708,28 @@
               <th scope="col" class="metric-header">
                 <button class="sort-button" data-category="errors_400"
                   aria-pressed="false">
-                  Errors (400) <span class="sort-indicator"></span>
+                  Errors (400 Words) <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
                 <button class="sort-button" data-category="errors_total"
                   aria-pressed="false">
-                  Total Error <span class="sort-indicator"></span>
+                  Total Errors <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
                 <button class="sort-button" data-category="score_400"
                   aria-pressed="false">
-                  Marks (400) <span class="sort-indicator"></span>
+                  Score (400 Words) <span class="sort-indicator"></span>
                 </button>
               </th>
 
               <th scope="col" class="metric-header">
                 <button class="sort-button active" data-category="score_total"
                   aria-pressed="true">
-                  Total Marks <span class="sort-indicator">↓</span>
+                  Overall Score <span class="sort-indicator">↓</span>
                 </button>
               </th>
             </tr>
@@ -717,13 +748,33 @@
       </div>
 
       <div class="table-footer">
-        <span id="resultCount">Loading player count...</span>
+        <span id="resultCount">Loading user count...</span>
         <span>Rankings reflect the latest daily snapshot.</span>
       </div>
     </section>
 
     <footer class="footer">
-       Typing Test · Practice Portal
+      <div class="footer-brand">
+        Typing Practice · Independent Learning Platform
+      </div>
+
+      <p class="footer-disclaimer">
+        This website is an independent typing practice platform intended
+        solely for educational and skill-development purposes. It is not
+        affiliated with, associated with, endorsed by, or operated by any
+        court, government authority, or official examination body.
+        Any legal materials used on this platform are provided exclusively
+        as practice material and do not constitute official examination content.
+      </p>
+
+      <p class="leaderboard-disclaimer">
+        <strong>Leaderboard Disclaimer:</strong>
+        Rankings and scores displayed here are based solely on practice
+        results recorded on this website. They are independent of any
+        official examination or other typing test. We do not represent
+        or guarantee that the scores or rankings achieved here will be
+        the same in any other examination, test, or platform.
+      </p>
     </footer>
   </main>
 
@@ -739,7 +790,7 @@
       gross_wpm: {
         label: "Gross WPM",
         description:
-          "Highest Gross WPM first. Total Marks, then Marks (400), breaks ties.",
+          "Highest Gross WPM first. Overall Score, then Score (400 Words), breaks ties.",
         direction: "desc",
         field: "gross_wpm"
       },
@@ -747,7 +798,7 @@
       net_wpm: {
         label: "Net WPM",
         description:
-          "Highest Net WPM first. Total Marks, then Marks (400), breaks ties.",
+          "Highest Net WPM first. Overall Score, then Score (400 Words), breaks ties.",
         direction: "desc",
         field: "net_wpm"
       },
@@ -755,48 +806,47 @@
       accuracy: {
         label: "Accuracy",
         description:
-          "Highest accuracy first. Total Marks, then Marks (400), breaks ties.",
+          "Highest accuracy first. Overall Score, then Score (400 Words), breaks ties.",
         direction: "desc",
         field: "accuracy"
       },
 
       errors_400: {
-        label: "Errors (400)",
+        label: "Errors (400 Words)",
         description:
-          "Fewest errors in the first 400 words first. Marks break ties.",
+          "Fewest errors in the first 400 words first. Scores break ties.",
         direction: "asc",
         field: "errors_400"
       },
 
       errors_total: {
-        label: "Total Error",
+        label: "Total Errors",
         description:
-          "Fewest total errors first. Marks break ties.",
+          "Fewest total errors first. Scores break ties.",
         direction: "asc",
         field: "errors_total"
       },
 
       score_400: {
-        label: "Marks (400)",
+        label: "Score (400 Words)",
         description:
-          "Highest marks in the first 400 words first. Total Marks breaks ties.",
+          "Highest score in the first 400 words first. Overall Score breaks ties.",
         direction: "desc",
         field: "score_400"
       },
 
       score_total: {
-        label: "Total Marks",
+        label: "Overall Score",
         description:
-          "Highest total marks first. Marks (400) breaks ties.",
+          "Highest overall score first. Score (400 Words) breaks ties.",
         direction: "desc",
         field: "score_total"
       },
       
-      
       paper_to_screen_2400: {
         label: "Paper-to-Screen — 2400 Keystrokes",
         description:
-          "Paper-to-Screen results for the 2400-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Paper-to-Screen practice results for 2400 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -804,7 +854,7 @@
       paper_to_screen_2600: {
         label: "Paper-to-Screen — 2600 Keystrokes",
         description:
-          "Paper-to-Screen results for the 2600-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Paper-to-Screen practice results for 2600 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -812,7 +862,7 @@
       paper_to_screen_2800: {
         label: "Paper-to-Screen — 2800 Keystrokes",
         description:
-          "Paper-to-Screen results for the 2800-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Paper-to-Screen practice results for 2800 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -820,7 +870,7 @@
       paper_to_screen_3000: {
         label: "Paper-to-Screen — 3000 Keystrokes",
         description:
-          "Paper-to-Screen results for the 3000-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Paper-to-Screen practice results for 3000 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -828,7 +878,7 @@
       screen_to_screen_2400: {
         label: "Screen-to-Screen — 2400 Keystrokes",
         description:
-          "Screen-to-Screen results for the 2400-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Screen-to-Screen practice results for 2400 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -836,7 +886,7 @@
       screen_to_screen_2600: {
         label: "Screen-to-Screen — 2600 Keystrokes",
         description:
-          "Screen-to-Screen results for the 2600-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Screen-to-Screen practice results for 2600 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -844,7 +894,7 @@
       screen_to_screen_2800: {
         label: "Screen-to-Screen — 2800 Keystrokes",
         description:
-          "Screen-to-Screen results for the 2800-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Screen-to-Screen practice results for 2800 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       },
@@ -852,7 +902,7 @@
       screen_to_screen_3000: {
         label: "Screen-to-Screen — 3000 Keystrokes",
         description:
-          "Screen-to-Screen results for the 3000-keystroke test. Highest Total Marks first, then Marks (400), then Net WPM.",
+          "Screen-to-Screen practice results for 3000 keystrokes. Highest Overall Score first, then Score (400 Words), then Net WPM.",
         direction: "desc",
         field: "score_total"
       }
@@ -933,7 +983,7 @@
 
       /*
        * One request loads all 11 categories:
-       * seven overall metric rankings and four test-length rankings.
+       * seven overall metric rankings and four practice-length rankings.
        * Private account data is not selected.
        */
       const { data, error } = await supabase
@@ -993,11 +1043,10 @@
       const rows = categoryResults[category] || [];
 
       $("rankingTitle").textContent =
-        `Top Players — ${config.label}`;
+        `Top Users — ${config.label}`;
 
       $("rankingDescription").textContent = config.description;
 
-      
       // Highlight the selected overall metric, if applicable.
       document.querySelectorAll(".sort-button").forEach((button) => {
         const selected = button.dataset.category === category;
@@ -1012,33 +1061,32 @@
           : "";
       });
 
-      // Highlight the selected test length, if applicable.
+      // Highlight the selected practice length, if applicable.
       const isModeCategory =
         category.startsWith("paper_to_screen_") ||
         category.startsWith("screen_to_screen_");
-      
-      // Highlight the selected test length.
+
       document.querySelectorAll(".length-button").forEach((button) => {
         const selected =
           isModeCategory &&
           Number(button.dataset.length) === activeLength;
-      
+
         button.classList.toggle("active", selected);
         button.setAttribute("aria-pressed", String(selected));
       });
-      
+
       // Highlight the selected mode when viewing a mode-specific leaderboard.
       document.querySelectorAll(".mode-button").forEach((button) => {
         const selected =
           isModeCategory &&
           button.dataset.mode === activeMode;
-      
+
         button.classList.toggle("active", selected);
         button.setAttribute("aria-pressed", String(selected));
       });
 
       $("resultCount").textContent =
-        `${rows.length} ${rows.length === 1 ? "player" : "players"} in this category`;
+        `${rows.length} ${rows.length === 1 ? "user" : "users"} in this category`;
 
       if (rows.length === 0) {
         showTableMessage(
@@ -1081,7 +1129,6 @@
             ${formatNumber(row.score_400)}
           </td>
 
-          
           <td class="${
             category === "score_total" ||
             category.startsWith("keystrokes_")
@@ -1095,7 +1142,6 @@
       `).join("");
     }
 
-    
     // Switching overall metrics uses the loaded snapshot data.
     document.querySelectorAll(".sort-button").forEach((button) => {
       button.addEventListener("click", () => {
@@ -1103,27 +1149,26 @@
       });
     });
 
-    // Switching test lengths uses the same snapshot data.
+    // Switching practice lengths uses the same snapshot data.
     document.querySelectorAll(".length-button").forEach((button) => {
       button.addEventListener("click", () => {
         activeLength = Number(button.dataset.length);
-    
+
         renderCategory(`${activeMode}_${activeLength}`);
       });
     });
 
-    
     document.querySelectorAll(".mode-button").forEach((button) => {
       button.addEventListener("click", () => {
         activeMode = button.dataset.mode;
-    
+
         document.querySelectorAll(".mode-button").forEach((btn) => {
           const selected = btn.dataset.mode === activeMode;
-    
+
           btn.classList.toggle("active", selected);
           btn.setAttribute("aria-pressed", String(selected));
         });
-    
+
         renderCategory(`${activeMode}_${activeLength}`);
       });
     });
