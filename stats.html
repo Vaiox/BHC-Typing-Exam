@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Statistics | BHC Typing Test</title>
+<title>Statistics | Typing Practice</title>
 
 <style>
 :root {
@@ -274,6 +273,14 @@ tbody tr:last-child td {
   color: #626262;
   font-size: 12px;
   text-align: center;
+  line-height: 1.7;
+}
+
+.footer strong {
+  display: block;
+  color: #b0b0b0;
+  font-size: 13px;
+  margin-bottom: 7px;
 }
 
 @media (max-width: 850px) {
@@ -323,7 +330,7 @@ tbody tr:last-child td {
 <header class="topbar">
   <a class="brand" href="./dashboard.html">
     <span class="brand-icon" aria-hidden="true">⌨</span>
-    <span>BHC Typing Test</span>
+    <span>Typing Practice</span>
   </a>
 
   <nav class="nav" aria-label="Main navigation">
@@ -337,7 +344,7 @@ tbody tr:last-child td {
   <section class="heading">
     <h1>Your Statistics</h1>
     <p>
-      Review your saved typing results, speed, accuracy and
+      Review your saved practice results, typing speed, accuracy and
       performance over time.
     </p>
   </section>
@@ -374,7 +381,7 @@ tbody tr:last-child td {
     <div class="panel-heading">
       <div>
         <h2>Net WPM Progress</h2>
-        <p>Results displayed from oldest to newest.</p>
+        <p>Practice results displayed from oldest to newest.</p>
       </div>
     </div>
 
@@ -386,7 +393,7 @@ tbody tr:last-child td {
   <section class="panel">
     <div class="panel-heading">
       <div>
-        <h2>Test History</h2>
+        <h2>Practice History</h2>
         <p>Your saved results, newest first.</p>
       </div>
     </div>
@@ -408,7 +415,7 @@ tbody tr:last-child td {
         <tbody id="historyBody">
           <tr>
             <td colspan="7" class="loading">
-              Loading your history...
+              Loading your practice history...
             </td>
           </tr>
         </tbody>
@@ -417,7 +424,13 @@ tbody tr:last-child td {
   </section>
 
   <footer class="footer">
-    BHC Typing Test · Statistics
+    <strong>Typing Practice · Independent Learning Platform</strong>
+    This website is an independent typing practice platform intended
+    solely for educational and skill-development purposes. It is not
+    affiliated with, associated with, endorsed by, or operated by any
+    court, government authority, or official examination body. Any legal
+    materials used on this platform are provided exclusively as practice
+    material and do not constitute official examination content.
   </footer>
 
 </main>
@@ -476,7 +489,7 @@ function renderChart(results) {
   if (!chronological.length) {
     $("chart").innerHTML = `
       <div class="chart-empty">
-        Complete and save your first typing test to see your progress.
+        Complete and save your first practice session to see your progress.
       </div>
     `;
     return;
@@ -524,7 +537,7 @@ function renderChart(results) {
   const dots = values.map((value, index) => `
     <circle cx="${x(index)}" cy="${y(value)}" r="4"
       fill="#00ffae" stroke="#080808" stroke-width="2">
-      <title>Test ${index + 1}: ${value.toFixed(2)} Net WPM</title>
+      <title>Practice ${index + 1}: ${value.toFixed(2)} Net WPM</title>
     </circle>
   `).join("");
 
@@ -559,7 +572,7 @@ function renderChart(results) {
       </text>
       <text x="${width - right}" y="${height - 2}"
         fill="#929292" font-size="10" text-anchor="end">
-        Test number
+        Practice number
       </text>
     </svg>
   `;
@@ -638,7 +651,7 @@ async function loadStatistics() {
     $("historyBody").innerHTML = `
       <tr>
         <td colspan="7" class="empty">
-          No saved results yet. Start a test from your dashboard.
+          No saved results yet. Start practicing from your dashboard.
         </td>
       </tr>
     `;
@@ -662,7 +675,7 @@ async function loadStatistics() {
   $("historyBody").innerHTML = rows.map(row => `
     <tr>
       <td>${escapeHTML(formatDate(row.created_at))}</td>
-      <td>${escapeHTML(row.passage_label || "BHC Typing Test")}</td>
+      <td>${escapeHTML(row.passage_label || "Typing Practice")}</td>
       <td>${number(row.gross_wpm).toFixed(2)}</td>
       <td class="wpm">${number(row.net_wpm).toFixed(2)}</td>
       <td>${number(row.accuracy).toFixed(2)}%</td>
