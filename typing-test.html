@@ -571,7 +571,6 @@ const preview = document.getElementById("preview");
 const accessNotice = document.getElementById("accessNotice");
 
 const startButton = document.getElementById("startButton");
-const restartButton = document.getElementById("restartButton");
 const submitButton = document.getElementById("submitButton");
 const toggleTypingBtn = document.getElementById("toggleTypingBtn");
 
@@ -708,7 +707,6 @@ function updateCounters() {
 function setTypingControlsEnabled(enabled) {
   input.disabled = !enabled;
   startButton.disabled = !enabled;
-  restartButton.disabled = !enabled;
   toggleTypingBtn.disabled = !enabled;
   submitButton.disabled = !enabled || submissionInProgress;
 }
@@ -1105,7 +1103,6 @@ function prepareTest() {
   input.disabled = false;
 
   startButton.disabled = false;
-  restartButton.disabled = false;
   submitButton.disabled = false;
   toggleTypingBtn.disabled = false;
 
@@ -1685,7 +1682,6 @@ async function submitTest() {
 
   input.disabled = true;
   startButton.disabled = true;
-  restartButton.disabled = true;
   submitButton.disabled = true;
   toggleTypingBtn.disabled = true;
 
@@ -1889,7 +1885,6 @@ window.addEventListener("contextmenu", event => {
 });
 
 startButton.addEventListener("click", prepareTest);
-restartButton.addEventListener("click", restartSame);
 submitButton.addEventListener("click", submitTest);
 toggleTypingBtn.addEventListener("click", toggleTypingBox);
 
