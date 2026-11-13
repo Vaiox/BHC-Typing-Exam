@@ -3,426 +3,412 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Typing Practice — Paper to Screen</title>
+<title>Typing Test</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+/* =========================================================
+   GLOBAL THEME
+========================================================= */
 
-body{
-  background:#303238;
-  color:#f0f0f0;
-  font-family:Arial,sans-serif;
-  min-height:100vh;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container{
-  max-width:1500px;
-  margin:auto;
-  padding:20px;
+body {
+  background: #303238;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
 }
 
-/* TOP BAR */
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  background:#41434a;
-  border:1px solid #555861;
-  padding:12px 16px;
-  border-radius:10px;
-  margin-bottom:14px;
-  position:sticky;
-  top:0;
-  z-index:10;
-  box-shadow:0 3px 12px #0002;
+.container {
+  max-width: 1500px;
+  margin: auto;
+  padding: 20px;
 }
 
-.top-left{
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
-  align-items:center;
-}
+/* =========================================================
+   TOP BAR
+========================================================= */
 
-.timer{
-  font-size:24px;
-  font-weight:700;
-  color:#00a878;
-}
-
-.info{
-  color:#d0d1d5;
-  font-size:14px;
-}
-
-/* FONT SIZE */
-
-.font-control{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:#e0e0e0;
-  font-size:14px;
-  white-space:nowrap;
-}
-
-.font-control select{
-  background:#303238;
-  color:#fff;
-  border:1px solid #666a73;
-  border-radius:6px;
-  padding:7px 10px;
-  font-family:Arial,sans-serif;
-  font-size:14px;
-  cursor:pointer;
-  outline:none;
-}
-
-.font-control select:focus{
-  border-color:#00c995;
-}
-
-.font-control select option{
-  background:#303238;
-  color:#fff;
-}
-
-/* PAPER-TO-SCREEN TYPING AREA */
-
-.typing-area{
-  display:flex;
-  justify-content:center;
-  align-items:stretch;
-  width:100%;
-  margin:0 auto 15px;
-}
-
-/* Reference passage hidden only in this file */
-
-.preview{
-  display:none!important;
-}
-
-/* Center the typing box */
-
-.typing-area textarea{
-  display:block;
-  width:min(100%,1050px);
-  height:800px;
-  min-width:0;
-  min-height:300px;
-  margin-inline:auto;
-
-  background:#fff;
-  border:1px solid #d5d5d5;
-  border-radius:3px;
-  padding:48px 52px;
-
-  color:#202020;
-  font-family:Arial,sans-serif;
-  font-size:18px;
-  line-height:1.65;
-
-  text-align:justify;
-  text-justify:inter-word;
-
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  word-break:normal;
-
-  overflow-y:auto;
-  overflow-x:hidden;
-
-  scrollbar-width:thin;
-  scrollbar-color:#b4b4b4 #f4f4f4;
-
-  box-shadow:0 5px 20px #0002;
-
-  tab-size:4;
-  -moz-tab-size:4;
-}
-
-textarea::-webkit-scrollbar{
-  width:8px;
-}
-
-textarea::-webkit-scrollbar-thumb{
-  background:#b4b4b4;
-  border-radius:10px;
-}
-
-textarea::-webkit-scrollbar-track{
-  background:#f4f4f4;
-}
-
-textarea{
-  background:#fff;
-  color:#202020;
-  resize:none;
-  outline:none;
-  caret-color:#008f70;
-}
-
-textarea:focus{
-  border-color:#008f70;
-  box-shadow:0 0 0 2px #008f7026,0 5px 20px #0002;
-}
-
-textarea:disabled{
-  opacity:.9;
-}
-
-.typing-box-hidden{
-  opacity:0!important;
-}
-
-/* BUTTONS */
-
-.buttons{
-  margin:18px 0;
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-  position:sticky;
-  top:70px;
-  z-index:9;
-}
-
-button{
-  border:0;
-  padding:12px 22px;
-  border-radius:9px;
-  background:linear-gradient(135deg,#00c995,#00b6d8);
-  color:#071713;
-  font-weight:700;
-  font-size:15px;
-  cursor:pointer;
-  box-shadow:0 2px 8px #0002;
-}
-
-button:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-/* NOTICES */
-
-.access-notice{
-  display:none;
-  margin:14px 0;
-  padding:14px 16px;
-  border:1px solid #a85a5a;
-  border-radius:9px;
-  background:#4a2929;
-  color:#ffd0d0;
-  line-height:1.6;
-  font-size:14px;
-  overflow-wrap:anywhere;
-}
-
-.access-notice.visible{
-  display:block;
-}
-
-/* RESULTS */
-
-.result{
-  display:none;
-  margin-top:25px;
-  background:#41434a;
-  border:1px solid #555861;
-  border-radius:12px;
-  padding:24px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:15px;
-  margin-bottom:24px;
-}
-
-.card{
-  background:#4a4c53;
-  border:1px solid #5b5d64;
-  border-radius:10px;
-  padding:18px;
-  text-align:center;
-}
-
-.card h3{
-  font-size:14px;
-  color:#d0d1d5;
-  margin-bottom:10px;
-  font-weight:500;
-}
-
-.card p{
-  font-size:28px;
-  font-weight:700;
-  color:#00d6a0;
-}
-
-/* COMPARISON */
-
-.compare{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:18px;
-}
-
-.box{
-  background:#fff;
-  color:#202020;
-  border:1px solid #d5d5d5;
-  border-radius:3px;
-  padding:24px;
-  line-height:1.9;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  min-width:0;
-  box-shadow:0 5px 20px #0002;
-  tab-size:4;
-  -moz-tab-size:4;
-}
-
-.red{
-  color:#d82020;
-}
-
-.missing{
-  background:#ffbd55;
-  color:#202020;
-  padding:2px 4px;
-  border-radius:3px;
-}
-
-.extra{
-  background:#fff08a;
-  color:#202020;
-  padding:2px 4px;
-  border-radius:3px;
-}
-
-.dim{
-  opacity:.45;
-}
-
-.wordCount{
-  margin-top:12px;
-  text-align:center;
-  color:#00d6a0;
-  font-size:18px;
-  font-weight:600;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:900px){
-  .compare{
-    grid-template-columns:minmax(0,1fr);
-  }
-
-  .typing-area textarea{
-    width:100%;
-    height:800px;
-    min-height:300px;
-    padding:30px 28px;
-  }
-
-  .topbar{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .top-left{
-    gap:14px;
-  }
-
-  .container{
-    padding:12px;
-  }
-
-  .result{
-    padding:14px;
-  }
-}
-
-@media(max-width:480px){
-  .font-control{
-    width:100%;
-  }
-
-  .buttons button{
-    padding:10px 14px;
-    font-size:13px;
-  }
-
-  .typing-area textarea{
-    padding:22px 18px;
-  }
-}
-
-/* PASSAGE IDENTIFICATION */
-
-.passage-identification {
+.topbar {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  width: 100%;
-  margin: 0 0 15px;
-  padding: 14px 18px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   background: #41434a;
   border: 1px solid #555861;
-  border-left: 4px solid #00c995;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 3px 12px #0002;
+}
+
+.top-left {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00a878;
+}
+
+.info {
+  color: #d0d1d5;
+  font-size: 14px;
+}
+
+/* =========================================================
+   FONT SIZE CONTROL
+========================================================= */
+
+.font-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: #e0e0e0;
   font-size: 14px;
-  line-height: 1.7;
+  white-space: nowrap;
+}
+
+.font-control select {
+  background: #303238;
+  color: #fff;
+  border: 1px solid #666a73;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.font-control select:focus {
+  border-color: #00c995;
+}
+
+.font-control select option {
+  background: #303238;
+  color: #fff;
+}
+
+/* =========================================================
+   TYPING AREA
+========================================================= */
+
+.typing-area {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  margin-bottom: 15px;
+  align-items: stretch;
+}
+
+/* =========================================================
+   PASSAGE AND TYPING BOX
+========================================================= */
+
+.preview,
+textarea {
+  display: block;
+  width: 100%;
+  height: 800px;
+  min-width: 0;
+  min-height: 300px;
+
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+
+  padding: 48px 52px;
+
+  color: #202020;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+
+  text-align: justify;
+  text-justify: inter-word;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f4f4f4;
+
+  box-shadow: 0 5px 20px #0002;
+
+  tab-size: 4;
+  -moz-tab-size: 4;
+}
+
+.preview {
+  color: #202020;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Scrollbars */
+
+.preview::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.preview::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  background: #b4b4b4;
+  border-radius: 10px;
+}
+
+.preview::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  background: #f4f4f4;
+}
+
+/* Typing box */
+
+textarea {
+  background: #fff;
+  color: #202020;
+  resize: none;
+  outline: none;
+  caret-color: #008f70;
+}
+
+textarea:focus {
+  border-color: #008f70;
+  box-shadow: 0 0 0 2px #008f7026, 0 5px 20px #0002;
+}
+
+textarea:disabled {
+  opacity: .9;
+}
+
+/* Hide typing text when requested */
+
+.typing-box-hidden {
+  opacity: 0 !important;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons {
+  margin: 18px 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 70px;
+  z-index: 9;
+}
+
+button {
+  border: 0;
+  padding: 12px 22px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #00c995, #00b6d8);
+  color: #071713;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   NOTICES
+========================================================= */
+
+.access-notice {
+  display: none;
+  margin: 14px 0;
+  padding: 14px 16px;
+  border: 1px solid #a85a5a;
+  border-radius: 9px;
+  background: #4a2929;
+  color: #ffd0d0;
+  line-height: 1.6;
+  font-size: 14px;
   overflow-wrap: anywhere;
 }
 
-.passage-identification strong {
-  flex-shrink: 0;
-  color: #00d6a0;
+.access-notice.visible {
+  display: block;
+}
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+.result {
+  display: none;
+  margin-top: 25px;
+  background: #41434a;
+  border: 1px solid #555861;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #4a4c53;
+  border: 1px solid #5b5d64;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 14px;
+  color: #d0d1d5;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 28px;
   font-weight: 700;
+  color: #00d6a0;
 }
 
-.passage-identification span {
+/* =========================================================
+   COMPARISON
+========================================================= */
+
+.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.box {
+  background: #fff;
+  color: #202020;
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  padding: 24px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   min-width: 0;
+  box-shadow: 0 5px 20px #0002;
+
+  /* Preserve tabs and whitespace in comparison */
+  tab-size: 4;
+  -moz-tab-size: 4;
 }
 
-@media (max-width: 480px) {
-  .passage-identification {
+.red {
+  color: #d82020;
+}
+
+.missing {
+  background: #ffbd55;
+  color: #202020;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.extra {
+  background: #fff08a;
+  color: #202020;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.dim {
+  opacity: .45;
+}
+
+.wordCount {
+  margin-top: 12px;
+  text-align: center;
+  color: #00d6a0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .typing-area,
+  .compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .preview,
+  .typing-area textarea {
+    height: 800px;
+    min-height: 300px;
+  }
+
+  .preview,
+  textarea {
+    padding: 30px 28px;
+  }
+
+  .topbar {
+    align-items: flex-start;
     flex-direction: column;
-    gap: 3px;
-    padding: 12px 14px;
-    font-size: 13px;
+  }
+
+  .top-left {
+    gap: 14px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .result {
+    padding: 14px;
   }
 }
 
-/* INDEPENDENT PLATFORM DISCLAIMER */
+@media (max-width: 480px) {
+  .font-control {
+    width: 100%;
+  }
 
-.site-footer{
-  margin-top:30px;
-  padding:18px 12px;
-  border-top:1px solid #555861;
-  color:#bfc1c7;
-  text-align:center;
-  font-size:12px;
-  line-height:1.7;
+  .buttons button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .preview,
+  textarea {
+    padding: 22px 18px;
+  }
 }
-
-.site-footer strong{
-  display:block;
-  color:#e0e0e0;
-  font-size:13px;
-  margin-bottom:6px;
-}
-
 </style>
 </head>
 
@@ -461,11 +447,6 @@ button:disabled{
     </div>
   </div>
 
-  <div class="passage-identification" aria-live="polite">
-    <strong id="passageLabel">Passage —</strong>
-    <span id="passageSnippet">Loading passage...</span>
-  </div>
-
   <div
     id="accessNotice"
     class="access-notice"
@@ -476,7 +457,7 @@ button:disabled{
   <div class="typing-area">
 
     <div class="preview" id="preview">
-      Verifying your account...
+      Checking your account...
     </div>
 
     <textarea
@@ -492,9 +473,9 @@ button:disabled{
   </div>
 
   <div class="buttons">
-    <button id="startButton" disabled>Start Practice</button>
-    <button id="restartButton" disabled>Restart Same Passage</button>
-    <button id="submitButton" disabled>Submit Practice</button>
+    <button id="startButton" disabled>Start Test</button>
+    <!--<button id="restartButton" disabled>Restart Same Passage</button>-->
+    <button id="submitButton" disabled>Submit</button>
     <button id="toggleTypingBtn" disabled>Hide Typing Box</button>
   </div>
 
@@ -551,16 +532,6 @@ button:disabled{
     </div>
   </div>
 
-  <footer class="site-footer">
-    <strong>Typing Practice · Independent Learning Platform</strong>
-    This website is an independent typing practice platform intended
-    solely for educational and skill-development purposes. It is not
-    affiliated with, associated with, endorsed by, or operated by any
-    court, government authority, or official examination body. Any legal
-    materials used on this platform are provided exclusively as practice
-    material and do not constitute official examination content.
-  </footer>
-
 </div>
 
 <script type="module">
@@ -568,10 +539,10 @@ import { supabase } from "./js/supabase.js";
 
 const DAILY_LIMIT = 10;
 
-const TEST_MODE = "paper_to_screen";
+const TEST_MODE = "screen_to_screen";
 
 const DAILY_LIMIT_MESSAGE =
-  "Daily practice limit reached. Please come back tomorrow.";
+  "Daily test limit reached. Please come back tomorrow.";
 
 const passageFiles = {
   2400: "./2400-passage.js",
@@ -600,11 +571,12 @@ const preview = document.getElementById("preview");
 const accessNotice = document.getElementById("accessNotice");
 
 const startButton = document.getElementById("startButton");
-const restartButton = document.getElementById("restartButton");
 const submitButton = document.getElementById("submitButton");
 const toggleTypingBtn = document.getElementById("toggleTypingBtn");
 
-/* FONT SIZE CONTROL */
+/* =========================================================
+   FONT SIZE CONTROL
+========================================================= */
 
 const fontSizeSelect =
   document.getElementById("fontSizeSelect");
@@ -624,10 +596,7 @@ function applyFontSize(size) {
   fontSizeSelect.value = String(fontSize);
 
   try {
-    localStorage.setItem(
-      "typingTestFontSize",
-      String(fontSize)
-    );
+    localStorage.setItem("typingTestFontSize", String(fontSize));
   } catch (error) {
     console.warn("Could not save font size preference:", error);
   }
@@ -657,7 +626,9 @@ fontSizeSelect.addEventListener("change", () => {
 
 initializeFontSize();
 
-/* TEST STATE */
+/* =========================================================
+   TEST STATE
+========================================================= */
 
 let currentPassage = "";
 let currentId = 0;
@@ -670,7 +641,9 @@ let interval = null;
 let totalWords = 0;
 let currentUser = null;
 
-/* PASSAGE LOADING */
+/* =========================================================
+   PASSAGE LOADING
+========================================================= */
 
 async function loadPassages(limit) {
   const file = passageFiles[limit];
@@ -693,7 +666,9 @@ async function loadPassages(limit) {
   currentPassageLimit = limit;
 }
 
-/* NOTICES */
+/* =========================================================
+   NOTICES
+========================================================= */
 
 function showNotice(message) {
   accessNotice.textContent = message;
@@ -705,7 +680,9 @@ function clearNotice() {
   accessNotice.classList.remove("visible");
 }
 
-/* COUNTERS */
+/* =========================================================
+   COUNTERS
+========================================================= */
 
 function countKeystrokes(text) {
   return [...text].length;
@@ -730,12 +707,13 @@ function updateCounters() {
 function setTypingControlsEnabled(enabled) {
   input.disabled = !enabled;
   startButton.disabled = !enabled;
-  restartButton.disabled = !enabled;
   toggleTypingBtn.disabled = !enabled;
   submitButton.disabled = !enabled || submissionInProgress;
 }
 
-/* TIMER */
+/* =========================================================
+   TIMER
+========================================================= */
 
 function stopTimer() {
   if (interval !== null) {
@@ -768,7 +746,9 @@ function getIndiaDayBounds() {
   };
 }
 
-/* AUTHENTICATION */
+/* =========================================================
+   AUTHENTICATION
+========================================================= */
 
 async function signOutAndRedirect(reason) {
   accessGranted = false;
@@ -897,7 +877,181 @@ async function initializeAccess() {
   }
 }
 
-/* PREPARE PRACTICE */
+
+/* =========================================================
+   PERSISTENT PASSAGE SHUFFLE CYCLE
+========================================================= */
+
+// Separate history for each passage file.
+// Both typing modes share this history.
+function getPassageHistoryKey() {
+  return `passageCycle_${currentPassageLimit}`;
+}
+
+function getPassageHistory() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(getPassageHistoryKey()) || "{}"
+    );
+
+    return {
+      used: Array.isArray(saved.used)
+        ? saved.used.map(String)
+        : [],
+
+      remaining: Array.isArray(saved.remaining)
+        ? saved.remaining.map(String)
+        : [],
+
+      pending: saved.pending == null
+        ? null
+        : String(saved.pending)
+    };
+  } catch (error) {
+    console.warn("Could not read passage history:", error);
+
+    return {
+      used: [],
+      remaining: [],
+      pending: null
+    };
+  }
+}
+
+function savePassageHistory(history) {
+  try {
+    localStorage.setItem(
+      getPassageHistoryKey(),
+      JSON.stringify(history)
+    );
+  } catch (error) {
+    console.error("Could not save passage history:", error);
+  }
+}
+
+function shuffleArray(items) {
+  const shuffled = [...items];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffled[i], shuffled[j]] =
+      [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
+
+function selectNextPassage() {
+  const allIds = Object.keys(passages).map(String);
+
+  if (!allIds.length) {
+    throw new Error("No passages are available.");
+  }
+
+  const history = getPassageHistory();
+
+  // If the previous passage was selected but typing never
+  // started, return it to the unused pool instead of getting
+  // stuck on it after every refresh.
+  if (
+    history.pending &&
+    allIds.includes(history.pending)
+  ) {
+    if (!history.used.includes(history.pending)) {
+      history.remaining.push(history.pending);
+    }
+
+    history.remaining = [
+      ...new Set(
+        history.remaining.filter(
+          id =>
+            allIds.includes(id) &&
+            !history.used.includes(id)
+        )
+      )
+    ];
+
+    history.remaining = shuffleArray(history.remaining);
+
+    // Avoid showing the same pending passage again when
+    // other unused passages are available.
+    if (
+      history.remaining.length > 1 &&
+      history.remaining[history.remaining.length - 1] === history.pending
+    ) {
+      const lastIndex = history.remaining.length - 1;
+
+      [
+        history.remaining[0],
+        history.remaining[lastIndex]
+      ] = [
+        history.remaining[lastIndex],
+        history.remaining[0]
+      ];
+    }
+
+    history.pending = null;
+  }
+
+  // Remove IDs that no longer exist in the passage file.
+  history.used = history.used.filter(
+    id => allIds.includes(id)
+  );
+
+  history.remaining = history.remaining.filter(
+    id =>
+      allIds.includes(id) &&
+      !history.used.includes(id)
+  );
+
+  // Remove accidental duplicate IDs from saved history.
+  history.remaining = [
+    ...new Set(history.remaining)
+  ];
+
+  // Start a new shuffled cycle only when no passages remain.
+  if (history.remaining.length === 0) {
+    history.remaining = shuffleArray(
+      allIds.filter(id => !history.used.includes(id))
+    );
+  }
+
+  // All current passages were used: reset the cycle.
+  if (history.remaining.length === 0) {
+    history.used = [];
+    history.remaining = shuffleArray(allIds);
+  }
+
+  const id = history.remaining.shift();
+
+  history.pending = id;
+
+  savePassageHistory(history);
+
+  return {
+    id,
+    history
+  };
+}
+
+function markCurrentPassageUsed() {
+  const history = getPassageHistory();
+  const id = String(currentId);
+
+  // Mark the selected passage as used only once.
+  if (!history.used.includes(id)) {
+    history.used.push(id);
+  }
+
+  history.pending = null;
+
+  savePassageHistory(history);
+}
+
+/* =========================================================
+   PREPARE TEST
+========================================================= */
 
 function prepareTest() {
   if (
@@ -917,79 +1071,29 @@ function prepareTest() {
 
   clearNotice();
 
-  const key = `recentPassages_${currentPassageLimit}`;
-
-  let history = [];
+  let selected;
 
   try {
-    history = JSON.parse(
-      localStorage.getItem(key) || "[]"
+    selected = selectNextPassage();
+  } catch (error) {
+    console.error("Passage selection failed:", error);
+
+    showNotice(
+      "No passages are available in this collection."
     );
 
-    if (!Array.isArray(history)) {
-      history = [];
-    }
-  } catch {
-    history = [];
-  }
-
-  const all = Object.keys(passages);
-
-  const unused = all.filter(
-    id => !history.includes(id)
-  );
-
-  const usable = unused.length ? unused : all;
-
-  if (!usable.length) {
-    showNotice("No passages are available in this collection.");
     return;
   }
 
-  currentId =
-    usable[Math.floor(Math.random() * usable.length)];
-
+  currentId = selected.id;
   currentPassage = passages[currentId];
 
-  // Show the passage number and a short identifying excerpt.
-  const passageLabel = document.getElementById("passageLabel");
-  const passageSnippet = document.getElementById("passageSnippet");
-
-  passageLabel.textContent = `Passage ${currentId}:`;
-
-  const normalizedPassage = currentPassage
-    .replace(/\s+/g, " ")
-    .trim();
-
-  const excerptLength = 150;
-
-  passageSnippet.textContent =
-    normalizedPassage.length > excerptLength
-      ? normalizedPassage.slice(0, excerptLength).trimEnd() + "…"
-      : normalizedPassage;
-
-  history.push(currentId);
-
-  if (history.length > 25) {
-    history.shift();
-  }
-
-  localStorage.setItem(
-    key,
-    JSON.stringify(history)
-  );
-
-  /*
-   * Paper-to-Screen mode:
-   * Keep the passage in memory for counters, scoring,
-   * and comparison, but do not display it on screen.
-   */
-  preview.textContent = "";
+  preview.textContent = currentPassage;
 
   applyFontSize(fontSizeSelect.value);
 
   document.getElementById("passageInfo").textContent =
-    `Paper-to-Screen · ${currentPassageLimit} keystrokes`;
+    `Passage #${currentId} · ${currentPassageLimit} keystrokes`;
 
   document.getElementById("result").style.display = "none";
 
@@ -999,7 +1103,6 @@ function prepareTest() {
   input.disabled = false;
 
   startButton.disabled = false;
-  restartButton.disabled = false;
   submitButton.disabled = false;
   toggleTypingBtn.disabled = false;
 
@@ -1011,7 +1114,9 @@ function prepareTest() {
   input.focus();
 }
 
-/* RESTART SAME PASSAGE */
+/* =========================================================
+   RESTART SAME PASSAGE
+========================================================= */
 
 function restartSame() {
   if (
@@ -1037,7 +1142,9 @@ function restartSame() {
   input.focus();
 }
 
-/* START TIMER */
+/* =========================================================
+   START TIMER
+========================================================= */
 
 function startTimer() {
   if (
@@ -1064,7 +1171,9 @@ function startTimer() {
   }, 1000);
 }
 
-/* STRICT TYPING RULES */
+/* =========================================================
+   STRICT TYPING RULES
+========================================================= */
 
 input.addEventListener("keydown", event => {
   if (
@@ -1127,13 +1236,20 @@ input.addEventListener("input", () => {
 
   if (!timerStarted && input.value.length > 0) {
     timerStarted = true;
+
+    // Record the passage only when typing actually begins.
+    markCurrentPassageUsed();
+
     startTimer();
   }
 
   updateCounters();
 });
 
-/* COMPARISON AND SCORING */
+
+/* =========================================================
+   COMPARISON AND SCORING
+========================================================= */
 
 function escapeHTML(text) {
   return String(text)
@@ -1144,6 +1260,17 @@ function escapeHTML(text) {
     .replace(/'/g, "&#39;");
 }
 
+/*
+ * Preserve:
+ * - Words
+ * - Punctuation
+ * - Quotation marks
+ * - Consecutive spaces
+ * - Tabs
+ * - Line breaks
+ *
+ * Whitespace is tokenized instead of being discarded.
+ */
 function tokenize(text) {
   text = String(text)
     .replace(/\r\n?/g, "\n");
@@ -1153,6 +1280,7 @@ function tokenize(text) {
   ) || [];
 }
 
+/* Word-level error counting */
 function countPracticeWordErrors(original, typed) {
   const a = getWordTokens(original);
   const b = getWordTokens(typed);
@@ -1288,6 +1416,10 @@ function countPracticeWordErrors(original, typed) {
   return { errors, errors400 };
 }
 
+/*
+ * Align original and typed text.
+ * Punctuation and whitespace are retained as tokens.
+ */
 function alignAndCount(original, typed) {
   const a = tokenize(original);
   const b = tokenize(typed);
@@ -1367,6 +1499,10 @@ function alignAndCount(original, typed) {
   return { alignedA, alignedB };
 }
 
+/*
+ * Do not append artificial spaces.
+ * CSS white-space: pre-wrap preserves the original whitespace.
+ */
 function formatToken(token) {
   return escapeHTML(token);
 }
@@ -1521,7 +1657,9 @@ function calculateResult() {
   };
 }
 
-/* SUBMIT PRACTICE RESULT */
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
 
 async function submitTest() {
   if (
@@ -1534,7 +1672,7 @@ async function submitTest() {
   }
 
   if (!currentPassage) {
-    showNotice("Please start a practice session first.");
+    showNotice("Please start a test first.");
     return;
   }
 
@@ -1544,12 +1682,11 @@ async function submitTest() {
 
   input.disabled = true;
   startButton.disabled = true;
-  restartButton.disabled = true;
   submitButton.disabled = true;
   toggleTypingBtn.disabled = true;
 
   clearNotice();
-  showNotice("Submitting your practice result securely...");
+  showNotice("Submitting your result securely...");
 
   try {
     const {
@@ -1614,6 +1751,7 @@ async function submitTest() {
         p_keystrokes: result.keystrokes,
         p_keystroke_category: currentPassageLimit,
         p_test_mode: TEST_MODE
+         
       }
     );
 
@@ -1722,7 +1860,9 @@ async function submitTest() {
   }
 }
 
-/* HIDE / SHOW TYPING BOX */
+/* =========================================================
+   HIDE / SHOW TYPING BOX
+========================================================= */
 
 function toggleTypingBox() {
   const hidden =
@@ -1736,14 +1876,15 @@ function toggleTypingBox() {
   input.focus();
 }
 
-/* EVENT LISTENERS */
+/* =========================================================
+   EVENT LISTENERS
+========================================================= */
 
 window.addEventListener("contextmenu", event => {
   event.preventDefault();
 });
 
 startButton.addEventListener("click", prepareTest);
-restartButton.addEventListener("click", restartSame);
 submitButton.addEventListener("click", submitTest);
 toggleTypingBtn.addEventListener("click", toggleTypingBox);
 
@@ -1754,7 +1895,9 @@ supabase.auth.onAuthStateChange(event => {
   }
 });
 
-/* INITIALIZE */
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 setTypingControlsEnabled(false);
 initializeAccess();
