@@ -802,6 +802,12 @@ async function initializeAccess() {
     const subscription = Array.isArray(data)
       ? data[0]
       : data;
+      console.log(
+        "SUBSCRIPTION FIELDS:",
+        Object.keys(subscription)
+      );
+
+      console.table(subscription);
 
     if (!subscription) {
 
