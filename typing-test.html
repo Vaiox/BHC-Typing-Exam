@@ -537,7 +537,11 @@ button:disabled {
 <script type="module">
 import { supabase } from "./js/supabase.js";
 
-let DAILY_LIMIT = 10;
+/*
+ * Daily test limit is retrieved dynamically
+ * from ensure_my_subscription().
+ */
+let DAILY_LIMIT = null;
 
 const TEST_MODE = "screen_to_screen";
 
@@ -750,7 +754,6 @@ function getIndiaDayBounds() {
    AUTHENTICATION
 ========================================================= */
 
-
 async function initializeAccess() {
 
   let currentStage = "Starting access verification";
@@ -797,22 +800,17 @@ async function initializeAccess() {
       throw error;
     }
 
-    console.log("Subscription RPC response:", data);
-
     const subscription = Array.isArray(data)
       ? data[0]
       : data;
-      console.log(
-        "SUBSCRIPTION FIELDS:",
-        Object.keys(subscription)
-      );
 
-      console.table(subscription);
-
-    if (!subscription) {
+    if (
+      !subscription ||
+      typeof subscription !== "object"
+    ) {
 
       throw Error(
-        "Subscription RPC returned empty data."
+        "Subscription RPC returned empty or invalid data."
       );
 
     }
@@ -823,8 +821,6 @@ async function initializeAccess() {
     ========================================= */
 
     currentStage = "Validating subscription information";
-
-    console.log("Subscription object:", subscription);
 
     DAILY_LIMIT = Number(
       subscription.daily_test_limit
@@ -1846,7 +1842,7 @@ async function submitTest() {
         p_keystrokes: result.keystrokes,
         p_keystroke_category: currentPassageLimit,
         p_test_mode: TEST_MODE
-         
+
       }
     );
 
