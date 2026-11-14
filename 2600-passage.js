@@ -342,7 +342,7 @@ export const passages = {
 
 29: `\tIn the face of the above rival contentions we have to consider the validity of the provision in Section 34(1)(c) of the Act. To appreciate the scope of Section 34(1)(c) of the Act, it is necessary to note some of the other provisions of the Act. Section 2(15) defines "property" as including "any interest in property movable or immovable, the proceeds of sale thereof and any money or investment for the time being representing the proceeds of sale and also including any property converted from one species into another by any method."
 
-\tWe are not concerned with the Explanations to that section. Section 2(16) defines "property passing on the death" as follows: "Property passing on the death' includes property passing either immediately on the death or after any interval, either certainly or contingently, and either originally or by way of substitutive limitation, and ' on the death' includes at a period ascertainable only by reference to the death."
+\tWe are not concerned with the Explanations to that section. Section 2(16) defines "property passing on the death" as follows: "Property passing on the death' includes property passing either immediately on the death or after any interval, either certainly or contingently, and either originally or by way of substitutive limitation, and 'on the death' includes at a period ascertainable only by reference to the death."
 
 \tSections 6 to 16 deal with various properties and interests which are deemed to pass on the death of a deceased. Of those sections, Section 7(1) provides that a property in which the deceased or any other person had an interest ceasing on the death of the deceased shall be deemed to pass on the deceased's death to the extent to which a benefit accrues or arises by the cesser of such interest, including, in particular, a coparcenary interest in the joint family property of a Hindu family governed by the 'Mitakshara', Marumakkattayam or Aliyasanthana law.
 
@@ -351,7 +351,7 @@ export const passages = {
 \tSection 39 deals with the valuation of an interest in coparcenary property ceasing on death. Sub-section (1) of that section sets out that the value of the benefit accruing or arising from the cesser of a 'corparcenary' interest in any joint family property governed by the "Mitakshara school of Hindu law" which ceases on the death of a member thereof shall be the principal value of the share in the 'joint family property' which would have been allotted to the deceased had there been a partition immediately before his death.
 
 \tSection 40 provides that the value of the benefit accruing or arising from the cesser of an interest ceasing on the death of the deceased`,
-
+  
 30: `\tSadhu Ram died on July 3, 1969, leaving behind his widow, Smt. Pisto Devi, and four sons, out of whom, Hari Ram, petitioner, is the eldest. They constituted a joint Hindu family and on the death of Sadhu Ram, proceedings for the levy of estate duty were taken against his estate. Hari Ram filed a return as the accountable person under Section 53(3) of the Estate Duty Act, 1953 (hereinafter called "the Act").
 
 \tAccording to the return filed by Hari Ram, Shri Sadhu Ram had left movable property valued at Rs. 1,67,564, had 1/6th share of the value of Rs. 58,206 in the joint Hindu family property and a similar share in a residential house of the value of Rs. 15,000 which was claimed to be exempt from payment of estate duty under Section 33(1)(n) of the Act.
