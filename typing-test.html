@@ -537,7 +537,7 @@ button:disabled {
 <script type="module">
 import { supabase } from "./js/supabase.js";
 
-const DAILY_LIMIT = 10;
+let DAILY_LIMIT = 10;
 
 const TEST_MODE = "screen_to_screen";
 
@@ -801,6 +801,15 @@ async function initializeAccess() {
 
     if (!subscription) {
       throw Error("Subscription information is unavailable.");
+    }
+     
+    DAILY_LIMIT = Number(subscription.daily_test_limit);
+     
+    if (
+       !Number.isInteger(DAILY_LIMIT) ||
+       DAILY_LIMIT < 1
+    ) {
+       throw Error("Invalid daily test limit.");
     }
 
     const expiry = new Date(
