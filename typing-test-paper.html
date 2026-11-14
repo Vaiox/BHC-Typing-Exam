@@ -537,7 +537,7 @@ button:disabled {
 <script type="module">
 import { supabase } from "./js/supabase.js";
 
-const DAILY_LIMIT = 10;
+let DAILY_LIMIT = null;
 
 const TEST_MODE = "screen_to_screen";
 
@@ -750,26 +750,18 @@ function getIndiaDayBounds() {
    AUTHENTICATION
 ========================================================= */
 
-async function signOutAndRedirect(reason) {
-  accessGranted = false;
-  setTypingControlsEnabled(false);
-  stopTimer();
-
-  try {
-    await supabase.auth.signOut();
-  } catch (error) {
-    console.error("Sign-out failed:", error);
-  }
-
-  window.location.replace(
-    reason === "expired"
-      ? "./index.html?status=subscription_expired"
-      : "./index.html"
-  );
-}
-
 async function initializeAccess() {
+
+  let currentStage = "Starting access verification";
+
   try {
+
+    /* =========================================
+       STEP 1: GET SESSION
+    ========================================= */
+
+    currentStage = "Retrieving authentication session";
+
     const {
       data: sessionData,
       error: sessionError
@@ -779,12 +771,21 @@ async function initializeAccess() {
       throw sessionError;
     }
 
-    if (!sessionData.session) {
+    if (!sessionData?.session) {
+
       window.location.replace("./index.html");
       return;
+
     }
 
     currentUser = sessionData.session.user;
+
+
+    /* =========================================
+       STEP 2: VERIFY SUBSCRIPTION
+    ========================================= */
+
+    currentStage = "Calling ensure_my_subscription RPC";
 
     const {
       data,
@@ -799,8 +800,38 @@ async function initializeAccess() {
       ? data[0]
       : data;
 
-    if (!subscription) {
-      throw Error("Subscription information is unavailable.");
+    if (
+      !subscription ||
+      typeof subscription !== "object"
+    ) {
+
+      throw Error(
+        "Subscription RPC returned empty or invalid data."
+      );
+
+    }
+
+
+    /* =========================================
+       STEP 3: VALIDATE SUBSCRIPTION DATA
+    ========================================= */
+
+    currentStage = "Validating subscription information";
+
+    DAILY_LIMIT = Number(
+      subscription.daily_test_limit
+    );
+
+    if (
+      !Number.isInteger(DAILY_LIMIT) ||
+      DAILY_LIMIT < 1
+    ) {
+
+      throw Error(
+        "Invalid daily_test_limit: " +
+        subscription.daily_test_limit
+      );
+
     }
 
     const expiry = new Date(
@@ -812,9 +843,18 @@ async function initializeAccess() {
       !Number.isFinite(expiry.getTime()) ||
       expiry.getTime() <= Date.now()
     ) {
+
       await signOutAndRedirect("expired");
       return;
+
     }
+
+
+    /* =========================================
+       STEP 4: CHECK DAILY TEST LIMIT
+    ========================================= */
+
+    currentStage = "Checking daily test usage";
 
     const bounds = getIndiaDayBounds();
 
@@ -835,36 +875,80 @@ async function initializeAccess() {
       throw countError;
     }
 
+    console.log("Today's test count:", count);
+    console.log("Daily test limit:", DAILY_LIMIT);
+
     if ((count || 0) >= DAILY_LIMIT) {
+
       preview.textContent = DAILY_LIMIT_MESSAGE;
+
       showNotice(DAILY_LIMIT_MESSAGE);
-      setTypingControlsEnabled(false);
-      return;
-    }
-
-    try {
-      await loadPassages(currentPassageLimit);
-    } catch (error) {
-      console.error("Passage loading failed:", error);
-
-      preview.textContent =
-        "Unable to load the selected passages.";
-
-      showNotice(
-        `Could not load the ${currentPassageLimit}-keystroke passage file. Check that the file exists and refresh.`
-      );
 
       setTypingControlsEnabled(false);
+
       return;
+
     }
+
+
+    /* =========================================
+       STEP 5: LOAD PASSAGES
+    ========================================= */
+
+    currentStage = "Loading passage collection";
+
+    await loadPassages(currentPassageLimit);
+
+
+    /* =========================================
+       STEP 6: GRANT ACCESS
+    ========================================= */
 
     accessGranted = true;
 
     setTypingControlsEnabled(true);
+
     prepareTest();
 
+    console.log(
+      "Access verification successful."
+    );
+
   } catch (error) {
-    console.error("Access verification failed:", error);
+
+    console.error(
+      "ACCESS VERIFICATION FAILED"
+    );
+
+    console.error(
+      "Failed stage:",
+      currentStage
+    );
+
+    console.error(
+      "Actual error:",
+      error
+    );
+
+    console.error(
+      "Error message:",
+      error?.message
+    );
+
+    console.error(
+      "Error code:",
+      error?.code
+    );
+
+    console.error(
+      "Error details:",
+      error?.details
+    );
+
+    console.error(
+      "Error hint:",
+      error?.hint
+    );
 
     setTypingControlsEnabled(false);
 
@@ -872,9 +956,11 @@ async function initializeAccess() {
       "Unable to verify your account.";
 
     showNotice(
-      "Unable to verify your subscription. Check your connection and refresh the page."
+      `Verification failed during: ${currentStage}. Open the browser console (F12) for details.`
     );
+
   }
+
 }
 
 
