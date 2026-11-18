@@ -679,6 +679,7 @@
               </label>
 
               <select id="screenKeystrokeLimit">
+                <option value="2000">2,000 keystrokes</option>
                 <option value="2400">2,400 keystrokes</option>
                 <option value="2600">2,600 keystrokes</option>
                 <option value="2800">2,800 keystrokes</option>
@@ -830,7 +831,7 @@
     const paperSelector = $("paperKeystrokeLimit");
 
     let dailyTestLimit = 10;
-    const VALID_LIMITS = ["2400", "2600", "2800", "3000"];
+    const VALID_LIMITS = ["2000", "2400", "2600", "2800", "3000"];
 
     const SCREEN_STORAGE_KEY = "screenToScreenKeystrokeLimit";
     const PAPER_STORAGE_KEY = "paperToScreenKeystrokeLimit";
